@@ -1,0 +1,186 @@
+{%- liquid
+  assign translation_namespace = translation_namespace | default: 'tabs-content'
+  assign file_download_label_key = 'sections.' | append: translation_namespace | append: '.blocks.assembly_care.file_download_label'
+
+  assign source_product = block.settings.source_product
+  assign source_product_handle = blank
+  assign assembly_care_details = blank
+  assign assembly_care_video_metafield = blank
+  assign assembly_care_file_metafield = blank
+  assign assembly_care_video = blank
+  assign assembly_care_video_url = blank
+  assign assembly_care_external_video_type = blank
+  assign assembly_care_external_video_id = blank
+  assign assembly_care_file = blank
+  assign assembly_care_file_url = blank
+  assign assembly_care_file_name = blank
+  assign assembly_care_video_title = 'Assembly & care video'
+  assign assembly_care_description_font_size = block.settings.assembly_care_description_font_size | default: 14
+  assign assembly_care_description_font_weight = block.settings.assembly_care_description_font_weight | default: 300
+  assign assembly_care_download_font_size = block.settings.assembly_care_download_font_size | default: 16
+  assign assembly_care_download_font_weight = block.settings.assembly_care_download_font_weight | default: 500
+
+  if source_product == blank and product != blank
+    assign source_product = product
+  endif
+
+  if source_product != blank and source_product.metafields == blank
+    assign source_product_handle = source_product.handle | default: source_product
+    if source_product_handle != blank and all_products[source_product_handle] != blank
+      assign source_product = all_products[source_product_handle]
+    endif
+  endif
+
+  if source_product != blank
+    assign assembly_care_video_title = source_product.title | default: assembly_care_video_title
+
+    assign assembly_care_details = source_product.metafields.foxtheme.assembly_care_details
+    if assembly_care_details == blank
+      assign assembly_care_details = source_product.metafields.custom.assembly_care_details
+    endif
+
+    assign assembly_care_video_metafield = source_product.metafields.foxtheme.assembly_care_video
+    if assembly_care_video_metafield == blank
+      assign assembly_care_video_metafield = source_product.metafields.custom.assembly_care_video
+    endif
+
+    assign assembly_care_file_metafield = source_product.metafields.foxtheme.assembly_care_file
+    if assembly_care_file_metafield == blank
+      assign assembly_care_file_metafield = source_product.metafields.custom.assembly_care_file
+    endif
+
+    if assembly_care_file_metafield != blank
+      assign assembly_care_file = assembly_care_file_metafield.value | default: assembly_care_file_metafield
+      assign assembly_care_file_url = assembly_care_file.url | default: assembly_care_file | append: '' | strip
+
+      if assembly_care_file.filename != blank
+        assign assembly_care_file_name = assembly_care_file.filename
+      elsif assembly_care_file.alt != blank
+        assign assembly_care_file_name = assembly_care_file.alt
+      else
+        assign assembly_care_file_name = assembly_care_file_url | split: '/' | last | split: '?' | first
+      endif
+    endif
+
+    if assembly_care_video_metafield != blank
+      assign assembly_care_video_url = assembly_care_video_metafield.value | default: assembly_care_video_metafield
+
+      if assembly_care_video_url.media_type == 'video' or assembly_care_video_url.sources != blank
+        assign assembly_care_video = assembly_care_video_url
+      elsif assembly_care_video_url.media_type == 'external_video'
+        assign assembly_care_external_video_type = assembly_care_video_url.host
+        assign assembly_care_external_video_id = assembly_care_video_url.external_id
+      elsif assembly_care_video_url.type != blank and assembly_care_video_url.id != blank
+        assign assembly_care_external_video_type = assembly_care_video_url.type
+        assign assembly_care_external_video_id = assembly_care_video_url.id
+      else
+        assign assembly_care_video_url = assembly_care_video_url.url | default: assembly_care_video_url | append: '' | strip
+
+        if assembly_care_video_url contains 'youtube.com/watch'
+          assign assembly_care_external_video_type = 'youtube'
+          assign assembly_care_external_video_id = assembly_care_video_url | split: 'v=' | last | split: '&' | first
+        elsif assembly_care_video_url contains 'youtu.be/'
+          assign assembly_care_external_video_type = 'youtube'
+          assign assembly_care_external_video_id = assembly_care_video_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first | split: '/' | first
+        elsif assembly_care_video_url contains 'youtube.com/embed/'
+          assign assembly_care_external_video_type = 'youtube'
+          assign assembly_care_external_video_id = assembly_care_video_url | split: 'youtube.com/embed/' | last | split: '?' | first | split: '&' | first | split: '/' | first
+        elsif assembly_care_video_url contains 'vimeo.com/'
+          assign assembly_care_external_video_type = 'vimeo'
+          assign assembly_care_external_video_id = assembly_care_video_url | split: 'vimeo.com/' | last | split: '?' | first | split: '&' | first | split: '/' | last
+        endif
+      endif
+    endif
+  endif
+-%}
+
+<style>
+  #shopify-block-{{ block.id }} .assembly-care__content,
+  #shopify-block-{{ block.id }} .assembly-care__content.rte,
+  #shopify-block-{{ block.id }} .assembly-care__content.rte * {
+    color: #757575;
+    font-size: {{ assembly_care_description_font_size }}px;
+    font-weight: {{ assembly_care_description_font_weight }};
+  }
+
+  #shopify-block-{{ block.id }} .assembly-care__content::first-line,
+  #shopify-block-{{ block.id }} .assembly-care__content.rte > p:first-of-type,
+  #shopify-block-{{ block.id }} .assembly-care__content.rte .metafield-rich_text_field > p:first-of-type {
+    color: #0e0e0e;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  #shopify-block-{{ block.id }} .assembly-care__content.rte > p:nth-of-type(n + 2),
+  #shopify-block-{{ block.id }} .assembly-care__content.rte .metafield-rich_text_field > p:nth-of-type(n + 2) {
+    color: #757575;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  #shopify-block-{{ block.id }} .assembly-care__download-label {
+    color: #0e0e0e;
+    font-size: {{ assembly_care_download_font_size }}px;
+    font-weight: {{ assembly_care_download_font_weight }};
+  }
+</style>
+
+<div class="assembly-care" {{ block.shopify_attributes }}>
+  <div class="assembly-care__left">
+    {%- if assembly_care_details != blank -%}
+      <div class="assembly-care__content rte" style="font-size: {{ assembly_care_description_font_size }}px; font-weight: {{ assembly_care_description_font_weight }}; color: #757575;">
+        {%- if assembly_care_details.type contains 'rich_text' -%}
+          {{ assembly_care_details | metafield_tag }}
+        {%- else -%}
+          {{ assembly_care_details.value | default: assembly_care_details | escape | newline_to_br }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if assembly_care_file_url != blank and assembly_care_file_name != blank -%}
+      <div class="assembly-care__download">
+        <span class="assembly-care__download-label" style="font-size: {{ assembly_care_download_font_size }}px; font-weight: {{ assembly_care_download_font_weight }}; color: #0e0e0e;">{{ file_download_label_key | t }}</span>
+        <a href="{{ assembly_care_file_url }}" class="assembly-care__download-link" style="font-size: {{ assembly_care_download_font_size }}px; font-weight: {{ assembly_care_download_font_weight }};" download>
+          {{- assembly_care_file_name | escape -}}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if assembly_care_video != blank or assembly_care_external_video_id != blank or assembly_care_video_url != blank -%}
+    <div class="assembly-care__video media-wrapper">
+      {%- if assembly_care_video != blank -%}
+        {{-
+          assembly_care_video
+          | video_tag:
+            controls: true,
+            autoplay: false,
+            loop: false,
+            muted: false,
+            playsinline: true,
+            preload: 'metadata',
+            image_size: '1200x'
+        -}}
+      {%- elsif assembly_care_external_video_type == 'youtube' -%}
+        <iframe
+          src="https://www.youtube.com/embed/{{ assembly_care_external_video_id }}?playsinline=1&controls=1&rel=0&modestbranding=1&origin={{ 'https://' | append: request.host | url_encode }}"
+          allow="encrypted-media; picture-in-picture"
+          allowfullscreen
+          title="{{ assembly_care_video_title | escape }}"
+        ></iframe>
+      {%- elsif assembly_care_external_video_type == 'vimeo' -%}
+        <iframe
+          src="https://player.vimeo.com/video/{{ assembly_care_external_video_id }}?autopause=1&controls=1&responsive=1&portrait=0&title=0&byline=0"
+          allow="encrypted-media; picture-in-picture"
+          allowfullscreen
+          title="{{ assembly_care_video_title | escape }}"
+        ></iframe>
+      {%- elsif assembly_care_video_url != blank -%}
+        <video controls playsinline preload="metadata">
+          <source src="{{ assembly_care_video_url | escape }}">
+        </video>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+</div>

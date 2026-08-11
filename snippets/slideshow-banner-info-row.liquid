@@ -1,0 +1,180 @@
+{%- liquid
+  assign height = height | default: section.settings.banner_height
+  assign top_padding = top_padding | default: section.settings.banner_top_padding
+  assign bottom_padding = bottom_padding | default: section.settings.banner_bottom_padding
+  assign top_padding_mobile = section.settings.banner_top_padding_mobile
+  assign bottom_padding_mobile = section.settings.banner_bottom_padding_mobile
+  assign left_alignment = left_alignment | default: section.settings.banner_left_alignment
+  assign right_alignment = right_alignment | default: section.settings.banner_right_alignment
+  assign color_scheme = color_scheme | default: section.settings.banner_color_scheme
+-%}
+
+<div class="color-{{ color_scheme }}">
+  <style>
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row {
+      height: {{ height }}px;
+      padding: {{ top_padding }}px 0 {{ bottom_padding }}px 0;
+      display: flex;
+      gap: 0;
+      color: var(--color);
+      background-color: var(--bg);
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0 0 10vw;
+      text-align: {% if left_alignment == 'left' %}left{% elsif left_alignment == 'right' %}right{% else %}center{% endif %};
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__left-title {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      color: #1c1c1c;
+      letter-spacing: 0;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__left-text {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.4;
+      color: #1c1c1c;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__right {
+      flex: 1;
+      display: flex;
+      gap: 24px;
+      padding-left: 5rem;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-item {
+      display: flex;
+      flex-direction: column;
+      align-items: {% if right_alignment == 'left' %}flex-start{% elsif right_alignment == 'right' %}flex-end{% else %}center{% endif %};
+      justify-content: flex-start;
+      padding: 0 1rem;
+      padding-right: 5rem;
+      text-align: {% if right_alignment == 'left' %}left{% elsif right_alignment == 'right' %}right{% else %}center{% endif %};
+      border-left: none;
+      opacity: 1;
+      gap: 0.4rem;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-item:first-child {
+      border-left: none;
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-title {
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 0.9;
+      margin-bottom: 0;
+      margin-right: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+      color: #c8a165;
+      letter-spacing: 0;
+
+    }
+
+    #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.3;
+      color: #1c1c1c;
+    }
+
+    @media (max-width: 767.98px) {
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        padding: {{ top_padding_mobile }}px 1.6rem {{ bottom_padding_mobile }}px;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__left,
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__right {
+        width: 100%;
+        flex: none;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__left {
+        padding: 0;
+        text-align: center;
+        align-items: center;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__left-title {
+        font-size: 30px;
+        margin-bottom: 0.2rem;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__left-text {
+        font-size: 30px;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__right {
+        padding-left: 0;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-item {
+        padding: 0;
+        min-width: 0;
+        text-align: center;
+        align-items: center;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-title {
+        font-size: 48px;
+      }
+
+      #shopify-section-{{ section.id }} .slideshow-banner-info-row__right-text {
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <div class="slideshow-banner-info-row">
+    <div class="slideshow-banner-info-row__left">
+      {%- if section.settings.banner_left_title != blank -%}
+        <div class="slideshow-banner-info-row__left-title">
+          {{ section.settings.banner_left_title }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.banner_left_text != blank -%}
+        {% comment %} <div class="slideshow-banner-info-row__left-text"> {% endcomment %}
+        <div class="slideshow-banner-info-row__left-title">
+          {{ section.settings.banner_left_text }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="slideshow-banner-info-row__right">
+      {%- for i in (1..3) -%}
+        <div class="slideshow-banner-info-row__right-item">
+          {%- capture title_key -%}banner_right_{{ i }}_title{%- endcapture -%}
+          {%- capture text_key -%}banner_right_{{ i }}_text{%- endcapture -%}
+          {%- if section.settings[title_key] != blank -%}
+            <div class="slideshow-banner-info-row__right-title">
+              {{ section.settings[title_key] }}
+            </div>
+          {%- endif -%}
+          {%- if section.settings[text_key] != blank -%}
+            <div class="slideshow-banner-info-row__right-text">
+              {{ section.settings[text_key] }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

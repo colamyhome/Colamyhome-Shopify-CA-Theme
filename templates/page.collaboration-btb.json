@@ -1,0 +1,294 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "breadcrumbs_NREWyw": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 10
+      }
+    },
+    "rich_text_a3ntcY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8FhXtP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Partner with COLAMY",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1"
+          }
+        },
+        "text_VWHXM3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We support small businesses, designers, and project-based orders with flexible solutions and exclusive pricing.Whether you're furnishing a space, sourcing for a project, or ordering in volume, our thoughtfully chosen collection makes it easier to find pieces that work—together.</p>",
+            "text_size": "text-lg",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8FhXtP",
+        "text_VWHXM3"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 10,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "contact_form_9gVrhe": {
+      "type": "contact-form",
+      "blocks": {
+        "sidebar_jcFqnK": {
+          "type": "sidebar",
+          "settings": {
+            "position": "right",
+            "heading": "",
+            "heading_size": "h2",
+            "text": "<p>Tell us what you need, and we’ll get back to you with tailored pricing and recommendations.</p>",
+            "text_size": "text-lg",
+            "icon_1": "location",
+            "icon_width_1": 24,
+            "icon_color_1": "#000000",
+            "icon_heading_1": "General Office",
+            "icon_heading_size_1": "h5",
+            "icon_text_1": "<p>382NE 191st St#87394 Miami</p>",
+            "icon_vertical_alignment_1": "start",
+            "icon_2": "phone",
+            "icon_width_2": 24,
+            "icon_color_2": "#000000",
+            "icon_heading_2": "Contact Us",
+            "icon_heading_size_2": "h5",
+            "icon_text_2": "<p>+1 (888) 886-1743</p><p><a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\">hello@colamyhome.com</a></p>",
+            "icon_vertical_alignment_2": "start",
+            "icon_3": "clock",
+            "icon_width_3": 24,
+            "icon_color_3": "#000000",
+            "icon_heading_3": "Service Time",
+            "icon_heading_size_3": "h5",
+            "icon_text_3": "<p>Mon-Fri, 9am-5pm PST</p>",
+            "icon_vertical_alignment_3": "start",
+            "button_label": "SHOP MORE",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "custom_field_pVHLgi": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "ZIP Code",
+            "placeholder": "ZIP Code",
+            "required": true,
+            "full_width": true,
+            "select_options": "",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": ""
+          }
+        },
+        "custom_field_pHHBp8": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Product Variant",
+            "placeholder": "Product Variant",
+            "required": false,
+            "full_width": false,
+            "select_options": "",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": ""
+          }
+        },
+        "custom_field_YQGFgm": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Quantity",
+            "placeholder": "Quantity",
+            "required": false,
+            "full_width": false,
+            "select_options": "",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": ""
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_jcFqnK",
+        "custom_field_pVHLgi",
+        "custom_field_pHHBp8",
+        "custom_field_YQGFgm"
+      ],
+      "name": "t:sections.contact-form.name",
+      "settings": {
+        "container": "fixed",
+        "section_color_scheme": "",
+        "heading": "Get a Custom Quote",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_icon_nMM4jU": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_A4iM87": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "<strong>Exclusive Pricing</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>Enjoy special pricing on bulk and business orders.We offer competitive rates based on order size and project needs.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_mG6tcc": {
+          "type": "column",
+          "settings": {
+            "icon": "phone",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "<strong>Curated Products</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>A focused collection that simplifies decision-making. No overwhelming catalogs—just reliable pieces that work in real spaces.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_njrrDT": {
+          "type": "column",
+          "settings": {
+            "icon": "paperplane",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "<strong>Reliable Fulfillment</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>Fast shipping from 14 global warehouses. We help ensure smoother delivery and shorter lead times.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_A4iM87",
+        "column_mG6tcc",
+        "column_njrrDT"
+      ],
+      "name": "t:sections.multicolumn-with-icon.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "center",
+        "subheading": "",
+        "heading": "Multicolumn with icon",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "scheme-10",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#000000",
+        "columns_desktop": 3,
+        "column_gap": "small",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 20,
+        "padding_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumbs_NREWyw",
+    "rich_text_a3ntcY",
+    "contact_form_9gVrhe",
+    "multicolumn_icon_nMM4jU"
+  ]
+}

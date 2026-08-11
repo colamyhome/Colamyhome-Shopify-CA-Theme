@@ -1,0 +1,237 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "breadcrumbs_Vhia9q": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "lookbook_banner_imCMUB": {
+      "type": "lookbook-banner",
+      "blocks": {
+        "hotspot_i6piCU": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 18,
+            "left": 30,
+            "top_mobile": 45,
+            "left_mobile": 30
+          }
+        },
+        "hotspot_BMqdLP": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 50,
+            "left": 70,
+            "top_mobile": 50,
+            "left_mobile": 70
+          }
+        },
+        "hotspot_h6NQwp": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 62,
+            "left": 43,
+            "top_mobile": 62,
+            "left_mobile": 43
+          }
+        },
+        "hotspot_LV9rVn": {
+          "type": "hotspot",
+          "settings": {
+            "image": "shopify://shop_images/COLAMY_Brand_00001_pvmaq_1777367435.png",
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 44,
+            "left": 37,
+            "top_mobile": 9,
+            "left_mobile": 63
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_i6piCU",
+        "hotspot_BMqdLP",
+        "hotspot_h6NQwp",
+        "hotspot_LV9rVn"
+      ],
+      "name": "t:sections.banner-with-hotspots.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "image": "shopify://shop_images/COLAMY_Brand_00001_pkjxk_1777366175.png",
+        "icon_style": "dot",
+        "icon_color": "light",
+        "card_color_scheme": "",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 20,
+        "padding_bottom": 10
+      }
+    },
+    "lookbook_banner_DhJiqV": {
+      "type": "lookbook-banner",
+      "blocks": {
+        "hotspot_qB4Jik": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 45,
+            "left": 30,
+            "top_mobile": 45,
+            "left_mobile": 30
+          }
+        },
+        "hotspot_qN8NK4": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 50,
+            "left": 70,
+            "top_mobile": 50,
+            "left_mobile": 70
+          }
+        },
+        "hotspot_KpyTHL": {
+          "type": "hotspot",
+          "settings": {
+            "image": "shopify://shop_images/D6270_DE_03.jpg",
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 66,
+            "left": 40,
+            "top_mobile": 62,
+            "left_mobile": 43
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_qB4Jik",
+        "hotspot_qN8NK4",
+        "hotspot_KpyTHL"
+      ],
+      "name": "t:sections.banner-with-hotspots.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "image": "shopify://shop_images/COLAMY_Brand_00001_dhsob_1777365115.png",
+        "icon_style": "dot",
+        "icon_color": "light",
+        "card_color_scheme": "",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 10
+      }
+    },
+    "horizontal_products_list_wXc3Ac": {
+      "type": "horizontal-products-list",
+      "name": "t:sections.horizontal-products-list.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "collection": "best-seller",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "max_height": 0,
+        "pcard_button_type": "icon",
+        "pcard_title_line_limit": "1-line",
+        "limit": 9,
+        "columns": 3,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "max_height_mobile": 0,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumbs_Vhia9q",
+    "lookbook_banner_imCMUB",
+    "lookbook_banner_DhJiqV",
+    "horizontal_products_list_wXc3Ac"
+  ]
+}

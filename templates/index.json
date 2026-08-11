@@ -1,0 +1,1329 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_banner_KTipQF": {
+      "type": "slideshow-banner",
+      "blocks": {
+        "slide_F3kbkF": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "background": "shopify://shop_images/colamy_modern_furniture-_survey.jpg",
+            "background_mobile": "shopify://shop_images/colamy_survey.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-right",
+            "text_alignment": "center",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "normal",
+            "highlight_style_color": "#754e3b",
+            "highlight_text_color": "#754e3b",
+            "heading_size": "hd1",
+            "description": "<h1>HELP US BUILD A</h1><h1>BETTER COLAMY</h1><p>Get $30 for your feedback</p>",
+            "description_size": "text-inherit",
+            "button_label": "TAKE THE SURVEY",
+            "button_link": "https://colamyhome.com/tools/survey/6a20e606a2d0f",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        },
+        "video_h3fHTh": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "",
+            "mobile_video": "",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_description": "",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "subheading": "MEMORIAL DAY SALE",
+            "title": "UP TO $400 OFF",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "<p>Honoring the Brave with Big Savings</p><p></p>",
+            "description_size": "text-base",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections",
+            "button_style": "btn--secondary",
+            "button_icon": "none"
+          }
+        },
+        "slide_KGAb4Q": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/wu-27.png",
+            "background_mobile": "shopify://shop_images/wu-28.png",
+            "image_overlay_opacity": 10,
+            "content_position": "top-left",
+            "text_alignment": "left",
+            "subheading": "",
+            "title": "Memorial Day Sale",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Honoring the Brave with Big Savings</p>",
+            "description_size": "text-lg",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://collections/memorial-day-sale",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        },
+        "slide_yzawQy": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/21x9_2.jpg",
+            "background_mobile": "shopify://shop_images/3x4_3.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "top-left",
+            "text_alignment": "left",
+            "subheading": "",
+            "title": "AETHER Ergonomic Chair",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Limited First Drop. Available Now.</p>",
+            "description_size": "text-lg",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_F3kbkF",
+        "video_h3fHTh",
+        "slide_KGAb4Q",
+        "slide_yzawQy"
+      ],
+      "name": "Slideshow banner",
+      "settings": {
+        "container": "full",
+        "slide_height": "adapt",
+        "desktop_media_ratio": "21/9",
+        "mobile_media_ratio": "3/4",
+        "show_controls": true,
+        "autoplay": true,
+        "autoplay_delay": 10,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand",
+        "show_banner_row": true,
+        "banner_height": 48,
+        "banner_top_padding": 60,
+        "banner_bottom_padding": 60,
+        "banner_top_padding_mobile": 12,
+        "banner_bottom_padding_mobile": 12,
+        "banner_color_scheme": "scheme-cc3b2a49-2a79-4345-974b-919c5a15d336",
+        "banner_left_alignment": "left",
+        "banner_right_alignment": "center",
+        "banner_left_title": "Home in Progress",
+        "banner_left_text": "Happiness in Motion",
+        "banner_right_1_title": "14",
+        "banner_right_1_text": "Warehouses",
+        "banner_right_2_title": "30+",
+        "banner_right_2_text": "Countries",
+        "banner_right_3_title": "5M+",
+        "banner_right_3_text": "Homes"
+      }
+    },
+    "images_text_gdtW78": {
+      "type": "images-text",
+      "blocks": {
+        "image_card_Hi43pX": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/DiningRoom_e6d992d1-b21e-4031-bf83-d1787019398b.png",
+            "image_ratio": "16/9",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Dining & Kitchen",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-bottom-button",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/dining-kitchen",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_zdqdCL": {
+          "type": "image_card",
+          "name": "Image card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Home_Office_b0921840-4287-4029-a814-7759513f5b2f.jpg",
+            "image_ratio": "16/9",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Home Office",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/home-office",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_7GkMQW": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/LivingRoom_e3d29dc5-b390-4a5d-a145-fbbf8a1cfba0.png",
+            "image_ratio": "16/9",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Living Room",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/living-room",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_pLE8xh": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Bedroom_144b8410-3891-466d-8511-3fe2fc268066.jpg",
+            "image_ratio": "16/9",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Bedroom",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/all-bedroom",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_Hi43pX",
+        "image_card_zdqdCL",
+        "image_card_7GkMQW",
+        "image_card_pLE8xh"
+      ],
+      "name": "images text",
+      "settings": {
+        "container": "full",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-sm",
+        "text_heading_spacing": 12,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 60,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "slideshow_with_product_bottom_wzeTmR": {
+      "type": "slideshow-with-product-bottom",
+      "blocks": {
+        "slide_Q9Xc6a": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/1-6270.jpg",
+            "image_overlay_opacity": 0,
+            "product": "colamy-noya-mid-century-modern-upholstered-dining-chair",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-sm",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "bottom_heading": "",
+            "enable_preload_image": false
+          }
+        },
+        "slide_ryn4tV": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/ComfyUI_00001_cxkhp_1776240978.png",
+            "image_overlay_opacity": 0,
+            "product": "colamy-cocoon-high-load-cloud-comfort-swivel-office-chair-for-home-beyond",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "bottom_heading": "",
+            "enable_preload_image": false
+          }
+        },
+        "slide_KE8pcq": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/3-XK-DGY-2.jpg",
+            "image_overlay_opacity": 0,
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "bottom_heading": "",
+            "enable_preload_image": false
+          }
+        },
+        "slide_AhtrRn": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/DCW24.jpg",
+            "image_overlay_opacity": 0,
+            "product": "colamy-sera-solid-wood-comfort-dining-chair",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "bottom_heading": "",
+            "enable_preload_image": false
+          }
+        },
+        "slide_QiE7AN": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/ocm03banner-02_c7238774-609d-4365-a530-bb63bcad948c.jpg",
+            "image_overlay_opacity": 0,
+            "product": "colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "bottom_heading": "",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_Q9Xc6a",
+        "slide_ryn4tV",
+        "slide_KE8pcq",
+        "slide_AhtrRn",
+        "slide_QiE7AN"
+      ],
+      "name": "t:sections.slideshow-with-product-bottom.name",
+      "settings": {
+        "container": "fixed",
+        "slide_height": "medium",
+        "show_controls": false,
+        "autoplay": true,
+        "autoplay_delay": 6,
+        "padding_top": 0,
+        "top_heading": "<strong>Trusted & Curated Favorites</strong>",
+        "top_subtext": "<p>Comfort, style, and everyday bestsellers.</p>",
+        "top_subtext_spacing": 12,
+        "top_subtext_spacing_mobile": 4,
+        "top_heading_padding_top": 0,
+        "top_heading_padding_top_mobile": 0,
+        "top_heading_padding_bottom": 48,
+        "top_heading_padding_bottom_mobile": 0,
+        "top_heading_alignment": "center",
+        "thumbnail_title_size": 16,
+        "accessibility_info": "Best sale"
+      }
+    },
+    "images_text_wMcHaQ": {
+      "type": "images-text",
+      "blocks": {
+        "image_card_rqBwVb": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/chair.jpg",
+            "image_ratio": "3/4",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Chairs",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/all-chairs",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_EYJck9": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/desk.jpg",
+            "image_ratio": "3/4",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Desks",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/desks",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_dNxBUR": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/recliners_ee557cd3-a6a5-4c0a-a10e-8e1415265ed9.jpg",
+            "image_ratio": "3/4",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Recliners",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/recliners",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_K4m3mh": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Storage_e9e09320-7bc4-46d6-9788-47bf8008b2ee.jpg",
+            "image_ratio": "3/4",
+            "image_ratio_mobile": "3/4",
+            "image_overlay_opacity": 0,
+            "image_bottom_text": "Storage",
+            "image_bottom_text_size": 16,
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_color_scheme": "",
+            "content_position": "split-top-subheading",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/all-storage",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_rqBwVb",
+        "image_card_EYJck9",
+        "image_card_dNxBUR",
+        "image_card_K4m3mh"
+      ],
+      "name": "t:sections.image-cards.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Start with What You Need",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<p>Explore thoughtfully chosen pieces by Category</p>",
+        "description_size": "text-sm",
+        "text_heading_spacing": 12,
+        "columns_desktop": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_content_KMWRPb": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_collection_B8mLmK": {
+          "type": "image_card_collection",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/sofa_9fbb26fe-ac25-4bc8-914c-038f06231d08.jpg",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--secondary",
+            "button_icon": "none",
+            "collection": "",
+            "image_bottom_text": "",
+            "image_bottom_text_size": 14,
+            "image_bottom_text_weight": "400",
+            "image_bottom_text_color": "#ffffff",
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_padding_top": 16,
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_collection_YwHPaT": {
+          "type": "image_card_collection",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/recliners_4de11e71-c6f0-42b7-b737-e966c0ba0561.jpg",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "button_label": "Button label",
+            "button_style": "btn--secondary",
+            "button_icon": "none",
+            "collection": "",
+            "image_bottom_text": "",
+            "image_bottom_text_size": 14,
+            "image_bottom_text_weight": "400",
+            "image_bottom_text_color": "#ffffff",
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_padding_top": 16,
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_collection_Tag3M3": {
+          "type": "image_card_collection",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/chair.jpg",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "button_label": "Button label",
+            "button_style": "btn--secondary",
+            "button_icon": "none",
+            "collection": "",
+            "image_bottom_text": "",
+            "image_bottom_text_size": 14,
+            "image_bottom_text_weight": "400",
+            "image_bottom_text_color": "#ffffff",
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_padding_top": 16,
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_collection_anapdj": {
+          "type": "image_card_collection",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/desk.jpg",
+            "image_ratio": "3/4",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "button_label": "Button label",
+            "button_style": "btn--secondary",
+            "button_icon": "none",
+            "collection": "",
+            "image_bottom_text": "",
+            "image_bottom_text_size": 14,
+            "image_bottom_text_weight": "400",
+            "image_bottom_text_color": "#000000",
+            "image_bottom_text_alignment": "center",
+            "image_bottom_text_padding_top": 12,
+            "width": "25%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_collection_B8mLmK",
+        "image_card_collection_YwHPaT",
+        "image_card_collection_Tag3M3",
+        "image_card_collection_anapdj"
+      ],
+      "disabled": true,
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Start with What You Need",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<h6>Explore thoughtfully chosen pieces by Category</h6>",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "video_hero_icons_dRKMCQ": {
+      "type": "video-hero-icons",
+      "blocks": {
+        "logo_TBCTLY": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/LOGO-_-04.png",
+            "logo_width": 240,
+            "logo_padding_bottom": 14
+          }
+        },
+        "text_dQkAyC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Home in Progress, Happiness in Motion</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_zyTnCf": {
+          "type": "button",
+          "settings": {
+            "button_label": "about us",
+            "button_link": "shopify://pages/about-us",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "icon_item_HVQdK6": {
+          "type": "icon-item",
+          "settings": {
+            "label": "Secure Payment",
+            "link": "shopify://policies/contact-information",
+            "icon": "secure-payment"
+          }
+        },
+        "icon_item_haBMem": {
+          "type": "icon-item",
+          "settings": {
+            "label": "Hassle-Free Returns",
+            "link": "shopify://policies/contact-information",
+            "icon": "hassle-free-returns"
+          }
+        },
+        "icon_item_MDNypY": {
+          "type": "icon-item",
+          "settings": {
+            "label": "Local Warehouse",
+            "link": "shopify://policies/contact-information",
+            "icon": "local-warehouse"
+          }
+        },
+        "icon_item_7wPhMF": {
+          "type": "icon-item",
+          "settings": {
+            "label": "Free & Fast Shipping",
+            "link": "shopify://policies/contact-information",
+            "icon": "free-fast-shipping"
+          }
+        },
+        "icon_item_GDG8Yx": {
+          "type": "icon-item",
+          "settings": {
+            "label": "Customer Service Support",
+            "link": "shopify://policies/contact-information",
+            "icon": "customer-service-support"
+          }
+        },
+        "subheading_pHwJeb": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Add a tagline"
+          }
+        },
+        "heading_AXa4a4": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Video hero",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1"
+          }
+        }
+      },
+      "block_order": [
+        "logo_TBCTLY",
+        "text_dQkAyC",
+        "button_zyTnCf",
+        "icon_item_HVQdK6",
+        "icon_item_haBMem",
+        "icon_item_MDNypY",
+        "icon_item_7wPhMF",
+        "icon_item_GDG8Yx",
+        "subheading_pHwJeb",
+        "heading_AXa4a4"
+      ],
+      "name": "Video hero icons",
+      "settings": {
+        "container": "full",
+        "video": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "video_height": "extra-large",
+        "overlay_opacity": 10,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "video_mobile_height": "small",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "full",
+        "icons_color_scheme": "scheme-cc3b2a49-2a79-4345-974b-919c5a15d336",
+        "icons_spacing": 46,
+        "icons_spacing_mobile_vw": 3,
+        "icons_icon_size_mobile": 40,
+        "icons_row_spacing": 0,
+        "icons_alignment": "center"
+      }
+    },
+    "scrolling_gallery_image_wJyLJr": {
+      "type": "scrolling-gallery-image",
+      "blocks": {
+        "gallery_zMzedj": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/IMG_2666.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/1.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Francis"
+          }
+        },
+        "gallery_PALf8b": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/2.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Glendon"
+          }
+        },
+        "gallery_t8EfbE": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/3.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Harry"
+          }
+        },
+        "gallery_HjXBVX": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/4.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Jackson"
+          }
+        },
+        "gallery_Hdq7y7": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/5.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Kennedy"
+          }
+        },
+        "gallery_xaTeHP": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
+            "video": "",
+            "image_avatar": "shopify://shop_images/6.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Lawrence"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_zMzedj",
+        "gallery_PALf8b",
+        "gallery_t8EfbE",
+        "gallery_HjXBVX",
+        "gallery_Hdq7y7",
+        "gallery_xaTeHP"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Real Homes, Real Living</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<h4>See how our pieces come to life in everyday spaces</h4>",
+        "text_size": "text-base",
+        "show_button_on_top": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "direction": "left",
+        "speed": 0.1,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "1778050675ed1f91b8": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_geMeWA": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Real Homes, Real Living",
+            "title_color": "#1c1c1c",
+            "title_size_v2": 36,
+            "alignment": "center",
+            "instafeed_margin_top": 30,
+            "instafeed_margin_bottom": 30,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "center",
+            "link_color": "#1c1c1c",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": "<style>\n  /* 1. 自定义主标题字重 */\n  #insta-feed h2 {\n    font-size: 36px;\n    font-weight: 500 !important;\n    color: #1c1c1c;\n  }\n\n  @media (max-width: 767.98px) {\n    #insta-feed h2 {\n      font-size: 28px !important;\n    }\n  }\n\n  /* 2. 副标题样式 */\n  .instafeed-subtitle {\n    display: block;\n    font-size: 14px;\n    font-weight: 400;\n    color: #1c1c1c;\n    margin-top: -20px;\n    margin-bottom: 25px;\n    text-align: center;\n  }\n\n  /* 3. 手机端：红人视频横向滑动并放大 */\n  @media (max-width: 767.98px) {\n    #insta-feed .instafeed-new-layout-container {\n      width: 100% !important;\n      overflow: hidden !important;\n    }\n\n    #insta-feed .instafeed-new-layout-wrapper {\n      display: flex !important;\n      grid-template-columns: none !important;\n      gap: 12px !important;\n\n      overflow-x: auto !important;\n      overflow-y: hidden !important;\n      scroll-snap-type: x mandatory;\n      -webkit-overflow-scrolling: touch;\n      overscroll-behavior-x: contain;\n\n      padding: 0 16px 8px !important;\n    }\n\n    #insta-feed .instafeed-new-layout-item {\n      flex: 0 0 76vw !important;\n      width: 76vw !important;\n      height: calc(76vw * 1.333) !important;\n      max-width: 320px !important;\n      max-height: 426px !important;\n      scroll-snap-align: start;\n    }\n\n    #insta-feed .instafeed-new-layout-item img {\n      width: 100% !important;\n      height: 100% !important;\n      object-fit: cover !important;\n    }\n\n    #insta-feed .instafeed-new-layout-wrapper::-webkit-scrollbar {\n      display: none;\n    }\n\n    #insta-feed .instafeed-new-layout-wrapper {\n      scrollbar-width: none;\n    }\n  }\n</style>\n\n<script>\n(function() {\n  var subtitleText = \"See how our pieces come to life in everyday spaces\";\n\n  function addSubtitleIfNeeded() {\n    var title = document.querySelector('#insta-feed h2') \n      || document.querySelector('#insta-feed .section-title')\n      || document.querySelector('#insta-feed h1');\n\n    if (!title) return;\n\n    if (document.querySelector('.instafeed-subtitle')) return;\n\n    var subtitle = document.createElement('p');\n    subtitle.className = 'instafeed-subtitle';\n    subtitle.textContent = subtitleText;\n    title.insertAdjacentElement('afterend', subtitle);\n  }\n\n  function enableMobileSwipe() {\n    var container = document.querySelector('#insta-feed .instafeed-new-layout-container');\n    var wrapper = document.querySelector('#insta-feed .instafeed-new-layout-wrapper');\n\n    if (!container || !wrapper) return;\n\n    container.setAttribute('data-instafeed-prevent-touch-scroll', 'false');\n\n    wrapper.style.overflowX = 'auto';\n    wrapper.style.overflowY = 'hidden';\n    wrapper.style.webkitOverflowScrolling = 'touch';\n  }\n\n  function startObserver() {\n    var container = document.querySelector('#insta-feed');\n\n    if (!container) {\n      setTimeout(startObserver, 500);\n      return;\n    }\n\n    addSubtitleIfNeeded();\n    enableMobileSwipe();\n\n    var observer = new MutationObserver(function() {\n      addSubtitleIfNeeded();\n      enableMobileSwipe();\n    });\n\n    observer.observe(container, { childList: true, subtree: true });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', startObserver);\n  } else {\n    startObserver();\n  }\n})();\n</script>"
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_geMeWA"
+      ],
+      "custom_css": [
+        "@media (max-width: 767.98px) {#insta-feed .h3 {font-size: 28px; }}"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "testimonials_masonry_rU9Egh": {
+      "type": "testimonials-masonry",
+      "blocks": {
+        "testimonial_VjgpPG": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/81z79y3mTTL.jpg",
+            "text": "<p><strong>Classy, gorgeous fabric, well made, stunning!</strong></p><p>These chairs are so beautiful!  The fabric looks like a linen and raw silk blend! They are the perfect  complement our 23 year old Danish table!  Very classy!Love! Easy assembly too!</p>",
+            "author": "Miller",
+            "bio": "",
+            "product": "colamy-noya-mid-century-modern-upholstered-dining-chair"
+          }
+        },
+        "testimonial_kP9KBE": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/61wE3ZZ8gfL.jpg",
+            "text": "<p><strong>Excellent upgrade</strong></p><p>Excellent value! The Atlas competes with $500-$1000 chairs for under $300. It features premium build quality, a firm yet comfortable seat, and solid adjustable mechanisms. If you prioritize functional performance over branding and prestige, this is a top-tier ergonomic choice.</p>",
+            "avatar": "shopify://shop_images/XK.png",
+            "author": "Schadenfreudist",
+            "bio": "",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
+          }
+        },
+        "testimonial_itecmG": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/71C3pdQPj1L.jpg",
+            "text": "<p><strong>Very sturdy and strong frame</strong></p><p>Great designs and easy to assemble, frame is study and well built. Very excited once we put them together! They were easy to assemble, very comfortable, and the seat size and height are perfect for my counter. They look amazing too.</p>",
+            "avatar": "shopify://shop_images/ACF05.png",
+            "author": "Nicole",
+            "bio": "",
+            "product": "colamy-arla-upholstered-wooden-scandi-minimalist-counter-height-bar-stool"
+          }
+        },
+        "testimonial_U8TJBM": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/71nUyvoXroL.jpg",
+            "text": "<p><strong>Super heavy and robust.</strong></p><p>Awesome desk, heavy but really solid. Lumidesk has exceeded my expectations. It's so beautiful. It looks luxury and premium compared to other same price range standing desks. Lightning fast customers service. I am an extremely happy customer.</p>",
+            "author": "Ocisly",
+            "bio": "",
+            "product": "lumidesk-all-in-1-electric-height-adjustable-desk"
+          }
+        },
+        "testimonial_pdwgFC": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_64GY6b": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_VjgpPG",
+        "testimonial_kP9KBE",
+        "testimonial_itecmG",
+        "testimonial_U8TJBM",
+        "testimonial_pdwgFC",
+        "testimonial_64GY6b"
+      ],
+      "name": "t:sections.testimonials_masonry.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Loved by Our Customers</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<h4>Real stories and feedback from people building their homes with COLAMY</h4>",
+        "text_size": "text-base",
+        "max_height": 0,
+        "card_color_scheme": "",
+        "card_image_ratio": "3/4",
+        "show_image": true,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "featured_blog_TtMRm6": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Blog posts",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "<p>blogs</p>",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_date": true,
+        "show_author": true,
+        "show_button": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "slideshow_banner_KTipQF",
+    "images_text_gdtW78",
+    "slideshow_with_product_bottom_wzeTmR",
+    "images_text_wMcHaQ",
+    "custom_content_KMWRPb",
+    "video_hero_icons_dRKMCQ",
+    "scrolling_gallery_image_wJyLJr",
+    "1778050675ed1f91b8",
+    "testimonials_masonry_rU9Egh",
+    "featured_blog_TtMRm6"
+  ]
+}

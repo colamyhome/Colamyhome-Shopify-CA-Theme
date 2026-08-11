@@ -1,0 +1,230 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_Gxg9wp": {
+      "type": "breadcrumbs",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_overlay_de4JiH": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "fixed",
+        "image": "shopify://shop_images/4342616fcc0a96c4cd573ab230099921_c0598c97-d831-480e-97df-986b06ddde25.jpg",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/12_71759c5a-0f8b-481f-954d-de4ff52ebf57.jpg",
+        "mobile_height": "adapt",
+        "content_position_mobile": "middle-center-mobile",
+        "content_alignment_mobile": "left",
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "enable_preload_image": false
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "collection_info_zUNyKV": {
+          "type": "collection_info",
+          "settings": {
+            "heading_size": "h1",
+            "heading_tag": "h1",
+            "show_description": true,
+            "padding_top": 34,
+            "padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "collection_info_zUNyKV"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "text_background_color": "#ada293",
+        "text_color": "#ffffff",
+        "text_alignment": "center",
+        "show_collection_image": false,
+        "image_overlay_opacity": 0,
+        "image_position": "right",
+        "image_height": "extra-small",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "image_height_mobile": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_content_rmJWU3": {
+      "type": "custom-content",
+      "blocks": {
+        "text_7yEytr": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "Last Chance Favorites",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "text_JtqjxP": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>As our collection evolves, some favorites make way for new arrivals.</p><p>Still thoughtfully chosen. Still built for comfort, quality, and everyday ease. </p><p>Explore limited-time pricing before they're gone.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_7yEytr",
+        "text_JtqjxP"
+      ],
+      "custom_css": [
+        ".section--custom-content .custom-content-block--text:nth-child(1) .rich-text__heading {font-size: 36px; font-weight: 500; color: #1c1c1c;}",
+        "@media screen and (max-width: 749px) {.section--custom-content .custom-content-block--text:nth-child(1) .rich-text__heading {font-size: 28px; }}",
+        ".section--custom-content .custom-content-block--text:nth-child(2) .rich-text__text {font-size: 16px; font-weight: 300; color: #1c1c1c;}"
+      ],
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "image_card_mwkyJy": {
+          "type": "image_card",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_position": 1,
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 10,
+            "content_position": "split-bottom-button",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "Home & Decor",
+            "subheading_style": "",
+            "heading": "Saving $30 for Lighting",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Shop Now",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_mwkyJy"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "products_per_page": 10,
+        "columns_desktop": 4,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "pagination": "number",
+        "enable_filtering": true,
+        "enable_color_swatch": true,
+        "filter_type": "vertical",
+        "expand_filter_groups": "Availability, Price, Color, Size, Category",
+        "enable_sorting": true,
+        "enable_layout_switching": true,
+        "columns_mobile": "2",
+        "padding_top": 28,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_Gxg9wp",
+    "image_with_text_overlay_de4JiH",
+    "banner",
+    "custom_content_rmJWU3",
+    "product-grid"
+  ]
+}

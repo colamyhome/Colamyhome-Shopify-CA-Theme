@@ -1,0 +1,19 @@
+{%- liquid
+  assign row_label = row.label | default: row.title | default: row.name | default: row.key
+  assign row_value = row.value | default: row.text | default: row.content
+
+  if row_label == blank and row_value == blank and row[0] != blank
+    assign row_label = row[0]
+    assign row_value = row[1]
+  endif
+-%}
+{%- if row_label != blank or row_value != blank -%}
+  <div class="product-dimension-info-table__row" role="row">
+    <div class="product-dimension-info-table__cell product-dimension-info-table__label" role="cell">
+      {{- row_label | escape -}}:
+    </div>
+    <div class="product-dimension-info-table__cell product-dimension-info-table__value" role="cell">
+      {{- row_value | escape | newline_to_br -}}
+    </div>
+  </div>
+{%- endif -%}

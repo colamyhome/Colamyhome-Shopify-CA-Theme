@@ -1,0 +1,163 @@
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: calc(var(--mobile-sticky-bar-height, 0px) + 10rem);
+    inset-inline-end: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0.8rem);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 30;
+  }
+
+  body.mobile-sticky-bar-down .back-to-top {
+    bottom: 10rem;
+  }
+
+  body.product-template .back-to-top {
+    bottom: calc(var(--mobile-sticky-bar-height, 0px) + var(--sticky-atc-bar-height, 0px) + 10rem);
+  }
+
+  body.product-template.mobile-sticky-bar-down .back-to-top {
+    bottom: calc(var(--sticky-atc-bar-height, 0px) + 10rem);
+  }
+
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top__button {
+    width: 5rem;
+    height: 5rem;
+    padding: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    box-shadow: 0 0.6rem 1.8rem rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    transition: height 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .back-to-top__button:is(:hover, :focus-visible) {
+    height: 7.2rem;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.18);
+    transform: translateY(-0.1rem);
+  }
+
+  .back-to-top__button svg {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+  }
+
+  .back-to-top__label {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: currentColor;
+    transition: opacity 0.2s ease, max-height 0.2s ease;
+  }
+
+  .back-to-top__button:is(:hover, :focus-visible) .back-to-top__label {
+    max-height: 1.6rem;
+    opacity: 1;
+  }
+
+  /* Homepage: move down 80px */
+  body.index-template .back-to-top {
+    bottom: calc(var(--mobile-sticky-bar-height, 0px) + 9.5rem);
+  }
+
+
+
+  /* Homepage + Collection: Zendesk launcher move down */
+  body.index-template iframe#launcher,
+  body.collection-template iframe#launcher {
+    transform: translateY(120px) !important;
+  }
+
+  /* Hide Zendesk when cart/modal is open */
+  body.modal-show iframe#launcher {
+    display: none !important;
+  }
+
+  @media (max-width: 767px) {
+    body.index-template iframe#launcher,
+    body.collection-template iframe#launcher {
+      transform: translateY(60px) !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .back-to-top {
+      inset-inline-end: 3rem;
+    }
+  }
+</style>
+
+<back-to-top class="back-to-top">
+  <button class="back-to-top__button" type="button" aria-label="{{ 'accessibility.back_to_top' | t }}">
+    {% render 'icon-caret-up', size: 'medium' %}
+    <span class="back-to-top__label" aria-hidden="true">top</span>
+  </button>
+</back-to-top>
+
+<script>
+  if (!customElements.get('back-to-top')) {
+    customElements.define(
+      'back-to-top',
+      class BackToTop extends HTMLElement {
+        constructor() {
+          super();
+
+          this.scrollToTop = this.scrollToTop.bind(this);
+          this.toggleVisibility = this.toggleVisibility.bind(this);
+        }
+
+        connectedCallback() {
+          this.addEventListener('click', this.scrollToTop);
+          window.addEventListener('scroll', this.toggleVisibility, { passive: true });
+          window.addEventListener('resize', this.toggleVisibility);
+          this.toggleVisibility();
+        }
+
+        disconnectedCallback() {
+          this.removeEventListener('click', this.scrollToTop);
+          window.removeEventListener('scroll', this.toggleVisibility);
+          window.removeEventListener('resize', this.toggleVisibility);
+        }
+
+        scrollToTop() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }
+
+        toggleVisibility() {
+          this.classList.toggle('show', window.scrollY > window.innerHeight);
+        }
+      }
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.back-to-top.name",
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": []
+}
+{% endschema %}

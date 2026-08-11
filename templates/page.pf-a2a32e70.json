@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-a2a32e70": {
+      "type": "pf-a2a32e70",
+      "settings": {
+        "pf_6018991e_value": "At Colamy, we believe that the spaces we inhabit should inspire creativity and comfort. Founded with a vision to redefine modern living, our journey began in a small workshop where passion met craftsmanship.\n<br><br>\nWe understand that the modern workspace is evolving. With more people working from home, the need for comfortable, functional furniture has never been greater. At Colamy， each piece is thoughtfully designed to enhance your home office experience, promoting productivity while reflecting your aesthetic.\n<br><br>\nBut our story doesn’t end with furniture. We are dedicated to fostering a community that values well-being and design. By sharing tips on workspace optimization and wellness, we aspire to support our customers in creating environments where they can thrive.<br>",
+        "pf_3896f1a6_value": "Extra 10% Off With Code: <br>COLAMY10",
+        "pf_8c8758db_value": "6th Anniversary Event",
+        "pf_e274dc1a_value": "Meet Our Story<br>",
+        "pf_76e009da_value": "<u>Learn More</u>"
+      }
+    }
+  },
+  "order": [
+    "pf-a2a32e70"
+  ]
+}

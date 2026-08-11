@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-de23eb74": {
+      "type": "pf-de23eb74",
+      "settings": {
+        "pf_b24e4503_value": "Promotions, new products and sales. Directly to your inbox.",
+        "pf_da1fa1c7_value": "where comfort and high - performance work collide",
+        "pf_4153da81_value": "Built to Endure Family Gatherings and Daily Use",
+        "pf_2f09707f_value": "Transform Your Space with Our Accent Chair ",
+        "pf_80aaa8d5_value": "Unleash Your Gaming Potential",
+        "pf_9f443b44_placeholder": "Please enter your email",
+        "pf_ca43b24e_value": "STAY IN TOUCH",
+        "pf_45b74153_value": "Dining Chair",
+        "pf_980280aa_value": "Gaming Chair",
+        "pf_9d002f09_value": "Accent Chair",
+        "pf_d7e3da1f_value": "Office Chair",
+        "pf_443b44af_value": "Subscribe"
+      }
+    }
+  },
+  "order": [
+    "pf-de23eb74"
+  ]
+}

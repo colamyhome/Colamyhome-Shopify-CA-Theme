@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "breadcrumbs_DwHMyc": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "rich_text_hLrEzn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bUeqif": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Review Gallery",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bUeqif"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "17769242812acb76bf": {
+      "type": "apps",
+      "blocks": {
+        "rivyo_reviews_loyalty_wc_all_product_reviews_RLkHd4": {
+          "type": "shopify://apps/rivyo-reviews-loyalty/blocks/wc-all-product-reviews/f1860e84-309f-40ca-a2df-188435a622f3",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "rivyo_reviews_loyalty_wc_all_product_reviews_RLkHd4"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "breadcrumbs_DwHMyc",
+    "rich_text_hLrEzn",
+    "17769242812acb76bf"
+  ]
+}

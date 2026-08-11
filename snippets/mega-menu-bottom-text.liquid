@@ -1,0 +1,14 @@
+{%- liquid
+  assign text_alignment = text_alignment | default: 'center'
+  assign text_size = text_size | default: 'text-base'
+  assign font_weight = font_weight | default: '400'
+-%}
+
+{%- if text != blank -%}
+  <p
+    class="mega-menu__bottom-text {{ text_size }} text-{{ text_alignment }} m-0"
+    style="font-weight: {{ font_weight }};{% if color != blank and color != 'rgba(0,0,0,0)' %} color: {{ color }};{% endif %}"
+  >
+    {{- text | escape -}}
+  </p>
+{%- endif -%}

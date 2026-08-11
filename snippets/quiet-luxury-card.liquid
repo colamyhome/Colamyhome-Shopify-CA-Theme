@@ -1,0 +1,284 @@
+{%- liquid
+  assign title_alignment = block.settings.video_top_text_alignment | default: 'left'
+  assign title_alignment_class = 'quiet-luxury-card__title--left'
+  assign source_product = block.settings.source_product
+  assign source_product_handle = blank
+  assign source_video = blank
+  assign selling_point_images = blank
+  assign selling_point_count = 0
+  assign metafield_description_text = blank
+  assign metafield_description_is_richtext = false
+  assign video_top_text_font_size = block.settings.video_top_text_font_size | default: 16
+  assign video_top_text_font_weight = block.settings.video_top_text_font_weight | default: 500
+  assign product_metafield_text_font_size = block.settings.product_metafield_text_font_size | default: 14
+  assign product_metafield_text_font_weight = block.settings.product_metafield_text_font_weight | default: 300
+  assign video_row_background_color = block.settings.video_row_background_color | default: 'rgba(244,244,244,1)'
+  assign metafield_video = blank
+  assign metafield_image = blank
+  assign metafield_description = blank
+
+  if source_product == blank and product != blank
+    assign source_product = product
+  endif
+
+  if source_product != blank and source_product.metafields == blank
+    assign source_product_handle = source_product.handle | default: source_product
+    if source_product_handle != blank and all_products[source_product_handle] != blank
+      assign source_product = all_products[source_product_handle]
+    endif
+  endif
+
+  if source_product != blank
+    assign metafield_video = source_product.metafields.foxtheme.product_video.value
+    if metafield_video == blank
+      assign metafield_video = source_product.metafields.custom.product_video.value
+    endif
+
+    assign metafield_image = source_product.metafields.foxtheme.product_image.value
+    if metafield_image == blank
+      assign metafield_image = source_product.metafields.custom.product_image.value
+    endif
+
+    assign metafield_description = source_product.metafields.foxtheme.product_description
+    if metafield_description == blank
+      assign metafield_description = source_product.metafields.custom.product_description
+    endif
+
+    assign source_video = source_product.media | where: 'media_type', 'video' | first
+    if source_video == blank
+      assign source_video = source_product.media | where: 'media_type', 'external_video' | first
+    endif
+
+    assign selling_point_images = source_product.metafields.foxtheme.product_selling_points_images.value
+    if selling_point_images == blank
+      assign selling_point_images = source_product.metafields.custom.product_selling_points_images.value
+    endif
+
+    if selling_point_images != blank and selling_point_images.size == blank
+      assign selling_point_images = source_product.metafields.foxtheme.product_selling_points_images
+      if selling_point_images == blank
+        assign selling_point_images = source_product.metafields.custom.product_selling_points_images
+      endif
+    endif
+
+    if selling_point_images != blank
+      for _selling_point_image in selling_point_images limit: 4
+        assign selling_point_count = selling_point_count | plus: 1
+      endfor
+    endif
+  endif
+
+  if metafield_description != blank
+    assign metafield_description_text = metafield_description.value | default: metafield_description
+    if metafield_description.type contains 'rich_text'
+      assign metafield_description_is_richtext = true
+    endif
+  endif
+
+  if title_alignment == 'center'
+    assign title_alignment_class = 'quiet-luxury-card__title--center'
+  elsif title_alignment == 'right'
+    assign title_alignment_class = 'quiet-luxury-card__title--right'
+  endif
+-%}
+
+<style>
+  #shopify-block-{{ block.id }} .quiet-luxury-card__title.rte * {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  #shopify-block-{{ block.id }} .quiet-luxury-card__subtitle.rte *,
+  #shopify-block-{{ block.id }} .quiet-luxury-card__subtitle.rte a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .quiet-luxury-card__subtitle.rte strong{
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .quiet-luxury-card__subtitle.rte{
+    padding-right:2rem;
+  }
+</style>
+
+<div class="quiet-luxury-card" {{ block.shopify_attributes }}>
+  <div
+    class="quiet-luxury-card__hero{% if block.settings.video_top_text != blank or metafield_description_text != blank %} quiet-luxury-card__hero--with-header{% endif %}"
+    style="--quiet-luxury-card-hero-background: {{ video_row_background_color }};"
+  >
+    <div class="quiet-luxury-card__video-wrap">
+    {%- liquid
+      assign has_valid_metafield_video = false
+      if metafield_video != blank
+        if metafield_video.media_type == 'video' or metafield_video.media_type == 'external_video'
+          assign has_valid_metafield_video = true
+        endif
+      endif
+    -%}
+    {%- if has_valid_metafield_video -%}
+      {{
+        metafield_video
+        | media_tag:
+          image_size: '1800x',
+          controls: true,
+          autoplay: true,
+          muted: true,
+          loop: false,
+          class: 'quiet-luxury-card__video'
+      }}
+    {%- elsif metafield_image != blank -%}
+      {%- liquid
+        assign top_image = metafield_image
+        if metafield_image.preview_image != blank
+          assign top_image = metafield_image.preview_image
+        endif
+      -%}
+      {{
+        top_image
+        | image_url: width: 1800
+        | image_tag:
+          loading: 'lazy',
+          widths: '550, 750, 950, 1200, 1500, 1800, 2400',
+          sizes: '(min-width: 768px) min(120rem, 100vw - 6rem), calc(100vw - 3rem)',
+          class: 'quiet-luxury-card__video',
+          alt: source_product.title,
+          is: 'image-lazy'
+      }}
+    {%- elsif source_video != blank -%}
+      {{
+        source_video
+        | media_tag:
+          image_size: '1800x',
+          controls: true,
+          autoplay: true,
+          muted: true,
+          loop: false,
+          class: 'quiet-luxury-card__video'
+      }}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg quiet-luxury-card__video-placeholder' }}
+    {%- endif -%}
+
+    </div>
+
+    {%- if block.settings.video_top_text != blank or metafield_description_text != blank -%}
+      <div class="quiet-luxury-card__header">
+        {%- if block.settings.video_top_text != blank -%}
+          {%- if block.settings.video_top_text contains '<' and block.settings.video_top_text contains '>' -%}
+            <div class="quiet-luxury-card__title {{ title_alignment_class }} rte" style="font-size: {{ video_top_text_font_size }}px; font-weight: {{ video_top_text_font_weight }}; color: #1c1c1c;">{{ block.settings.video_top_text }}</div>
+          {%- else -%}
+            <h2 class="quiet-luxury-card__title {{ title_alignment_class }}" style="font-size: {{ video_top_text_font_size }}px; font-weight: {{ video_top_text_font_weight }}; color: #1c1c1c;">{{ block.settings.video_top_text | escape }}</h2>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if metafield_description_text != blank -%}
+          {%- if metafield_description_is_richtext -%}
+            <div class="quiet-luxury-card__subtitle rte" style="font-size: {{ product_metafield_text_font_size }}px; font-weight: {{ product_metafield_text_font_weight }}; color: #1c1c1c;">{{ metafield_description | metafield_tag }}</div>
+          {%- elsif metafield_description_text contains '<' and metafield_description_text contains '>' -%}
+            <div class="quiet-luxury-card__subtitle rte" style="font-size: {{ product_metafield_text_font_size }}px; font-weight: {{ product_metafield_text_font_weight }}; color: #1c1c1c;">{{ metafield_description_text }}</div>
+          {%- else -%}
+            <p class="quiet-luxury-card__subtitle" style="font-size: {{ product_metafield_text_font_size }}px; font-weight: {{ product_metafield_text_font_weight }}; color: #1c1c1c;">{{ metafield_description_text | escape | newline_to_br }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if selling_point_count > 0 -%}
+  <div id="quiet-luxury-card-grid-{{ block.id }}" class="quiet-luxury-card__grid quiet-luxury-card__grid--count-{{ selling_point_count }}">
+    <div class="quiet-luxury-card__grid-inner">
+    {%- for card_image_media in selling_point_images limit: 4 -%}
+      {%- liquid
+        assign index = forloop.index
+        assign card_image = blank
+        assign card_text_metafield = blank
+        assign card_text = blank
+        assign card_image_alt = blank
+        assign card_sizes = '(min-width: 768px) calc((100vw - 8rem) / 3), calc(100vw - 3rem)'
+
+        if selling_point_count == 1
+          assign card_sizes = '(min-width: 768px) min(120rem, 100vw - 6rem), calc(100vw - 3rem)'
+        elsif selling_point_count == 2 or selling_point_count == 4
+          assign card_sizes = '(min-width: 768px) calc((100vw - 8rem) / 2), calc(100vw - 3rem)'
+        endif
+
+        if card_image_media != blank
+          if card_image_media.preview_image != blank
+            assign card_image = card_image_media.preview_image
+          else
+            assign card_image = card_image_media
+          endif
+          if card_image == blank and card_image_media.value != blank
+            assign card_image = card_image_media.value
+          endif
+          if card_image != blank
+            assign card_image_alt = card_image.alt | default: card_image_media.alt
+          endif
+        endif
+
+        case index
+          when 1
+            assign card_text_metafield = source_product.metafields.foxtheme.product_selling_point_text_1
+            if card_text_metafield == blank
+              assign card_text_metafield = source_product.metafields.custom.product_selling_point_text_1
+            endif
+          when 2
+            assign card_text_metafield = source_product.metafields.foxtheme.product_selling_point_text_2
+            if card_text_metafield == blank
+              assign card_text_metafield = source_product.metafields.custom.product_selling_point_text_2
+            endif
+          when 3
+            assign card_text_metafield = source_product.metafields.foxtheme.product_selling_point_text_3
+            if card_text_metafield == blank
+              assign card_text_metafield = source_product.metafields.custom.product_selling_point_text_3
+            endif
+          when 4
+            assign card_text_metafield = source_product.metafields.foxtheme.product_selling_point_text_4
+            if card_text_metafield == blank
+              assign card_text_metafield = source_product.metafields.custom.product_selling_point_text_4
+            endif
+        endcase
+
+        if card_text_metafield != blank
+          assign card_text = card_text_metafield.value | default: card_text_metafield
+        endif
+      -%}
+      <article class="quiet-luxury-card__item quiet-luxury-card__item--{{ index }}">
+        <div class="quiet-luxury-card__item-image-wrap quiet-luxury-card__item-image-wrap--count-{{ selling_point_count }}">
+          {%- if card_image != blank -%}
+            {{
+              card_image
+              | image_url: width: 1500
+              | image_tag:
+                loading: 'lazy',
+                widths: '375, 550, 750, 950, 1100, 1500',
+                sizes: card_sizes,
+                class: 'quiet-luxury-card__item-image',
+                alt: card_image_alt,
+                is: 'image-lazy'
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg quiet-luxury-card__item-placeholder' }}
+          {%- endif -%}
+        </div>
+        {%- if card_text_metafield != blank and card_text_metafield.type contains 'rich_text' -%}
+          <div class="quiet-luxury-card__item-text rte">{{ card_text_metafield | metafield_tag }}</div>
+        {%- elsif card_text != blank -%}
+          {%- if card_text contains '<' and card_text contains '>' -%}
+            <div class="quiet-luxury-card__item-text rte">{{ card_text }}</div>
+          {%- else -%}
+            <p class="quiet-luxury-card__item-text">{{ card_text | escape | newline_to_br }}</p>
+          {%- endif -%}
+        {%- endif -%}
+      </article>
+    {%- endfor -%}
+    </div>
+  </div>
+  <scroll-progress-bar class="quiet-luxury-card__progress md:hidden" target="quiet-luxury-card-grid-{{ block.id }}">
+    <div class="progress-container">
+      <div class="progress-bar no-empty"></div>
+    </div>
+  </scroll-progress-bar>
+    {%- endif -%}
+</div>

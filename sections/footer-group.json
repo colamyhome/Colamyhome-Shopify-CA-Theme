@@ -1,0 +1,309 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "multicolumn_icon_rTKNUF": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_PnJ3NJ": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "max_width": 10,
+            "max_width_mb": 10,
+            "title": "WE ARE HERE TO HELP!",
+            "highlight_style": "none",
+            "highlight_font_style": "normal",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "heading_font": "body-bolder",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_xNjRtG": {
+          "type": "column",
+          "settings": {
+            "icon": "phone",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "<strong>+1 (888) 886-1743</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "text-base",
+            "heading_font": "body-bolder",
+            "text": "<p>Mon-Fri, 9am-5pm PST</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_69fN8n": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "<a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\"><strong>hello@colamyhome.com</strong></a>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "text-base",
+            "heading_font": "body-bolder",
+            "text": "<p>Expect a reply within 24 business hours</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_ngN6XL": {
+          "type": "column",
+          "settings": {
+            "icon": "map-pin",
+            "max_width": 32,
+            "max_width_mb": 32,
+            "title": "<strong>Aurora Maison INC </strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "text-base",
+            "heading_font": "body-bolder",
+            "text": "<p>6275 JOYCE DR, ARVADA, CO 80403</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_PnJ3NJ",
+        "column_xNjRtG",
+        "column_69fN8n",
+        "column_ngN6XL"
+      ],
+      "custom_css": [
+        ".rich-text__text {--text-margin-top: 0.4rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "header_layout": "vertical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "left",
+        "image_position": "left",
+        "icon_color": "#000000",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "show_divider_col": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_3qCrWc": {
+          "type": "newsletter",
+          "settings": {
+            "block_width": 45,
+            "heading": "SUBSCRIBE COLAMY",
+            "heading_size": "h6",
+            "newsletter_description": "<p>Join the COLAMY Club — get 10% off your first purchase. Stay tuned for new arrivals, exclusive offers, and updates.</p>",
+            "newsletter_term": "",
+            "newsletter_text_alignment": "left",
+            "form_width": 465,
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "order_first": true
+          }
+        },
+        "menu_DEKGYP": {
+          "type": "menu",
+          "settings": {
+            "block_width": 15,
+            "heading": "COMPANY",
+            "heading_size": "h6",
+            "menu": "general-info",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_4eCrBB": {
+          "type": "menu",
+          "settings": {
+            "block_width": 15,
+            "heading": "POLICIES",
+            "heading_size": "h6",
+            "menu": "footer",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_6cjHfA": {
+          "type": "menu",
+          "settings": {
+            "block_width": 15,
+            "heading": "RESOURCES",
+            "heading_size": "h6",
+            "menu": "general-info-2",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "image_links_pJqVhJ": {
+          "type": "image_links",
+          "disabled": true,
+          "settings": {
+            "block_width": 10,
+            "heading": "links",
+            "heading_size": "h6",
+            "image_1": "shopify://shop_images/amazon.png",
+            "link_1": "https://www.amazon.com/",
+            "image_2": "shopify://shop_images/walmart.png",
+            "link_2": "https://www.walmart.com/",
+            "image_3": "shopify://shop_images/wayfair.png",
+            "link_3": "https://www.wayfair.com/",
+            "open_default": false,
+            "show_divider": false
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_3qCrWc",
+        "menu_DEKGYP",
+        "menu_4eCrBB",
+        "menu_6cjHfA",
+        "image_links_pJqVhJ"
+      ],
+      "custom_css": [
+        ".footer__top,.footer__bottom {max-width: 1700px;}",
+        ".multicolumn-icon .page-width {max-width: 1700px;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-0ca322c9-5180-40a8-b409-ff4692a0e605",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "social_button_style": "btn--secondary",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "footer_layout": "reverse",
+        "footer_bottom_menu": "",
+        "show_sperator_line": false,
+        "show_section_divider": true,
+        "divider_width": "fixed",
+        "padding_top": 40,
+        "padding_bottom": 100
+      }
+    },
+    "mobile_sticky_bar_aYhgJK": {
+      "type": "mobile-sticky-bar",
+      "blocks": {
+        "home_AP8mmy": {
+          "type": "home",
+          "settings": {
+            "text": "Home"
+          }
+        },
+        "cart_gnnwxQ": {
+          "type": "cart",
+          "settings": {
+            "text": "Cart"
+          }
+        },
+        "products_eYYkE8": {
+          "type": "products",
+          "settings": {
+            "text": "Products",
+            "collection": ""
+          }
+        },
+        "link_mJ6QMc": {
+          "type": "link",
+          "settings": {
+            "text": "About",
+            "url": "",
+            "icon": "map-pin"
+          }
+        }
+      },
+      "block_order": [
+        "home_AP8mmy",
+        "cart_gnnwxQ",
+        "products_eYYkE8",
+        "link_mJ6QMc"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_bar": true,
+        "show_text": true
+      }
+    },
+    "spacer_cDpmmn": {
+      "type": "spacer",
+      "name": "t:sections.spacer.name",
+      "settings": {
+        "color_scheme": "scheme-0ca322c9-5180-40a8-b409-ff4692a0e605",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    }
+  },
+  "order": [
+    "multicolumn_icon_rTKNUF",
+    "footer",
+    "mobile_sticky_bar_aYhgJK",
+    "spacer_cDpmmn"
+  ]
+}

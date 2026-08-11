@@ -1,0 +1,205 @@
+{% comment %}
+  Renders icon or image with text list up to 3 items
+
+  Accepts:
+  - layout: {String} List layout to display. Accepts: horizontal or vertical.
+  - title_font: {String} Font family for headings. Accepts: heading or body.
+  - title_size: {String} Font size for headings.
+  - heading_1: {String} Text of heading to display
+  - tooltip_1: {String} Tooltip text for item 1
+  - image_1: {String} Image to show
+  - icon_1: {String} Icon to show if the given image blank
+
+  Usage:
+  {% render 'icon-with-text',
+    heading_1: 'Icon with text',
+    icon_1: 'check',
+  %}
+{% endcomment %}
+{%- liquid
+  assign title_font = title_font | default: 'heading'
+  assign layout = layout | default: 'horizontal'
+
+  assign heading_css_class = title_size | default: 'h5'
+  if title_font == 'body'
+    assign heading_css_class = heading_css_class | append: ' font-body'
+  elsif title_font == 'body-bolder'
+    assign heading_css_class = heading_css_class | append: ' font-body-bolder'
+  else
+    assign heading_css_class = heading_css_class | append: ' font-heading'
+  endif
+-%}
+<ul
+  class="list-unstyled icon-with-text icon-with-text--{{ layout }} {{ class }}"
+>
+  {%- if heading_1 != blank -%}
+    <li class="icon-with-text__item">
+      {%- if image_1 != blank -%}
+        <img
+          src="{{ image_1 | image_url }}"
+          {% if image_1.alt != blank %}
+            alt="{{ image_1.alt | escape }}"
+          {% else %}
+            role="presentation"
+          {% endif %}
+          height="auto"
+          width="auto"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- render 'icons', icon: icon_1 -%}
+      {%- endif -%}
+      <span class="icon-with-text__label-wrap">
+        <span
+          class="icon-with-text__label inline-richtext {{ heading_css_class }}{% if tooltip_1 != blank %} icon-with-text__label--has-tooltip{% endif %}"
+          {% if tooltip_1 != blank %}
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            data-tooltip-trigger="true"
+          {% endif %}
+        >
+          {{- heading_1 -}}
+        </span>
+        {%- if tooltip_1 != blank -%}
+          {%- assign tooltip_1_content = tooltip_1 | replace: '<a ', '<a target="_blank" rel="noopener noreferrer" ' | replace: '<a>', '<a target="_blank" rel="noopener noreferrer">' -%}
+          <div class="icon-with-text__tooltip rte">{{ tooltip_1_content }}</div>
+        {%- endif -%}
+      </span>
+    </li>
+  {%- endif -%}
+  {%- if heading_2 != blank -%}
+    <li class="icon-with-text__item">
+      {%- if image_2 != blank -%}
+        <img
+          src="{{ image_2 | image_url }}"
+          {% if image_2.alt != blank %}
+            alt="{{ image_2.alt | escape }}"
+          {% else %}
+            role="presentation"
+          {% endif %}
+          height="auto"
+          width="auto"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- render 'icons', icon: icon_2 -%}
+      {%- endif -%}
+      <span class="icon-with-text__label-wrap">
+        <span
+          class="icon-with-text__label inline-richtext {{ heading_css_class }}{% if tooltip_2 != blank %} icon-with-text__label--has-tooltip{% endif %}"
+          {% if tooltip_2 != blank %}
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            data-tooltip-trigger="true"
+          {% endif %}
+        >
+          {{- heading_2 -}}
+        </span>
+        {%- if tooltip_2 != blank -%}
+          {%- assign tooltip_2_content = tooltip_2 | replace: '<a ', '<a target="_blank" rel="noopener noreferrer" ' | replace: '<a>', '<a target="_blank" rel="noopener noreferrer">' -%}
+          <div class="icon-with-text__tooltip rte">{{ tooltip_2_content }}</div>
+        {%- endif -%}
+      </span>
+    </li>
+  {%- endif -%}
+  {%- if heading_3 != blank -%}
+    <li class="icon-with-text__item">
+      {%- if image_3 != blank -%}
+        <img
+          src="{{ image_3 | image_url }}"
+          {% if image_3.alt != blank %}
+            alt="{{ image_3.alt | escape }}"
+          {% else %}
+            role="presentation"
+          {% endif %}
+          height="auto"
+          width="auto"
+          loading="lazy"
+        >
+      {%- else -%}
+        {%- render 'icons', icon: icon_3 -%}
+      {%- endif -%}
+      <span class="icon-with-text__label-wrap">
+        <span
+          class="icon-with-text__label inline-richtext {{ heading_css_class }}{% if tooltip_3 != blank %} icon-with-text__label--has-tooltip{% endif %}"
+          {% if tooltip_3 != blank %}
+            tabindex="0"
+            role="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            data-tooltip-trigger="true"
+          {% endif %}
+        >
+          {{- heading_3 -}}
+        </span>
+        {%- if tooltip_3 != blank -%}
+          {%- assign tooltip_3_content = tooltip_3 | replace: '<a ', '<a target="_blank" rel="noopener noreferrer" ' | replace: '<a>', '<a target="_blank" rel="noopener noreferrer">' -%}
+          <div class="icon-with-text__tooltip rte">{{ tooltip_3_content }}</div>
+        {%- endif -%}
+      </span>
+    </li>
+  {%- endif -%}
+</ul>
+
+<script>
+  (function() {
+    if (window.__iconWithTextTooltipBound) return;
+    window.__iconWithTextTooltipBound = true;
+
+    function closeTooltip(wrapper) {
+      wrapper.classList.remove('is-active');
+      var trigger = wrapper.querySelector('.icon-with-text__label[data-tooltip-trigger="true"]');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function closeAllTooltips(exceptWrapper) {
+      document.querySelectorAll('.icon-with-text__label-wrap.is-active').forEach(function(wrapper) {
+        if (exceptWrapper && wrapper === exceptWrapper) return;
+        closeTooltip(wrapper);
+      });
+    }
+
+    document.addEventListener('click', function(event) {
+      var trigger = event.target.closest('.icon-with-text__label[data-tooltip-trigger="true"]');
+
+      if (!trigger) {
+        closeAllTooltips();
+        return;
+      }
+
+      var wrapper = trigger.closest('.icon-with-text__label-wrap');
+      if (!wrapper) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      var isActive = wrapper.classList.contains('is-active');
+      closeAllTooltips(wrapper);
+
+      if (isActive) {
+        closeTooltip(wrapper);
+      } else {
+        wrapper.classList.add('is-active');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', function(event) {
+      var trigger = event.target.closest('.icon-with-text__label[data-tooltip-trigger="true"]');
+
+      if (trigger && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        trigger.click();
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        closeAllTooltips();
+      }
+    });
+  })();
+</script>

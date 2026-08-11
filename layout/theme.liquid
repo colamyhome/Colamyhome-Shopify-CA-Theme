@@ -1,0 +1,441 @@
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+
+      if settings.enable_product_compare
+        echo 'compare.css' | asset_url | stylesheet_tag: preload: true
+      endif
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {{ content_for_header }}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+    {% if customer %}
+      <!-- Customer is logged in -->
+      <script type="text/javascript" src="https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js"></script>
+      <script type="text/javascript">
+        var customerEmail = '{{ customer.email | escape }}';
+        if (typeof manalytics === 'function') {
+          manalytics();
+          manalytics.suppress(customerEmail);
+        }
+      </script>
+
+    {% elsif cart.item_count > 0 %}
+      <!-- Customer is NOT logged in but cart has items -->
+      <script>
+        (function () {
+          var s = document.createElement('script');
+          s.src = 'https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=cart&standalone=true';
+          s.async = true;
+          s.onload = function () {
+            if (typeof window.manalytics === 'function') {
+              window.manalytics();
+
+              if (typeof window.manalytics.addedToCart === 'function') {
+                window.manalytics.addedToCart();
+              }
+            } else if (typeof manalytics === 'function') {
+              manalytics();
+
+              if (typeof manalytics.addedToCart === 'function') {
+                manalytics.addedToCart();
+              }
+            }
+          };
+          document.head.appendChild(s);
+        })();
+      </script>
+
+    {% else %}
+      <!-- Track anonymous visitor page views -->
+      <script>
+        (function () {
+          const KEY = 'visitor_page_views';
+          let views = parseInt(localStorage.getItem(KEY) || '0', 10);
+          views++;
+          localStorage.setItem(KEY, views);
+
+          // If visited 3+ pages, load visitor script
+          if (views >= 3) {
+            var s = document.createElement('script');
+            s.src = 'https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=visitor';
+            s.async = true;
+            document.head.appendChild(s);
+          }
+        })();
+      </script>
+    {% endif %}
+  </head>
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+    {%- if settings.enable_product_compare -%}
+      <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <!-- Start of sky-linetechsupport Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2a3377b6-cbbd-475c-b8a9-4f81f9fe7bc6"></script>
+    <!-- End of sky-linetechsupport Zendesk Widget script -->
+    <script>
+      (function() {
+        {% comment %} function syncZendeskWidget() {
+          if (typeof zE === 'undefined') return;
+          if (document.body.classList.contains('modal-show')) {
+            zE('webWidget', 'hide');
+          } else {
+            zE('webWidget', 'show');
+          }
+        } {% endcomment %}
+        function syncZendeskWidget() {
+          if (typeof zE !== 'function') return;
+          try {
+            // 新版 Messaging
+            if (document.body.classList.contains('modal-show')) {
+              zE('messenger', 'hide');
+            } else {
+              zE('messenger', 'show');
+            }
+          } catch (e) {
+            {% comment %} console.warn('Zendesk messenger not ready', e); {% endcomment %}
+          }
+        }
+        const observer = new MutationObserver(syncZendeskWidget);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        document.addEventListener('cart:updated', syncZendeskWidget);
+        syncZendeskWidget();
+      })();
+    </script>
+
+    <!-- 问卷调查样式调整 -->
+    <script>
+      (function () {
+        function formatGrapevineThankyou() {
+          var el = document.getElementById('grapevine-thankyou-message');
+          if (!el || el.dataset.formatted === 'true') return;
+          var text = el.textContent || '';
+          if (!text.includes('*')) return;
+          var parts = text
+            .split('*')
+            .map(function (item) {
+              return item.trim();
+            })
+            .filter(Boolean);
+          if (!parts.length) return;
+          el.innerHTML =
+            '<span class="survey-thankyou-title">' +
+            parts[0] +
+            '</span>' +
+            parts
+              .slice(1)
+              .map(function (item) {
+                return '<span class="survey-thankyou-note">* ' + item + '</span>';
+              })
+              .join('');
+
+          el.dataset.formatted = 'true';
+        }
+        if (typeof formatGrapevineThankyou === 'function') {
+          document.addEventListener('DOMContentLoaded', formatGrapevineThankyou);
+        }
+        {% comment %} setTimeout(formatGrapevineThankyou, 500);
+        setTimeout(formatGrapevineThankyou, 1500);
+        setTimeout(formatGrapevineThankyou, 3000); {% endcomment %}
+        // Grapevine 异步加载兼容
+        setInterval(formatGrapevineThankyou, 10000);
+      })();
+    </script>
+    
+    <style>
+      .gv-phone-wrap {
+        display: flex;
+        align-items: center;
+        border: 1px solid #d9d9d9;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .gv-phone-prefix {
+        background: #f7f7f7;
+        padding: 12px 14px;
+        border-right: 1px solid #d9d9d9;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+
+      .gv-phone-wrap input,
+      .gv-phone-wrap textarea {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        flex: 1;
+        padding: 12px !important;
+        margin: 0 !important;
+      }
+
+      .gv-phone-error {
+        color: #e53935;
+        font-size: 13px;
+        margin-top: 6px;
+        display: none;
+      }
+    </style>
+
+    <script>
+      (function () {
+        function digitsOnly(value) {
+          return String(value || '').replace(/\D/g, '');
+        }
+
+        function validUSPhone(value) {
+          var digits = digitsOnly(value);
+
+          if (digits.length === 11 && digits.charAt(0) === '1') {
+            digits = digits.substring(1);
+          }
+
+          return /^[2-9]\d{2}[2-9]\d{6}$/.test(digits);
+        }
+
+        function formatPhone(value) {
+          var digits = digitsOnly(value);
+
+          if (digits.length === 11 && digits.charAt(0) === '1') {
+            digits = digits.substring(1);
+          }
+
+          digits = digits.substring(0, 10);
+
+          if (digits.length > 6) {
+            return '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6);
+          }
+
+          if (digits.length > 3) {
+            return '(' + digits.substring(0, 3) + ') ' + digits.substring(3);
+          }
+
+          return digits;
+        }
+
+        function findPhoneQuestionId() {
+          if (!window.gv_multi_questions) return null;
+
+          for (var key in window.gv_multi_questions) {
+            if (!window.gv_multi_questions.hasOwnProperty(key)) continue;
+
+            var q = window.gv_multi_questions[key];
+            var text = String(q.text || '').toLowerCase();
+
+            if (
+              text.indexOf('whatsapp') !== -1 ||
+            ) {
+              return key.replace('question_', '');
+            }
+          }
+
+          return null;
+        }
+
+        function initGrapevinePhoneValidation() {
+          var questionId = findPhoneQuestionId();
+          if (!questionId) return;
+
+          var question = document.querySelector('#grapevine-question-' + questionId);
+          if (!question) return;
+
+          if (question.dataset.phoneReady === 'true') return;
+
+          var input = question.querySelector('input, textarea');
+          if (!input) return;
+
+          var answerKey = 'question_' + questionId;
+
+          question.dataset.phoneReady = 'true';
+
+          input.type = 'tel';
+          input.setAttribute('inputmode', 'numeric');
+          input.placeholder = '(213) 456-7890';
+
+          var wrapper = document.createElement('div');
+          wrapper.className = 'gv-phone-wrap';
+
+          var prefix = document.createElement('div');
+          prefix.className = 'gv-phone-prefix';
+          prefix.innerHTML = '🇺🇸 +1';
+
+          input.parentNode.insertBefore(wrapper, input);
+          wrapper.appendChild(prefix);
+          wrapper.appendChild(input);
+
+          var error = document.createElement('div');
+          error.className = 'gv-phone-error';
+          error.innerText = 'Please enter a valid US phone number.';
+          wrapper.parentNode.insertBefore(error, wrapper.nextSibling);
+
+          function updatePhoneValue() {
+            input.value = formatPhone(input.value);
+
+            var valid = input.value === '' || validUSPhone(input.value);
+
+            error.style.display = valid ? 'none' : 'block';
+            wrapper.style.borderColor = valid ? '#d9d9d9' : '#e53935';
+
+            if (window.gv_multi_question_answers && window.gv_multi_question_answers[answerKey]) {
+              window.gv_multi_question_answers[answerKey].value_string = input.value ? '+1 ' + input.value : '';
+            }
+
+            if (window.gv_multi_question_validation_status && answerKey in window.gv_multi_question_validation_status) {
+              window.gv_multi_question_validation_status[answerKey] = valid;
+            }
+
+            if (typeof window.gv_ValidateMultiQuestionForm === 'function') {
+              window.gv_ValidateMultiQuestionForm();
+            }
+          }
+
+          input.addEventListener('input', updatePhoneValue);
+          input.addEventListener('blur', updatePhoneValue);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          initGrapevinePhoneValidation();
+
+          var timer = setInterval(initGrapevinePhoneValidation, 500);
+
+          setTimeout(function () {
+            clearInterval(timer);
+          }, 30000);
+
+          var observer = new MutationObserver(function () {
+            initGrapevinePhoneValidation();
+          });
+
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+          });
+        });
+      })();
+    </script>
+    <!-- 问卷调查样式调整 -- 结束 -->
+  </body>
+</html>

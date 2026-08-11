@@ -1,0 +1,111 @@
+{%- liquid
+  assign source_product = block.settings.source_product
+  assign source_product_handle = blank
+  assign dimension_image = blank
+  assign left_table_info = blank
+  assign right_table_info = blank
+
+  if source_product == blank and product != blank
+    assign source_product = product
+  endif
+
+  if source_product != blank and source_product.metafields == blank
+    assign source_product_handle = source_product.handle | default: source_product
+    if source_product_handle != blank and all_products[source_product_handle] != blank
+      assign source_product = all_products[source_product_handle]
+    endif
+  endif
+
+  if source_product != blank
+    assign dimension_image = source_product.metafields.foxtheme.dimension_image.value
+    if dimension_image == blank
+      assign dimension_image = source_product.metafields.custom.dimension_image.value
+    endif
+
+    assign left_table_info = source_product.metafields.foxtheme.dimension_left_table_info.value
+    if left_table_info == blank
+      assign left_table_info = source_product.metafields.custom.dimension_left_table_info.value
+    endif
+
+    assign right_table_info = source_product.metafields.foxtheme.dimension_right_table_info.value
+    if right_table_info == blank
+      assign right_table_info = source_product.metafields.custom.dimension_right_table_info.value
+    endif
+  endif
+-%}
+
+<div class="dimension" {{ block.shopify_attributes }}>
+  <div class="dimension__panel dimension__panel--image">
+    <div class="dimension__image-wrap">
+      {%- if dimension_image != blank -%}
+        {%- liquid
+          assign render_image = dimension_image
+          if dimension_image.preview_image != blank
+            assign render_image = dimension_image.preview_image
+          endif
+        -%}
+        {{
+          render_image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'lazy',
+            widths: '375, 550, 750, 950, 1200, 1500, 1800',
+            sizes: '(min-width: 768px) calc((100vw - 9rem) / 3), calc(100vw - 3rem)',
+            class: 'dimension__image',
+            alt: source_product.title,
+            is: 'image-lazy'
+        }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg dimension__image-placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="dimension__panel dimension__panel--left-table">
+    <div class="dimension__table" role="table" aria-label="Left dimension table">
+      {%- if left_table_info != blank -%}
+        {%- for row in left_table_info -%}
+          {%- liquid
+            assign row_label = row.label | default: row.title | default: row.name | default: row.key
+            assign row_value = row.value | default: row.text | default: row.content
+
+            if row_label == blank and row_value == blank and row[0] != blank
+              assign row_label = row[0]
+              assign row_value = row[1]
+            endif
+          -%}
+          {%- if row_label != blank or row_value != blank -%}
+            <div class="dimension__row" role="row">
+              <div class="dimension__cell dimension__cell--label" role="cell">{{ row_label | escape }}</div>
+              <div class="dimension__cell dimension__cell--value" role="cell">{{ row_value | escape | newline_to_br }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="dimension__panel dimension__panel--right-table">
+    <div class="dimension__table" role="table" aria-label="Right dimension table">
+      {%- if right_table_info != blank -%}
+        {%- for row in right_table_info -%}
+          {%- liquid
+            assign row_label = row.label | default: row.title | default: row.name | default: row.key
+            assign row_value = row.value | default: row.text | default: row.content
+
+            if row_label == blank and row_value == blank and row[0] != blank
+              assign row_label = row[0]
+              assign row_value = row[1]
+            endif
+          -%}
+          {%- if row_label != blank or row_value != blank -%}
+            <div class="dimension__row" role="row">
+              <div class="dimension__cell dimension__cell--label" role="cell">{{ row_label | escape }}</div>
+              <div class="dimension__cell dimension__cell--value" role="cell">{{ row_value | escape | newline_to_br }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

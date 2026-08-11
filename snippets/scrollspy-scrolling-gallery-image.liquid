@@ -1,0 +1,169 @@
+{%- liquid
+  assign gallery_color_scheme = block.settings.gallery_color_scheme | default: 'scheme-1'
+  assign gallery_aspect_ratio = block.settings.gallery_aspect_ratio | default: '3/4'
+  assign direction = block.settings.direction | default: 'left'
+  assign column_gap = block.settings.column_gap | default: 'medium'
+  assign speed = block.settings.speed | default: 0.4
+  assign duration = 6.0 | divided_by: speed
+-%}
+
+<div class="scrolling-gallery-image color-{{ gallery_color_scheme }}" style="--duration: {{ duration }}s;">
+  <scrolling-promotion
+    data-section-id="scrollspy-gallery-{{ section.id }}-{{ block.id }}"
+    {% if block.settings.pause_on_hover %}
+      data-pause-on-hover
+    {% endif %}
+    class="scrolling-promotion scrolling-promotion--gallery scrolling-promotion--{{ direction }} flex flex-nowrap f-grid--gap-{{ column_gap }}"
+  >
+    <div class="promotion gallery-list f-flex items-center">
+      {%- for index in (1..6) -%}
+        {%- liquid
+          assign image_key = 'gallery_image_' | append: index
+          assign video_key = 'gallery_video_' | append: index
+          assign link_key = 'gallery_image_link_' | append: index
+          assign heading_key = 'gallery_heading_' | append: index
+
+          assign image = block.settings[image_key]
+          assign video = block.settings[video_key]
+          assign image_link = block.settings[link_key]
+          assign heading = block.settings[heading_key]
+          assign image_alt = image.alt | default: heading
+          if image_alt == blank
+            assign image_alt = 'image-gallery-image-' | append: index
+          endif
+          assign image_classes = 'gallery-list__item-image motion-reduce absolute inset-0 w-full h-full'
+          if video != blank
+            assign image_classes = image_classes | append: ' hover-scale-up'
+          endif
+
+          assign item_tag = 'div'
+          if video != blank and image_link != blank
+            assign item_tag = 'a'
+          endif
+        -%}
+        {%- if image != blank or video != blank -%}
+        <div class="gallery-list__item f-column color-scheme-inherit">
+          <{{ item_tag }}
+            {% if video != blank and image_link != blank %}
+              href="{{ image_link | escape }}"
+              aria-label="{{ image_alt | escape }}"
+            {% endif %}
+            class="block color-{{ gallery_color_scheme }} gallery-list__item-wrapper{% if video != blank %} hover-wrapper{% endif %}{% if image != blank %} gallery-list__item-wrapper--has-image{% endif %}"
+          >
+            <motion-element class="block w-full h-full" data-motion="fade-in">
+              <picture class="card-media__media media-wrapper blocks-radius" style="--aspect-ratio: {{ gallery_aspect_ratio }};">
+                {%- if image != blank -%}
+                  {{
+                    image
+                    | image_url: width: 1100
+                    | image_tag:
+                      loading: 'lazy',
+                      class: image_classes,
+                      widths: '165, 360, 535, 750, 940, 1100',
+                      is: 'image-lazy',
+                      alt: image_alt
+                  }}
+                {%- endif -%}
+                {%- if video != blank -%}
+                  {{
+                    video
+                    | video_tag:
+                      image_size: '1100x',
+                      autoplay: false,
+                      loop: true,
+                      controls: false,
+                      muted: true,
+                      playsinline: true,
+                      preload: 'metadata',
+                      class: 'motion-reduce absolute inset-0 w-full h-full hover-scale-up'
+                  }}
+                  <span class="gallery-list__item-play-icon flex items-center justify-center" aria-hidden="true">
+                    {%- render 'icon-play', size: 'large' -%}
+                  </span>
+                {%- endif -%}
+              </picture>
+            </motion-element>
+          </{{ item_tag }}>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </scrolling-promotion>
+</div>
+
+<script>
+  (() => {
+    const sectionEl = document.querySelector('[data-section-id="scrollspy-gallery-{{ section.id }}-{{ block.id }}"]');
+    if (!sectionEl || sectionEl.dataset.galleryVideoInited === 'true') return;
+    sectionEl.dataset.galleryVideoInited = 'true';
+
+    const wrappers = sectionEl.querySelectorAll('.gallery-list__item-wrapper');
+    const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+
+    const pauseAllVideos = (exceptVideo) => {
+      wrappers.forEach((item) => {
+        const itemVideo = item.querySelector('video');
+        if (!itemVideo || itemVideo === exceptVideo) return;
+        itemVideo.pause();
+        itemVideo.currentTime = 0;
+      });
+    };
+
+    wrappers.forEach((wrapper) => {
+      const video = wrapper.querySelector('video');
+      const playIcon = wrapper.querySelector('.gallery-list__item-play-icon');
+      if (!video) return;
+
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+
+      const setPlayIconVisible = (isVisible) => {
+        if (!playIcon) return;
+        playIcon.classList.toggle('is-hidden', !isVisible);
+      };
+
+      const setMediaPlaying = (isPlaying) => {
+        wrapper.classList.toggle('is-video-playing', isPlaying);
+        setPlayIconVisible(!isPlaying);
+      };
+
+      const playVideo = () => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {
+            setMediaPlaying(false);
+          });
+        }
+      };
+
+      const pauseVideo = () => {
+        video.pause();
+        video.currentTime = 0;
+      };
+
+      video.addEventListener('play', () => setMediaPlaying(true));
+      video.addEventListener('playing', () => setMediaPlaying(true));
+      video.addEventListener('pause', () => setMediaPlaying(false));
+      video.addEventListener('ended', () => setMediaPlaying(false));
+
+      wrapper.addEventListener('mouseenter', playVideo);
+      wrapper.addEventListener('mouseleave', pauseVideo);
+      wrapper.addEventListener('focusin', playVideo);
+      wrapper.addEventListener('focusout', pauseVideo);
+
+      if (isTouchDevice) {
+        wrapper.addEventListener('click', (event) => {
+          if (video.paused) {
+            event.preventDefault();
+            pauseAllVideos(video);
+            playVideo();
+          } else {
+            event.preventDefault();
+            pauseVideo();
+          }
+        });
+      }
+    });
+  })();
+</script>

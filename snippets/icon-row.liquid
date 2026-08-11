@@ -1,0 +1,77 @@
+{%- liquid
+  assign spacing = spacing | default: section.settings.icons_spacing
+  assign top_spacing = top_spacing | default: section.settings.icons_row_spacing
+  assign alignment = alignment | default: section.settings.icons_alignment
+  assign container = container | default: section.settings.container
+  assign color_scheme = color_scheme | default: section.settings.icons_color_scheme
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .icon-row {
+    margin-top: {{ top_spacing }}px;
+    --icons-spacing: {{ spacing }}px;
+    --icons-gap: var(--icons-spacing);
+  }
+
+  #shopify-section-{{ section.id }} .icon-row.color-{{ color_scheme }} .icon-row__icon,
+  #shopify-section-{{ section.id }} .icon-row.color-{{ color_scheme }} .icon-row__label {
+    color: var(--color);
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--icons-gap);
+    justify-content: {% if alignment == 'left' %}flex-start{% elsif alignment == 'right' %}flex-end{% else %}center{% endif %};
+    padding: 40px 0;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 80px;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__icon {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+</style>
+
+<div
+  class="icon-row color-{{ color_scheme }}"
+>
+  <div class="icon-row__container page-width page-width--{{ container }}">
+    <div class="icon-row__content">
+      {%- for icon_item in icon_items -%}
+        <div class="icon-row__item">
+          <div class="icon-row__icon">
+            {%- if icon_item.settings.icon != blank -%}
+              {% render 'icons', icon: icon_item.settings.icon, size: 'medium' %}
+            {%- endif -%}
+          </div>
+          {%- if icon_item.settings.label != blank -%}
+            <div class="icon-row__label">
+              {{ icon_item.settings.label }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,764 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "video_CrTckt": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "fixed",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_DTCmCt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8DqAYj": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>We do the sorting. So you can do the living.</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_ex9yPk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At COLAMY, we believe a better home starts with better choices, not more of them.That’s why we don’t build around endless options or overwhelming catalogs.We focus on a tighter collection of modern furniture — selected for comfort, function, and easy living — so customers can spend less time comparing, and more time enjoying the home they’re creating.</p>",
+            "text_size": "text-lg",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8DqAYj",
+        "text_ex9yPk"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_content_YAtKCg": {
+      "type": "custom-content",
+      "blocks": {
+        "lookbook_card_gkHhWH": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [],
+            "pcard_image_ratio": "adapt",
+            "image_ratio": "adapt",
+            "heading": "Shop this look",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "text_mRFnYd": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "Talk about your brand",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "lookbook_card_gkHhWH",
+        "text_mRFnYd"
+      ],
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Custom content",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<p>Combine images with text and a stand-out offer</p>",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_7wTYQX": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_K8BbGm": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Add a tagline"
+          }
+        },
+        "heading_9V696A": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2"
+          }
+        },
+        "text_TaDJGQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "subtext_color": true
+          }
+        },
+        "button_EKqcnc": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_K8BbGm",
+        "heading_9V696A",
+        "text_TaDJGQ",
+        "button_EKqcnc"
+      ],
+      "name": "t:sections.image-with-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image_position": "left",
+        "image_width": 56,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "lookbook_banner_NjgMin": {
+      "type": "lookbook-banner",
+      "blocks": {
+        "hotspot_DXxHhg": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 45,
+            "left": 30,
+            "top_mobile": 45,
+            "left_mobile": 30
+          }
+        },
+        "hotspot_NP8mi6": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 50,
+            "left": 70,
+            "top_mobile": 50,
+            "left_mobile": 70
+          }
+        },
+        "hotspot_VdwRzU": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Hotspot",
+            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
+            "top": 62,
+            "left": 43,
+            "top_mobile": 62,
+            "left_mobile": 43
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_DXxHhg",
+        "hotspot_NP8mi6",
+        "hotspot_VdwRzU"
+      ],
+      "name": "t:sections.banner-with-hotspots.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Banner with hotspots",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "icon_style": "plus",
+        "icon_color": "dark",
+        "card_color_scheme": "",
+        "show_section_divider": true,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "banner_with_tabs_hKxBmm": {
+      "type": "banner-with-tabs",
+      "blocks": {
+        "tab_m7ajCi": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "",
+            "tab_icon": "none",
+            "card_link": "",
+            "subheading": "",
+            "heading": "Image card",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "description": "",
+            "button_label": "Button label",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "tab_m7ajCi"
+      ],
+      "name": "t:sections.banner-with-tabs.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "desktop_height": "adapt",
+        "image_overlay_opacity": 0,
+        "heading": "Banner with tabs",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h5",
+        "tab_heading_size": "h1",
+        "tab_icon_size": "large",
+        "card_color_scheme": "",
+        "card_content_alignment": "left",
+        "card_image_ratio": "adapt",
+        "card_title_size": "h5",
+        "card_text_size": "text-base",
+        "card_button_style": "btn--primary",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "enable_preload_image": false
+      }
+    },
+    "banners_with_categories_TfkidR": {
+      "type": "banners-with-categories",
+      "blocks": {
+        "banner_card_mdVcVw": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "column_span": 2,
+            "row_span": 2,
+            "content_spacing": "medium",
+            "content_gap": "standard",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Image card",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "banner_card_WnyWr6": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "column_span": 1,
+            "row_span": 1,
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Image card",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "banner_card_tBWzBE": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "column_span": 1,
+            "row_span": 1,
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Image card",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_card_mdVcVw",
+        "banner_card_WnyWr6",
+        "banner_card_tBWzBE"
+      ],
+      "name": "t:sections.banners-with-categories.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "categories_bar_color_scheme": "",
+        "columns_mobile": "2",
+        "columns": 3,
+        "gap": "2xs",
+        "banner_height": "large",
+        "swipe_on_mobile": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_4yrgHh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CigTrW": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Designed for Real Life</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Designed for how you actually live. We don’t design for showrooms. We design for pieces that feel effortless in the home—silhouettes that feel easy to style, details that work across spaces, and pieces that stay useful long after the room is finished. Good furniture shouldn’t ask too much from the room around it.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_fDFpY7": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Built to Feel Reliable</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>A piece should feel good the day it arrives—and keep feeling solid over time.That’s why we pay attention to the parts you don’t always see: balanced construction, tested performance, and dependable support designed for daily living.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_3hiKib": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Comfort in Every Layer</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>grain of the wood to the density of the foam, every layer is chosen for one purpose: to feel as good years from now as it does today.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_CigTrW",
+        "column_fDFpY7",
+        "column_3hiKib"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "multicolumn_dyVtkw": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AiKXiY": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Easy to Own</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Buying furniture online should feel easy — and owning it should feel even better. From clear delivery updates to responsive support and straightforward policies, we work to make every step feel simple, transparent, and reassuring—before, during, and after your order arrives.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_9dUaBy": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Built for trust</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Available in 30+ Countries14 Warehouses Supporting Fulfillment500,000+ Homes Reached Each Year</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_7dj4BN": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Start with what made us known</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_AiKXiY",
+        "column_9dUaBy",
+        "column_7dj4BN"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "grid_banner_PEqxqM": {
+      "type": "grid-banner",
+      "blocks": {
+        "banner_card_wt7rTK": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image_overlay_opacity": 0,
+            "column_span": 1,
+            "row_span": 1,
+            "content_spacing": "medium",
+            "content_gap": "standard",
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Image card",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "banner_card_tkawnb": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "column_span": 4,
+            "row_span": 2,
+            "content_spacing": "medium",
+            "content_gap": "standard",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Start with what made us known",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
+            "text_size": "text-lg",
+            "button_label": "to buy COLAMY",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_card_wt7rTK",
+        "banner_card_tkawnb"
+      ],
+      "name": "t:sections.grid-banner.presets__2.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "columns": 4,
+        "banner_height": "small",
+        "gap": "none",
+        "enable_swiper_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_CrTckt",
+    "rich_text_DTCmCt",
+    "custom_content_YAtKCg",
+    "image_with_text_7wTYQX",
+    "lookbook_banner_NjgMin",
+    "banner_with_tabs_hKxBmm",
+    "banners_with_categories_TfkidR",
+    "multicolumn_4yrgHh",
+    "multicolumn_dyVtkw",
+    "grid_banner_PEqxqM"
+  ]
+}

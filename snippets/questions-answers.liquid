@@ -1,0 +1,56 @@
+{%- liquid
+  assign source_product = block.settings.source_product
+  assign source_product_handle = blank
+  assign qa_metafield = blank
+  assign qa_items = blank
+
+  if source_product == blank and product != blank
+    assign source_product = product
+  endif
+
+  if source_product != blank and source_product.metafields == blank
+    assign source_product_handle = source_product.handle | default: source_product
+    if source_product_handle != blank and all_products[source_product_handle] != blank
+      assign source_product = all_products[source_product_handle]
+    endif
+  endif
+
+  if source_product != blank
+    assign qa_metafield = source_product.metafields.foxtheme.product_questions_answers
+    if qa_metafield == blank
+      assign qa_metafield = source_product.metafields.custom.product_questions_answers
+    endif
+
+    if qa_metafield != blank
+      assign qa_items = qa_metafield.value | default: qa_metafield
+    endif
+  endif
+-%}
+
+<div class="questions-answers" {{ block.shopify_attributes }}>
+  {%- if qa_items != blank -%}
+    <div class="questions-answers__list">
+      {%- for item in qa_items -%}
+        {%- liquid
+          assign question = item.label | default: item.question | default: item.title | strip
+          assign answer = item.value | default: item.answer | default: item.content
+
+          if question == blank and answer == blank
+            continue
+          endif
+        -%}
+        <details class="questions-answers__item">
+          <summary class="questions-answers__question">
+            <span class="questions-answers__question-text">{{ question | default: 'Question' | escape }}</span>
+            <span class="questions-answers__toggle" aria-hidden="true"></span>
+          </summary>
+          {%- if answer != blank -%}
+            <div class="questions-answers__answer rte">
+              <div class="questions-answers__answer-text">{{ answer | escape | newline_to_br }}</div>
+            </div>
+          {%- endif -%}
+        </details>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

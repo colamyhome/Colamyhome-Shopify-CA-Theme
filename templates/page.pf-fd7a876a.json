@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pf-fd7a876a": {
+      "type": "pf-fd7a876a",
+      "settings": {
+        "pf_5c41a0ab_value": "<strong><span style=\"color: rgba(171, 14, 33, 0.96);\">$269.99 </span></strong><span style=\"color: rgb(16, 16, 16);\"><strong>$</strong><s>359.99</s></span>",
+        "pf_bebbd25f_value": "Ergonomic Mesh Office Chair with Footrest Mode",
+        "pf_6ac63c92_value": "Ends On March 31, 2025",
+        "pf_b00938be_value": "Limited-time Discount",
+        "pf_5e750e97_value": "Accent Chair<br>",
+        "pf_216c4f13_value": "Office Chair",
+        "pf_4f135e75_value": "Dining Chair",
+        "pf_f651a5c0_value": "Gaming Chair",
+        "pf_450773bb_value": "Bar Stool",
+        "pf_2fd3fba6_value": "Shop Now"
+      }
+    }
+  },
+  "order": [
+    "pf-fd7a876a"
+  ]
+}

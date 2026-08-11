@@ -1,0 +1,86 @@
+.assembly-care {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.assembly-care__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  order: 2;
+  justify-content: center;
+}
+
+.assembly-care__content {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 300;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.assembly-care__content::first-line,
+.assembly-care__content.rte > p:first-of-type,
+.assembly-care__content.rte .metafield-rich_text_field > p:first-of-type {
+  color: #0e0e0e;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.assembly-care__content.rte > p:nth-of-type(n + 2),
+.assembly-care__content.rte .metafield-rich_text_field > p:nth-of-type(n + 2) {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.assembly-care__download {
+  margin-top: 0;
+  line-height: 1;
+}
+
+.assembly-care__download-label {
+  color: #0e0e0e;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.assembly-care__download-link {
+  color: #1d4ed8;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.assembly-care__download-link:hover {
+  color: #1e40af;
+}
+
+.assembly-care__video {
+  order: 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0rem;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.assembly-care__video iframe,
+.assembly-care__video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #000;
+}
+
+@media screen and (min-width: 750px) {
+  .assembly-care {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .assembly-care__left {
+    align-self: center;
+  }
+}

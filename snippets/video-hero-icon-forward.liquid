@@ -1,0 +1,212 @@
+{%- liquid
+  assign spacing = spacing | default: section.settings.icons_spacing
+  assign spacing_mobile_vw = section.settings.icons_spacing_mobile_vw | default: 4
+  assign icon_size_mobile = section.settings.icons_icon_size_mobile | default: 44
+  assign top_spacing = top_spacing | default: section.settings.icons_row_spacing
+  assign alignment = alignment | default: section.settings.icons_alignment
+  assign container = container | default: section.settings.container
+  assign color_scheme = color_scheme | default: section.settings.icons_color_scheme
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .icon-row {
+    margin-top: {{ top_spacing }}px;
+    --icons-gap: {{ spacing }}px;
+    --icons-gap-mobile: {{ spacing_mobile_vw }}vw;
+    --icon-size-mobile: {{ icon_size_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row.color-{{ color_scheme }} .icon-row__icon,
+  #shopify-section-{{ section.id }} .icon-row.color-{{ color_scheme }} .icon-row__label {
+    color: var(--color);
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__icon,
+  #shopify-section-{{ section.id }} .icon-row__icon svg,
+  #shopify-section-{{ section.id }} .icon-row__label {
+    color: #000000 !important;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: {% if alignment == 'left' %}flex-start{% elsif alignment == 'right' %}flex-end{% else %}center{% endif %};
+    gap: var(--icons-gap);
+    padding: 40px 0;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__track {
+    display: contents;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__item-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__icon {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__icon svg {
+    width: 56px;
+    height: 56px;
+    stroke-width: 2.2;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__label {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 767.98px) {
+    #shopify-section-{{ section.id }} .icon-row__content {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow: hidden;
+      padding: 24px 0;
+    }
+
+    #shopify-section-{{ section.id }} .icon-row__track {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: var(--icons-gap-mobile);
+      animation: icon-row-scroll-{{ section.id }} var(--marquee-duration, 20s) linear infinite;
+      will-change: transform;
+    }
+
+    #shopify-section-{{ section.id }} .icon-row__track + .icon-row__track {
+      margin-left: var(--icons-gap-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .icon-row__item {
+      flex: 0 0 auto;
+      min-width: 84px;
+      width: 84px;
+      scroll-snap-align: start;
+    }
+
+    #shopify-section-{{ section.id }} .icon-row__label {
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    #shopify-section-{{ section.id }} .icon-row__icon svg {
+      width: var(--icon-size-mobile);
+      height: var(--icon-size-mobile);
+    }
+
+    @keyframes icon-row-scroll-{{ section.id }} {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - var(--icons-gap-mobile))); }
+    }
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .icon-row__track.icon-row__track--duplicate {
+      display: none;
+    }
+  }
+</style>
+
+<div class="icon-row color-{{ color_scheme }}">
+  <div class="icon-row__container page-width page-width--{{ container }}">
+    <div class="icon-row__content{% if icon_items.size == 5 %} icon-row__content--five{% endif %}">
+      <div class="icon-row__track">
+        {%- for icon_item in icon_items -%}
+          {%- liquid
+            assign item_tag = 'div'
+            if icon_item.settings.link != blank
+              assign item_tag = 'a'
+            endif
+          -%}
+          <{{ item_tag }}
+            class="icon-row__item{% if item_tag == 'a' %} icon-row__item-link{% endif %}"
+            {% if item_tag == 'a' %}
+              href="{{ icon_item.settings.link }}"
+              aria-label="{{ icon_item.settings.label | default: icon_item.settings.icon | default: 'Icon item' | escape }}"
+            {% endif %}
+          >
+            <div class="icon-row__icon">
+              {%- if icon_item.settings.icon != blank -%}
+                {% render 'video-hero-icon', icon: icon_item.settings.icon %}
+              {%- endif -%}
+            </div>
+            {%- if icon_item.settings.label != blank -%}
+              <div class="icon-row__label">
+                {{ icon_item.settings.label }}
+              </div>
+            {%- endif -%}
+          </{{ item_tag }}>
+        {%- endfor -%}
+      </div>
+      <div class="icon-row__track icon-row__track--duplicate" aria-hidden="true">
+        {%- for icon_item in icon_items -%}
+          {%- liquid
+            assign item_tag = 'div'
+            if icon_item.settings.link != blank
+              assign item_tag = 'a'
+            endif
+          -%}
+          <{{ item_tag }}
+            class="icon-row__item{% if item_tag == 'a' %} icon-row__item-link{% endif %}"
+            {% if item_tag == 'a' %}
+              href="{{ icon_item.settings.link }}"
+              aria-label="{{ icon_item.settings.label | default: icon_item.settings.icon | default: 'Icon item' | escape }}"
+              tabindex="-1"
+            {% endif %}
+          >
+            <div class="icon-row__icon">
+              {%- if icon_item.settings.icon != blank -%}
+                {% render 'video-hero-icon', icon: icon_item.settings.icon %}
+              {%- endif -%}
+            </div>
+            {%- if icon_item.settings.label != blank -%}
+              <div class="icon-row__label">
+                {{ icon_item.settings.label }}
+              </div>
+            {%- endif -%}
+          </{{ item_tag }}>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+    if (!sectionEl || sectionEl.dataset.iconRowLinkInited === 'true') return;
+    sectionEl.dataset.iconRowLinkInited = 'true';
+
+    sectionEl.addEventListener('click', (event) => {
+      const linkEl = event.target.closest('.icon-row__item-link[href]');
+      if (!linkEl || !sectionEl.contains(linkEl)) return;
+
+      const href = linkEl.getAttribute('href');
+      if (!href || href === '#') return;
+
+      // Fallback for moving marquee items on some mobile browsers where default anchor click is flaky.
+      if (event.defaultPrevented) return;
+      event.preventDefault();
+      window.location.assign(href);
+    });
+  })();
+</script>
