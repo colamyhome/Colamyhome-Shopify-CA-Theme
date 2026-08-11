@@ -1,11 +1,2 @@
-[environments.colamyhome]
-store = "colamyhome.myshopify.com"
-
-[environments.colamyEU]
-store = "colamyhome-eu.myshopify.com"
-
-[environments.colamyUK]
-store = "colamyhome-uk.myshopify.com"
-
-[environments.colamyCA]
+[environments.default]
 store = "colamyhome-ca.myshopify.com"
