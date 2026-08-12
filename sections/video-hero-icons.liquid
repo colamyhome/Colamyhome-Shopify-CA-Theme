@@ -3,6 +3,13 @@
   assign video_height = section.settings.video_height
   assign video_mobile_height = section.settings.video_mobile_height
   assign container = section.settings.container
+  assign click_link = ''
+  for block in section.blocks
+    if block.type == 'button' and block.settings.button_link != blank
+      assign click_link = block.settings.button_link
+      break
+    endif
+  endfor
 -%}
 <style>
   #shopify-section-{{ section.id }} {
@@ -23,6 +30,22 @@
     --page-padding: 0;
   }
 
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper {
+    --child-margin-top: 1.6rem;
+  }
+
+  {% if section.id contains 'video_hero_icons_dRKMCQ' %}
+    #shopify-section-{{ section.id }} .video-hero__content-wrapper > .rich-text__heading {
+      font-size: 40px;
+    }
+
+    @media screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .video-hero__content-wrapper > .rich-text__heading {
+        font-size: 28px;
+      }
+    }
+  {% endif %}
+
   #shopify-section-{{ section.id }} .video-hero__content-wrapper > .rich-text__text,
   #shopify-section-{{ section.id }} .video-hero__content-wrapper > .rich-text__text :where(p, h1, h2, h3, h4, h5, h6) {
     font-size: 14px !important;
@@ -30,9 +53,66 @@
     color: #ffffff !important;
   }
 
-  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn:not(:hover),
-  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn:not(:hover) :is(.btn__text, .btn__icon) {
-    color: #1c1c1c !important;
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn .btn__text {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--primary {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--primary::before {
+    background: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--primary:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--primary :is(.btn__text, .btn__icon) {
+    color: #000000 !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--primary:hover :is(.btn__text, .btn__icon) {
+    color: #ffffff !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--secondary {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--secondary::before {
+    background: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--secondary :is(.btn__text, .btn__icon) {
+    color: #000000 !important;
+  }
+
+  #shopify-section-{{ section.id }} .video-hero__content-wrapper .btn--secondary:hover :is(.btn__text, .btn__icon) {
+    color: #ffffff !important;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .video-hero__content-wrapper {
+      --child-margin-top: 1.2rem;
+    }
   }
 
   {%- if video_mobile_height == 'adapt' %}-
@@ -52,7 +132,12 @@
 
 <div class="section video-hero section--padding">
   <div class="secton__container page-width page-width--{{ container }}">
-    <div class="relative overflow-hidden{% unless container == 'full' %} blocks-radius{% endunless %}">
+    <div
+      class="relative overflow-hidden{% unless container == 'full' %} blocks-radius{% endunless %}"
+      {% if click_link != blank %}
+        data-click-link="{{ click_link }}"
+      {% endif %}
+    >
       <parallax-element
         class="block overflow-hidden"
         {% if section.settings.enable_parallax %}
@@ -78,7 +163,7 @@
         </motion-element>
       </parallax-element>
       <div class="video-hero__content absolute inset-0">
-        <div class="content-overlay content-overlay--{{ section.settings.content_position }} color-{{ section.settings.color_scheme }}{% if container == 'full' %} page-width{% endif %}">
+        <div class="content-overlay content-overlay--{{ section.settings.content_position }} content-overlay--bottom-center-mobile color-{{ section.settings.color_scheme }}{% if container == 'full' %} page-width{% endif %}">
           <div class="video-hero__content-wrapper relative z-1 rich-text text-{{ section.settings.content_alignment }}">
             {%- assign motion_delay = 50 -%}
             {% for block in section.blocks %}
@@ -94,7 +179,7 @@
                   </motion-element>
                   {%- assign motion_delay = motion_delay | plus: 50 -%}
                 {% when 'heading' %}
-                  <h2 class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                  <h2 class="rich-text__heading {{ block.settings.heading_size }}"{% if block.settings.heading_text_color != blank %} style="color: {{ block.settings.heading_text_color }};"{% endif %} {{ block.shopify_attributes }}>
                     <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
                       {% render 'highlight-text',
                         hl_text: block.settings.heading,
@@ -183,6 +268,21 @@
     {%- endif -%}
   </div>
 </div>
+<script>
+  (() => {
+    const sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+    const clickableEl = sectionEl?.querySelector('[data-click-link]');
+    if (!clickableEl || clickableEl.dataset.clickLinkInited === 'true') return;
+    clickableEl.dataset.clickLinkInited = 'true';
+
+    clickableEl.addEventListener('click', (event) => {
+      if (event.target.closest('a, button, input, select, textarea, label, [role="button"]')) return;
+
+      const href = clickableEl.dataset.clickLink;
+      if (href) window.location.assign(href);
+    });
+  })();
+</script>
 {% schema %}
 {
   "name": "t:sections.video-hero-icons.name",
@@ -561,6 +661,11 @@
           "default": "Video hero",
           "label": "t:general.heading.label",
           "info": "t:general.heading.info"
+        },
+        {
+          "type": "color",
+          "id": "heading_text_color",
+          "label": "Heading text color"
         },
         {
           "type": "select",

@@ -5,11 +5,13 @@ if (!customElements.get('slideshow-with-product')) {
       constructor() {
         super();
 
+        this.sliderInstance = false;
+        this.addEventListener('click', this.handleSlideClick.bind(this));
+
         if (this.dataset.enableSlider !== 'true') return;
 
         this.sectionId = this.dataset.sectionId;
         this.sliderControls = this.querySelector('.swiper-controls');
-        this.sliderInstance = false;
         this.selectedIndex = this.selectedIndex;
         this.sliderHeightAdapt = this.classList.contains('slideshow-with-product-height--adapt');
 
@@ -38,7 +40,7 @@ if (!customElements.get('slideshow-with-product')) {
           slidesPerView: 1,
           spaceBetween: 10,
           loop: true,
-          grabCursor: true,
+          grabCursor: false,
           allowTouchMove: true,
           threshold: 2,
           effect: 'fade',
@@ -141,6 +143,26 @@ if (!customElements.get('slideshow-with-product')) {
         this.selectedIndex = realIndex;
 
         this.updateControlsScheme(slides[activeIndex]);
+      }
+
+      handleSlideClick(event) {
+        const swiper = this.sliderInstance?.slider;
+        if ((swiper && !swiper.allowClick) || !event?.target) return;
+
+        const target = event.target;
+        if (
+          target.closest(
+            'a, button, input, select, textarea, label, [role="button"], .swiper-button, .swiper-pagination'
+          )
+        ) {
+          return;
+        }
+
+        const clickedSlide = target.closest('.swiper-slide');
+        if (!clickedSlide || (swiper && !clickedSlide.classList.contains('swiper-slide-active'))) return;
+
+        const slideLink = clickedSlide.getAttribute('data-slide-link');
+        if (slideLink) window.location.href = slideLink;
       }
 
       attributeChangedCallback(name, oldValue, newValue) {

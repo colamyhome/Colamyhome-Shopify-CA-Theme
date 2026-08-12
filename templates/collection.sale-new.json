@@ -201,7 +201,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-1",
-        "products_per_page": 10,
+        "products_per_page": 14,
         "columns_desktop": 4,
         "column_gap": "medium",
         "row_gap": "large",

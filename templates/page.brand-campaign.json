@@ -21,9 +21,11 @@
     },
     "video_CrTckt": {
       "type": "video",
+      "disabled": true,
       "name": "t:sections.video.name",
       "settings": {
         "container": "fixed",
+        "width": 92,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_ratio": "adapt",
         "description": "",
@@ -37,25 +39,172 @@
         "divider_width": "fixed"
       }
     },
-    "rich_text_DTCmCt": {
-      "type": "rich-text",
+    "lookbook_banner_e9ywTq": {
+      "type": "lookbook-banner",
+      "disabled": true,
+      "name": "t:sections.banner-with-hotspots.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "image": "shopify://shop_images/summerliving-03.jpg",
+        "image_mobile": "shopify://shop_images/summerliving-04.jpg",
+        "icon_style": "plus",
+        "icon_color": "dark",
+        "card_color_scheme": "",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "video_hero_NdWUHE": {
+      "type": "video-hero",
+      "custom_css": [
+        ".video-hero {width: 94%; margin: 0 auto;}"
+      ],
+      "name": "t:sections.video-hero.name",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/Notes on Summer Living.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "video_height": "adapt",
+        "overlay_opacity": 10,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "video_mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "slideshow_eBpagH": {
+      "type": "slideshow",
       "blocks": {
-        "heading_8DqAYj": {
-          "type": "heading",
+        "slide_Veix3U": {
+          "type": "slide",
           "settings": {
-            "heading": "<strong>We do the sorting. So you can do the living.</strong>",
+            "color_scheme": "",
+            "background": "shopify://shop_images/summerliving-03.jpg",
+            "background_mobile": "shopify://shop_images/summerliving-04.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "subheading": "",
+            "title": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
-            "heading_size": "h1"
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_Veix3U"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "slide_height": "large",
+        "show_controls": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "custom_liquid_4BjPki": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .brand-campaign-intro-text {\n    padding-left:8%;  \n color:#000000 \n    background-color: #ffffff;\n    padding-block: 20px;\n  }\n\n  .brand-campaign-intro-item p {\n    margin: 0 0 16px 0;\n  }\n\n  @media (max-width: 768px) {\n    .brand-campaign-intro-text {\n      padding-block: 24px;\n    }\n  }\n</style>\n\n<div class=\"brand-campaign-intro-text page-width page-width--fixed\">\n\n  <div class=\"brand-campaign-intro-item\">\n    <p style=\"font-size: 14px; color: #666666; font-style: normal; font-weight: 400; text-align: left; letter-spacing: 0px; line-height: 1;\">\n      Summer rarely announces itself.\nInstead, it settles gently into the spaces we call home. \n    </p>\n  </div>\n<div class=\"brand-campaign-intro-item\">\n    <p style=\"font-size: 14px; color: #666666; font-style: normal; font-weight: 400; text-align: left; letter-spacing: 0px; line-height: 1;\">\n     Through small changes in light, texture, and rhythm, familiar surroundings begin to feel renewed.\n    </p>\n  </div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_qURV9q": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .brand-campaign-season-note {\n    background-color: #ffffff;\n    padding-block: 10px;\n  }\n\n  .brand-campaign-season-note-item p {\n    margin: 0 0 16px 0;\n  }\n\n  @media (max-width: 768px) {\n    .brand-campaign-season-note {\n      padding-block: 24px;\n    }\n  }\n</style>\n\n<div class=\"brand-campaign-season-note page-width page-width--fixed\">\n\n \n  <div class=\"brand-campaign-season-note-item\">\n    <p style=\"font-size: 22px; color: #666666; font-style: italic; font-weight: 400; text-align: center; letter-spacing: 0px; line-height: 1;\">\n      This season, COLAMY invite you to embrace the comfort, warmth, \n    </p>\n  </div>\n<div class=\"brand-campaign-season-note-item\">\n    <p style=\"font-size: 22px; color: #666666; font-style: italic; font-weight: 400; text-align: center; letter-spacing: 0px; line-height: 1;\">\n      and quiet beauty of early summer—one thoughtful moment at a time.\n    </p>\n  </div>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_overlay_3fLaac": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        ".image-with-text-ovelay__content-wrapper {max-width: 100%;}",
+        "@media (max-width: 767px) {.section__container {--page-padding: 0; max-width: none; width: 100%; } .image-with-text-ovelay__content-wrapper {padding: 0; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "fixed",
+        "image": "shopify://shop_images/20260611-190120.jpg",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/20260611-190116.jpg",
+        "mobile_height": "adapt",
+        "content_position_mobile": "middle-center-mobile",
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "enable_preload_image": false
+      }
+    },
+    "rich_text_DTCmCt": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_LCWqWk": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Summer rarely announces itself.Instead, it settles gently into the spaces we call home. Through small changes in light, texture, and rhythm, familiar surroundings begin to feel renewed."
           }
         },
         "text_ex9yPk": {
           "type": "text",
           "settings": {
-            "text": "<p>At COLAMY, we believe a better home starts with better choices, not more of them.That’s why we don’t build around endless options or overwhelming catalogs.We focus on a tighter collection of modern furniture — selected for comfort, function, and easy living — so customers can spend less time comparing, and more time enjoying the home they’re creating.</p>",
-            "text_size": "text-lg",
+            "text": "<p>This season, COLAMY invite you to embrace the comfort, warmth, and quiet beauty of early summer—one thoughtful moment at a time.</p>",
+            "text_size": "text-inherit",
             "text_line_limit": "none",
             "button_style": "btn--underline",
             "button_icon": "none"
@@ -63,30 +212,592 @@
         }
       },
       "block_order": [
-        "heading_8DqAYj",
+        "subheading_LCWqWk",
         "text_ex9yPk"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.name",
       "settings": {
         "container": "fixed",
-        "color_scheme": "",
+        "color_scheme": "scheme-10",
         "use_color_scheme_in_container": false,
         "content_spacing": "standard",
         "content_alignment": "center",
         "padding_top": 50,
         "padding_bottom": 50,
-        "show_section_divider": false,
+        "show_section_divider": true,
         "divider_width": "fixed"
+      }
+    },
+    "multicolumn_V6FVgh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_qQwBqF": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>CHAPTER 01.  BREEZE</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "",
+            "text_size": "text-inherit",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_QJrTAp": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Some of the best moments in early summer are the ones we almost overlook.</p><p>A quiet breakfast before the day begins. The window left open just a little longer. A cool breeze drifting through the room while the morning is still slow.The season invites us to slow down. Home gives us a place to do it.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_qQwBqF",
+        "column_QJrTAp"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__title {padding-left: 8.5%;}",
+        "@media (max-width: 767px) {.multicolumn-card__title {padding-left: 0px; }}",
+        ".text-subtext {color: #666666 !important;}"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": false,
+        "columns_desktop": 2,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
       }
     },
     "custom_content_YAtKCg": {
       "type": "custom-content",
       "blocks": {
+        "image_CiVBt8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Summer_Living-08.jpg",
+            "width": "58%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_t3xdX6": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Summer_Living-06.jpg",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>Comfort often feels the same way. Not something that demands attention, but something that quietly becomes part of everyday life. Soft textures, familiar routines, and a place you naturally return to, day after day.</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_KVNtVG": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/2026-06-11_19.07.48.png",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "<strong>NOYA Dining Chair-Soft comfort, made for everyday moments.</strong>",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>Designed with a brushed fabric finish that feels inviting from the very first touch, NOYA brings a sense of ease to daily living. Available in a palette of versatile colors, it adapts effortlessly to different spaces and styles, only for the coziness and love, while offering comfort that lasts long after the meal is over.</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "lookbook_card_hotspot_tJJqkx": {
+          "type": "lookbook_card_hotspot",
+          "disabled": true,
+          "settings": {
+            "icon_style": "plus",
+            "icon_color": "light",
+            "image": "shopify://shop_images/Summer_Living-06.jpg",
+            "image_ratio": "1/1",
+            "product_1": "",
+            "top_1": 45,
+            "left_1": 30,
+            "product_2": "",
+            "top_2": 50,
+            "left_2": 70,
+            "product_3": "",
+            "top_3": 62,
+            "left_3": 43,
+            "product_4": "",
+            "top_4": 9,
+            "left_4": 63,
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "text_mRFnYd": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "<strong>NOYA Dining Chair-Soft comfort, made for everyday moments.</strong>",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "description": "<p>Designed with a brushed fabric finish that feels inviting from the very first touch, NOYA brings a sense of ease to daily living. Available in a palette of versatile colors, it adapts effortlessly to different spaces and styles, only for the coziness and love, while offering comfort that lasts long after the meal is over.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "41%",
+            "alignment": "center",
+            "block_custom_class": "noya-description-muted"
+          }
+        },
         "lookbook_card_gkHhWH": {
           "type": "lookbook_card",
           "settings": {
-            "product_list": [],
+            "product_list": [
+              "colamy-noya-mid-century-modern-upholstered-dining-chair",
+              "colamy-arla-upholstered-wooden-scandi-minimalist-counter-height-bar-stool"
+            ],
             "pcard_image_ratio": "adapt",
+            "image": "shopify://shop_images/Summer_Living-07.jpg",
+            "image_ratio": "adapt",
+            "heading": "Shop this look",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_CiVBt8",
+        "image_card_t3xdX6",
+        "image_card_KVNtVG",
+        "lookbook_card_hotspot_tJJqkx",
+        "text_mRFnYd",
+        "lookbook_card_gkHhWH"
+      ],
+      "custom_css": [
+        ".section__content > .f-flex {justify-content: center;}",
+        ".custom-content-block--image,.custom-content-block--image_card,.custom-content-block--lookbook_card {align-items: center;}",
+        ".text-subtext {color: #666666 !important;}",
+        ".noya-description-muted .rich-text__text,.noya-description-muted .rich-text__text p {color: #666666;}"
+      ],
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-inherit",
+        "column_gap": "extra-large",
+        "row_gap": "extra-large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_content_AVDViR": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_wXwWVh": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Summer_Living-09.jpg",
+            "image_ratio": "1/1",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "large",
+            "content_gap": "standard",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<h6>Some places make us feel grounded. A wooden table on the terrace. Afternoon light settling across the wood of grain. Conversations that continue long after the plates have been cleared.There is comfort in these familiar rituals—sharing a meal, welcoming friends, gathering with family. Rooted in simplicity and shaped by nature, they remind us that the feeling of home is often built around the moments we share.</h6>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-inverse",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "",
+            "badge_text": "",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "width": "41%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_zxcKJY": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Summer_Living-11.jpg",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "center",
+            "content_spacing": "large",
+            "content_gap": "standard",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-inverse",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "",
+            "badge_text": "",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "lookbook_card_3AQLti": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [
+              "colamy-sera-solid-wood-comfort-dining-chair"
+            ],
+            "pcard_image_ratio": "1/1",
+            "image": "shopify://shop_images/Summer_Living-10.jpg",
+            "image_ratio": "3/4",
+            "heading": "Shop this look",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "50%",
+            "alignment": "start",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_YExN9i": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/2026-06-11_10.49.12.png",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "large",
+            "content_gap": "standard",
+            "card_link": "",
+            "subheading": "<strong>SERA Dining Chair-Grounded in natural simplicity.</strong>",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<h6>Crafted with a solid wood frame, SERA celebrates the beauty of honest materials and enduring craftsmanship. Its natural grain, clean lines, and sturdy support create a presence that feels both timeless and reassuring—equally at home around the dining table or beneath an open sky.</h6>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-inverse",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "",
+            "badge_text": "",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "width": "41%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "text_NPcQNd": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "41%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_wXwWVh",
+        "image_card_zxcKJY",
+        "lookbook_card_3AQLti",
+        "image_card_YExN9i",
+        "text_NPcQNd"
+      ],
+      "custom_css": [
+        ".section__content > .f-flex {justify-content: center;}",
+        ".custom-content-block--image,.custom-content-block--image_card,.custom-content-block--lookbook_card {align-items: center;}",
+        ".section__heading {padding-left: 4.5%; white-space: nowrap;}",
+        "@media (max-width: 767px) {.section__heading {padding-left: 0px; }}",
+        ".section__heading * {white-space: nowrap;}",
+        ".text-subtext {color: #666666 !important;}"
+      ],
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>CHAPTER 02. ROOT</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h4",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "extra-large",
+        "row_gap": "extra-large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 36,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_content_RLxLhm": {
+      "type": "custom-content",
+      "blocks": {
+        "lookbook_card_QLNKkj": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [
+              "colamy-tv-stand-with-storage"
+            ],
+            "pcard_image_ratio": "",
+            "image": "shopify://shop_images/Summer_Living-12.jpg",
+            "image_ratio": "adapt",
+            "heading": "Shop this look",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "92%",
+            "alignment": "center",
+            "block_custom_class": "greenery-first-image-full"
+          }
+        },
+        "image_card_DUGKVF": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Summer_Living-14-2.jpg",
+            "image_ratio": "1/1",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "<strong>PIXEL Series - Designed to live easier with you.</strong>",
+            "subheading_style": "",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<h6>With clean silhouettes and versatile storage, these pieces bring balance to the spaces that evolve with everyday life. Easy to style and easy to place, they offer a quiet foundation for personal touches—from books and ceramics to greenery that changes with the season.</h6>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "width": "48%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "lookbook_card_pFJUJ6": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [
+              "colamy-sideboard-cabinet-storage",
+              "colamy-fluted-storage-cabinet-with-6-drawers",
+              "colamy-nightstand-with-charging-station"
+            ],
+            "pcard_image_ratio": "",
+            "image": "shopify://shop_images/Summer_Living-13.jpg",
             "image_ratio": "adapt",
             "heading": "Shop this look",
             "highlight_style": "none",
@@ -99,50 +810,80 @@
             "block_custom_class": ""
           }
         },
-        "text_mRFnYd": {
-          "type": "text",
+        "image_card_mW8ywr": {
+          "type": "image_card",
+          "disabled": true,
           "settings": {
-            "content_alignment": "left",
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Summer_Living-13.jpg",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
             "subheading": "",
-            "heading": "Talk about your brand",
+            "subheading_style": "",
+            "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h1",
-            "description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "text_size": "text-base",
-            "button_label": "Button label",
-            "button_link": "",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "",
             "button_style": "btn--primary",
             "button_icon": "none",
-            "width": "50%",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-1",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "width": "48%",
             "alignment": "center",
-            "block_custom_class": ""
+            "block_custom_class": "",
+            "enable_preload_image": false
           }
         }
       },
       "block_order": [
-        "lookbook_card_gkHhWH",
-        "text_mRFnYd"
+        "lookbook_card_QLNKkj",
+        "image_card_DUGKVF",
+        "lookbook_card_pFJUJ6",
+        "image_card_mW8ywr"
+      ],
+      "custom_css": [
+        ".section__content > .f-flex {justify-content: center; margin-left: 0; margin-right: 0;}",
+        ".greenery-first-image-full {padding-left: 0; padding-right: 0;}",
+        ".custom-content-block--image,.custom-content-block--image_card,.custom-content-block--lookbook_card {align-items: center;}",
+        ".text-subtext {color: #666666 !important;}",
+        ".section__description {max-width: 70%; margin-left: auto; margin-right: auto;}",
+        "@media (max-width: 767px) {.section__description {max-width: 100%; }}"
       ],
       "name": "t:sections.custom-content.name",
       "settings": {
         "container": "fixed",
         "color_scheme": "",
         "enable_sticky_column": false,
-        "section_header_alignment": "left",
+        "section_header_alignment": "center",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "Custom content",
+        "heading": "<strong>CHAPTER 03. GREENERY</strong>",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
         "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "<p>Combine images with text and a stand-out offer</p>",
+        "heading_size": "h4",
+        "description": "<h6>A home feels different when it grows with the season. A new branch placed in a vase. Sunlight reaching a different corner of the room. Familiar corners softened by a touch of green. We rarely notice them all at once. Yet together, they make a home feel more open, more welcoming, and more connected to the world outside.</h6><h6>Small changes, perhaps—but enough to make a space feel alive again.</h6>",
         "text_size": "text-base",
-        "column_gap": "medium",
+        "column_gap": "extra-small",
         "row_gap": "large",
         "swipe_on_mobile": false,
         "columns_mobile": "1",
@@ -152,613 +893,234 @@
         "divider_width": "fixed"
       }
     },
-    "image_with_text_7wTYQX": {
-      "type": "image-with-text",
-      "blocks": {
-        "subheading_K8BbGm": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Add a tagline"
-          }
-        },
-        "heading_9V696A": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2"
-          }
-        },
-        "text_TaDJGQ": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "subtext_color": true
-          }
-        },
-        "button_EKqcnc": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_K8BbGm",
-        "heading_9V696A",
-        "text_TaDJGQ",
-        "button_EKqcnc"
-      ],
-      "name": "t:sections.image-with-text.name",
+    "custom_liquid_aCgn6M": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.name",
       "settings": {
-        "container": "fixed",
+        "custom_liquid": "<style>\n  .brand-campaign-closing-note {\n    background-color: #ffffff;\n    padding-block: 10px;\n  }\n\n  .brand-campaign-closing-note-item p {\n    margin: 0 0 16px 0;\n  }\n\n  @media (max-width: 768px) {\n    .brand-campaign-closing-note {\n      padding-block: 24px;\n    }\n  }\n</style>\n\n<div class=\"brand-campaign-closing-note page-width page-width--fixed\">\n\n \n  <div class=\"brand-campaign-closing-note-item\">\n    <p style=\"font-size: 22px; color: #666666; font-style: italic; font-weight: 400; text-align: center; letter-spacing: 0px; line-height: 1;\">\n      As summer unfolds, small details quietly shape the way we live, gather, and feel at home.\n    </p>\n  </div>\n<div class=\"brand-campaign-closing-note-item\">\n    <p style=\"font-size: 22px; color: #666666; font-style: italic; font-weight: 400; text-align: center; letter-spacing: 0px; line-height: 1;\">\n      A breeze drifting through the room, A favorite chair catching the afternoon light, Time shared around the table, A corner brought to life by a thriving green plant...\n    </p>\n  </div>\n</div>",
         "color_scheme": "",
-        "image_position": "left",
-        "image_width": 56,
-        "desktop_content_position": "center",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "inherit",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 80,
-        "padding_bottom": 80
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
-    "lookbook_banner_NjgMin": {
-      "type": "lookbook-banner",
-      "blocks": {
-        "hotspot_DXxHhg": {
-          "type": "hotspot",
-          "settings": {
-            "heading": "Hotspot",
-            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
-            "top": 45,
-            "left": 30,
-            "top_mobile": 45,
-            "left_mobile": 30
-          }
-        },
-        "hotspot_NP8mi6": {
-          "type": "hotspot",
-          "settings": {
-            "heading": "Hotspot",
-            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
-            "top": 50,
-            "left": 70,
-            "top_mobile": 50,
-            "left_mobile": 70
-          }
-        },
-        "hotspot_VdwRzU": {
-          "type": "hotspot",
-          "settings": {
-            "heading": "Hotspot",
-            "description": "<p>Each piece is built for longevity, ensuring durability, repairability, flexibility, and resale value.</p>",
-            "top": 62,
-            "left": 43,
-            "top_mobile": 62,
-            "left_mobile": 43
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_DXxHhg",
-        "hotspot_NP8mi6",
-        "hotspot_VdwRzU"
-      ],
-      "name": "t:sections.banner-with-hotspots.name",
+    "image_with_text_overlay_D88tLp": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image-with-text-overlay.name",
       "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "center",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "Banner with hotspots",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "description_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "icon_style": "plus",
-        "icon_color": "dark",
-        "card_color_scheme": "",
-        "show_section_divider": true,
-        "divider_width": "fixed",
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
-    "banner_with_tabs_hKxBmm": {
-      "type": "banner-with-tabs",
-      "blocks": {
-        "tab_m7ajCi": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "",
-            "tab_icon": "none",
-            "card_link": "",
-            "subheading": "",
-            "heading": "Image card",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "description": "",
-            "button_label": "Button label",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "tab_m7ajCi"
-      ],
-      "name": "t:sections.banner-with-tabs.presets.name",
-      "settings": {
-        "color_scheme": "",
+        "container": "full",
+        "image": "shopify://shop_images/20260611-190111.jpg",
         "desktop_height": "adapt",
-        "image_overlay_opacity": 0,
-        "heading": "Banner with tabs",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h5",
-        "tab_heading_size": "h1",
-        "tab_icon_size": "large",
-        "card_color_scheme": "",
-        "card_content_alignment": "left",
-        "card_image_ratio": "adapt",
-        "card_title_size": "h5",
-        "card_text_size": "text-base",
-        "card_button_style": "btn--primary",
-        "mobile_height": "auto",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/20260611-190106.jpg",
+        "mobile_height": "adapt",
+        "content_position_mobile": "middle-center-mobile",
+        "content_alignment_mobile": "left",
         "padding_top": 0,
         "padding_bottom": 0,
         "enable_preload_image": false
       }
     },
-    "banners_with_categories_TfkidR": {
-      "type": "banners-with-categories",
+    "newsletter_DXLFaT": {
+      "type": "newsletter",
       "blocks": {
-        "banner_card_mdVcVw": {
-          "type": "banner-card",
+        "image_kQDHhN": {
+          "type": "image",
           "settings": {
-            "color_scheme": "",
-            "image_overlay_opacity": 0,
-            "column_span": 2,
-            "row_span": 2,
-            "content_spacing": "medium",
-            "content_gap": "standard",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "content_position_mobile": "middle-center",
-            "content_alignment_mobile": "center",
-            "card_link": "",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Image card",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "text": "",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "button_size": "btn--medium",
-            "block_custom_class": "",
-            "enable_preload_image": false
-          }
-        },
-        "banner_card_WnyWr6": {
-          "type": "banner-card",
-          "settings": {
-            "color_scheme": "",
-            "image_overlay_opacity": 0,
-            "column_span": 1,
-            "row_span": 1,
-            "content_spacing": "medium",
-            "content_gap": "fitted",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "content_position_mobile": "middle-center",
-            "content_alignment_mobile": "center",
-            "card_link": "",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Image card",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "text": "",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "button_size": "btn--medium",
-            "block_custom_class": "",
-            "enable_preload_image": false
-          }
-        },
-        "banner_card_tBWzBE": {
-          "type": "banner-card",
-          "settings": {
-            "color_scheme": "",
-            "image_overlay_opacity": 0,
-            "column_span": 1,
-            "row_span": 1,
-            "content_spacing": "medium",
-            "content_gap": "fitted",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "content_position_mobile": "middle-center",
-            "content_alignment_mobile": "center",
-            "card_link": "",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Image card",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "text": "",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "button_size": "btn--medium",
-            "block_custom_class": "",
-            "enable_preload_image": false
+            "image": "shopify://shop_images/20260612-130413_29587da8-8071-430e-8bda-8ec1f1a44d16.jpg",
+            "image_mobile": "shopify://shop_images/20260612-155512.jpg",
+            "image_ratio": "adapt"
           }
         }
       },
       "block_order": [
-        "banner_card_mdVcVw",
-        "banner_card_WnyWr6",
-        "banner_card_tBWzBE"
+        "image_kQDHhN"
       ],
-      "name": "t:sections.banners-with-categories.name",
+      "custom_css": [
+        ".newsletter__container--image {flex-direction: column !important; justify-content: center; align-items: center;}",
+        ".newsletter__media-wrapper,.newsletter__form-wrapper {margin-inline: auto;}",
+        ".newsletter__form-wrapper {padding-inline-start: 0; align-items: center; text-align: center;}",
+        ".newsletter__form {margin-inline: auto; text-align: center;}",
+        ".text-subtext {color: #666666 !important;}"
+      ],
+      "name": "t:sections.newsletter.name",
       "settings": {
         "container": "fixed",
         "color_scheme": "",
-        "categories_bar_color_scheme": "",
-        "columns_mobile": "2",
-        "columns": 3,
-        "gap": "2xs",
-        "banner_height": "large",
-        "swipe_on_mobile": false,
+        "layout": "horizontal",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h3",
+        "description": "",
+        "text_size": "text-base",
+        "alignment": "left",
+        "alignment_mobile": "inherit",
+        "width_settings": "custom",
+        "form_width": 800,
+        "newsletter_term": "",
+        "newsletter_term_size": "text-base",
+        "button_style": "btn--primary",
+        "button_icon": "none",
         "padding_top": 50,
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
       }
     },
-    "multicolumn_4yrgHh": {
-      "type": "multicolumn",
+    "highlight_text_with_image_TQbJn9": {
+      "type": "highlight-text-with-image",
       "blocks": {
-        "column_CigTrW": {
-          "type": "column",
+        "image_NmekE9": {
+          "type": "image",
           "settings": {
-            "title": "<strong>Designed for Real Life</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Designed for how you actually live. We don’t design for showrooms. We design for pieces that feel effortless in the home—silhouettes that feel easy to style, details that work across spaces, and pieces that stay useful long after the room is finished. Good furniture shouldn’t ask too much from the room around it.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
+            "image_link": "",
+            "image_width": 220,
+            "image_width_mobile": 110
           }
         },
-        "column_fDFpY7": {
-          "type": "column",
+        "image_7Wr3ew": {
+          "type": "image",
           "settings": {
-            "title": "<strong>Built to Feel Reliable</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>A piece should feel good the day it arrives—and keep feeling solid over time.That’s why we pay attention to the parts you don’t always see: balanced construction, tested performance, and dependable support designed for daily living.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
+            "image_link": "",
+            "image_width": 220,
+            "image_width_mobile": 110
           }
         },
-        "column_3hiKib": {
-          "type": "column",
+        "image_apM7b6": {
+          "type": "image",
           "settings": {
-            "title": "<strong>Comfort in Every Layer</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>grain of the wood to the density of the foam, every layer is chosen for one purpose: to feel as good years from now as it does today.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
+            "image_link": "",
+            "image_width": 220,
+            "image_width_mobile": 110
           }
         }
       },
       "block_order": [
-        "column_CigTrW",
-        "column_fDFpY7",
-        "column_3hiKib"
+        "image_NmekE9",
+        "image_7Wr3ew",
+        "image_apM7b6"
       ],
-      "name": "t:sections.multicolumn.name",
+      "disabled": true,
+      "name": "t:sections.highlight-text-with-image.name",
       "settings": {
-        "container": "fixed",
         "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "content_alignment": "left",
-        "show_col_count": false,
-        "show_image": true,
-        "columns_desktop": 3,
-        "column_gap": "2xs",
-        "row_gap": "inherit",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
+        "text": "Highlight products, [img1] a collection, or [img2] images alongside a brand message [img3]\nAs summer unfolds, small details quietly shape the way we live, gather, and feel at home.\nA breeze drifting through [img1] the room. A favorite chair catching the afternoon[img2]  light. Time shared around the table. A corner[img3] brought to life by a thriving green plant.",
+        "heading_size": "hd2",
+        "alignment": "center",
         "padding_top": 50,
-        "padding_bottom": 50
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
       }
     },
-    "multicolumn_dyVtkw": {
-      "type": "multicolumn",
+    "rich_text_dF4Tid": {
+      "type": "rich-text",
       "blocks": {
-        "column_AiKXiY": {
-          "type": "column",
+        "heading_Vq9Rk3": {
+          "type": "heading",
           "settings": {
-            "title": "<strong>Easy to Own</strong>",
+            "heading": "<strong>Enticed to see more? </strong>",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Buying furniture online should feel easy — and owning it should feel even better. From clear delivery updates to responsive support and straightforward policies, we work to make every step feel simple, transparent, and reassuring—before, during, and after your order arrives.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_9dUaBy": {
-          "type": "column",
-          "settings": {
-            "title": "<strong>Built for trust</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Available in 30+ Countries14 Warehouses Supporting Fulfillment500,000+ Homes Reached Each Year</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_7dj4BN": {
-          "type": "column",
-          "settings": {
-            "title": "<strong>Start with what made us known</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
+            "heading_size": "h4"
           }
         }
       },
       "block_order": [
-        "column_AiKXiY",
-        "column_9dUaBy",
-        "column_7dj4BN"
+        "heading_Vq9Rk3"
       ],
-      "name": "t:sections.multicolumn.name",
+      "name": "t:sections.rich-text.name",
       "settings": {
         "container": "fixed",
         "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
         "content_alignment": "left",
-        "show_col_count": false,
-        "show_image": true,
-        "columns_desktop": 3,
-        "column_gap": "2xs",
-        "row_gap": "inherit",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
         "padding_top": 50,
-        "padding_bottom": 50
+        "padding_bottom": 24,
+        "show_section_divider": false,
+        "divider_width": "fixed"
       }
     },
-    "grid_banner_PEqxqM": {
-      "type": "grid-banner",
+    "1781157852fded783e": {
+      "type": "_blocks",
       "blocks": {
-        "banner_card_wt7rTK": {
-          "type": "banner-card",
+        "ai_gen_block_d089d5c_wmzGKN": {
+          "type": "ai_gen_block_d089d5c",
           "settings": {
-            "color_scheme": "scheme-1",
-            "image_overlay_opacity": 0,
-            "column_span": 1,
-            "row_span": 1,
-            "content_spacing": "medium",
-            "content_gap": "standard",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "content_position_mobile": "middle-center",
-            "content_alignment_mobile": "center",
-            "card_link": "",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Image card",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "text": "",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "button_size": "btn--medium",
-            "block_custom_class": "",
-            "enable_preload_image": false
-          }
-        },
-        "banner_card_tkawnb": {
-          "type": "banner-card",
-          "settings": {
-            "color_scheme": "",
-            "image_overlay_opacity": 0,
-            "column_span": 4,
-            "row_span": 2,
-            "content_spacing": "medium",
-            "content_gap": "standard",
-            "content_position": "middle-center",
-            "content_alignment": "center",
-            "content_position_mobile": "middle-center",
-            "content_alignment_mobile": "center",
-            "card_link": "",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Start with what made us known",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
-            "text_size": "text-lg",
-            "button_label": "to buy COLAMY",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "button_size": "btn--medium",
-            "block_custom_class": "",
-            "enable_preload_image": false
-          }
+            "product_list": [
+              "colamy-noya-mid-century-modern-upholstered-dining-chair",
+              "colamy-arla-upholstered-wooden-scandi-minimalist-counter-height-bar-stool",
+              "colamy-sera-solid-wood-comfort-dining-chair",
+              "colamy-alva-minimalist-bentwood-dining-chair",
+              "colamy-pura-solid-wood-dining-chair-with-oeko-tex®-fabric",
+              "colamy-aurel-upholstered-counter-height-bar-stool",
+              "colamy-nuia-accent-barrel-chair-with-storage-ottoman-set",
+              "colamy-tv-stand-with-storage",
+              "colamy-sideboard-cabinet-storage",
+              "colamy-nightstand-with-charging-station",
+              "colamy-fluted-storage-cabinet-with-6-drawers"
+            ],
+            "desktop_width_percent": 100,
+            "slides_per_view": 4,
+            "slides_per_view_mobile": 2,
+            "gap": 28,
+            "image_aspect_ratio": 100,
+            "image_border_radius": 4,
+            "show_navigation": true,
+            "nav_button_size": 40,
+            "nav_button_offset": 16,
+            "nav_button_bg": "#ffffff",
+            "nav_button_color": "#666666",
+            "nav_button_hover_bg": "#666666",
+            "nav_button_hover_color": "#ffffff",
+            "show_dots": true,
+            "dots_margin_top": 20,
+            "dot_size": 8,
+            "dot_color": "#cccccc",
+            "dot_active_color": "#000000",
+            "autoplay": false,
+            "autoplay_speed": 3000
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "banner_card_wt7rTK",
-        "banner_card_tkawnb"
+        "ai_gen_block_d089d5c_wmzGKN"
       ],
-      "name": "t:sections.grid-banner.presets__2.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "center",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h2",
-        "description": "",
-        "description_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--primary",
-        "button_icon": "none",
-        "columns": 4,
-        "banner_height": "small",
-        "gap": "none",
-        "enable_swiper_mobile": false,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      "settings": {}
     }
   },
   "order": [
     "main",
     "video_CrTckt",
+    "lookbook_banner_e9ywTq",
+    "video_hero_NdWUHE",
+    "slideshow_eBpagH",
+    "custom_liquid_4BjPki",
+    "custom_liquid_qURV9q",
+    "image_with_text_overlay_3fLaac",
     "rich_text_DTCmCt",
+    "multicolumn_V6FVgh",
     "custom_content_YAtKCg",
-    "image_with_text_7wTYQX",
-    "lookbook_banner_NjgMin",
-    "banner_with_tabs_hKxBmm",
-    "banners_with_categories_TfkidR",
-    "multicolumn_4yrgHh",
-    "multicolumn_dyVtkw",
-    "grid_banner_PEqxqM"
+    "custom_content_AVDViR",
+    "custom_content_RLxLhm",
+    "custom_liquid_aCgn6M",
+    "image_with_text_overlay_D88tLp",
+    "newsletter_DXLFaT",
+    "highlight_text_with_image_TQbJn9",
+    "rich_text_dF4Tid",
+    "1781157852fded783e"
   ]
 }

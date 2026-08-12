@@ -2254,6 +2254,65 @@
     }
   },
   "sections": {
+    "product_pairing": {
+      "name": "Abbinamento prodotti",
+      "headers": {
+        "content": "Contenuto",
+        "bundle": "Prodotti del set",
+        "discount": "Sconto",
+        "scenes": "Scene delle combinazioni",
+        "layout": "Layout"
+      },
+      "content": {
+        "heading": "Titolo",
+        "subtitle": "Sottotitolo desktop"
+      },
+      "bundle": {
+        "table_product_1": "Prodotto tavolo 1",
+        "table_product_1_alias": "Alias prodotto tavolo 1",
+        "table_product_1_variant": "Variante prodotto tavolo 1",
+        "table_product_1_variant_info": "Inserisci il titolo esatto della variante o il valore dell’opzione usato per questo set.",
+        "table_product_2": "Prodotto tavolo 2",
+        "table_product_2_alias": "Alias prodotto tavolo 2",
+        "table_product_2_variant": "Variante prodotto tavolo 2",
+        "table_product_2_variant_info": "Inserisci il titolo esatto della variante o il valore dell’opzione usato per questo set.",
+        "chair_product_1": "Prodotto sedia 1",
+        "chair_product_1_alias": "Alias prodotto sedia 1",
+        "chair_product_1_variant": "Variante prodotto sedia 1",
+        "chair_product_1_variant_info": "Inserisci il titolo esatto della variante o il valore dell’opzione usato per questo set.",
+        "chair_product_2": "Prodotto sedia 2",
+        "chair_product_2_alias": "Alias prodotto sedia 2",
+        "chair_product_2_variant": "Variante prodotto sedia 2",
+        "chair_product_2_variant_info": "Inserisci il titolo esatto della variante o il valore dell’opzione usato per questo set.",
+        "combination_product_t1_c1": "Prodotto combinato Tavolo 1 + Sedia 1",
+        "combination_product_t1_c2": "Prodotto combinato Tavolo 1 + Sedia 2",
+        "combination_product_t2_c1": "Prodotto combinato Tavolo 2 + Sedia 1",
+        "combination_product_t2_c2": "Prodotto combinato Tavolo 2 + Sedia 2"
+      },
+      "discount": {
+        "code": "Codice sconto",
+        "code_info": "Applicato automaticamente dopo l’aggiunta del set al carrello.",
+        "percentage": "Percentuale di sconto visualizzata",
+        "percentage_info": "Controlla il prezzo visualizzato. Configura il codice Shopify con la stessa percentuale e gli stessi requisiti.",
+        "coupon_label": "Testo visualizzato del coupon",
+        "coupon_label_info": "Testo mostrato accanto alla casella del coupon nell’area del prezzo."
+      },
+      "scenes": {
+        "scene_t1_c1_s4": "Tavolo 1 + Sedia 1 + Set da 4",
+        "scene_t1_c1_s6": "Tavolo 1 + Sedia 1 + Set da 6",
+        "scene_t1_c2_s4": "Tavolo 1 + Sedia 2 + Set da 4",
+        "scene_t1_c2_s6": "Tavolo 1 + Sedia 2 + Set da 6",
+        "scene_t2_c1_s4": "Tavolo 2 + Sedia 1 + Set da 4",
+        "scene_t2_c1_s6": "Tavolo 2 + Sedia 1 + Set da 6",
+        "scene_t2_c2_s4": "Tavolo 2 + Sedia 2 + Set da 4",
+        "scene_t2_c2_s6": "Tavolo 2 + Sedia 2 + Set da 6"
+      },
+      "layout": {
+        "column_gap": "Spazio tra le colonne desktop",
+        "padding_top": "Spaziatura superiore",
+        "padding_bottom": "Spaziatura inferiore"
+      }
+    },
     "announcement-bar": {
       "name": "Barra degli annunci",
       "blocks": {
@@ -2660,6 +2719,9 @@
           "content": "Fondo del piè di pagina"
         }
       }
+    },
+    "bottom-image": {
+      "name": "Immagine inferiore"
     },
     "top-bar": {
       "name": "Barra superiore",
@@ -3839,6 +3901,9 @@
     "banner-with-hotspots": {
       "name": "Banner con hotspot"
     },
+    "hotspots-title": {
+      "name": "Hotspot banner title"
+    },
     "buttons-with-icon": {
       "name": "Pulsanti con icona"
     },
@@ -4396,6 +4461,9 @@
         }
       },
       "blocks": {
+        "text_timer": {
+          "name": "Text countdown timer"
+        },
         "group_heading": {
           "name": "Intestazione di gruppo"
         }
@@ -4718,6 +4786,9 @@
         },
         "text_heading_spacing": {
           "label": "Spaziatura tra testo e intestazione"
+        },
+        "enable_translucent_glass": {
+          "label": "Attiva effetto vetro smerigliato traslucido"
         }
       }
     },
@@ -4750,7 +4821,7 @@
       "name": "Immagini sovrapposte con testo"
     },
     "scrollspy-nav": {
-      "name": "Navigazione Scrollspy",
+      "name": "Scrollspy nav no Anchor",
       "settings": {
         "tab_settings": {
           "content": "Impostazioni della scheda"
@@ -4833,7 +4904,7 @@
         }
       },
       "presets": {
-        "name": "Navigazione Scrollspy"
+        "name": "Scrollspy nav no Anchor"
       }
     }
   }

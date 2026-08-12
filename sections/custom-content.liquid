@@ -18,6 +18,21 @@
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width
 %}
+{% style %}
+  @media (min-width: 1024px) {
+    .section-{{ section.id }} .custom-content-block--width-46 {
+      width: 46%;
+    }
+
+    .section-{{ section.id }} .custom-content-block--width-48 {
+      width: 48%;
+    }
+
+    .section-{{ section.id }} .custom-content-block--width-52 {
+      width: 52%;
+    }
+  }
+{% endstyle %}
 <div
   class="section section-{{ section.id }} section--padding section--custom-content page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }} {{ section.index }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
@@ -40,8 +55,14 @@
               assign block_width = 'w-full md:w-1/2 lg:w-1/3'
             when '41%'
               assign block_width = 'w-full md:w-1/2 lg:w-5/12'
+            when '46%'
+              assign block_width = 'w-full md:w-1/2 custom-content-block--width-46'
+            when '48%'
+              assign block_width = 'w-full md:w-1/2 custom-content-block--width-48'
             when '50%'
               assign block_width = 'w-full md:w-1/2 lg:w-1/2'
+            when '52%'
+              assign block_width = 'w-full md:w-1/2 custom-content-block--width-52'
             when '58%'
               assign block_width = 'w-full md:w-1/2 lg:w-7/12'
             when '66%'
@@ -52,6 +73,8 @@
               assign block_width = 'w-full md:w-1/2 lg:w-4/5'
             when '83%'
               assign block_width = 'w-full md:w-1/2 lg:w-10/12'
+            when '92%'
+              assign block_width = 'w-full md:w-1/2 lg:w-11/12'
             else
               assign block_width = 'w-full'
           endcase
@@ -1320,8 +1343,16 @@
               "label": "t:general.block_width.options__41p.label"
             },
             {
+              "value": "48%",
+              "label": "48%"
+            },
+            {
               "value": "50%",
               "label": "t:general.block_width.options__50p.label"
+            },
+            {
+              "value": "52%",
+              "label": "52%"
             },
             {
               "value": "58%",
@@ -2245,8 +2276,16 @@
               "label": "t:general.block_width.options__41p.label"
             },
             {
+              "value": "46%",
+              "label": "46%"
+            },
+            {
               "value": "50%",
               "label": "t:general.block_width.options__50p.label"
+            },
+            {
+              "value": "52%",
+              "label": "52%"
             },
             {
               "value": "58%",
@@ -2267,6 +2306,10 @@
             {
               "value": "83%",
               "label": "t:general.block_width.options__83p.label"
+            },
+            {
+              "value": "92%",
+              "label": "92%"
             },
             {
               "value": "100%",

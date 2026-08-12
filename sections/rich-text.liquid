@@ -1,7 +1,9 @@
-{% render 'divider',
-  show_divider: section.settings.show_section_divider,
-  divider_width: section.settings.divider_width
-%}
+{%- unless template.suffix == 'summer-save' -%}
+  {% render 'divider',
+    show_divider: section.settings.show_section_divider,
+    divider_width: section.settings.divider_width
+  %}
+{%- endunless -%}
 {% style %}
 .rich-text__heading.h1 strong {
   font-size: 36px;
@@ -15,6 +17,37 @@
   font-weight: 300;
   color: #1c1c1c;
 }
+
+.rich-text__text {
+  width: var(--rich-text-content-width, 100%);
+}
+
+.rich-text.text-center .rich-text__text {
+  margin-inline: auto;
+}
+
+.rich-text.text-right .rich-text__text {
+  margin-inline-start: auto;
+}
+
+.section-rich-text__summer-save-underline {
+  width: 70%;
+  height: 1px;
+  margin: 3.2rem auto 0;
+  background-color: #1c1c1c;
+}
+
+.section-rich-text__summer-save-divider {
+  margin-top: 30px;
+}
+
+{% if template.suffix == 'summer-save' %}
+.section-rich-text .rich-text__text,
+.section-rich-text .rich-text__text p {
+  color: #1c1c1c;
+  font-size: 14px;
+}
+{% endif %}
 
 @media(max-width: 767.98px){
   .rich-text__heading.h1 strong {
@@ -30,7 +63,7 @@
 {% endstyle %}
 {%- assign motion_delay = 0 -%}
 <div
-  class="section section-rich-text section--padding page-width page-width--{{ section.settings.container }}{% unless section.settings.use_color_scheme_in_container %} color-{{ section.settings.color_scheme }}{% endunless %}"
+  class="section section-rich-text section--padding page-width page-width--{{ section.settings.container }}{% unless section.settings.use_color_scheme_in_container %} color-{{ section.settings.color_scheme }}{% endunless %}{% if template.suffix == 'summer-save' and section.id contains 'rich_text_ncLkyc' %} hidden md:block{% endif %}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="rich-text rich-text--{{ section.settings.content_spacing }} text-{{ section.settings.content_alignment }}{% if section.settings.use_color_scheme_in_container %} rich-text__box blocks-radius color-{{ section.settings.color_scheme }}{% endif %}">
@@ -72,6 +105,7 @@
               data-motion="fade-up"
               data-motion-delay="{{ motion_delay }}"
               class="block rich-text__text rte text-subtext {{ block.settings.text_size }}"
+              style="--rich-text-content-width: {{ block.settings.content_width | default: 100 }}%;"
               {{ block.shopify_attributes }}
             >
               {%- if block.settings.text_line_limit != 'none' -%}
@@ -125,6 +159,15 @@
       {% endcase %}
     {% endfor %}
   </div>
+  {%- if template.suffix == 'summer-save' -%}
+    <div class="section-rich-text__summer-save-divider">
+      {% render 'divider',
+        show_divider: section.settings.show_section_divider,
+        divider_width: section.settings.divider_width
+      %}
+    </div>
+    <div class="section-rich-text__summer-save-underline"></div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -386,6 +429,16 @@
           "id": "text",
           "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
           "label": "t:general.text.label"
+        },
+        {
+          "type": "range",
+          "id": "content_width",
+          "label": "t:general.content_width.label",
+          "min": 20,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100
         },
         {
           "type": "select",

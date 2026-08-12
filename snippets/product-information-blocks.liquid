@@ -123,56 +123,431 @@
               </div>
             </div>
           {%- endif -%}
-        {%- when 'discount_code_memorial' -%}
-          {%- liquid
-            assign memorial_discount_code = block.settings.discount_code | strip
-            assign memorial_background_image = block.settings.background_image
-            assign memorial_mobile_background_image = block.settings.mobile_background_image
-          -%}
-          {%- if memorial_discount_code != blank -%}
-            <div
-              class="{{ block_classes }} product__discount-code-memorial"
-              style="--discount-code-memorial-padding-top: {{ block.settings.padding_top }}px;--discount-code-memorial-padding-bottom: {{ block.settings.padding_bottom }}px;--discount-code-memorial-button-top: {{ block.settings.button_top }}px;--discount-code-memorial-button-right: {{ block.settings.button_right }}px;--discount-code-memorial-button-bottom: {{ block.settings.button_bottom }}px;--discount-code-memorial-button-left: {{ block.settings.button_left }}px;"
+{%- when 'discount_code_memorial' -%}
+  {%- assign memorial_discount_code = block.settings.discount_code | strip -%}
+  {%- unless product.tags contains 'no extra discount' -%}
+    {%- if memorial_discount_code != blank -%}
+      <div
+              class="{{ block_classes }}"
               {{ additional_attributes }}
               {{ block.shopify_attributes }}
+              style="padding-top:{{ block.settings.padding_top }}px; padding-bottom:{{ block.settings.padding_bottom }}px;"
             >
-              <div class="product__discount-code-memorial-inner blocks-radius relative overflow-hidden{% if memorial_mobile_background_image != blank %} product__discount-code-memorial-inner--has-mobile-image{% endif %}">
-                {%- if memorial_background_image != blank -%}
-                  {{
-                    memorial_background_image
-                    | image_url: width: 1600
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '360, 533, 720, 940, 1066, 1200, 1600',
-                      sizes: '(min-width: 990px) 45vw, 100vw',
-                      class: 'product__discount-code-memorial-image product__discount-code-memorial-image--desktop'
-                  }}
-                {%- endif -%}
-                {%- if memorial_mobile_background_image != blank -%}
-                  {{
-                    memorial_mobile_background_image
-                    | image_url: width: 900
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '360, 533, 720, 900',
-                      sizes: '100vw',
-                      class: 'product__discount-code-memorial-image product__discount-code-memorial-image--mobile'
-                  }}
-                {%- endif -%}
-                <div
-                  class="product__discount-code-copy product__discount-code-memorial-copy"
-                  is="copy-to-clipboard"
-                  data-copy-value="{{ memorial_discount_code | escape }}"
-                  data-copied-text="{{ 'general.share.copied' | t }}"
-                  data-copied-duration="2000"
-                >
-                  <button type="button" class="product__discount-code-copy-btn product__discount-code-memorial-copy-btn">
-                    <span data-copy-feedback-target>{{ 'general.share.copy' | t }}</span>
-                  </button>
-                </div>
-              </div>
+            {%- if memorial_discount_code == 'CLM08' or memorial_discount_code == 'CLM12' or memorial_discount_code == 'CLM15' -%}
+  <div class="clm-compact-coupons">
+    <div class="clm-compact-coupon">
+      <div class="clm-compact-coupon__info">
+        <div class="clm-compact-coupon__top">Under $200</div>
+        <div class="clm-compact-coupon__off">8% OFF</div>
+        <div class="clm-compact-coupon__code">CODE: <strong>CLM08</strong></div>
+      </div>
+      <button
+        id="btn-clm08"
+        type="button"
+        onclick="copyAndApply('CLM08', 'btn-clm08')"
+        class="clm-compact-coupon__btn"
+      >
+        COPY
+      </button>
+    </div>
+
+    <div class="clm-compact-coupon">
+      <div class="clm-compact-coupon__info">
+        <div class="clm-compact-coupon__top">Over $200</div>
+        <div class="clm-compact-coupon__off">12% OFF</div>
+        <div class="clm-compact-coupon__code">CODE: <strong>CLM12</strong></div>
+      </div>
+      <button
+        id="btn-clm12"
+        type="button"
+        onclick="copyAndApply('CLM12', 'btn-clm12')"
+        class="clm-compact-coupon__btn"
+      >
+        COPY
+      </button>
+    </div>
+
+    <div class="clm-compact-coupon">
+      <div class="clm-compact-coupon__info">
+        <div class="clm-compact-coupon__top">Over $400</div>
+        <div class="clm-compact-coupon__off">15% OFF</div>
+        <div class="clm-compact-coupon__code">CODE: <strong>CLM15</strong></div>
+      </div>
+      <button
+        id="btn-clm15"
+        type="button"
+        onclick="copyAndApply('CLM15', 'btn-clm15')"
+        class="clm-compact-coupon__btn"
+      >
+        COPY
+      </button>
+    </div>
+  </div>
+{%- else -%}
+  <div class="clm-single-coupon">
+    <div class="clm-single-coupon__left">
+      <div class="clm-single-coupon__top">Limited Offer</div>
+      <div class="clm-single-coupon__main">
+        <span class="clm-single-coupon__off">20% OFF</span>
+        <span class="clm-single-coupon__code">CODE: <strong>{{ memorial_discount_code }}</strong></span>
+      </div>
+    </div>
+
+    <button
+      id="btn-{{ memorial_discount_code | downcase }}"
+      type="button"
+      onclick="copyAndApply('{{ memorial_discount_code }}', 'btn-{{ memorial_discount_code | downcase }}')"
+      class="clm-single-coupon__btn"
+    >
+      COPY
+    </button>
+  </div>
+{%- endif -%}
+<style>
+  .clm-compact-coupons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(128px, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .clm-compact-coupon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 118px;
+    padding: 11px 12px;
+    background: #f9f3ea;
+    border: 1.5px dashed #d4b896;
+    border-radius: 12px;
+  }
+
+  .clm-compact-coupon__info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .clm-compact-coupon__top {
+    margin-bottom: 4px;
+    font-size: 13px;
+    line-height: 1.1;
+    color: #666666;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .clm-compact-coupon__off {
+    margin-bottom: 7px;
+    font-size: 22px;
+    line-height: 0.95;
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .clm-compact-coupon__code {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    padding: 4px 9px;
+    border: 1.2px solid #c8a97a;
+    border-radius: 999px;
+    color: #5a3e1b;
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .clm-compact-coupon__code strong {
+    margin-left: 4px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .clm-compact-coupon__btn {
+    width: 100%;
+    min-height: 34px;
+    padding: 8px 10px;
+    background: #c0392b;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+
+  .clm-compact-coupon__btn:hover {
+    background: #a93226;
+    transform: translateY(-1px);
+  }
+
+  .clm-compact-coupon__btn:focus-visible {
+    outline: 2px solid #c0392b;
+    outline-offset: 2px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .clm-compact-coupons {
+      max-width: 500px;
+      gap: 8px;
+    }
+
+    .clm-compact-coupon {
+      min-height: 108px;
+      padding: 10px 11px;
+    }
+
+    .clm-compact-coupon__top {
+      font-size: 12px;
+    }
+
+    .clm-compact-coupon__off {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .clm-compact-coupon__btn {
+      min-height: 32px;
+      font-size: 11px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .clm-compact-coupons {
+      max-width: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .clm-compact-coupon {
+      min-height: 112px;
+      padding: 11px 12px;
+      border-radius: 12px;
+    }
+
+    .clm-compact-coupon__top {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .clm-compact-coupon__off {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .clm-compact-coupon__code {
+      font-size: 10.5px;
+      padding: 4px 9px;
+    }
+
+    .clm-compact-coupon__btn {
+      min-height: 34px;
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .clm-compact-coupons {
+      gap: 8px;
+    }
+
+    .clm-compact-coupon {
+      padding: 9px 10px;
+      min-height: 106px;
+    }
+
+    .clm-compact-coupon__top {
+      font-size: 12px;
+    }
+
+    .clm-compact-coupon__off {
+      font-size: 20px;
+    }
+
+    .clm-compact-coupon__code {
+      font-size: 10px;
+      padding: 3px 7px;
+    }
+
+    .clm-compact-coupon__btn {
+      min-height: 32px;
+      font-size: 11px;
+    }
+  }
+  .clm-single-coupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  min-height: 82px;
+  padding: 12px 16px;
+  background: #f9f3ea;
+  border: 1.5px dashed #d4b896;
+  border-radius: 14px;
+}
+
+.clm-single-coupon__left {
+  min-width: 0;
+  flex: 1;
+}
+
+.clm-single-coupon__top {
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #666666;
+  font-weight: 500;
+}
+
+.clm-single-coupon__main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.clm-single-coupon__off {
+  font-size: 24px;
+  line-height: 1;
+  color: #1a1a1a;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.clm-single-coupon__code {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1.2px solid #c8a97a;
+  border-radius: 999px;
+  color: #5a3e1b;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.clm-single-coupon__code strong {
+  margin-left: 4px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.clm-single-coupon__btn {
+  flex: 0 0 auto;
+  min-width: 86px;
+  min-height: 40px;
+  padding: 9px 18px;
+  background: #c0392b;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.clm-single-coupon__btn:hover {
+  background: #a93226;
+  transform: translateY(-1px);
+}
+
+.clm-single-coupon__btn:focus-visible {
+  outline: 2px solid #c0392b;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 749px) {
+  .clm-single-coupon {
+    max-width: none;
+    min-height: 78px;
+    padding: 11px 14px;
+  }
+
+  .clm-single-coupon__off {
+    font-size: 22px;
+  }
+
+  .clm-single-coupon__btn {
+    min-width: 78px;
+    min-height: 38px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .clm-single-coupon {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .clm-single-coupon__main {
+    gap: 7px;
+  }
+
+  .clm-single-coupon__off {
+    font-size: 20px;
+  }
+
+  .clm-single-coupon__code {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .clm-single-coupon__btn {
+    min-width: 70px;
+    min-height: 34px;
+    padding: 7px 13px;
+    font-size: 11px;
+  }
+}
+</style>
             </div>
+
+            <script>
+            if (!window.copyAndApplyDefined) {
+              window.copyAndApplyDefined = true;
+              window.copyAndApply = function(code, btnId) {
+                navigator.clipboard.writeText(code).catch(function() {
+                  var t = document.createElement('textarea');
+                  t.value = code;
+                  document.body.appendChild(t);
+                  t.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(t);
+                });
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = '/discount/' + code;
+                document.body.appendChild(iframe);
+                setTimeout(function() { document.body.removeChild(iframe); }, 3000);
+                var btn = document.getElementById(btnId);
+                btn.innerText = '✓ Copied!';
+                btn.style.background = '#27ae60';
+                setTimeout(function() {
+                  btn.innerText = 'COPY';
+                  btn.style.background = '#c0392b';
+                }, 2000);
+              }
+            }
+            </script>
           {%- endif -%}
+            {%- endunless -%}
         {%- when 'payment_info' -%}
           <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
             {%- render 'product-payment-info', block: block -%}

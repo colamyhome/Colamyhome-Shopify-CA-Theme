@@ -2254,6 +2254,65 @@
     }
   },
   "sections": {
+    "product_pairing": {
+      "name": "Association de produits",
+      "headers": {
+        "content": "Contenu",
+        "bundle": "Produits de l’ensemble",
+        "discount": "Réduction",
+        "scenes": "Scènes de combinaison",
+        "layout": "Mise en page"
+      },
+      "content": {
+        "heading": "Titre",
+        "subtitle": "Sous-titre sur ordinateur"
+      },
+      "bundle": {
+        "table_product_1": "Produit table 1",
+        "table_product_1_alias": "Alias du produit table 1",
+        "table_product_1_variant": "Variante du produit table 1",
+        "table_product_1_variant_info": "Saisissez le titre exact de la variante ou la valeur d’option utilisée pour cet ensemble.",
+        "table_product_2": "Produit table 2",
+        "table_product_2_alias": "Alias du produit table 2",
+        "table_product_2_variant": "Variante du produit table 2",
+        "table_product_2_variant_info": "Saisissez le titre exact de la variante ou la valeur d’option utilisée pour cet ensemble.",
+        "chair_product_1": "Produit chaise 1",
+        "chair_product_1_alias": "Alias du produit chaise 1",
+        "chair_product_1_variant": "Variante du produit chaise 1",
+        "chair_product_1_variant_info": "Saisissez le titre exact de la variante ou la valeur d’option utilisée pour cet ensemble.",
+        "chair_product_2": "Produit chaise 2",
+        "chair_product_2_alias": "Alias du produit chaise 2",
+        "chair_product_2_variant": "Variante du produit chaise 2",
+        "chair_product_2_variant_info": "Saisissez le titre exact de la variante ou la valeur d’option utilisée pour cet ensemble.",
+        "combination_product_t1_c1": "Produit combiné Table 1 + Chaise 1",
+        "combination_product_t1_c2": "Produit combiné Table 1 + Chaise 2",
+        "combination_product_t2_c1": "Produit combiné Table 2 + Chaise 1",
+        "combination_product_t2_c2": "Produit combiné Table 2 + Chaise 2"
+      },
+      "discount": {
+        "code": "Code de réduction",
+        "code_info": "Appliqué automatiquement après l’ajout de l’ensemble au panier.",
+        "percentage": "Pourcentage de réduction affiché",
+        "percentage_info": "Contrôle le prix affiché. Configurez le code Shopify avec le même pourcentage et les mêmes conditions.",
+        "coupon_label": "Texte affiché du coupon",
+        "coupon_label_info": "Texte affiché à côté de la case du coupon dans la zone de prix."
+      },
+      "scenes": {
+        "scene_t1_c1_s4": "Table 1 + Chaise 1 + Ensemble de 4",
+        "scene_t1_c1_s6": "Table 1 + Chaise 1 + Ensemble de 6",
+        "scene_t1_c2_s4": "Table 1 + Chaise 2 + Ensemble de 4",
+        "scene_t1_c2_s6": "Table 1 + Chaise 2 + Ensemble de 6",
+        "scene_t2_c1_s4": "Table 2 + Chaise 1 + Ensemble de 4",
+        "scene_t2_c1_s6": "Table 2 + Chaise 1 + Ensemble de 6",
+        "scene_t2_c2_s4": "Table 2 + Chaise 2 + Ensemble de 4",
+        "scene_t2_c2_s6": "Table 2 + Chaise 2 + Ensemble de 6"
+      },
+      "layout": {
+        "column_gap": "Espacement des colonnes sur ordinateur",
+        "padding_top": "Marge intérieure supérieure",
+        "padding_bottom": "Marge intérieure inférieure"
+      }
+    },
     "announcement-bar": {
       "name": "Barre d'annonce",
       "blocks": {
@@ -2660,6 +2719,9 @@
           "content": "Bas de page"
         }
       }
+    },
+    "bottom-image": {
+      "name": "Image du bas"
     },
     "top-bar": {
       "name": "Barre supérieure",
@@ -3839,6 +3901,9 @@
     "banner-with-hotspots": {
       "name": "Bannière avec points chauds"
     },
+    "hotspots-title": {
+      "name": "Hotspot banner title"
+    },
     "buttons-with-icon": {
       "name": "Boutons avec icône"
     },
@@ -4396,6 +4461,9 @@
         }
       },
       "blocks": {
+        "text_timer": {
+          "name": "Text countdown timer"
+        },
         "group_heading": {
           "name": "Rupture de groupe"
         }
@@ -4718,6 +4786,9 @@
         },
         "text_heading_spacing": {
           "label": "Espacement entre le texte et le titre"
+        },
+        "enable_translucent_glass": {
+          "label": "Activer l’effet verre dépoli translucide"
         }
       }
     },
@@ -4750,7 +4821,7 @@
       "name": "Images superposées avec texte"
     },
     "scrollspy-nav": {
-      "name": "Navigation Scrollspy",
+      "name": "Scrollspy nav no Anchor",
       "settings": {
         "tab_settings": {
           "content": "Paramètres des onglets"
@@ -4833,7 +4904,7 @@
         }
       },
       "presets": {
-        "name": "Navigation Scrollspy"
+        "name": "Scrollspy nav no Anchor"
       }
     }
   }

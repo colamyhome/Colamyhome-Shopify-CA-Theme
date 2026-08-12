@@ -1,5 +1,5 @@
 {% liquid
-  assign money_format = shop.money_format
+  assign money_format = shop.money_format | strip_html
   if settings.currency_code_enabled
     assign money_format = shop.money_with_currency_format | strip_html
   endif

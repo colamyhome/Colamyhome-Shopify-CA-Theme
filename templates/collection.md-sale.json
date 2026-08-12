@@ -61,8 +61,8 @@
           "type": "slide",
           "settings": {
             "color_scheme": "",
-            "background": "shopify://shop_images/memorial_day-27.jpg",
-            "background_mobile": "shopify://shop_images/memorial_day-28.jpg",
+            "background": "shopify://shop_images/wu-27.png",
+            "background_mobile": "shopify://shop_images/wu-28.png",
             "image_overlay_opacity": 0,
             "content_position": "middle-center",
             "text_alignment": "center",

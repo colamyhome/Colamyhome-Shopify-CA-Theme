@@ -35,7 +35,11 @@
     assign pcard_image_ratio = settings.pcard_image_ratio | default: '1'
   endif
 -%}
-<lookbook-card-wrapper class="lbcard relative h-full block">
+<lookbook-card-wrapper
+  class="lbcard relative h-full block"
+  data-colamy-lookbook-id="{{ block_id | escape }}"
+  data-colamy-lookbook-products="{%- if product_list != blank -%}{%- for prod in product_list -%}{{ prod.handle | escape }}{% unless forloop.last %},{% endunless %}{%- endfor -%}{%- endif -%}"
+>
   <div
     class="lbcard__media h-full{% unless image != blank %} bg-none{% endunless %} blocks-radius"
     style="--aspect-ratio:{{ image_ratio }};"

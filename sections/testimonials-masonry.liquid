@@ -44,6 +44,11 @@
   if section.blocks.size > columns_desktop
     assign enable_desktop_swipe = true
   endif
+
+  assign align_products_to_longest_content = false
+  if template.suffix == 'back-to-school'
+    assign align_products_to_longest_content = true
+  endif
 %}
 
 {% style %}
@@ -88,7 +93,7 @@
   divider_width: section.settings.divider_width
 %}
 
-<div class="section section-{{ section.id }} section--padding testimonials-masonry color-{{ section.settings.color_scheme }}">
+<div class="section section-{{ section.id }} section--padding testimonials-masonry{% if align_products_to_longest_content %} testimonials-masonry--align-products{% endif %} color-{{ section.settings.color_scheme }}">
   <div class="section__container page-width page-width--{{ section.settings.container }}">
     {%- unless header_empty -%}
       <div class="section__header s__header rich-text rich-text--tight md:text-{{ header_alignment }} text-{{ header_alignment_mobile }} flex flex-col items-{{ header_alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }} md:items-center{% unless header_alignment == 'center' %} md:flex-row{{ header_alignment | replace: 'left','' | replace: 'right','-reverse' }} gap-x-4{% endunless %}">

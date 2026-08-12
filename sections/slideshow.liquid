@@ -37,6 +37,145 @@
   #shopify-section-{{ section.id }} .page-width--full {
     --page-padding: 0;
   }
+
+  {% if template.suffix == 'back-to-school' %}
+    {% if section.id contains 'slideshow_wpqrKC' or section.id contains 'slideshow_Ei6BDX' %}
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__content {
+        --back-to-school-content-padding: 1.6rem;
+        padding-inline-start: var(--back-to-school-content-padding);
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__title,
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__description {
+        font-weight: 500;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary:not(:hover) {
+        background-color: #ffffff;
+        border-color: #ffffff;
+        color: #1c1c1c;
+        transition: background-color 0s;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary:hover {
+        background-color: transparent;
+        border-color: #ffffff;
+        color: #ffffff;
+        transition: background-color 0s;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary::before {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary:not(:hover)::before {
+        transition: none;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary:hover .btn__text {
+        color: #ffffff;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary.is-leaving,
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary.is-leaving .btn__text {
+        background-color: transparent;
+        color: #1c1c1c;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary.is-leaving::before {
+        transition: none;
+        width: 0;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary.is-leaving::after {
+        position: absolute;
+        content: "";
+        width: 0;
+        inset-block: -0.1rem;
+        inset-inline-end: -0.1rem;
+        background-color: #ffffff;
+        border-radius: inherit;
+        transition: width 0.4s ease;
+        z-index: 0;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary.is-leaving.is-leaving-active::after {
+        width: calc(100% + var(--buttons-border-width, 0px));
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__title-break {
+        display: block;
+      }
+
+      @media (min-width: 1200px) {
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__content {
+          --back-to-school-content-padding: 5rem;
+        }
+      }
+
+      @media (min-width: 1536px) {
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__content {
+          --back-to-school-content-padding: 8rem;
+        }
+      }
+
+      {% if section.id contains 'slideshow_wpqrKC' %}
+        @media (max-width: 767.98px) {
+          #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__text {
+            position: static;
+          }
+
+          #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons {
+            position: absolute;
+            inset-inline-start: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+          }
+        }
+      {% endif %}
+    {% endif %}
+
+    {% if section.id contains 'slideshow_wpqrKC' or section.id contains 'slideshow_Ei6BDX' %}
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__subtitle {
+        font-size: 16px;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__title {
+        font-size: 48px;
+      }
+
+      #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__description {
+        font-size: 28px;
+      }
+
+      @media (max-width: 767.98px) {
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__content {
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__text {
+          width: 100%;
+          text-align: center;
+        }
+
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__subtitle {
+          font-size: 14px;
+          font-weight: 300;
+        }
+
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__title {
+          font-size: 28px;
+          font-weight: 500;
+        }
+
+        #shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__description {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    {% endif %}
+  {% endif %}
 {% endstyle %}
 
 {{ 'section-slideshow.css' | asset_url | stylesheet_tag: preload: true }}
@@ -212,6 +351,14 @@
                   {%- assign animate_delay = animate_delay | plus: 50 -%}
                 {%- endunless -%}
                 {%- unless block.settings.title == blank -%}
+                  {%- liquid
+                    assign slideshow_title = block.settings.title
+                    if template.suffix == 'back-to-school' and section.id contains 'slideshow_wpqrKC' and forloop.first
+                      assign slideshow_title = slideshow_title | replace: 'for ', 'for<span class="slideshow__title-break"></span>'
+                    elsif template.suffix == 'back-to-school' and section.id contains 'slideshow_Ei6BDX' and forloop.first
+                      assign slideshow_title = slideshow_title | replace: 'Better ', 'Better<span class="slideshow__title-break"></span>'
+                    endif
+                  -%}
                   <h2 class="slideshow__title {{ block.settings.heading_size }} rich-text__heading">
                     <motion-element
                       data-motion="fade-up"
@@ -221,7 +368,7 @@
                       class="block"
                     >
                       {% render 'highlight-text',
-                        hl_text: block.settings.title,
+                        hl_text: slideshow_title,
                         hl_style: block.settings.highlight_style,
                         hl_font_style: block.settings.highlight_font_style,
                         hl_style_color: block.settings.highlight_style_color,
@@ -289,6 +436,37 @@
     {%- endif -%}
   </slideshow-component>
 </div>
+
+{% if template.suffix == 'back-to-school' %}
+  {% if section.id contains 'slideshow_wpqrKC' or section.id contains 'slideshow_Ei6BDX' %}
+    <script>
+      (() => {
+        const button = document.querySelector('#shopify-section-{{ section.id }} .swiper-slide:first-child .slideshow__buttons .btn--primary');
+        if (!button || button.dataset.backToSchoolSweepReady === 'true') return;
+
+        button.dataset.backToSchoolSweepReady = 'true';
+        let leaveTimer;
+        let leaveFrame;
+
+        button.addEventListener('pointerenter', () => {
+          window.clearTimeout(leaveTimer);
+          window.cancelAnimationFrame(leaveFrame);
+          button.classList.remove('is-leaving', 'is-leaving-active');
+        });
+
+        button.addEventListener('pointerleave', () => {
+          button.classList.add('is-leaving');
+          leaveFrame = window.requestAnimationFrame(() => {
+            leaveFrame = window.requestAnimationFrame(() => {
+              button.classList.add('is-leaving-active');
+              leaveTimer = window.setTimeout(() => button.classList.remove('is-leaving', 'is-leaving-active'), 400);
+            });
+          });
+        });
+      })();
+    </script>
+  {% endif %}
+{% endif %}
 
 {% schema %}
 {

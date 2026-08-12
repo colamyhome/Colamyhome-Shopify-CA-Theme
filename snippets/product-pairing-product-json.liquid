@@ -1,0 +1,34 @@
+{%- liquid
+  assign pairing_display_title = display_title | default: product.title
+  assign pairing_product_image = product.featured_media.preview_image | default: product.featured_image
+-%}
+{%- if product == blank -%}
+  null
+{%- else -%}
+  {
+    "id": {{ product.id | json }},
+    "title": {{ product.title | json }},
+    "display_title": {{ pairing_display_title | json }},
+    "url": {{ product.url | json }},
+    "available": {{ product.available | json }},
+    "options": {{ product.options | json }},
+    "featured_image": {% if pairing_product_image != blank %}{ "src": {{ pairing_product_image | image_url: width: 900 | json }} }{% else %}null{% endif %},
+    "variants": [
+      {%- for variant in product.variants -%}
+        {%- assign pairing_variant_image = variant.featured_media.preview_image | default: variant.featured_image -%}
+        {
+          "id": {{ variant.id | json }},
+          "title": {{ variant.title | json }},
+          "available": {{ variant.available | json }},
+          "price": {{ variant.price | json }},
+          "compare_at_price": {{ variant.compare_at_price | json }},
+          "options": {{ variant.options | json }},
+          "inventory_management": {{ variant.inventory_management | json }},
+          "inventory_policy": {{ variant.inventory_policy | json }},
+          "inventory_quantity": {{ variant.inventory_quantity | json }},
+          "featured_image": {% if pairing_variant_image != blank %}{ "src": {{ pairing_variant_image | image_url: width: 900 | json }} }{% else %}null{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+{%- endif -%}

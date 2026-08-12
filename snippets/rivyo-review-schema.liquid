@@ -1,0 +1,24 @@
+{%- liquid
+  assign rating_data = product.metafields.reviews.rating.value
+  assign rating_value = rating_data.rating
+  assign rating_count = product.metafields.reviews.rating_count.value | default: 0 | plus: 0
+-%}
+
+{%- if request.page_type == 'product' and rating_count > 0 and rating_value != blank -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": {{ canonical_url | append: '#product' | json }},
+    "name": {{ product.title | json }},
+    "url": {{ canonical_url | json }},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ rating_value | plus: 0 | json }},
+      "ratingCount": {{ rating_count | json }},
+      "bestRating": {{ rating_data.scale_max | default: 5 | plus: 0 | json }},
+      "worstRating": {{ rating_data.scale_min | default: 1 | plus: 0 | json }}
+    }
+  }
+  </script>
+{%- endif -%}

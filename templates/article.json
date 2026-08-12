@@ -12,7 +12,10 @@
     "breadcrumbs_JgqcwU": {
       "type": "breadcrumbs",
       "settings": {
-        "text_alignment": "start"
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
       }
     },
     "main": {
@@ -50,6 +53,7 @@
         "navigation_dyfBRC"
       ],
       "settings": {
+        "color_scheme": "",
         "show_related_posts": true,
         "related_heading_size": "h2",
         "column_gap": "medium",
@@ -107,6 +111,7 @@
         "text_Y9tbNV",
         "text_haEh33"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",

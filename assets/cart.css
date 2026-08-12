@@ -131,6 +131,121 @@
   width: 150px;
 }
 
+.atlas-delivery-confirmation {
+  --checkbox-size: 3.6rem;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: 1.8rem;
+  margin-block-start: 2rem;
+  padding: 2.4rem;
+}
+.atlas-delivery-confirmation__label {
+  display: grid;
+  width: 100%;
+  flex: 1 0 0;
+  min-width: 0;
+  gap: 0.5rem;
+  line-height: 1.35;
+}
+.atlas-delivery-confirmation__message {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.atlas-delivery-confirmation__message span[aria-hidden='true'] {
+  color: #e04b40;
+}
+.atlas-delivery-confirmation__help {
+  color: rgb(var(--color-foreground), 0.65);
+  font-size: 2rem;
+}
+.cart-drawer .atlas-delivery-confirmation {
+  --checkbox-size: 1.8rem;
+  gap: 1rem;
+  margin-block-start: 0;
+  padding: 0;
+}
+.cart-drawer .atlas-delivery-confirmation__message,
+.cart-drawer .atlas-delivery-confirmation__help {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.cart .atlas-delivery-confirmation {
+  --checkbox-size: 1.8rem;
+  gap: var(--atlas-delivery-confirmation-gap, 1rem);
+}
+.cart .atlas-delivery-confirmation__message,
+.cart .atlas-delivery-confirmation__help {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.cart tbody tr.atlas-delivery-confirmation-cart-row {
+  border-block-start: 0;
+}
+.cart tbody tr.atlas-delivery-confirmation-cart-row td {
+  padding-block: 0 2rem;
+  padding-inline: 0;
+}
+.cart .atlas-delivery-confirmation-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.cart .atlas-delivery-confirmation-row .atlas-delivery-confirmation {
+  width: auto;
+  max-width: none;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+.cart .atlas-delivery-confirmation-row [data-atlas-delivery-offer] {
+  justify-self: start;
+  margin-inline-start: 0;
+}
+@media (max-width: 1049.98px) {
+  .cart .atlas-delivery-confirmation-row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.2rem;
+  }
+  .cart .atlas-delivery-confirmation-row [data-atlas-delivery-offer] {
+    grid-column: 1;
+    grid-row: 2;
+    margin-inline-start: var(--atlas-delivery-offer-offset, 0px);
+  }
+}
+.cart [data-atlas-duplicate-offer] {
+  display: none !important;
+}
+.cart-drawer .atlas-delivery-confirmation-drawer-row {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  margin-block-start: 1.2rem;
+}
+@media (min-width: 768px) {
+  .cart-drawer .atlas-delivery-confirmation__message {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767.98px) {
+  .atlas-delivery-confirmation {
+    --checkbox-size: 2.4rem;
+    gap: 1.2rem;
+    margin-block-start: 1.6rem;
+    padding: 1.6rem;
+  }
+  .atlas-delivery-confirmation__message {
+    font-size: 1.6rem;
+  }
+  .atlas-delivery-confirmation__help {
+    font-size: 1.4rem;
+  }
+}
 .cart .free-shipping-goal .progress-bar::before,
 .cart-drawer[active] .free-shipping-goal .progress-bar::before {
   --scale-x: var(--percent);

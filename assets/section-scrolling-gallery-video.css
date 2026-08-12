@@ -1,0 +1,87 @@
+.scrolling-gallery-video .scrolling-gallery-video__list {
+  --video-width: 20vw;
+  --video-width-tablet: 40vw;
+  --video-width-mobile: 84vw;
+  margin: 0;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__item-wrapper {
+  align-self: center;
+  display: block;
+  max-width: 100%;
+  width: var(--video-width-mobile);
+  height: auto;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__media {
+  overflow: hidden;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__media video {
+  display: block;
+  object-fit: cover;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__item-content {
+  min-height: 6.4rem;
+  padding: 1.8rem 1rem 2.2rem;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__card-title {
+  color: #1c1c1c;
+  font-family: var(--font-heading-family);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__creator-name {
+  color: #767676;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper {
+  padding: 0 0.6rem;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper .scrolling-gallery-video__button {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper .scrolling-gallery-video__button.btn--primary,
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper .scrolling-gallery-video__button.btn--secondary {
+  border-color: var(--scrolling-gallery-video-button-background);
+  color: var(--scrolling-gallery-video-button-text);
+  background-color: var(--scrolling-gallery-video-button-background);
+}
+
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper .scrolling-gallery-video__button.btn--primary:hover,
+.scrolling-gallery-video .scrolling-gallery-video__button-wrapper .scrolling-gallery-video__button.btn--secondary:hover {
+  border-color: var(--scrolling-gallery-video-button-background);
+  color: #1c1c1c;
+  background-color: var(--scrolling-gallery-video-button-background);
+}
+
+@media (min-width: 768px) {
+  .scrolling-gallery-video .scrolling-gallery-video__item-wrapper {
+    width: var(--video-width-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrolling-gallery-video .scrolling-gallery-video__item-wrapper {
+    width: var(--video-width);
+  }
+}

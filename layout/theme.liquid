@@ -25,6 +25,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+    <!-- Google Site Verification for SEO  谷歌网站所有权验证 -->
+    <meta name="google-site-verification" content="mbqsWlZ13zJbL6GS-uEf0YLaTJh1i3XhX6svdtqTtC8" />
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
@@ -87,66 +89,116 @@
     {%- endif -%}
 
     {%- render 'js-variables' -%}
+    {% comment %} GA4 is initialized by colamy-analytics.js after analytics consent. {% endcomment %}
+    {% comment %}
+    <!-- gtag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EW6JVW298J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('js', new Date());
+      gtag('config', 'G-EW6JVW298J');
+    </script>
+    {% endcomment %}
+    <!-- Analytics scripts 埋点代码 -->
+    <script>
+      <!-- Global variables for analytics scripts, used to identify page type and template 全局track -->
+      window.ColamyPage = {
+        type: {{ request.page_type | json }},
+        template: {{ template.name | json }},
+        suffix: {{ template.suffix | json }},
+      };
+      window.ColamyAnalyticsConfig = {
+        debug: false,
+        collectorEndpoint: {{ shop.metafields.custom.analytics_collector_endpoint.value | json }},
+        collectorWriteKey: {{ shop.metafields.custom.analytics_collector_write_key.value | json }},
+        ga4MeasurementId: 'G-EW6JVW298J',
+        market: {{ localization.country.iso_code | json }},
+        // Add the ISO country codes where direct Analytics tracking is permitted, for example: ['US', 'CA'].
+        directAnalyticsMarkets: ['US', 'CA', 'GB', 'AU', 'NZ', 'DE', 'FR', 'IT', 'ES', 'NL', 'SE', 'NO', 'DK'],
+        destinations: {
+          collector: false,
+          ga4: true,
+          meta: false,
+        },
+      };
+    </script>
+    <script src="{{ 'colamy-analytics.js' | asset_url }}" defer="defer"></script>
+    {%- if request.page_type == 'index' -%}
+      <script src="{{ 'colamyhome-index-analytics.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- if template.suffix == 'brand-campaign' -%}
+      <script src="{{ 'colamy-brand-campaign-alytics.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- if template.suffix == 'summer-save' -%}
+      <script src="{{ 'colamy-summer-save-analytics.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
 
     {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
     {{ shop.metafields.foxtheme.code_head.value }}
     {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
-    {% if customer %}
-      <!-- Customer is logged in -->
-      <script type="text/javascript" src="https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js"></script>
-      <script type="text/javascript">
-        var customerEmail = '{{ customer.email | escape }}';
-        if (typeof manalytics === 'function') {
-          manalytics();
-          manalytics.suppress(customerEmail);
-        }
-      </script>
+    
+    {% comment %} 下面是购物车挽回邮件相关代码{% endcomment %}
 
-    {% elsif cart.item_count > 0 %}
-      <!-- Customer is NOT logged in but cart has items -->
-      <script>
-        (function () {
-          var s = document.createElement('script');
-          s.src = 'https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=cart&standalone=true';
-          s.async = true;
-          s.onload = function () {
-            if (typeof window.manalytics === 'function') {
-              window.manalytics();
+{% if customer %}
+  <!-- Customer is logged in -->
+  <script type="text/javascript"  async src="https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js"></script>
+  <script type="text/javascript">
+    var customerEmail = "{{ customer.email | escape }}";
+    if (typeof manalytics === 'function') {
+      manalytics();
+      manalytics.suppress(customerEmail);
+    }
+  </script>
 
-              if (typeof window.manalytics.addedToCart === 'function') {
-                window.manalytics.addedToCart();
-              }
-            } else if (typeof manalytics === 'function') {
-              manalytics();
+{% elsif cart.item_count > 0 %}
+  <!-- Customer is NOT logged in but cart has items -->
+  <script>
+    (function () {
+      var s = document.createElement("script");
+      s.src = "https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=cart&standalone=true";
+      s.async = true;
+      s.onload = function () {
+        if (typeof window.manalytics === "function") {
+          window.manalytics();
 
-              if (typeof manalytics.addedToCart === 'function') {
-                manalytics.addedToCart();
-              }
-            }
-          };
-          document.head.appendChild(s);
-        })();
-      </script>
-
-    {% else %}
-      <!-- Track anonymous visitor page views -->
-      <script>
-        (function () {
-          const KEY = 'visitor_page_views';
-          let views = parseInt(localStorage.getItem(KEY) || '0', 10);
-          views++;
-          localStorage.setItem(KEY, views);
-
-          // If visited 3+ pages, load visitor script
-          if (views >= 3) {
-            var s = document.createElement('script');
-            s.src = 'https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=visitor';
-            s.async = true;
-            document.head.appendChild(s);
+          if (typeof window.manalytics.addedToCart === "function") {
+            window.manalytics.addedToCart();
           }
-        })();
-      </script>
-    {% endif %}
+        } else if (typeof manalytics === "function") {
+          manalytics();
+
+          if (typeof manalytics.addedToCart === "function") {
+            manalytics.addedToCart();
+          }
+        }
+      };
+      document.head.appendChild(s);
+    })();
+  </script>
+
+{% else %}
+  <!-- Track anonymous visitor page views -->
+  <script>
+    (function() {
+      const KEY = 'visitor_page_views';
+      let views = parseInt(localStorage.getItem(KEY) || '0', 10);
+      views++;
+      localStorage.setItem(KEY, views);
+
+      // If visited 3+ pages, load visitor script
+      if (views >= 3) {
+        var s = document.createElement('script');
+        s.src = "https://jsma.s3.us-west-2.amazonaws.com/3DcVjZg/ma.js?tag=visitor";
+        s.async = true;
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
+{% endif %}
+
+    {% render 'merchant-organization-schema' %}
   </head>
 
   <body
@@ -193,7 +245,10 @@
     {%- endif -%}
 
     <!-- Start of sky-linetechsupport Zendesk Widget script -->
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2a3377b6-cbbd-475c-b8a9-4f81f9fe7bc6"></script>
+    <script
+      id="ze-snippet" async
+      src="https://static.zdassets.com/ekr/snippet.js?key=2a3377b6-cbbd-475c-b8a9-4f81f9fe7bc6"
+    ></script>
     <!-- End of sky-linetechsupport Zendesk Widget script -->
     <script>
       (function() {

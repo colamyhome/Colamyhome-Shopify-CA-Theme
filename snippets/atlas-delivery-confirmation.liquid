@@ -1,0 +1,25 @@
+{%- liquid
+  assign atlas_delivery_confirmation_id = 'AtlasDeliveryConfirmation-' | append: section_id | append: '-' | append: item_key
+  assign atlas_delivery_confirmed = false
+  if cart.attributes.atlas_delivery_access_confirmed == 'true'
+    assign atlas_delivery_confirmed = true
+  endif
+-%}
+
+<cart-delivery-confirmation class="atlas-delivery-confirmation" data-atlas-delivery-confirmation>
+  <input
+    id="{{ atlas_delivery_confirmation_id }}"
+    type="checkbox"
+    data-atlas-delivery-confirmation-input
+    {% if atlas_delivery_confirmed %}
+      checked
+    {% endif %}
+  >
+  <label for="{{ atlas_delivery_confirmation_id }}" class="atlas-delivery-confirmation__label">
+    <span class="atlas-delivery-confirmation__message">
+      I confirm the package can fit through my door, stairs, or elevator <span aria-hidden="true">*</span>
+      <span class="visually-hidden">Required</span>
+    </span>
+    <span class="atlas-delivery-confirmation__help">Need help? Contact us at hello@colamyhome.com</span>
+  </label>
+</cart-delivery-confirmation>

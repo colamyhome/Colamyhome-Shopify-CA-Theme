@@ -1,0 +1,1350 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "custom_css": [
+        "reversed-link:not(:has(.reversed-link__text)) {font-size: 14px;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-product-test-new-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": false,
+            "show_sale_badge": false,
+            "sale_badge_type": "fixed_amount"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h3",
+            "title_font_weight": "500"
+          }
+        },
+        "meta": {
+          "type": "meta",
+          "disabled": true,
+          "settings": {
+            "link_color": "#1d349a",
+            "show_vendor": false,
+            "show_product_type": false,
+            "show_sku": true,
+            "show_barcode": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "apply_coupon_checkout_Jxpdj8": {
+          "type": "apply_coupon_checkout",
+          "settings": {
+            "coupon_code": "HALO15",
+            "discount_percent": 15,
+            "minimum_variant_price": 0,
+            "apply_text": "Apply 15% off coupon",
+            "applied_text": "Coupon applied! Final Price:",
+            "removed_text": "Coupon removed",
+            "error_text": "Unable to apply coupon. Try again.",
+            "background_color": "#fbf7ef",
+            "text_color": "#2d2d2d",
+            "checkbox_color": "#222222",
+            "applied_color": "#222222"
+          }
+        },
+        "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF": {
+          "type": "shopify://apps/rivyo-reviews-loyalty/blocks/wc-product-review-badge/f1860e84-309f-40ca-a2df-188435a622f3",
+          "settings": {}
+        },
+        "summer_saving": {
+          "type": "summer_saving",
+          "disabled": true,
+          "settings": {
+            "heading": "SUMMER SAVINGS",
+            "eyebrow": "LIMITED-TIME CODES",
+            "first_coupon_code": "CLM08",
+            "second_coupon_code": "CLM12",
+            "third_coupon_code": "CLM15",
+            "copy_text": "COPY",
+            "copied_text": "Copied"
+          }
+        },
+        "rich_text_meta_nije4h": {
+          "type": "rich-text-meta",
+          "settings": {}
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body-bolder",
+            "title_size": "text-base",
+            "icon_1": "check",
+            "heading_1": "Modern",
+            "tooltip_text_1": "",
+            "icon_2": "check",
+            "heading_2": "Eco-certified",
+            "tooltip_text_2": "",
+            "icon_3": "check",
+            "heading_3": "Warranty",
+            "tooltip_text_3": ""
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "swatch_style": "standard",
+            "swatch_size": 32,
+            "button_style": "normal",
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "discount_code_yGQ6kr": {
+          "type": "discount_code",
+          "disabled": true,
+          "settings": {
+            "component_height": 80,
+            "left_background_color": "#c8a165",
+            "description_text": "",
+            "description_color": "#ffffff",
+            "description_font_size": 14,
+            "text_color": "#c8a165",
+            "right_background_color": "#f0efec",
+            "code_font_size": 12
+          }
+        },
+        "discount_code_memorial_hYxeCH": {
+          "type": "discount_code_memorial",
+          "disabled": true,
+          "settings": {
+            "background_image": "shopify://shop_images/memorial_day-21.png",
+            "mobile_background_image": "shopify://shop_images/memorial_day-mb-17.png",
+            "discount_code": "CLM08",
+            "button_top": 0,
+            "button_right": 0,
+            "button_bottom": 0,
+            "button_left": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "discount_code_memorial_eNrhQ7": {
+          "type": "discount_code_memorial",
+          "disabled": true,
+          "settings": {
+            "background_image": "shopify://shop_images/memorial_day-22.png",
+            "mobile_background_image": "shopify://shop_images/memorial_day-20-20.png",
+            "discount_code": "CLM12",
+            "button_top": 0,
+            "button_right": 0,
+            "button_bottom": 0,
+            "button_left": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "discount_code_memorial_jtnYEM": {
+          "type": "discount_code_memorial",
+          "disabled": true,
+          "settings": {
+            "background_image": "shopify://shop_images/memorial_day-23.png",
+            "mobile_background_image": "shopify://shop_images/memorial_day-mb-19.png",
+            "discount_code": "CLM15",
+            "button_top": 0,
+            "button_right": 0,
+            "button_bottom": 0,
+            "button_left": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "delivery_time": {
+          "type": "delivery_time",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/shipping.svg",
+            "text": "Free Shipping · Arrives",
+            "desktop_font_size": 16,
+            "desktop_font_weight": "300",
+            "mobile_font_size": 12,
+            "mobile_font_weight": "300"
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "3-Year Warranty",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "<p>COLAMY provides a <strong>3‑Year Warranty</strong> on all products. Within normal use, if any material or workmanship defect occurs during this period, please contact us at <a href=\"mailto:hello@colamyhome.com\" target=\"_blank\"><strong>hello@colamyhome.com</strong></a> with proof of purchase and photos/videos. *Please see our <a href=\"/pages/warranty-information\" title=\"Warranty Information\"><strong>Warranty Policy</strong></a><strong> </strong>for more details.</p>",
+            "page": "content",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "30-Day Hassle-Free Returns",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "<p>We want you to find the perfect piece to elevate your space. If you’re not completely satisfied with your purchase, you can return or exchange it within 30 days of delivery—free of charge. Please ensure the item is in like-new condition and returned with its original packaging, all accessories, and manuals.</p><p>*Please see our <a href=\"https://colamyhome.com/pages/return-refunds\"><span style=\"text-decoration:underline\"><strong>Return & Refund Policy</strong></span><span style=\"text-decoration:underline\"> </span></a>for more details.</p>",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Fast & Free Local Shipping",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "<p>COLAMY offers free delivery to your door across the U.S. — shipped from one of our 14 local warehouses near you. In‑stock items will arrive at your home in as fast as 5–7 days.</p><p>*Please see our <a href=\"/policies/shipping-policy\" target=\"_blank\" title=\"Shipping Policy\">Shipping Policy  </a>for more details.</p>",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "icon_with_text_UAYgQU": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "vertical",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "none",
+            "heading_1": "3-Year Warranty",
+            "tooltip_text_1": "<p>COLAMY provides warranty coverage that varies by product. Please refer to the specific product page for details. AETHER includes a 3-Year Warranty. If an issue arises during this period, please contact us via <strong>hello@colamyhome.com </strong>with proof of purchase and photos/videos.</p>",
+            "icon_2": "none",
+            "heading_2": "30-Day Hassle-Free Returns",
+            "tooltip_text_2": "<p>We want you to find the perfect piece to elevate your space. If you’re not completely satisfied with your purchase, you can return or exchange it within 30 days of delivery—free of charge. Please ensure the item is in like-new condition and returned with its original packaging, all accessories, and manuals.</p><p>*Please see our<a href=\"https://colamyhome.com/pages/return-refunds\"><span style=\"text-decoration:underline\">Return & Refund Policy</span></a>for more details.</p>",
+            "icon_3": "none",
+            "heading_3": "Fast & Free Local Shipping",
+            "tooltip_text_3": "<p>COLAMY offers free delivery to your door across the U.S. — shipped from one of our 14 local warehouses near you. In‑stock items will arrive at your home in as fast as 5–7 days.</p><p>*Please see our<a href=\"https://colamyhome.com/pages/shipping-policy\">Shipping Policy </a>for more details.</p>"
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "promotion_alert_L7ipQp": {
+          "type": "promotion_alert",
+          "disabled": true,
+          "settings": {
+            "text_color": "#049b6e",
+            "icon": "lightning",
+            "heading": "Limited time offer",
+            "description": "<p>Get $20 off when you spend $1,000 or more! <a href=\"/collections/all\" title=\"All products\">Learn more</a></p>"
+          }
+        },
+        "collapsible_tab_GwqQ69": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "<p>{{ product.description }}</p>",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "collapsible_tab_MiV9g9": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Dimensions",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "accordion_row_YtkgGG": {
+          "type": "accordion_row",
+          "settings": {
+            "heading": "Specification",
+            "heading_size": "h4",
+            "icon": "none",
+            "json_metafield_namespace": "custom",
+            "json_metafield_key": "product_specification",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "accordion_row_me3c7B": {
+          "type": "accordion_row",
+          "settings": {
+            "heading": "Material & Care",
+            "heading_size": "h4",
+            "icon": "none",
+            "json_metafield_namespace": "custom",
+            "json_metafield_key": "material_care",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "collapsible_tab_kqwef7": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Collapsible row",
+            "heading_size": "h4",
+            "icon": "check",
+            "content": "",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": false
+          }
+        },
+        "payment_info": {
+          "type": "payment_info",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-info",
+            "heading": "Payment & Security",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "description": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.</p>",
+            "show_payment_icons": true,
+            "show_below_product_media": true
+          }
+        },
+        "divider_pPz3Kw": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "show_below_product_media": false
+          }
+        },
+        "social_sharing": {
+          "type": "social_sharing",
+          "disabled": true,
+          "settings": {}
+        },
+        "sticky_atc_bar_7HgNgP": {
+          "type": "sticky-atc-bar",
+          "settings": {
+            "visibility": "all",
+            "style": "standard",
+            "container": "full",
+            "show_atc_button": true,
+            "show_dynamic_checkout_buttons": false,
+            "show_quantity": false
+          }
+        },
+        "buy_bar_93Xnwz": {
+          "type": "buy_bar",
+          "disabled": true,
+          "settings": {
+            "visibility": "all",
+            "style": "standard",
+            "container": "full",
+            "show_atc_button": true,
+            "show_dynamic_checkout_buttons": false,
+            "show_quantity": false,
+            "buy_now_button_color": "#ffffff",
+            "add_to_cart_button_color": "#1c1c1c"
+          }
+        },
+        "payment_info_CMzCrq": {
+          "type": "payment_info",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-1",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "description": "",
+            "show_payment_icons": true,
+            "show_below_product_media": false
+          }
+        },
+        "frequently_bought_app_block_346d7f": {
+          "type": "shopify://apps/frequently-bought/blocks/app-block/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Perfect Match With",
+            "heading_size": "h5",
+            "show_below_product_media": false,
+            "make_collapsible_row": true,
+            "icon": "none",
+            "product_list_limit": 4,
+            "layout": "horizontal-list",
+            "columns": 3,
+            "image_ratio": "4/3",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "meta",
+        "price",
+        "apply_coupon_checkout_Jxpdj8",
+        "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF",
+        "summer_saving",
+        "rich_text_meta_nije4h",
+        "icon_with_text",
+        "inventory",
+        "variant_picker",
+        "discount_code_yGQ6kr",
+        "discount_code_memorial_hYxeCH",
+        "discount_code_memorial_eNrhQ7",
+        "discount_code_memorial_jtnYEM",
+        "buy_buttons",
+        "delivery_time",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "description",
+        "icon_with_text_UAYgQU",
+        "pickup_availability",
+        "promotion_alert_L7ipQp",
+        "collapsible_tab_GwqQ69",
+        "collapsible_tab_MiV9g9",
+        "accordion_row_YtkgGG",
+        "accordion_row_me3c7B",
+        "collapsible_tab_kqwef7",
+        "payment_info",
+        "divider_pPz3Kw",
+        "social_sharing",
+        "sticky_atc_bar_7HgNgP",
+        "buy_bar_93Xnwz",
+        "payment_info_CMzCrq",
+        "frequently_bought_app_block_346d7f",
+        "complementary"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "use_color_scheme_in_container": false,
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "gallery_layout": "vertical-carousel",
+        "mobile_thumbnails": "show",
+        "show_image_border": false,
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "tabs_content_8rnbnj": {
+      "type": "tabs-content",
+      "blocks": {
+        "quiet_luxury_card_ihiVe9": {
+          "type": "quiet_luxury_card",
+          "settings": {
+            "navigation_title": "Made to be Loved",
+            "video_top_text": "",
+            "video_top_text_font_size": 16,
+            "video_top_text_font_weight": 500,
+            "video_top_text_alignment": "center",
+            "product_metafield_text_font_size": 14,
+            "product_metafield_text_font_weight": 300,
+            "source_product": ""
+          }
+        },
+        "tab_xGBJeM": {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Details",
+            "content": "{{ product.description }}",
+            "custom_liquid": "",
+            "page": ""
+          }
+        },
+        "dimension_aB3xh3": {
+          "type": "dimension",
+          "settings": {
+            "navigation_title": "Dimensions",
+            "source_product": ""
+          }
+        },
+        "assembly_care_3FMGyy": {
+          "type": "assembly_care",
+          "settings": {
+            "navigation_title": "Assembly Guide",
+            "source_product": "{{ product }}",
+            "assembly_care_description_font_size": 14,
+            "assembly_care_description_font_weight": 300,
+            "assembly_care_download_font_size": 16,
+            "assembly_care_download_font_weight": 500
+          }
+        },
+        "questions_answers_xMPNFy": {
+          "type": "questions_answers",
+          "settings": {
+            "navigation_title": "Questions & Answers",
+            "source_product": "{{ product }}"
+          }
+        }
+      },
+      "block_order": [
+        "quiet_luxury_card_ihiVe9",
+        "tab_xGBJeM",
+        "dimension_aB3xh3",
+        "assembly_care_3FMGyy",
+        "questions_answers_xMPNFy"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 1024px) {.tabs__panel {padding-inline: 5rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "navigation_style": "buttons",
+        "navigation_alignment": "start",
+        "padding_top": 0,
+        "padding_bottom": 30,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "scrollspy_nav_mH8fJy": {
+      "type": "scrollspy-nav-test-new-product",
+      "blocks": {
+        "quiet_luxury_card_CpDBKr": {
+          "type": "quiet_luxury_card",
+          "settings": {
+            "navigation_title": "Made to be Loved",
+            "video_row_background_color": "#f4f4f4",
+            "video_top_text": "",
+            "video_top_text_font_size": 16,
+            "video_top_text_font_weight": 500,
+            "video_top_text_alignment": "left",
+            "product_metafield_title_font_size": 16,
+            "product_metafield_title_font_weight": 500,
+            "product_metafield_text_font_size": 14,
+            "product_metafield_text_font_weight": 300,
+            "product_metafield_text_color": "#ffffff",
+            "product_metafield_text_alignment": "center",
+            "product_metafield_mobile_title_font_size": 16,
+            "product_metafield_mobile_title_font_weight": 500,
+            "product_metafield_mobile_text_font_size": 14,
+            "product_metafield_mobile_text_font_weight": 300,
+            "product_metafield_mobile_text_color": "#1c1c1c",
+            "love_it_background_color": "#f4f1ec",
+            "love_it_heading_font_size": 24,
+            "love_it_heading_font_weight": 500,
+            "love_it_item_title_font_size": 12,
+            "love_it_item_title_font_weight": 600,
+            "love_it_item_text_font_size": 11,
+            "love_it_item_text_font_weight": 300,
+            "love_it_text_alignment": "center",
+            "love_it_mobile_heading_font_size": 24,
+            "love_it_mobile_heading_font_weight": 500,
+            "love_it_mobile_item_title_font_size": 12,
+            "love_it_mobile_item_title_font_weight": 600,
+            "love_it_mobile_item_text_font_size": 11,
+            "love_it_mobile_item_text_font_weight": 300,
+            "love_it_mobile_text_alignment": "center",
+            "source_product": ""
+          }
+        },
+        "rivyo_reviews_loyalty_wc_review_section_pnHtwA": {
+          "type": "shopify://apps/rivyo-reviews-loyalty/blocks/wc-review-section/f1860e84-309f-40ca-a2df-188435a622f3",
+          "settings": {}
+        },
+        "scrolling_gallery_image_DMbmEJ": {
+          "type": "scrolling_gallery_image",
+          "disabled": true,
+          "settings": {
+            "navigation_title": "Influencer Picks",
+            "gallery_color_scheme": "scheme-1",
+            "gallery_aspect_ratio": "3/4",
+            "direction": "left",
+            "speed": 0.4,
+            "pause_on_hover": true,
+            "column_gap": "medium",
+            "gallery_video_1": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
+            "gallery_image_avatar_1": "shopify://shop_images/6.webp",
+            "gallery_image_link_1": "",
+            "gallery_social_media_1": "instagram",
+            "gallery_heading_1": "Francis",
+            "gallery_video_2": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
+            "gallery_image_avatar_2": "shopify://shop_images/5.webp",
+            "gallery_image_link_2": "",
+            "gallery_social_media_2": "instagram",
+            "gallery_heading_2": "Lawrence",
+            "gallery_image_link_3": "",
+            "gallery_social_media_3": "instagram",
+            "gallery_heading_3": "Lawrence",
+            "gallery_image_link_4": "",
+            "gallery_social_media_4": "instagram",
+            "gallery_heading_4": "Gallery item",
+            "gallery_image_link_5": "",
+            "gallery_social_media_5": "instagram",
+            "gallery_heading_5": "Gallery item",
+            "gallery_image_link_6": "",
+            "gallery_social_media_6": "instagram",
+            "gallery_heading_6": "Gallery item"
+          }
+        },
+        "questions_answers_epabqp": {
+          "type": "questions_answers",
+          "settings": {
+            "navigation_title": "Questions & Answers",
+            "source_product": ""
+          }
+        },
+        "assembly_care_7VtTBf": {
+          "type": "assembly_care",
+          "settings": {
+            "navigation_title": "Assembly Guide",
+            "source_product": "",
+            "assembly_care_description_font_size": 14,
+            "assembly_care_description_font_weight": 300,
+            "assembly_care_download_font_size": 16,
+            "assembly_care_download_font_weight": 500
+          }
+        },
+        "tab_MVkCV6": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "navigation_title": "Details",
+            "source_product": "",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": ""
+          }
+        },
+        "dimension_MEUBFx": {
+          "type": "dimension",
+          "disabled": true,
+          "settings": {
+            "navigation_title": "Dimensions",
+            "source_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "quiet_luxury_card_CpDBKr",
+        "rivyo_reviews_loyalty_wc_review_section_pnHtwA",
+        "scrolling_gallery_image_DMbmEJ",
+        "questions_answers_epabqp",
+        "assembly_care_7VtTBf",
+        "tab_MVkCV6",
+        "dimension_MEUBFx"
+      ],
+      "name": "t:sections.scrollspy-nav.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "nav_title_alignment": "left",
+        "nav_title_font_size": 20,
+        "nav_title_font_size_mobile": 12,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "testimonials_8JHr3L": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_dhi3Xf": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "image": "shopify://shop_images/0413-05.jpg",
+            "heading": "Testimonials",
+            "text": "<p>“I am extremely happy about both design and comfort. I am a furniture designer myself, and your product makes me happy.”</p>",
+            "author": "Stephanie L.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_D7Mq7i": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "image": "shopify://shop_images/OCM03_-03_6888ddfc-bd31-4759-9922-503735cf25d5.jpg",
+            "heading": "Testimonials",
+            "text": "<p>The story behind, sustainable production, and the risk-free feeling with the free return policy make this a great choice.</p>",
+            "author": "Rachel M.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_33tAjm": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>“High-quality furniture, crafted with passion and care, fantastic in appearance and use, reasonably priced, and excellent custome.”</p>",
+            "author": "Emily J.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_dDRMwy": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "image": "shopify://shop_images/1_def0da20-0faa-4467-a3d0-c5100906104f.jpg",
+            "heading": "Testimonials",
+            "text": "<p>The craftsmanship, eco-friendly materials, and excellent customer service truly make this product an outstanding standout.</p>",
+            "author": "Sarah T.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_dhi3Xf",
+        "testimonial_D7Mq7i",
+        "testimonial_33tAjm",
+        "testimonial_dDRMwy"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Loved by Customers</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "layout": "standard",
+        "card_color_scheme": "",
+        "card_content_color_scheme": "",
+        "card_image_ratio": "1/1",
+        "card_heading_size": "h4",
+        "card_text_size": "text-base",
+        "author_info_layout": "vertical",
+        "card_trigger_behavior": "click",
+        "show_image": true,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 30,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "scrolling_gallery_image_YpzANK": {
+      "type": "scrolling-gallery-image",
+      "blocks": {
+        "gallery_fMWep8": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/IMG_2666.jpg",
+            "video": "shopify://files/videos/视频OCM03.mp4",
+            "image_avatar": "shopify://shop_images/1.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Francis"
+          }
+        },
+        "gallery_XCr9mj": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
+            "video": "shopify://files/videos/ACF05-Sink into comfort, rise with ease ✨The COLAMY SERENE Power Lift Recliner Massage Chair is where _ad839951-0537-47f3-a19b-2eca7af2710f.mp4",
+            "image_avatar": "shopify://shop_images/2.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Glendon"
+          }
+        },
+        "gallery_EMeWfA": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
+            "video": "shopify://files/videos/ACF11-Good morning my beautiful friends 😘😘😘😘I want to share with you this very comfy chair I have .mp4",
+            "image_avatar": "shopify://shop_images/3.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Harry"
+          }
+        },
+        "gallery_Qfcwpn": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
+            "video": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
+            "image_avatar": "shopify://shop_images/4.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Jackson"
+          }
+        },
+        "gallery_9AaPcp": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
+            "video": "shopify://files/videos/XK-Si vous travaillez de longues heures assis, le confort n’est pas une option.La chaise ergonomiqu_842f3a9e-510f-4465-8703-4002aa59c6f3.mp4",
+            "image_avatar": "shopify://shop_images/5.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Kennedy"
+          }
+        },
+        "gallery_nFVMHh": {
+          "type": "gallery",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
+            "video": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
+            "image_avatar": "shopify://shop_images/6.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Lawrence"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_fMWep8",
+        "gallery_XCr9mj",
+        "gallery_EMeWfA",
+        "gallery_Qfcwpn",
+        "gallery_9AaPcp",
+        "gallery_nFVMHh"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "show_button_on_top": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "direction": "left",
+        "speed": 0.1,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "177735846788f5e691": {
+      "type": "apps",
+      "blocks": {
+        "rivyo_reviews_loyalty_wc_review_section_r9znMG": {
+          "type": "shopify://apps/rivyo-reviews-loyalty/blocks/wc-review-section/f1860e84-309f-40ca-a2df-188435a622f3",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "rivyo_reviews_loyalty_wc_review_section_r9znMG"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "testimonials_masonry_LRrBnm": {
+      "type": "testimonials-masonry",
+      "blocks": {
+        "testimonial_MMGizV": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_RNiDmH": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_nbHUmq": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_DmzAJb": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_qwqwEH": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_N4kQDN": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
+            "author": "Author's name",
+            "bio": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_MMGizV",
+        "testimonial_RNiDmH",
+        "testimonial_nbHUmq",
+        "testimonial_DmzAJb",
+        "testimonial_qwqwEH",
+        "testimonial_N4kQDN"
+      ],
+      "disabled": true,
+      "name": "t:sections.testimonials_masonry.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Testimonials",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "max_height": 0,
+        "card_color_scheme": "",
+        "card_image_ratio": "3/4",
+        "show_image": true,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "scrolling_gallery_image_TjM7Wn": {
+      "type": "scrolling-gallery-image",
+      "blocks": {
+        "gallery_PqVH4J": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/IMG_2666.jpg",
+            "video": "shopify://files/videos/视频OCM03.mp4",
+            "image_avatar": "shopify://shop_images/1.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Francis"
+          }
+        },
+        "gallery_dAyJNh": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
+            "video": "shopify://files/videos/ACF05-Sink into comfort, rise with ease ✨The COLAMY SERENE Power Lift Recliner Massage Chair is where _ad839951-0537-47f3-a19b-2eca7af2710f.mp4",
+            "image_avatar": "shopify://shop_images/2.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Glendon"
+          }
+        },
+        "gallery_G6gH7j": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
+            "video": "shopify://files/videos/ACF11-Good morning my beautiful friends 😘😘😘😘I want to share with you this very comfy chair I have .mp4",
+            "image_avatar": "shopify://shop_images/3.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Harry"
+          }
+        },
+        "gallery_anw8n7": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
+            "video": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
+            "image_avatar": "shopify://shop_images/4.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Jackson"
+          }
+        },
+        "gallery_i87tni": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
+            "video": "shopify://files/videos/XK-Si vous travaillez de longues heures assis, le confort n’est pas une option.La chaise ergonomiqu_842f3a9e-510f-4465-8703-4002aa59c6f3.mp4",
+            "image_avatar": "shopify://shop_images/5.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Kennedy"
+          }
+        },
+        "gallery_ja6e3V": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
+            "video": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
+            "image_avatar": "shopify://shop_images/6.webp",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "Lawrence"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_PqVH4J",
+        "gallery_dAyJNh",
+        "gallery_G6gH7j",
+        "gallery_anw8n7",
+        "gallery_i87tni",
+        "gallery_ja6e3V"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Real Homes, Real Living</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "show_button_on_top": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "direction": "left",
+        "speed": 0.1,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "related_products_R8Ni3H": {
+      "type": "related-products",
+      "name": "t:sections.related-products.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>You May Also Like</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "limit": 12,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 40,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "recently_viewed_products_CnPMr6": {
+      "type": "recently-viewed-products",
+      "name": "t:sections.recently-viewed-products.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>Recently Viewed</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "limit": 12,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_icon_3qbxHn": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_9Xh69D": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "Free Shipping",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>All orders over $500 are delivered to your doorstep at no extra charge.</p>",
+            "text_size": "text-base",
+            "button_label": "Shipping Details",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_EapCmy": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "30-Days Free Returns",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>Enjoy the freedom of stress-free shopping with our hassle-free and return policy.</p>",
+            "text_size": "text-base",
+            "button_label": "Return Policy",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_y3rE9Y": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "Secure Payment",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>Shop with confidence knowing your payments are secure and your information</p>",
+            "text_size": "text-base",
+            "button_label": "More About Payment",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        }
+      },
+      "block_order": [
+        "column_9Xh69D",
+        "column_EapCmy",
+        "column_y3rE9Y"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__text p {max-width: 33rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Free shipping on almost everything",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#1d349a",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "tabs_content_8rnbnj",
+    "scrollspy_nav_mH8fJy",
+    "testimonials_8JHr3L",
+    "scrolling_gallery_image_YpzANK",
+    "177735846788f5e691",
+    "testimonials_masonry_LRrBnm",
+    "scrolling_gallery_image_TjM7Wn",
+    "related_products_R8Ni3H",
+    "recently_viewed_products_CnPMr6",
+    "multicolumn_icon_3qbxHn"
+  ]
+}

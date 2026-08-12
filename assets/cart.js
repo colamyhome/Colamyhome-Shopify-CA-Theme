@@ -80,6 +80,148 @@ class CartDrawer extends DrawerComponent {
 }
 customElements.define('cart-drawer', CartDrawer);
 
+class CartDeliveryConfirmation extends HTMLElement {
+  constructor() {
+    super();
+    this.checkbox = this.querySelector('[data-atlas-delivery-confirmation-input]');
+    this.onChange = this.onChange.bind(this);
+  }
+
+  connectedCallback() {
+    if (!this.checkbox) return;
+
+    this.checkbox.addEventListener('change', this.onChange);
+    this.syncConfirmationState(this.checkbox.checked);
+    if (!this.closest('cart-drawer')) {
+      this.positionCartPageOffer();
+    }
+  }
+
+  disconnectedCallback() {
+    this.checkbox?.removeEventListener('change', this.onChange);
+    this.cartPageOfferObserver?.disconnect();
+    if (this.onCartPageResize) window.removeEventListener('resize', this.onCartPageResize);
+  }
+
+  positionCartPageOffer() {
+    const layoutRow = this.closest('[data-atlas-delivery-confirmation-cart-row]');
+    const rowContent = layoutRow?.querySelector('[data-atlas-delivery-confirmation-row]');
+    const cartItem = layoutRow ? document.getElementById(`CartItem-${layoutRow.dataset.cartItemIndex}`) : null;
+    if (!layoutRow || !rowContent || !cartItem?.classList.contains('cart-item')) return;
+
+    const arrangeOffer = () => {
+      const selector = 'xctton-side-cart-offer, .xctton-side-cart-offer, #xctton-side-cart-offer';
+      const existingOffer = rowContent.querySelector(selector);
+      const injectedOffers = Array.from(cartItem.querySelectorAll(selector));
+      const offer = existingOffer || injectedOffers.find((element) => element.offsetParent !== null) || injectedOffers[0];
+
+      if (offer && offer.parentElement !== rowContent) {
+        rowContent.appendChild(offer);
+      }
+
+      if (offer) {
+        offer.hidden = false;
+        offer.removeAttribute('aria-hidden');
+        offer.setAttribute('data-atlas-delivery-offer', '');
+      }
+
+      injectedOffers.forEach((injectedOffer) => {
+        if (injectedOffer === offer) return;
+        injectedOffer.hidden = true;
+        injectedOffer.setAttribute('aria-hidden', 'true');
+        injectedOffer.setAttribute('data-atlas-duplicate-offer', '');
+      });
+
+      this.alignCartPageRow(cartItem, rowContent);
+    };
+
+    this.onCartPageResize = () => this.alignCartPageRow(cartItem, rowContent);
+    window.addEventListener('resize', this.onCartPageResize);
+    arrangeOffer();
+    this.cartPageOfferObserver = new MutationObserver(arrangeOffer);
+    this.cartPageOfferObserver.observe(cartItem, { childList: true, subtree: true });
+  }
+
+  alignCartPageRow(cartItem, rowContent) {
+    const media = cartItem.querySelector('.cart-item__media');
+    const quantities = Array.from(cartItem.querySelectorAll('.cart-quantity'));
+    const quantity = quantities.find((element) => element.offsetParent !== null) || quantities[0];
+    const rowRect = rowContent.getBoundingClientRect();
+    const useStackedLayout = window.matchMedia('(max-width: 1049.98px)').matches;
+    const quantityOffset = quantity && rowRect.width
+      ? Math.max(0, quantity.getBoundingClientRect().left - rowRect.left)
+      : null;
+
+    if (useStackedLayout) {
+      rowContent.style.gridTemplateColumns = 'minmax(0, 1fr)';
+    } else if (quantityOffset !== null) {
+      rowContent.style.gridTemplateColumns = `${quantityOffset}px minmax(0, 1fr)`;
+    } else {
+      rowContent.style.gridTemplateColumns = 'minmax(0, 1fr) auto';
+    }
+
+    if (media && this.checkbox) {
+      const mediaRect = media.getBoundingClientRect();
+      const checkboxRect = this.checkbox.getBoundingClientRect();
+      const textGap = Math.max(5, mediaRect.left - checkboxRect.right);
+      this.style.setProperty('--atlas-delivery-confirmation-gap', `${textGap}px`);
+    }
+
+    const label = this.querySelector('.atlas-delivery-confirmation__label');
+    if (label && rowRect.width) {
+      const labelRect = label.getBoundingClientRect();
+      const textOffset = Math.max(0, labelRect.left - rowRect.left);
+      rowContent.style.setProperty('--atlas-delivery-confirmation-text-offset', `${textOffset}px`);
+      rowContent.style.setProperty(
+        '--atlas-delivery-offer-offset',
+        `${quantityOffset ?? textOffset}px`
+      );
+    }
+  }
+
+  syncConfirmationState(isConfirmed) {
+    document.querySelectorAll('[data-atlas-delivery-confirmation-input]').forEach((input) => {
+      input.checked = isConfirmed;
+    });
+
+    document.querySelectorAll('[data-atlas-checkout-button]').forEach((button) => {
+      button.disabled = !isConfirmed;
+      button.setAttribute('aria-disabled', String(!isConfirmed));
+    });
+
+    document.querySelectorAll('[data-atlas-accelerated-checkout]').forEach((checkout) => {
+      checkout.hidden = !isConfirmed;
+    });
+  }
+
+  async onChange(event) {
+    const isConfirmed = event.target.checked;
+    const previousState = !isConfirmed;
+
+    this.checkbox.disabled = true;
+    this.syncConfirmationState(isConfirmed);
+
+    try {
+      const response = await fetch(FoxTheme.routes.cart_update_url, {
+        ...FoxTheme.utils.fetchConfig(),
+        body: JSON.stringify({
+          attributes: { atlas_delivery_access_confirmed: String(isConfirmed) },
+        }),
+      });
+
+      if (!response.ok) throw new Error('Unable to save the delivery confirmation.');
+    } catch (error) {
+      console.error(error);
+      this.syncConfirmationState(previousState);
+    } finally {
+      document.querySelectorAll('[data-atlas-delivery-confirmation-input]').forEach((input) => {
+        input.disabled = false;
+      });
+    }
+  }
+}
+customElements.define('cart-delivery-confirmation', CartDeliveryConfirmation);
+
 class CartAddonModal extends ModalComponent {
   constructor() {
     super();

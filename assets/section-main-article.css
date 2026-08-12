@@ -45,6 +45,14 @@
   .article__title {
     max-width: 85%;
     margin-inline: auto;
+    font-size: 32px;
+  }
+}
+@media (min-width: 1699.98px) {
+  .article--width {
+    position: relative;
+    max-width: 100%;
+    margin-inline: auto;
   }
 }
 .article-comment__title, .article-comment__form-title {

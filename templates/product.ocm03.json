@@ -11,10 +11,7 @@
   "sections": {
     "breadcrumbs": {
       "type": "breadcrumbs",
-      "custom_css": [
-        "@media (min-width: 1280px) {.breadcrumbs {padding-inline: 5rem; }}",
-        ".reversed-link:not(:has(.reversed-link__text)) {font-size: 14px;}"
-      ],
+      "custom_css": [],
       "settings": {
         "container": "fixed",
         "text_alignment": "start",
@@ -84,6 +81,10 @@
             "inventory_threshold": 10,
             "show_inventory_quantity": true
           }
+        },
+        "rich_text_meta_c9Dqd8": {
+          "type": "rich-text-meta",
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -357,6 +358,7 @@
         "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF",
         "icon_with_text",
         "inventory",
+        "rich_text_meta_c9Dqd8",
         "variant_picker",
         "discount_code_yGQ6kr",
         "discount_code_memorial_hYxeCH",
@@ -382,7 +384,7 @@
         "complementary"
       ],
       "custom_css": [
-        "@media (min-width: 1280px) {.product {padding-inline: 5rem; }}"
+        "[data-block-id=\"collapsible-row-1\"] {padding-top: 10px;}"
       ],
       "settings": {
         "color_scheme": "scheme-1",
@@ -504,12 +506,12 @@
             "speed": 0.4,
             "pause_on_hover": true,
             "column_gap": "medium",
-            "gallery_video_1": "",
+            "gallery_video_1": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
             "gallery_image_avatar_1": "shopify://shop_images/6.webp",
             "gallery_image_link_1": "",
             "gallery_social_media_1": "instagram",
             "gallery_heading_1": "Francis",
-            "gallery_video_2": "",
+            "gallery_video_2": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
             "gallery_image_avatar_2": "shopify://shop_images/5.webp",
             "gallery_image_link_2": "",
             "gallery_social_media_2": "instagram",
@@ -696,7 +698,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": "",
+            "video": "shopify://files/videos/视频OCM03.mp4",
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -709,7 +711,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ACF05-Sink into comfort, rise with ease ✨The COLAMY SERENE Power Lift Recliner Massage Chair is where _ad839951-0537-47f3-a19b-2eca7af2710f.mp4",
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -722,7 +724,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ACF11-Good morning my beautiful friends 😘😘😘😘I want to share with you this very comfy chair I have .mp4",
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -735,7 +737,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -748,7 +750,7 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": "",
+            "video": "shopify://files/videos/XK-Si vous travaillez de longues heures assis, le confort n’est pas une option.La chaise ergonomiqu_842f3a9e-510f-4465-8703-4002aa59c6f3.mp4",
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -761,7 +763,7 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": "",
+            "video": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
             "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -937,7 +939,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": "",
+            "video": "shopify://files/videos/视频OCM03.mp4",
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -949,7 +951,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ACF05-Sink into comfort, rise with ease ✨The COLAMY SERENE Power Lift Recliner Massage Chair is where _ad839951-0537-47f3-a19b-2eca7af2710f.mp4",
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -961,7 +963,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ACF11-Good morning my beautiful friends 😘😘😘😘I want to share with you this very comfy chair I have .mp4",
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -973,7 +975,7 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": "",
+            "video": "shopify://files/videos/ED01-this desk actually upgrades your entire setup 😮_🔥built-in drawer, hidden cables, sit-stand and_1efa50a0-af6d-4904-ba9f-3520c5c264fb.mp4",
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -985,7 +987,7 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": "",
+            "video": "shopify://files/videos/XK-Si vous travaillez de longues heures assis, le confort n’est pas une option.La chaise ergonomiqu_842f3a9e-510f-4465-8703-4002aa59c6f3.mp4",
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -997,7 +999,7 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": "",
+            "video": "shopify://files/videos/H72-In my Brown era 🐻🍂🤎 This beautiful accent chair is On SALE ✨ discount code JL15 Comment “SHOP_9595303f-4d28-4476-a709-c2dbf568395b.mp4",
             "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",

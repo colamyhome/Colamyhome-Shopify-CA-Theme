@@ -80,6 +80,9 @@
           class="swiper-slide"
           role="group"
           data-index="{{ forloop.index0 }}"
+          {% if block.settings.button_link != blank %}
+            data-slide-link="{{ block.settings.button_link }}"
+          {% endif %}
           aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
           data-type="{{ block.type }}"
           aria-label="{{ forloop.index }} {{ 'sections.slideshow.of' | t }} {{ forloop.length }}"
@@ -273,7 +276,7 @@
                         product: block.settings.product,
                         list_on_mobile: false,
                         image_ratio: section.settings.pcard_image_ratio,
-                        image_sizes: '(max-width:767px) 50px, 120px',
+                        image_sizes: '(max-width:767px) 100px, 120px',
                         quick_view_suffix: block.id,
                         enable_quick_add: false,
                         enable_quick_view: false,
@@ -293,8 +296,8 @@
                   </motion-element>
                   {%- assign animate_delay = animate_delay | plus: 50 -%}
                 </div>
-                {%- if block.settings.bottom_heading != blank -%}
-                  <div class="slideshow-with-product__bottom-content">
+                <div class="slideshow-with-product__bottom-content">
+                  {%- if block.settings.bottom_heading != blank -%}
                     <motion-element
                       class="block "
                       data-motion="fade-up"
@@ -306,8 +309,10 @@
                         <span>{{ block.settings.bottom_heading }}</span>
                       </div>
                     </motion-element>
-                  </div>
-                {%- endif -%}
+                  {%- else -%}
+                    <div class="slideshow-with-product__bottom-content-placeholder h6" aria-hidden="true">&nbsp;</div>
+                  {%- endif -%}
+                </div>
               </div>
             </div>
           </div>

@@ -14,6 +14,20 @@
   {%- if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link' -%}
     <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
+  {%- liquid
+    assign delivery_confirmation_product_handles = 'halo-modern-wood-dining-table-walnut,colamy-halo-72-dining-table-with-noya-mid-century-dining-chairs-set-for-4-6,halo-72-modern-wood-dining-table-set-for-4-6,colamy-halo-72-dining-table-with-evane-prime-dining-chairs-set-for-4-6' | split: ','
+    assign atlas_delivery_confirmation_required = false
+    assign atlas_delivery_confirmed = false
+    if cart.attributes.atlas_delivery_access_confirmed == 'true'
+      assign atlas_delivery_confirmed = true
+    endif
+    for cart_item in cart.items
+      if delivery_confirmation_product_handles contains cart_item.product.handle
+        assign atlas_delivery_confirmation_required = true
+        break
+      endif
+    endfor
+  -%}
 
   <cart-drawer
     id="CartDrawer"
@@ -457,6 +471,14 @@
                       </div>
                       
                     </div>
+                    {%- if delivery_confirmation_product_handles contains item.product.handle -%}
+                      <div
+                        class="atlas-delivery-confirmation-drawer-row"
+                        data-atlas-delivery-confirmation-drawer-row
+                      >
+                        {% render 'atlas-delivery-confirmation', cart: cart, section_id: section.id, item_key: item.key %}
+                      </div>
+                    {%- endif -%}
                     {% liquid
                       assign collections = ''
                       for collection in item.product.collections
@@ -857,7 +879,16 @@
                 <a href="{{ routes.cart_url }}" class="btn btn--secondary">
                   <span class="btn__text">{{ 'general.cart.view_empty_cart' | t }}</span>
                 </a>
-                <button class="btn btn--primary flex-grow" type="submit" name="checkout">
+                <button
+                  class="btn btn--primary flex-grow"
+                  type="submit"
+                  name="checkout"
+                  data-atlas-checkout-button
+                  {% if atlas_delivery_confirmation_required and atlas_delivery_confirmed == false %}
+                    disabled
+                    aria-disabled="true"
+                  {% endif %}
+                >
                   <span class="btn__text">{{ 'sections.cart.checkout' | t }}</span>
                 </button>
               </form>

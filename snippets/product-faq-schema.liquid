@@ -1,0 +1,51 @@
+{%- liquid
+  assign faq_metafield = product.metafields.custom.product_questions_answers
+  assign faq_items = faq_metafield.value
+  assign valid_faq_count = 0
+
+  if request.page_type == 'product' and faq_items != blank
+    for faq_item in faq_items
+      assign faq_question = faq_item['label'] | strip
+      assign faq_answer = faq_item['value'] | strip_html | strip
+
+      if faq_question != blank and faq_answer != blank
+        assign valid_faq_count = valid_faq_count | plus: 1
+      endif
+    endfor
+  endif
+-%}
+
+{%- if valid_faq_count > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": {{ canonical_url | append: '#faq' | json }},
+    "name": {{ product.title | append: ' FAQs' | json }},
+    "url": {{ canonical_url | json }},
+    "mainEntity": [
+      {%- assign rendered_faq_count = 0 -%}
+
+      {%- for faq_item in faq_items -%}
+        {%- liquid
+          assign faq_question = faq_item['label'] | strip
+          assign faq_answer = faq_item['value'] | strip_html | strip
+        -%}
+
+        {%- if faq_question != blank and faq_answer != blank -%}
+          {%- if rendered_faq_count > 0 -%},{%- endif -%}
+          {
+            "@type": "Question",
+            "name": {{ faq_question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ faq_answer | json }}
+            }
+          }
+          {%- assign rendered_faq_count = rendered_faq_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}

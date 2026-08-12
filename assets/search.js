@@ -97,9 +97,9 @@ class PredictiveSearch extends HTMLElement {
     }
   }
 
-  setupURL() {
+setupURL() {
     const url = new URL(`${window.shopUrl}${FoxTheme.routes.predictive_search_url}`);
-    let search_term = this.getQuery();
+    let search_term = this.getQuery().toLowerCase(); 
     if (this.searchProductTypes && this.searchProductTypes.value != '') {
       search_term = `product_type:${this.searchProductTypes.value} AND ${encodeURIComponent(search_term)}`;
     }
@@ -107,10 +107,12 @@ class PredictiveSearch extends HTMLElement {
       url.searchParams.set('q', search_term),
       url.searchParams.set('resources[limit]', this.dataset.resultsLimit || 3),
       url.searchParams.set('resources[limit_scope]', 'each'),
+      url.searchParams.set('resources[options][fields]', 'title,product_type,variants.sku,tag,vendor'),
       url.searchParams.set('section_id', FoxTheme.utils.getSectionId(this)),
       url
     );
   }
+
 
   onChange() {
     if (this.getQuery().length === 0) {

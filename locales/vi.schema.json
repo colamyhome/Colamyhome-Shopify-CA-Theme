@@ -2254,6 +2254,65 @@
     }
   },
   "sections": {
+    "product_pairing": {
+      "name": "Phối hợp sản phẩm",
+      "headers": {
+        "content": "Nội dung",
+        "bundle": "Sản phẩm trong bộ",
+        "discount": "Giảm giá",
+        "scenes": "Ảnh phối cảnh kết hợp",
+        "layout": "Bố cục"
+      },
+      "content": {
+        "heading": "Tiêu đề",
+        "subtitle": "Phụ đề trên máy tính"
+      },
+      "bundle": {
+        "table_product_1": "Sản phẩm bàn 1",
+        "table_product_1_alias": "Bí danh sản phẩm bàn 1",
+        "table_product_1_variant": "Biến thể sản phẩm bàn 1",
+        "table_product_1_variant_info": "Nhập chính xác tiêu đề biến thể hoặc giá trị tùy chọn dùng cho bộ này.",
+        "table_product_2": "Sản phẩm bàn 2",
+        "table_product_2_alias": "Bí danh sản phẩm bàn 2",
+        "table_product_2_variant": "Biến thể sản phẩm bàn 2",
+        "table_product_2_variant_info": "Nhập chính xác tiêu đề biến thể hoặc giá trị tùy chọn dùng cho bộ này.",
+        "chair_product_1": "Sản phẩm ghế 1",
+        "chair_product_1_alias": "Bí danh sản phẩm ghế 1",
+        "chair_product_1_variant": "Biến thể sản phẩm ghế 1",
+        "chair_product_1_variant_info": "Nhập chính xác tiêu đề biến thể hoặc giá trị tùy chọn dùng cho bộ này.",
+        "chair_product_2": "Sản phẩm ghế 2",
+        "chair_product_2_alias": "Bí danh sản phẩm ghế 2",
+        "chair_product_2_variant": "Biến thể sản phẩm ghế 2",
+        "chair_product_2_variant_info": "Nhập chính xác tiêu đề biến thể hoặc giá trị tùy chọn dùng cho bộ này.",
+        "combination_product_t1_c1": "Sản phẩm kết hợp Bàn 1 + Ghế 1",
+        "combination_product_t1_c2": "Sản phẩm kết hợp Bàn 1 + Ghế 2",
+        "combination_product_t2_c1": "Sản phẩm kết hợp Bàn 2 + Ghế 1",
+        "combination_product_t2_c2": "Sản phẩm kết hợp Bàn 2 + Ghế 2"
+      },
+      "discount": {
+        "code": "Mã giảm giá",
+        "code_info": "Tự động áp dụng sau khi thêm bộ sản phẩm vào giỏ hàng.",
+        "percentage": "Phần trăm giảm giá hiển thị",
+        "percentage_info": "Kiểm soát giá hiển thị. Hãy cấu hình mã giảm giá Shopify với cùng phần trăm và điều kiện áp dụng.",
+        "coupon_label": "Văn bản hiển thị phiếu giảm giá",
+        "coupon_label_info": "Văn bản hiển thị bên cạnh ô chọn phiếu giảm giá trong khu vực giá."
+      },
+      "scenes": {
+        "scene_t1_c1_s4": "Bàn 1 + Ghế 1 + Bộ 4",
+        "scene_t1_c1_s6": "Bàn 1 + Ghế 1 + Bộ 6",
+        "scene_t1_c2_s4": "Bàn 1 + Ghế 2 + Bộ 4",
+        "scene_t1_c2_s6": "Bàn 1 + Ghế 2 + Bộ 6",
+        "scene_t2_c1_s4": "Bàn 2 + Ghế 1 + Bộ 4",
+        "scene_t2_c1_s6": "Bàn 2 + Ghế 1 + Bộ 6",
+        "scene_t2_c2_s4": "Bàn 2 + Ghế 2 + Bộ 4",
+        "scene_t2_c2_s6": "Bàn 2 + Ghế 2 + Bộ 6"
+      },
+      "layout": {
+        "column_gap": "Khoảng cách cột trên máy tính",
+        "padding_top": "Khoảng đệm trên",
+        "padding_bottom": "Khoảng đệm dưới"
+      }
+    },
     "announcement-bar": {
       "name": "Thanh thông báo",
       "blocks": {
@@ -2660,6 +2719,9 @@
           "content": "Cuối chân trang"
         }
       }
+    },
+    "bottom-image": {
+      "name": "Hình ảnh dưới cùng"
     },
     "top-bar": {
       "name": "Thanh trên cùng",
@@ -3839,6 +3901,9 @@
     "banner-with-hotspots": {
       "name": "Biểu ngữ có điểm nóng"
     },
+    "hotspots-title": {
+      "name": "Hotspot banner title"
+    },
     "buttons-with-icon": {
       "name": "Nút có biểu tượng"
     },
@@ -4396,6 +4461,9 @@
         }
       },
       "blocks": {
+        "text_timer": {
+          "name": "Text countdown timer"
+        },
         "group_heading": {
           "name": "Tiêu đề nhóm"
         }
@@ -4718,6 +4786,9 @@
         },
         "text_heading_spacing": {
           "label": "Khoảng cách giữa văn bản và tiêu đề"
+        },
+        "enable_translucent_glass": {
+          "label": "Bật hiệu ứng kính mờ bán trong suốt"
         }
       }
     },
@@ -4750,7 +4821,7 @@
       "name": "Hình ảnh chồng lên văn bản"
     },
     "scrollspy-nav": {
-      "name": "Điều hướng Scrollspy",
+      "name": "Scrollspy nav no Anchor",
       "settings": {
         "tab_settings": {
           "content": "Cài đặt tab"
@@ -4833,7 +4904,7 @@
         }
       },
       "presets": {
-        "name": "Điều hướng Scrollspy"
+        "name": "Scrollspy nav no Anchor"
       }
     }
   }

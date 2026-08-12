@@ -1,0 +1,302 @@
+{{ 'section-comparison-table-fullw.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'comparison-table-fullw.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+  assign header_layout = 'vertical'
+  assign side_button = false
+  assign heading_block = section.blocks | find: 'type', 'heading'
+  assign content_blocks = section.blocks | where: 'type', 'content'
+-%}
+{%- render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.container
+-%}
+<div
+  class="section comparison-table-fullw-section section--padding page-width page-width--{{ section.settings.container }} section-header-{{ header_layout }} color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <comparison-table-fullw class="block comparison-table-fullw">
+    <div class="comparison-table-fullw__header">
+      {%- render 'section-heading',
+        section_settings: section.settings,
+        header_layout: header_layout,
+        button_label: section.settings.button_label,
+        button_link: section.settings.button_link,
+        button_style: section.settings.button_style,
+        button_icon: section.settings.button_icon,
+        button_visible: true,
+        side_button: side_button,
+        custom_css_class: 'sticky-element'
+      -%}
+    </div>
+    <div class="comparison-table-fullw__content h-scrollable relative z-0">
+      <table class="comparison-table-fullw__table comparison-table-fullw__desktop-table text-subtext">
+        <tr>
+          <td class="comparison-table-fullw__label background-1 text-body">
+            <div class="comparison-table-fullw__feature comparison-table-fullw__meta-label flex items-center h-full">
+              <div class="comparison-table-fullw__feature-info rich-text rich-text--tight">
+                <div class="rich-text__heading text-body"><span class="label ml-2">Feature</span></div>
+              </div>
+            </div>
+          </td>
+          {% for block in content_blocks %}
+            {% assign product = block.settings.product %}
+            {% assign featured_media = product.featured_media %}
+            <td class="comparison-table-fullw__product">
+              <div class="comparison-table-fullw__product-image relative">
+                <div class="media-wrapper hover-wrapper blocks-radius" style="--aspect-ratio: 1;">
+                  {% if featured_media %}
+                    {{
+                      featured_media
+                      | image_url: width: featured_media.width
+                      | image_tag:
+                        loading: 'lazy',
+                        fetchpriority: 'low',
+                        class: 'motion-reduce hover-scale-up',
+                        widths: '60, 70, 80, 100, 120, 140, 160, 240, 320, 450',
+                        sizes: '450px',
+                        is: 'image-lazy'
+                    }}
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg w-full h-full hover-scale-up' }}
+                  {% endif %}
+                </div>
+              </div>
+              <div class="comparison-table-fullw__product-info text-center">
+                <h3 class="text-pcard-title">
+                  <a class="reversed-link block" href="{{ product.url }}">
+                    {% if product != blank %}
+                      <span class="reversed-link__text">{{ product.title }}</span>
+                    {% else %}
+                      <span class="reversed-link__text">{{- 'onboarding.product_title' | t -}}</span>
+                    {% endif %}
+                  </a>
+                </h3>
+              </div>
+            </td>
+          {% endfor %}
+        </tr>
+
+        {% for i in (1..10) %}
+          {%- liquid
+            assign title_key = 'title-' | append: i
+            assign text_key = 'text-' | append: i
+            assign title = heading_block.settings[title_key]
+          -%}
+          {% if title != blank %}
+            {% assign icon_key = 'icon-' | append: i %}
+            {% assign image_key = 'image-' | append: i %}
+            {% assign icon = heading_block.settings[icon_key] %}
+            {% assign image = heading_block.settings[image_key] %}
+            <tr>
+              <td class="comparison-table-fullw__label background-1 text-body">
+                <div
+                  class="comparison-table-fullw__feature flex items-center gap-x-3 h-full"
+                  style="--comparison-table-fullw-icon-size: {{ section.settings.icon_size }}px;"
+                  {{ heading_block.shopify_attributes }}
+                >
+                  {% if image %}
+                    <div class="comparison-table-fullw__feature-image shrink-0 hidden md:block">
+                      {% assign alt = image.alt | default: title | escape %}
+                      <picture class="card-media__media media-wrapper">
+                        {{
+                          image
+                          | image_url: width: 1100
+                          | image_tag:
+                            loading: 'lazy',
+                            class: 'motion-reduce absolute inset-0 w-full h-full',
+                            widths: '165, 360, 535, 750, 940, 1100',
+                            is: 'image-lazy',
+                            alt: alt
+                        }}
+                      </picture>
+                    </div>
+                  {% elsif icon != 'none' and icon != blank %}
+                    <div class="comparison-table-fullw__feature-image shrink-0 hidden md:block">
+                      {% render 'icons', icon: icon %}
+                    </div>
+                  {% endif %}
+                  <div class="comparison-table-fullw__feature-info rich-text rich-text--tight flex-1">
+                    <div class="rich-text__heading text-body"><span class="label ml-2">{{ title }}</span></div>
+                  </div>
+                </div>
+              </td>
+              {% for block in content_blocks %}
+                {% assign text = block.settings[text_key] %}
+                <td>
+                  {% if text != blank %}
+                    {% if section.settings.show_view_more_button and section.settings.text_line_limit != 'none' %}
+                      <read-more
+                        class="read-more__text"
+                        data-line-clamp="{{ section.settings.text_line_limit }}"
+                        data-toggle-class="text-limit-{{ section.settings.text_line_limit }}"
+                        data-show-text="{{ 'accessibility.view_more' | t }}"
+                        data-hide-text="{{ 'accessibility.view_less' | t }}"
+                      >
+                        <div class="read-more__content rte">{{- text -}}</div>
+                        <button class="read-more__toggle btn btn--underline"><span class="btn__text">{{ 'accessibility.view_more' | t }}</span></button>
+                      </read-more>
+                    {% else %}
+                      <div class="rte text-limit-{{ section.settings.text_line_limit }}">{{- text -}}</div>
+                    {% endif %}
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endif %}
+        {% endfor %}
+        <tr class="comparison-table-fullw__actions">
+          <td class="comparison-table-fullw__label background-1 text-body">
+            <div class="comparison-table-fullw__feature comparison-table-fullw__meta-label flex items-center h-full">
+              <div class="comparison-table-fullw__feature-info rich-text rich-text--tight">
+                <div class="rich-text__heading text-body"><span class="label ml-2">Activity Price</span></div>
+              </div>
+            </div>
+          </td>
+          {% for block in content_blocks %}
+            {% assign product = block.settings.product %}
+            {% assign product_variant = product.selected_or_first_available_variant %}
+            {% assign button_label = block.settings.button_label | default: 'Shop' %}
+            <td class="comparison-table-fullw__action-cell">
+              {% if product_variant != blank %}
+                <div class="comparison-table-fullw__price">
+                  <span class="comparison-table-fullw__price-current">{{ product_variant.price | money }}</span>
+                  {% if product_variant.compare_at_price > product_variant.price %}
+                    <s class="comparison-table-fullw__price-compare">{{ product_variant.compare_at_price | money }}</s>
+                  {% endif %}
+                </div>
+              {% endif %}
+              <a href="{{ product.url }}" class="btn btn--primary btn--small">
+                <span class="btn__text flex gap-1 items-center">{{- button_label -}}</span>
+              </a>
+            </td>
+          {% endfor %}
+        </tr>
+      </table>
+      <div class="comparison-table-fullw__mobile">
+        <div class="comparison-table-fullw__mobile-tabs" role="tablist" aria-label="{{ section.settings.heading | strip_html | escape }}">
+          {% for block in content_blocks %}
+            {% assign product = block.settings.product %}
+            {% assign mobile_tab_label = block.settings.mobile_tab_label | default: product.title %}
+            <button
+              type="button"
+              class="comparison-table-fullw__mobile-tab{% if forloop.first %} is-active{% endif %}"
+              id="ComparisonTableFullwTab-{{ section.id }}-{{ forloop.index0 }}"
+              role="tab"
+              aria-controls="ComparisonTableFullwPanel-{{ section.id }}-{{ forloop.index0 }}"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+              data-comparison-table-fullw-tab="{{ forloop.index0 }}"
+            >
+              {{ mobile_tab_label }}
+            </button>
+          {% endfor %}
+        </div>
+        {% for block in content_blocks %}
+          {% assign product = block.settings.product %}
+          {% assign product_variant = product.selected_or_first_available_variant %}
+          {% assign button_label = block.settings.button_label | default: 'Shop' %}
+          <div
+            class="comparison-table-fullw__mobile-panel"
+            id="ComparisonTableFullwPanel-{{ section.id }}-{{ forloop.index0 }}"
+            role="tabpanel"
+            aria-labelledby="ComparisonTableFullwTab-{{ section.id }}-{{ forloop.index0 }}"
+            data-comparison-table-fullw-panel="{{ forloop.index0 }}"
+            {% unless forloop.first %}hidden{% endunless %}
+          >
+            {% for i in (1..10) %}
+              {%- liquid
+                assign title_key = 'title-' | append: i
+                assign text_key = 'text-' | append: i
+                assign title = heading_block.settings[title_key]
+                assign text = block.settings[text_key]
+              -%}
+              {% if title != blank %}
+                <div class="comparison-table-fullw__mobile-row">
+                  <p class="comparison-table-fullw__mobile-feature"><strong>{{ title }}:</strong>{% if text != blank %} {{ text | strip_html }}{% endif %}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+            <div class="comparison-table-fullw__mobile-actions">
+              <p class="comparison-table-fullw__mobile-price-label">Activity Price</p>
+              {% if product_variant != blank %}
+                <div class="comparison-table-fullw__price">
+                  <span class="comparison-table-fullw__price-current">{{ product_variant.price | money }}</span>
+                  {% if product_variant.compare_at_price > product_variant.price %}
+                    <s class="comparison-table-fullw__price-compare">{{ product_variant.compare_at_price | money }}</s>
+                  {% endif %}
+                </div>
+              {% endif %}
+              <a href="{{ product.url }}" class="btn btn--primary btn--small">
+                <span class="btn__text flex gap-1 items-center">{{- button_label -}}</span>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </comparison-table-fullw>
+</div>
+
+{% schema %}
+{
+  "name": "Comparison table fullW",
+  "disabled_on": {"groups": ["header", "footer", "custom.overlay"]},
+  "settings": [
+    {"type": "select", "id": "container", "label": "Container width", "default": "full", "options": [{"value": "full", "label": "Full width"}, {"value": "fixed", "label": "Fixed width"}]},
+    {"type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1"},
+    {"type": "select", "id": "header_layout", "label": "Header layout", "default": "vertical", "options": [{"value": "vertical", "label": "Vertical"}, {"value": "horizontal", "label": "Horizontal"}]},
+    {"type": "select", "id": "section_header_alignment", "label": "Text alignment", "default": "left", "options": [{"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}]},
+    {"type": "select", "id": "section_header_alignment_mobile", "label": "Mobile text alignment", "default": "inherit", "options": [{"value": "inherit", "label": "Inherit"}, {"value": "left", "label": "Left"}, {"value": "center", "label": "Center"}, {"value": "right", "label": "Right"}]},
+    {"type": "inline_richtext", "id": "subheading", "label": "Subheading", "default": "Subheading"},
+    {"type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Comparison table fullW"},
+    {"type": "select", "id": "highlight_style", "label": "Highlight style", "default": "none", "options": [{"value": "none", "label": "None"}, {"value": "hand_drawn_circle", "label": "Hand-drawn circle"}, {"value": "thick_underline", "label": "Thick underline"}, {"value": "wave_underline", "label": "Wave underline"}]},
+    {"type": "select", "id": "highlight_font_style", "label": "Highlight font style", "default": "italic", "options": [{"value": "italic", "label": "Italic"}, {"value": "normal", "label": "Normal"}]},
+    {"type": "color", "id": "highlight_style_color", "label": "Highlight color"},
+    {"type": "color", "id": "highlight_text_color", "label": "Highlight text color"},
+    {"type": "select", "id": "heading_size", "label": "Heading size", "default": "h1", "options": [{"value": "h5", "label": "Extra small"}, {"value": "h4", "label": "Small"}, {"value": "h3", "label": "Medium"}, {"value": "h2", "label": "Large"}, {"value": "h1", "label": "Extra large"}, {"value": "hd2", "label": "Display"}, {"value": "hd1", "label": "Large display"}]},
+    {"type": "richtext", "id": "description", "label": "Description", "default": "<p>Compare products side by side.</p>"},
+    {"type": "select", "id": "text_size", "label": "Text size", "default": "text-base", "options": [{"value": "text-sm", "label": "Small"}, {"value": "text-base", "label": "Base"}, {"value": "text-lg", "label": "Large"}, {"value": "text-inherit", "label": "Inherit"}]},
+    {"type": "text", "id": "button_label", "label": "Button label"},
+    {"type": "url", "id": "button_link", "label": "Button link"},
+    {"type": "select", "id": "button_style", "label": "Button style", "default": "btn--primary", "options": [{"value": "btn--primary", "label": "Primary"}, {"value": "btn--secondary", "label": "Secondary"}, {"value": "btn--underline", "label": "Underline"}, {"value": "btn--plain", "label": "Plain"}]},
+    {"type": "select", "id": "button_icon", "label": "Button icon", "default": "none", "options": [{"value": "none", "label": "None"}, {"value": "arrow-right", "label": "Arrow right"}]},
+    {"type": "range", "id": "icon_size", "min": 10, "max": 50, "step": 2, "unit": "px", "label": "Feature icon size", "default": 28},
+    {"type": "select", "id": "text_line_limit", "label": "Text line limit", "default": "2-lines", "options": [{"value": "none", "label": "None"}, {"value": "1-line", "label": "1 line"}, {"value": "2-lines", "label": "2 lines"}, {"value": "3-lines", "label": "3 lines"}, {"value": "4-lines", "label": "4 lines"}, {"value": "5-lines", "label": "5 lines"}]},
+    {"type": "checkbox", "id": "show_view_more_button", "label": "Show View more button", "default": false},
+    {"type": "checkbox", "id": "show_section_divider", "label": "Show section divider", "default": false},
+    {"type": "range", "id": "padding_top", "label": "Top padding", "default": 50, "min": 0, "max": 120, "step": 2, "unit": "px"},
+    {"type": "range", "id": "padding_bottom", "label": "Bottom padding", "default": 50, "min": 0, "max": 120, "step": 2, "unit": "px"}
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "limit": 1,
+      "name": "Feature labels",
+      "settings": [
+        {"type": "select", "id": "icon-1", "label": "Row 1 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-1", "label": "Row 1 image"}, {"type": "inline_richtext", "id": "title-1", "label": "Row 1 label"},
+        {"type": "select", "id": "icon-2", "label": "Row 2 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-2", "label": "Row 2 image"}, {"type": "inline_richtext", "id": "title-2", "label": "Row 2 label"},
+        {"type": "select", "id": "icon-3", "label": "Row 3 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-3", "label": "Row 3 image"}, {"type": "inline_richtext", "id": "title-3", "label": "Row 3 label"},
+        {"type": "select", "id": "icon-4", "label": "Row 4 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-4", "label": "Row 4 image"}, {"type": "inline_richtext", "id": "title-4", "label": "Row 4 label"},
+        {"type": "select", "id": "icon-5", "label": "Row 5 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-5", "label": "Row 5 image"}, {"type": "inline_richtext", "id": "title-5", "label": "Row 5 label"},
+        {"type": "select", "id": "icon-6", "label": "Row 6 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-6", "label": "Row 6 image"}, {"type": "inline_richtext", "id": "title-6", "label": "Row 6 label"},
+        {"type": "select", "id": "icon-7", "label": "Row 7 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-7", "label": "Row 7 image"}, {"type": "inline_richtext", "id": "title-7", "label": "Row 7 label"},
+        {"type": "select", "id": "icon-8", "label": "Row 8 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-8", "label": "Row 8 image"}, {"type": "inline_richtext", "id": "title-8", "label": "Row 8 label"},
+        {"type": "select", "id": "icon-9", "label": "Row 9 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-9", "label": "Row 9 image"}, {"type": "inline_richtext", "id": "title-9", "label": "Row 9 label"},
+        {"type": "select", "id": "icon-10", "label": "Row 10 icon", "default": "chat", "options": [{"value": "none", "label": "None"}, {"value": "chat", "label": "Chat"}]}, {"type": "image_picker", "id": "image-10", "label": "Row 10 image"}, {"type": "inline_richtext", "id": "title-10", "label": "Row 10 label"}
+      ]
+    },
+    {
+      "type": "content",
+      "name": "Product column",
+      "settings": [
+        {"type": "product", "id": "product", "label": "Product"},
+        {"type": "text", "id": "mobile_tab_label", "label": "Mobile tab title", "info": "Uses the product title when left blank."},
+        {"type": "text", "id": "button_label", "label": "Button text", "default": "Shop"},
+        {"type": "richtext", "id": "text-1", "label": "Row 1 text"}, {"type": "richtext", "id": "text-2", "label": "Row 2 text"}, {"type": "richtext", "id": "text-3", "label": "Row 3 text"}, {"type": "richtext", "id": "text-4", "label": "Row 4 text"}, {"type": "richtext", "id": "text-5", "label": "Row 5 text"},
+        {"type": "richtext", "id": "text-6", "label": "Row 6 text"}, {"type": "richtext", "id": "text-7", "label": "Row 7 text"}, {"type": "richtext", "id": "text-8", "label": "Row 8 text"}, {"type": "richtext", "id": "text-9", "label": "Row 9 text"}, {"type": "richtext", "id": "text-10", "label": "Row 10 text"}
+      ]
+    }
+  ],
+  "presets": [{"name": "Comparison table fullW", "blocks": [{"type": "heading"}, {"type": "content"}, {"type": "content"}, {"type": "content"}]}]
+}
+{% endschema %}

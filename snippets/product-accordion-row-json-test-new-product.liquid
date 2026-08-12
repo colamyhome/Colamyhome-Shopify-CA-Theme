@@ -1,0 +1,18 @@
+{%- liquid
+  assign accordion_json_namespace = block.settings.json_metafield_namespace | default: 'custom' | strip
+  assign accordion_json_key = block.settings.json_metafield_key | strip
+  assign accordion_json_source = blank
+
+  if accordion_json_namespace != blank and accordion_json_key != blank
+    assign accordion_json_metafield = product.metafields[accordion_json_namespace][accordion_json_key]
+    assign accordion_json_source = accordion_json_metafield.value | default: accordion_json_metafield
+  endif
+-%}
+
+<script src="{{ 'product-accordion-row-json-test-new-product.js' | asset_url }}" defer="defer"></script>
+
+<div class="product-accordion-row-json" data-product-accordion-json>
+  <script type="application/json" class="product-accordion-row-json__data">
+    {{- accordion_json_source | json -}}
+  </script>
+</div>

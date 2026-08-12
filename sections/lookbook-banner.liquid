@@ -30,6 +30,13 @@
   #shopify-section-{{ section.id }} .page-width--full {
     --page-padding: 0;
   }
+
+  {%- if template.suffix == 'brand-campaign' -%}
+    #shopify-section-{{ section.id }} .lookbook-card {
+      width: 92%;
+      margin-inline: auto;
+    }
+  {%- endif -%}
 {% endstyle %}
 
 {% render 'divider',

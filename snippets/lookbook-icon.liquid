@@ -87,7 +87,14 @@
       </div>
     {% endif %}
   {% else %}
-    <div class="lookbook-icon__card lookbook-icon__card--content absolute flex items-start blocks-radius-md color-{{ card_color_scheme }}">
+    {%- if card_link != blank -%}
+      <a
+        class="lookbook-icon__card lookbook-icon__card--content absolute flex items-start blocks-radius-md color-{{ card_color_scheme }}"
+        href="{{ card_link }}"
+      >
+    {%- else -%}
+      <div class="lookbook-icon__card lookbook-icon__card--content absolute flex items-start blocks-radius-md color-{{ card_color_scheme }}">
+    {%- endif -%}
       <div class="lookbook-icon__card-image relative hidden md:block{% if block.settings.image == blank %} bg-none{% endif %}">
         <picture
           class="card-media__media rounded media-wrapper"
@@ -118,6 +125,10 @@
           {{ block.settings.description }}
         </div>
       </div>
-    </div>
+    {%- if card_link != blank -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
   {%- endif -%}
 </lookbook-icon>

@@ -1,0 +1,181 @@
+{{ 'section-four-image-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign content_width = section.settings.content_width
+-%}
+
+<div
+  class="section section--padding four-image-grid-section page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}{% if template.suffix == 'summer-save' and section.id contains 'four_image_grid_tUybrw' %} hidden md:block{% endif %}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div
+    class="four-image-grid"
+    style="--four-image-content-width: {{ content_width }}%;"
+  >
+    <div class="four-image-grid__inner">
+      {%- for index in (1..6) -%}
+        {%- liquid
+          assign image_setting_id = 'image_' | append: index
+          assign image = section.settings[image_setting_id]
+
+          case index
+            when 1
+              assign slot_width = 21.03
+            when 2
+              assign slot_width = 22.46
+            when 3
+              assign slot_width = 30.26
+            when 4
+              assign slot_width = 44.21
+            when 5
+              assign slot_width = 21.03
+            when 6
+              assign slot_width = 21.33
+          endcase
+
+          assign image_width_viewport = content_width | times: slot_width | divided_by: 100.0
+          assign image_width_fixed = settings.page_width | times: image_width_viewport | divided_by: 100.0
+          assign image_style = 'object-position: ' | append: image.presentation.focal_point | append: ';'
+        -%}
+        {%- capture image_sizes -%}
+          {%- if section.settings.container == 'full' -%}
+            {{ image_width_viewport }}vw
+          {%- else -%}
+            min({{ image_width_viewport }}vw, {{ image_width_fixed }}px)
+          {%- endif -%}
+        {%- endcapture -%}
+        <figure class="four-image-grid__item">
+          {%- if image != blank -%}
+            {{-
+              image
+              | image_url: width: 2000
+              | image_tag:
+                loading: 'lazy',
+                class: 'four-image-grid__media',
+                widths: '165, 240, 360, 480, 640, 750, 900, 1100, 1300, 1500, 1780, 2000',
+                sizes: image_sizes,
+                style: image_style,
+                alt: image.alt
+            -}}
+          {%- else -%}
+            <div class="four-image-grid__placeholder" aria-hidden="true">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Four image grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container width",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full width"
+        },
+        {
+          "value": "fixed",
+          "label": "Fixed width"
+        }
+      ],
+      "default": "fixed"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Four image grid"
+    }
+  ]
+}
+{% endschema %}

@@ -34,7 +34,7 @@
       "type": "cart-drawer",
       "settings": {
         "show_cart_note": true,
-        "show_shipping_rates_calculator": true,
+        "show_shipping_rates_calculator": false,
         "show_cart_coupon": true,
         "show_free_shipping_goal": false,
         "enable_cart_recommendations": true,

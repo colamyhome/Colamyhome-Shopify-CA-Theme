@@ -1,0 +1,764 @@
+{% doc %}
+  @prompt
+    Create a tab-based product collection section similar to a category switcher. At the top, show a heading and a row of clickable category tabs (like "Outdoor", "Living Room", "Dining Room", etc.) with the active tab highlighted in a gold/orange color and inactive tabs in a muted blue-gray. Below the tabs, display a product grid filtered by the selected tab/collection. Layout: 4 products per row on desktop, 2 products per row on mobile. Each product card should show: product image with a badge label (e.g. "Summer Sales") in the top-left corner, product title, a coupon/discount badge or pill (e.g. "Extra 12% OFF" or a promo code tag) between the title and the price, then the sale price and original crossed-out price in red. Tabs should switch the displayed products dynamically without page reload. Each tab should be linked to a different collection. All content (heading, tab labels, collections) should be customizable in the theme editor., 产品标题不超过两行, 标签单行滑动排列，并且顶部固定，方便切换
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-tab-collection-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 0;
+  }
+
+  .ai-tab-collection-container-{{ ai_gen_id }} {
+    max-width: {{ settings.page_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-tab-collection-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .ai-tab-collection-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 24px;
+    font-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    font-weight: {{ settings.type_header_font.weight }};
+  }
+
+  .ai-tab-collection-tabs-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .ai-tab-collection-tabs-wrapper-{{ ai_gen_id }}.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: {{ block.settings.sticky_bg_color }};
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px 0;
+    margin-bottom: 0;
+    justify-content: center;
+  }
+
+  .ai-tab-collection-tabs-container-{{ ai_gen_id }} {
+    max-width: {{ settings.page_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-tab-collection-tabs-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+  }
+
+  .ai-tab-collection-tabs-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-tab-collection-tab-{{ ai_gen_id }} {
+    padding: 12px 24px;
+    border: 2px solid {{ block.settings.inactive_tab_color }};
+    background-color: transparent;
+    color: {{ block.settings.inactive_tab_color }};
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-weight: {{ settings.type_body_font.weight }};
+    border-radius: {{ block.settings.tab_border_radius }}px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ai-tab-collection-tab-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.active_tab_color }};
+    color: {{ block.settings.active_tab_color }};
+  }
+
+  .ai-tab-collection-tab-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.active_tab_color }};
+    border-color: {{ block.settings.active_tab_color }};
+    color: {{ block.settings.active_tab_text_color }};
+  }
+
+  .ai-tab-collection-spacer-{{ ai_gen_id }} {
+    height: 0;
+    transition: height 0.3s ease;
+  }
+
+  .ai-tab-collection-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .ai-tab-collection-content-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-tab-collection-content-{{ ai_gen_id }}.active {
+    display: block;
+  }
+
+  .ai-tab-collection-product-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-tab-collection-product-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.product_image_radius }}px;
+    margin-bottom: 12px;
+  }
+
+  .ai-tab-collection-product-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-tab-collection-badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: {{ block.settings.badge_bg_color }};
+    color: {{ block.settings.badge_text_color }};
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    z-index: 2;
+  }
+
+  .ai-tab-collection-product-info-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-tab-collection-product-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.product_title_color }};
+    margin: 0;
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-weight: {{ settings.pcard_title_font_weight }};
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ai-tab-collection-product-title-{{ ai_gen_id }} a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ai-tab-collection-product-title-{{ ai_gen_id }} a:hover {
+    opacity: 0.8;
+  }
+
+  .ai-tab-collection-coupon-{{ ai_gen_id }} {
+    display: inline-block;
+    background-color: {{ block.settings.coupon_bg_color }};
+    color: {{ block.settings.coupon_text_color }};
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: {{ block.settings.coupon_border_radius }}px;
+    width: fit-content;
+  }
+
+  .ai-tab-collection-product-price-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  }
+
+  .ai-tab-collection-sale-price-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 500;
+    color: {{ block.settings.sale_price_color }};
+  }
+
+  .ai-tab-collection-original-price-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.original_price_color }};
+    text-decoration: line-through;
+  }
+
+  .ai-tab-collection-empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-tab-collection-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .ai-tab-collection-tabs-{{ ai_gen_id }} {
+      gap: 8px;
+    }
+
+    .ai-tab-collection-tab-{{ ai_gen_id }} {
+      padding: 10px 18px;
+      font-size: 14px;
+    }
+
+    .ai-tab-collection-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<tab-collection-{{ ai_gen_id }} class="ai-tab-collection-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-tab-collection-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <div class="ai-tab-collection-header-{{ ai_gen_id }}">
+        <h2 class="ai-tab-collection-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="ai-tab-collection-tabs-wrapper-{{ ai_gen_id }}" data-tabs-wrapper>
+      <div class="ai-tab-collection-tabs-container-{{ ai_gen_id }}">
+        <div class="ai-tab-collection-tabs-{{ ai_gen_id }}">
+          {% for i in (1..6) %}
+            {% liquid
+              assign tab_label_key = 'tab_' | append: i | append: '_label'
+              assign collection_key = 'tab_' | append: i | append: '_collection'
+              assign tab_label = block.settings[tab_label_key]
+              assign collection = block.settings[collection_key]
+            %}
+            {% if tab_label != blank and collection != blank %}
+              <button
+                class="ai-tab-collection-tab-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+                data-tab="{{ i }}"
+                aria-label="{{ tab_label }}"
+              >
+                {{ tab_label }}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-tab-collection-spacer-{{ ai_gen_id }}" data-spacer></div>
+
+    {% for i in (1..6) %}
+      {% liquid
+        assign tab_label_key = 'tab_' | append: i | append: '_label'
+        assign collection_key = 'tab_' | append: i | append: '_collection'
+        assign tab_label = block.settings[tab_label_key]
+        assign collection = block.settings[collection_key]
+      %}
+      {% if tab_label != blank and collection != blank %}
+        <div
+          class="ai-tab-collection-content-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+          data-content="{{ i }}"
+        >
+          {% if collection.products.size > 0 %}
+            <div class="ai-tab-collection-grid-{{ ai_gen_id }}">
+              {% for product in collection.products limit: block.settings.products_per_tab %}
+                <div class="ai-tab-collection-product-{{ ai_gen_id }}">
+                  <div class="ai-tab-collection-product-image-wrapper-{{ ai_gen_id }}">
+                    {% if product.featured_image %}
+                      <img
+                        src="{{ product.featured_image | image_url: width: 600 }}"
+                        alt="{{ product.featured_image.alt | escape }}"
+                        class="ai-tab-collection-product-image-{{ ai_gen_id }}"
+                        loading="lazy"
+                        width="600"
+                        height="600"
+                      >
+                    {% else %}
+                      <div class="ai-tab-collection-product-image-{{ ai_gen_id }}">
+                        {{ 'product-1' | placeholder_svg_tag }}
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.badge_text != blank %}
+                      <div class="ai-tab-collection-badge-{{ ai_gen_id }}">
+                        {{ block.settings.badge_text }}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <div class="ai-tab-collection-product-info-{{ ai_gen_id }}">
+                    <h3 class="ai-tab-collection-product-title-{{ ai_gen_id }}">
+                      <a href="{{ product.url }}">{{ product.title }}</a>
+                    </h3>
+
+                    {% liquid
+  assign coupon_key = 'tab_' | append: i | append: '_coupon_text'
+  assign tab_coupon = block.settings[coupon_key]
+  if tab_coupon == blank
+    assign tab_coupon = block.settings.coupon_text
+  endif
+%}
+{% if tab_coupon != blank %}
+  <div class="ai-tab-collection-coupon-{{ ai_gen_id }}">
+    {{ tab_coupon }}
+  </div>
+{% endif %}
+
+                    <div class="ai-tab-collection-product-price-{{ ai_gen_id }}">
+                      {% if product.compare_at_price > product.price %}
+                        <span class="ai-tab-collection-sale-price-{{ ai_gen_id }}">
+                          {{ product.price | money }}
+                        </span>
+                        <span class="ai-tab-collection-original-price-{{ ai_gen_id }}">
+                          {{ product.compare_at_price | money }}
+                        </span>
+                      {% else %}
+                        <span class="ai-tab-collection-sale-price-{{ ai_gen_id }}">
+                          {{ product.price | money }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="ai-tab-collection-empty-{{ ai_gen_id }}">
+              No products found in this collection
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</tab-collection-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TabCollection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.tabsWrapper = null;
+        this.spacer = null;
+        this.originalOffsetTop = 0;
+        this.isSticky = false;
+      }
+
+      connectedCallback() {
+        this.tabs = this.querySelectorAll('.ai-tab-collection-tab-{{ ai_gen_id }}');
+        this.contents = this.querySelectorAll('.ai-tab-collection-content-{{ ai_gen_id }}');
+        this.tabsWrapper = this.querySelector('[data-tabs-wrapper]');
+        this.spacer = this.querySelector('[data-spacer]');
+        
+        this.setupEventListeners();
+        this.setupStickyTabs();
+      }
+
+      setupEventListeners() {
+        this.tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            this.switchTab(tabId);
+            this.scrollTabIntoView(tab);
+          });
+        });
+      }
+
+      switchTab(tabId) {
+        this.tabs.forEach((tab) => {
+          if (tab.getAttribute('data-tab') === tabId) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        this.contents.forEach((content) => {
+          if (content.getAttribute('data-content') === tabId) {
+            content.classList.add('active');
+          } else {
+            content.classList.remove('active');
+          }
+        });
+      }
+
+      scrollTabIntoView(tab) {
+        const tabsContainer = tab.parentElement;
+        const tabLeft = tab.offsetLeft;
+        const tabWidth = tab.offsetWidth;
+        const containerWidth = tabsContainer.offsetWidth;
+        const scrollLeft = tabsContainer.scrollLeft;
+
+        if (tabLeft < scrollLeft) {
+          tabsContainer.scrollTo({
+            left: tabLeft - 20,
+            behavior: 'smooth'
+          });
+        } else if (tabLeft + tabWidth > scrollLeft + containerWidth) {
+          tabsContainer.scrollTo({
+            left: tabLeft + tabWidth - containerWidth + 20,
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      setupStickyTabs() {
+        if (!this.tabsWrapper) return;
+
+        this.originalOffsetTop = this.tabsWrapper.offsetTop;
+
+        const handleScroll = () => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+          if (scrollTop >= this.originalOffsetTop && !this.isSticky) {
+            this.isSticky = true;
+            this.tabsWrapper.classList.add('sticky');
+            this.spacer.style.height = this.tabsWrapper.offsetHeight + 'px';
+          } else if (scrollTop < this.originalOffsetTop && this.isSticky) {
+            this.isSticky = false;
+            this.tabsWrapper.classList.remove('sticky');
+            this.spacer.style.height = '0';
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', () => {
+          if (!this.isSticky) {
+            this.originalOffsetTop = this.tabsWrapper.offsetTop;
+          }
+        });
+      }
+    }
+
+    customElements.define('tab-collection-{{ ai_gen_id }}', TabCollection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Tab product collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Tab label",
+      "default": "Outdoor"
+    },
+    {
+      "type": "collection",
+      "id": "tab_1_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Tab label",
+      "default": "Living Room"
+    },
+    {
+      "type": "collection",
+      "id": "tab_2_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_label",
+      "label": "Tab label",
+      "default": "Dining Room"
+    },
+    {
+      "type": "collection",
+      "id": "tab_3_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 4"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_label",
+      "label": "Tab label",
+      "default": "Bedroom"
+    },
+    {
+      "type": "collection",
+      "id": "tab_4_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 5"
+    },
+    {
+      "type": "text",
+      "id": "tab_5_label",
+      "label": "Tab label"
+    },
+    {
+      "type": "collection",
+      "id": "tab_5_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab 6"
+    },
+    {
+      "type": "text",
+      "id": "tab_6_label",
+      "label": "Tab label"
+    },
+    {
+      "type": "collection",
+      "id": "tab_6_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Tab style"
+    },
+    {
+      "type": "color",
+      "id": "active_tab_color",
+      "label": "Active tab color",
+      "default": "#D4A574"
+    },
+    {
+      "type": "color",
+      "id": "active_tab_text_color",
+      "label": "Active tab text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "inactive_tab_color",
+      "label": "Inactive tab color",
+      "default": "#7A8B99"
+    },
+    {
+      "type": "color",
+      "id": "sticky_bg_color",
+      "label": "Sticky background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "tab_border_radius",
+      "label": "Tab border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Product display"
+    },
+    {
+      "type": "range",
+      "id": "products_per_tab",
+      "label": "Products per tab",
+      "min": 4,
+      "max": 20,
+      "step": 4,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "product_image_radius",
+      "label": "Product image radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Summer Sales"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge background",
+      "default": "#C4301C"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "label": "Badge border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Coupon"
+    },
+    {
+      "type": "text",
+      "id": "coupon_text",
+      "label": "Coupon text",
+      "default": "Extra 12% OFF"
+    },
+    {
+  "type": "text",
+  "id": "tab_1_coupon_text",
+  "label": "Tab 1 Coupon text"
+},
+{
+  "type": "text",
+  "id": "tab_2_coupon_text",
+  "label": "Tab 2 Coupon text"
+},
+{
+  "type": "text",
+  "id": "tab_3_coupon_text",
+  "label": "Tab 3 Coupon text"
+},
+{
+  "type": "text",
+  "id": "tab_4_coupon_text",
+  "label": "Tab 4 Coupon text"
+},
+{
+  "type": "text",
+  "id": "tab_5_coupon_text",
+  "label": "Tab 5 Coupon text"
+},
+{
+  "type": "text",
+  "id": "tab_6_coupon_text",
+  "label": "Tab 6 Coupon text"
+},
+    {
+      "type": "color",
+      "id": "coupon_bg_color",
+      "label": "Coupon background",
+      "default": "#FFE093"
+    },
+    {
+      "type": "color",
+      "id": "coupon_text_color",
+      "label": "Coupon text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "coupon_border_radius",
+      "label": "Coupon border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Price"
+    },
+    {
+      "type": "color",
+      "id": "sale_price_color",
+      "label": "Sale price color",
+      "default": "#C4301C"
+    },
+    {
+      "type": "color",
+      "id": "original_price_color",
+      "label": "Original price color",
+      "default": "#999999"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tab product collection"
+    }
+  ]
+}
+{% endschema %}

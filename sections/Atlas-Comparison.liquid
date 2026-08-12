@@ -1,0 +1,518 @@
+{%- liquid
+  assign left_product = section.settings.left_product
+  if left_product == blank and product != blank
+    assign left_product = product
+  endif
+  assign right_product = section.settings.right_product
+  assign left_image = section.settings.left_image
+  if left_image == blank and left_product != blank
+    assign left_image = left_product.featured_image
+  endif
+  assign right_image = section.settings.right_image
+  if right_image == blank and right_product != blank
+    assign right_image = right_product.featured_image
+  endif
+  assign left_title = section.settings.left_title
+  if left_title == blank and left_product != blank
+    assign left_title = left_product.title
+  endif
+  assign right_title = section.settings.right_title
+  if right_title == blank and right_product != blank
+    assign right_title = right_product.title
+  endif
+-%}
+
+<section
+  class="atlas-comparison"
+  style="--section-bg: {{ section.settings.background_color }}; --card-bg: {{ section.settings.card_color }}; --heading-color: {{ section.settings.heading_color }}; --text-color: {{ section.settings.text_color }}; --muted-color: {{ section.settings.muted_color }}; --accent-color: {{ section.settings.accent_color }}; --accent-soft: {{ section.settings.accent_soft_color }}; --line-color: {{ section.settings.line_color }}; --section-width: {{ section.settings.max_width }}px; --section-pad-top: {{ section.settings.padding_top }}px; --section-pad-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="atlas-comparison__inner">
+    <header class="atlas-comparison__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="atlas-comparison__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="atlas-comparison__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="atlas-comparison__cards-scroll">
+      <div class="atlas-comparison__cards">
+        <article class="atlas-comparison__card atlas-comparison__card--left">
+          <div class="atlas-comparison__bar" aria-hidden="true"></div>
+          <div class="atlas-comparison__card-content">
+            {%- if left_title != blank -%}
+              <h3 class="atlas-comparison__product-title">
+                {%- if left_product != blank -%}
+                  <a href="{{ left_product.url }}">{{ left_title | escape }}</a>
+                {%- else -%}
+                  {{ left_title | escape }}
+                {%- endif -%}
+              </h3>
+            {%- endif -%}
+            {%- if section.settings.left_kicker != blank -%}
+              <p class="atlas-comparison__kicker">{{ section.settings.left_kicker | escape }}</p>
+            {%- endif -%}
+            <div class="atlas-comparison__image-wrap">
+              {%- if left_image != blank -%}
+                {{ left_image | image_url: width: 720 | image_tag: class: 'atlas-comparison__image', widths: '240, 360, 480, 720', sizes: '(min-width: 750px) 300px, 42vw', loading: 'lazy', alt: left_title }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'atlas-comparison__placeholder' }}
+              {%- endif -%}
+            </div>
+            {%- if section.settings.left_badge != blank -%}
+              <p class="atlas-comparison__badge atlas-comparison__badge--left">{{ section.settings.left_badge | escape }}</p>
+            {%- endif -%}
+          </div>
+        </article>
+
+        <article class="atlas-comparison__card atlas-comparison__card--right">
+          <div class="atlas-comparison__bar" aria-hidden="true"></div>
+          <div class="atlas-comparison__card-content">
+            {%- if right_title != blank -%}
+              <h3 class="atlas-comparison__product-title">
+                {%- if right_product != blank -%}
+                  <a href="{{ right_product.url }}">{{ right_title | escape }}</a>
+                {%- else -%}
+                  {{ right_title | escape }}
+                {%- endif -%}
+              </h3>
+            {%- endif -%}
+            {%- if section.settings.right_kicker != blank -%}
+              <p class="atlas-comparison__kicker">{{ section.settings.right_kicker | escape }}</p>
+            {%- endif -%}
+            <div class="atlas-comparison__image-wrap">
+              {%- if right_image != blank -%}
+                {{ right_image | image_url: width: 720 | image_tag: class: 'atlas-comparison__image', widths: '240, 360, 480, 720', sizes: '(min-width: 750px) 300px, 42vw', loading: 'lazy', alt: right_title }}
+              {%- else -%}
+                {{ 'product-2' | placeholder_svg_tag: 'atlas-comparison__placeholder' }}
+              {%- endif -%}
+            </div>
+            {%- if section.settings.right_badge != blank -%}
+              <p class="atlas-comparison__badge atlas-comparison__badge--right">{{ section.settings.right_badge | escape }}</p>
+            {%- endif -%}
+          </div>
+        </article>
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="atlas-comparison__table-scroll" tabindex="0" role="region" aria-label="{{ section.settings.table_label | escape }}">
+        <table class="atlas-comparison__table">
+          <thead>
+            <tr>
+              <th scope="col">{{ section.settings.feature_heading | escape }}</th>
+              <th scope="col">{{ section.settings.left_column_heading | default: left_title | escape }}</th>
+              <th scope="col">{{ section.settings.right_column_heading | default: right_title | escape }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}>
+                <th scope="row">{{ block.settings.feature | escape }}</th>
+                <td>{{ block.settings.left_value | escape | newline_to_br }}</td>
+                <td>{{ block.settings.right_value | escape | newline_to_br }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.note_heading != blank or section.settings.note_text != blank -%}
+      <aside class="atlas-comparison__note">
+        <span class="atlas-comparison__note-bar" aria-hidden="true"></span>
+        <div>
+          {%- if section.settings.note_heading != blank -%}
+            <h3>{{ section.settings.note_heading | escape }}</h3>
+          {%- endif -%}
+          {%- if section.settings.note_text != blank -%}
+            <div class="atlas-comparison__note-text">{{ section.settings.note_text }}</div>
+          {%- endif -%}
+        </div>
+      </aside>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .atlas-comparison {
+    background: var(--section-bg);
+    color: var(--text-color);
+    padding: var(--section-pad-top) 18px var(--section-pad-bottom);
+  }
+
+  .atlas-comparison * {
+    box-sizing: border-box;
+  }
+
+  .atlas-comparison__inner {
+    width: min(100%, var(--section-width));
+    margin-inline: auto;
+  }
+
+  .atlas-comparison__header {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .atlas-comparison__heading {
+    margin: 0;
+    color: var(--heading-color);
+    font-size: clamp(36px, 4.2vw, 58px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .atlas-comparison__subheading {
+    margin: 8px 0 0;
+    color: var(--muted-color);
+    font-size: clamp(17px, 2vw, 25px);
+    line-height: 1.25;
+  }
+
+  .atlas-comparison__cards-scroll,
+  .atlas-comparison__table-scroll {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .atlas-comparison__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    min-width: 700px;
+    padding: 0 2px 28px;
+  }
+
+  .atlas-comparison__card {
+    overflow: hidden;
+    min-height: 390px;
+    border: 1px solid color-mix(in srgb, var(--line-color), transparent 40%);
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 13px 30px rgb(26 39 58 / 9%);
+  }
+
+  .atlas-comparison__bar {
+    height: 6px;
+    margin: 16px 18px 0;
+    border-radius: 999px;
+    background: var(--accent-color);
+  }
+
+  .atlas-comparison__card--right .atlas-comparison__bar {
+    background: var(--heading-color);
+  }
+
+  .atlas-comparison__card-content {
+    display: flex;
+    min-height: 365px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 22px 16px;
+  }
+
+  .atlas-comparison__product-title {
+    margin: 0;
+    color: var(--heading-color);
+    font-size: clamp(27px, 2.5vw, 36px);
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .atlas-comparison__product-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .atlas-comparison__product-title a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .atlas-comparison__kicker {
+    margin: 8px 0 0;
+    color: var(--muted-color);
+    font-size: 17px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .atlas-comparison__image-wrap {
+    display: grid;
+    width: 100%;
+    min-height: 230px;
+    flex: 1;
+    place-items: center;
+  }
+
+  .atlas-comparison__image,
+  .atlas-comparison__placeholder {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 230px;
+    object-fit: contain;
+  }
+
+  .atlas-comparison__badge {
+    width: 100%;
+    margin: 0;
+    border-radius: 999px;
+    padding: 5px 16px;
+    background: var(--accent-soft);
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .atlas-comparison__badge--right {
+    background: color-mix(in srgb, var(--heading-color), transparent 94%);
+    color: var(--heading-color);
+  }
+
+  .atlas-comparison__table-scroll {
+    border-radius: 18px 18px 0 0;
+    outline: none;
+  }
+
+  .atlas-comparison__table-scroll:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent-color), transparent 35%);
+    outline-offset: 3px;
+  }
+
+  .atlas-comparison__table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: color-mix(in srgb, var(--card-bg), var(--section-bg) 50%);
+    font-size: 17px;
+    line-height: 1.08;
+  }
+
+  .atlas-comparison__table thead th {
+    padding: 14px 12px;
+    border-right: 1px solid rgb(255 255 255 / 75%);
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .atlas-comparison__table thead th:first-child {
+    width: 20%;
+    border-radius: 18px 0 0;
+  }
+
+  .atlas-comparison__table thead th:last-child {
+    border-right: 0;
+    border-radius: 0 18px 0 0;
+  }
+
+  .atlas-comparison__table tbody th,
+  .atlas-comparison__table tbody td {
+    padding: 10px 13px;
+    border-bottom: 1px solid var(--line-color);
+    vertical-align: middle;
+  }
+
+  .atlas-comparison__table tbody th {
+    background: color-mix(in srgb, var(--accent-soft), var(--card-bg) 42%);
+    color: var(--heading-color);
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .atlas-comparison__table tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--card-bg), var(--section-bg) 28%);
+  }
+
+  .atlas-comparison__note {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    margin: 24px 18px 0;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 68%);
+    border-radius: 18px;
+    padding: 18px;
+    background: var(--accent-soft);
+  }
+
+  .atlas-comparison__note-bar {
+    width: 9px;
+    flex: 0 0 9px;
+    border-radius: 999px;
+    background: var(--accent-color);
+  }
+
+  .atlas-comparison__note h3 {
+    margin: 0 0 3px;
+    color: var(--heading-color);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .atlas-comparison__note-text {
+    color: var(--muted-color);
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  .atlas-comparison__note-text p {
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .atlas-comparison {
+      padding-inline: 12px;
+    }
+
+    .atlas-comparison__heading {
+      font-size: 34px;
+    }
+
+    .atlas-comparison__subheading {
+      font-size: 17px;
+    }
+
+    .atlas-comparison__cards {
+      min-width: 620px;
+      gap: 14px;
+      padding-bottom: 18px;
+    }
+
+    .atlas-comparison__card {
+      min-height: 350px;
+      border-radius: 16px;
+    }
+
+    .atlas-comparison__card-content {
+      min-height: 325px;
+      padding-inline: 14px;
+    }
+
+    .atlas-comparison__product-title {
+      font-size: 26px;
+    }
+
+    .atlas-comparison__image,
+    .atlas-comparison__placeholder {
+      height: 200px;
+    }
+
+    .atlas-comparison__table-scroll {
+      border-radius: 14px 14px 0 0;
+    }
+
+    .atlas-comparison__table {
+      min-width: 680px;
+      font-size: 15px;
+    }
+
+    .atlas-comparison__table thead th:first-child,
+    .atlas-comparison__table tbody th {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    .atlas-comparison__table thead th:first-child {
+      z-index: 2;
+    }
+
+    .atlas-comparison__note {
+      gap: 14px;
+      margin-inline: 0;
+      padding: 15px;
+    }
+
+    .atlas-comparison__note-text {
+      font-size: 16px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Atlas product comparison",
+  "tag": "section",
+  "class": "section-atlas-comparison",
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Atlas vs Atlas01" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Quick ergonomic chair comparison" },
+    { "type": "header", "content": "Left product" },
+    { "type": "product", "id": "left_product", "label": "Product", "info": "Uses the current product when left blank." },
+    { "type": "image_picker", "id": "left_image", "label": "Custom image", "info": "Uses the product image when left blank." },
+    { "type": "text", "id": "left_title", "label": "Short title", "default": "Atlas" },
+    { "type": "text", "id": "left_kicker", "label": "Description", "default": "Core model · Mid-to-high-end" },
+    { "type": "text", "id": "left_badge", "label": "Badge", "default": "Aluminium armrests & base" },
+    { "type": "header", "content": "Right product" },
+    { "type": "product", "id": "right_product", "label": "Product" },
+    { "type": "image_picker", "id": "right_image", "label": "Custom image", "info": "Uses the product image when left blank." },
+    { "type": "text", "id": "right_title", "label": "Short title", "default": "Atlas01" },
+    { "type": "text", "id": "right_kicker", "label": "Description", "default": "Core model · Mid-to-high-end" },
+    { "type": "text", "id": "right_badge", "label": "Badge", "default": "Nylon armrests & base" },
+    { "type": "header", "content": "Table" },
+    { "type": "text", "id": "table_label", "label": "Accessibility label", "default": "Atlas and Atlas01 feature comparison" },
+    { "type": "text", "id": "feature_heading", "label": "Feature column heading", "default": "Feature" },
+    { "type": "text", "id": "left_column_heading", "label": "Left column heading", "default": "Atlas" },
+    { "type": "text", "id": "right_column_heading", "label": "Right column heading", "default": "Atlas01" },
+    { "type": "header", "content": "Fit note" },
+    { "type": "text", "id": "note_heading", "label": "Heading", "default": "Fit note" },
+    { "type": "richtext", "id": "note_text", "label": "Text", "default": "<p>For users over 190 cm tall, please review the dimensions carefully to ensure the best fit.</p>" },
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#f3f6fb" },
+    { "type": "color", "id": "card_color", "label": "Cards", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#20252d" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#252b34" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#626b79" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#315a98" },
+    { "type": "color", "id": "accent_soft_color", "label": "Accent background", "default": "#eaf1fe" },
+    { "type": "color", "id": "line_color", "label": "Table lines", "default": "#d9e0ea" },
+    { "type": "range", "id": "max_width", "min": 900, "max": 1600, "step": 20, "unit": "px", "label": "Maximum width", "default": 1300 },
+    { "type": "range", "id": "padding_top", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Top padding", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_row",
+      "name": "Comparison row",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature", "default": "Feature" },
+        { "type": "textarea", "id": "left_value", "label": "Atlas value", "default": "Value" },
+        { "type": "textarea", "id": "right_value", "label": "Atlas01 value", "default": "Value" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Atlas product comparison",
+      "blocks": [
+        { "type": "comparison_row", "settings": { "feature": "Position", "left_value": "Core model\n(mid-to-high-end)", "right_value": "Core model\n(mid-to-high-end)" } },
+        { "type": "comparison_row", "settings": { "feature": "User focus", "left_value": "Mainstream design;\nstrong value for money", "right_value": "Mainstream design;\nstrong value for money" } },
+        { "type": "comparison_row", "settings": { "feature": "Colours", "left_value": "Dark Grey /\nLight Grey", "right_value": "Black /\nDark Grey" } },
+        { "type": "comparison_row", "settings": { "feature": "Seat cushion", "left_value": "Imported fabric +\nmoulded foam", "right_value": "Imported fabric +\nmoulded foam" } },
+        { "type": "comparison_row", "settings": { "feature": "Seat depth", "left_value": "Rotary adjustable;\nuncommon at this level", "right_value": "Rotary adjustable;\nuncommon at this level" } },
+        { "type": "comparison_row", "settings": { "feature": "Armrests", "left_value": "4D: fore/aft, height,\nwidth & pivot;\naluminium", "right_value": "4D: fore/aft, height,\nwidth & pivot;\nnylon" } },
+        { "type": "comparison_row", "settings": { "feature": "Base", "left_value": "Aluminium\nfive-star base", "right_value": "Nylon\nfive-star base" } },
+        { "type": "comparison_row", "settings": { "feature": "Seat support", "left_value": "Aluminium-alloy\nseat support plate", "right_value": "Aluminium-alloy\nseat support plate" } },
+        { "type": "comparison_row", "settings": { "feature": "Footrest", "left_value": "No separate\nfootrest", "right_value": "No separate\nfootrest" } },
+        { "type": "comparison_row", "settings": { "feature": "Lumbar support", "left_value": "Adjustable", "right_value": "Adjustable" } },
+        { "type": "comparison_row", "settings": { "feature": "Recline lock", "left_value": "4 positions\n(107°–132°)", "right_value": "4 positions\n(105°–130°)" } },
+        { "type": "comparison_row", "settings": { "feature": "Castors / mesh", "left_value": "PU castors;\nimported mesh back", "right_value": "PU castors;\nimported mesh back" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

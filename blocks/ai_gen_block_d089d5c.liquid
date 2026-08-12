@@ -1,0 +1,628 @@
+{% doc %}
+  @prompt
+    我想要一个轮播滑动产品首页，但是不现实产品标题和产品价格的模块
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-carousel-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+  }
+
+  .ai-product-carousel__container-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-product-carousel__track-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.gap }}px;
+    transition: transform 0.5s ease;
+  }
+
+  .ai-product-carousel__slide-{{ ai_gen_id }} {
+    flex: 0 0 calc((100% - ({{ block.settings.slides_per_view | minus: 1 }} * {{ block.settings.gap }}px)) / {{ block.settings.slides_per_view }});
+    max-width: calc((100% - ({{ block.settings.slides_per_view | minus: 1 }} * {{ block.settings.gap }}px)) / {{ block.settings.slides_per_view }});
+  }
+
+  .ai-product-carousel__product-{{ ai_gen_id }} {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .ai-product-carousel__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: {{ block.settings.image_aspect_ratio }}%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background-color: #f5f5f5;
+  }
+
+  .ai-product-carousel__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-product-carousel__placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-product-carousel__placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-product-carousel__nav-{{ ai_gen_id }} {
+    --carousel-nav-size: {{ block.settings.nav_button_size }}px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--carousel-nav-size);
+    height: var(--carousel-nav-size);
+    min-width: var(--carousel-nav-size);
+    max-width: var(--carousel-nav-size);
+    min-height: var(--carousel-nav-size);
+    max-height: var(--carousel-nav-size);
+    aspect-ratio: 1 / 1;
+    background-color: {{ block.settings.nav_button_bg }};
+    color: {{ block.settings.nav_button_color }};
+    border: none;
+    border-radius: 9999px;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+    flex: 0 0 var(--carousel-nav-size);
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-product-carousel__nav-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.nav_button_hover_bg }};
+    color: {{ block.settings.nav_button_hover_color }};
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .ai-product-carousel__nav-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-product-carousel__nav-{{ ai_gen_id }}:disabled:hover {
+    transform: translateY(-50%) scale(1);
+  }
+
+  .ai-product-carousel__nav--prev-{{ ai_gen_id }} {
+    left: {{ block.settings.nav_button_offset }}px;
+  }
+
+  .ai-product-carousel__nav--next-{{ ai_gen_id }} {
+    right: {{ block.settings.nav_button_offset }}px;
+  }
+
+  .ai-product-carousel__nav-{{ ai_gen_id }} svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex: 0 0 auto;
+    pointer-events: none;
+  }
+
+  .ai-product-carousel__dots-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: {{ block.settings.dots_margin_top }}px;
+  }
+
+  .ai-product-carousel__dot-{{ ai_gen_id }} {
+    width: {{ block.settings.dot_size }}px;
+    height: {{ block.settings.dot_size }}px;
+    border-radius: 50%;
+    background-color: {{ block.settings.dot_color }};
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .ai-product-carousel__dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-carousel__slide-{{ ai_gen_id }} {
+      flex: 0 0 calc((100% - ({{ block.settings.slides_per_view_mobile | minus: 1 }} * {{ block.settings.gap }}px)) / {{ block.settings.slides_per_view_mobile }});
+      max-width: calc((100% - ({{ block.settings.slides_per_view_mobile | minus: 1 }} * {{ block.settings.gap }}px)) / {{ block.settings.slides_per_view_mobile }});
+    }
+
+    .ai-product-carousel__nav-{{ ai_gen_id }} {
+      --carousel-nav-size: {{ block.settings.nav_button_size | times: 0.8 }}px;
+    }
+
+    .ai-product-carousel__nav--prev-{{ ai_gen_id }} {
+      left: {{ block.settings.nav_button_offset | times: 0.5 }}px;
+    }
+
+    .ai-product-carousel__nav--next-{{ ai_gen_id }} {
+      right: {{ block.settings.nav_button_offset | times: 0.5 }}px;
+    }
+  }
+{% endstyle %}
+
+<product-carousel-{{ ai_gen_id }}
+  class="ai-product-carousel-{{ ai_gen_id }} page-width page-width--fixed"
+  {{ block.shopify_attributes }}
+  data-slides-per-view="{{ block.settings.slides_per_view }}"
+  data-slides-per-view-mobile="{{ block.settings.slides_per_view_mobile }}"
+  data-autoplay="{{ block.settings.autoplay }}"
+  data-autoplay-speed="{{ block.settings.autoplay_speed }}"
+>
+  <div class="ai-product-carousel__container-{{ ai_gen_id }}">
+    <div class="ai-product-carousel__track-{{ ai_gen_id }}">
+      {% if block.settings.product_list != blank %}
+        {% for product in block.settings.product_list %}
+          <div class="ai-product-carousel__slide-{{ ai_gen_id }}">
+            <a
+              href="{{ product.url }}"
+              class="ai-product-carousel__product-{{ ai_gen_id }}"
+            >
+              <div class="ai-product-carousel__image-wrapper-{{ ai_gen_id }}">
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    alt="{{ product.featured_image.alt | escape }}"
+                    class="ai-product-carousel__image-{{ ai_gen_id }}"
+                    loading="lazy"
+                    width="800"
+                    height="{{ 800 | times: block.settings.image_aspect_ratio | divided_by: 100 }}"
+                  >
+                {% else %}
+                  <div class="ai-product-carousel__placeholder-{{ ai_gen_id }}">
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..8) %}
+          <div class="ai-product-carousel__slide-{{ ai_gen_id }}">
+            <div class="ai-product-carousel__product-{{ ai_gen_id }}">
+              <div class="ai-product-carousel__image-wrapper-{{ ai_gen_id }}">
+                <div class="ai-product-carousel__placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if block.settings.show_navigation %}
+      <button
+        class="ai-product-carousel__nav-{{ ai_gen_id }} ai-product-carousel__nav--prev-{{ ai_gen_id }}"
+        aria-label="上一页"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button
+        class="ai-product-carousel__nav-{{ ai_gen_id }} ai-product-carousel__nav--next-{{ ai_gen_id }}"
+        aria-label="下一页"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
+
+  {% if block.settings.show_dots %}
+    <div class="ai-product-carousel__dots-{{ ai_gen_id }}"></div>
+  {% endif %}
+</product-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentIndex = 0;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-product-carousel__track-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.ai-product-carousel__slide-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-product-carousel__nav--prev-{{ ai_gen_id }}');
+        this.nextButton = this.querySelector('.ai-product-carousel__nav--next-{{ ai_gen_id }}');
+        this.dotsContainer = this.querySelector('.ai-product-carousel__dots-{{ ai_gen_id }}');
+
+        this.slidesPerView = parseInt(this.dataset.slidesPerView);
+        this.slidesPerViewMobile = parseInt(this.dataset.slidesPerViewMobile);
+        this.autoplay = this.dataset.autoplay === 'true';
+        this.autoplaySpeed = parseInt(this.dataset.autoplaySpeed);
+
+        this.updateSlidesPerView();
+        this.createDots();
+        this.setupEventListeners();
+        this.updateCarousel();
+
+        if (this.autoplay) {
+          this.startAutoplay();
+        }
+
+        window.addEventListener('resize', () => {
+          this.updateSlidesPerView();
+          this.createDots();
+          this.updateCarousel();
+        });
+      }
+
+      updateSlidesPerView() {
+        this.currentSlidesPerView = window.innerWidth <= 749
+          ? this.slidesPerViewMobile
+          : this.slidesPerView;
+      }
+
+      get maxIndex() {
+        return Math.max(0, this.slides.length - this.currentSlidesPerView);
+      }
+
+      createDots() {
+        if (!this.dotsContainer) return;
+
+        this.dotsContainer.innerHTML = '';
+        const dotsCount = this.maxIndex + 1;
+
+        for (let i = 0; i < dotsCount; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('ai-product-carousel__dot-{{ ai_gen_id }}');
+          dot.setAttribute('aria-label', `转到第 ${i + 1} 页`);
+          if (i === 0) dot.classList.add('active');
+
+          dot.addEventListener('click', () => {
+            this.currentIndex = i;
+            this.updateCarousel();
+            this.resetAutoplay();
+          });
+
+          this.dotsContainer.appendChild(dot);
+        }
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => {
+            this.prev();
+            this.resetAutoplay();
+          });
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => {
+            this.next();
+            this.resetAutoplay();
+          });
+        }
+      }
+
+      prev() {
+        if (this.currentIndex > 0) {
+          this.currentIndex--;
+          this.updateCarousel();
+        }
+      }
+
+      next() {
+        if (this.currentIndex < this.maxIndex) {
+          this.currentIndex++;
+          this.updateCarousel();
+        }
+      }
+
+      updateCarousel() {
+        const slideWidth = this.slides[0].offsetWidth;
+        const gap = {{ block.settings.gap }};
+        const offset = this.currentIndex * (slideWidth + gap);
+
+        this.track.style.transform = `translateX(-${offset}px)`;
+
+        if (this.prevButton) {
+          this.prevButton.disabled = this.currentIndex === 0;
+        }
+
+        if (this.nextButton) {
+          this.nextButton.disabled = this.currentIndex >= this.maxIndex;
+        }
+
+        if (this.dotsContainer) {
+          const dots = this.dotsContainer.querySelectorAll('.ai-product-carousel__dot-{{ ai_gen_id }}');
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentIndex);
+          });
+        }
+      }
+
+      startAutoplay() {
+        this.autoplayInterval = setInterval(() => {
+          if (this.currentIndex >= this.maxIndex) {
+            this.currentIndex = 0;
+          } else {
+            this.currentIndex++;
+          }
+          this.updateCarousel();
+        }, this.autoplaySpeed);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      resetAutoplay() {
+        if (this.autoplay) {
+          this.stopAutoplay();
+          this.startAutoplay();
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoplay();
+      }
+    }
+
+    customElements.define('product-carousel-{{ ai_gen_id }}', ProductCarousel{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "产品轮播",
+  "settings": [
+    {
+      "type": "header",
+      "content": "产品"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "选择产品",
+      "limit": 20
+    },
+    {
+      "type": "header",
+      "content": "布局"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "桌面宽度",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view",
+      "label": "桌面每页显示数量",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "移动端每页显示数量",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "产品间距",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "图片"
+    },
+    {
+      "type": "range",
+      "id": "image_aspect_ratio",
+      "label": "图片高宽比",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "图片圆角",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "导航按钮"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "显示导航按钮",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "nav_button_size",
+      "label": "按钮大小",
+      "min": 30,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "nav_button_offset",
+      "label": "按钮偏移",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "nav_button_bg",
+      "label": "按钮背景色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "按钮图标颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_bg",
+      "label": "按钮悬停背景色",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_color",
+      "label": "按钮悬停图标颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "指示点"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "显示指示点",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "dots_margin_top",
+      "label": "指示点上边距",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "label": "指示点大小",
+      "min": 6,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "指示点颜色",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "激活指示点颜色",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "自动播放"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "启用自动播放",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "自动播放速度",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "default": 3000
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品轮播"
+    }
+  ]
+}
+{% endschema %}

@@ -1182,6 +1182,9 @@
       "cover_image": {
         "label": "Cover image"
       },
+      "width": {
+        "label": "Video width"
+      },
       "enable_video_looping": {
         "label": "Enable video looping"
       },
@@ -2254,6 +2257,65 @@
     }
   },
   "sections": {
+    "product_pairing": {
+      "name": "Product pairing",
+      "headers": {
+        "content": "Content",
+        "bundle": "Bundle products",
+        "discount": "Discount",
+        "scenes": "Combination scenes",
+        "layout": "Layout"
+      },
+      "content": {
+        "heading": "Heading",
+        "subtitle": "Desktop subtitle"
+      },
+      "bundle": {
+        "table_product_1": "Table product 1",
+        "table_product_1_alias": "Table product 1 alias",
+        "table_product_1_variant": "Table product 1 variant",
+        "table_product_1_variant_info": "Enter the exact variant title or option value used by this set.",
+        "table_product_2": "Table product 2",
+        "table_product_2_alias": "Table product 2 alias",
+        "table_product_2_variant": "Table product 2 variant",
+        "table_product_2_variant_info": "Enter the exact variant title or option value used by this set.",
+        "chair_product_1": "Chair product 1",
+        "chair_product_1_alias": "Chair product 1 alias",
+        "chair_product_1_variant": "Chair product 1 variant",
+        "chair_product_1_variant_info": "Enter the exact variant title or option value used by this set.",
+        "chair_product_2": "Chair product 2",
+        "chair_product_2_alias": "Chair product 2 alias",
+        "chair_product_2_variant": "Chair product 2 variant",
+        "chair_product_2_variant_info": "Enter the exact variant title or option value used by this set.",
+        "combination_product_t1_c1": "Table 1 + Chair 1 combination product",
+        "combination_product_t1_c2": "Table 1 + Chair 2 combination product",
+        "combination_product_t2_c1": "Table 2 + Chair 1 combination product",
+        "combination_product_t2_c2": "Table 2 + Chair 2 combination product"
+      },
+      "discount": {
+        "code": "Discount code",
+        "code_info": "Applied automatically after the set is added to the cart.",
+        "percentage": "Display discount percentage",
+        "percentage_info": "Controls the displayed price. Configure the Shopify discount code with the same percentage and eligibility.",
+        "coupon_label": "Coupon display text",
+        "coupon_label_info": "Text shown beside the coupon checkbox in the price area."
+      },
+      "scenes": {
+        "scene_t1_c1_s4": "Table 1 + Chair 1 + Set of 4",
+        "scene_t1_c1_s6": "Table 1 + Chair 1 + Set of 6",
+        "scene_t1_c2_s4": "Table 1 + Chair 2 + Set of 4",
+        "scene_t1_c2_s6": "Table 1 + Chair 2 + Set of 6",
+        "scene_t2_c1_s4": "Table 2 + Chair 1 + Set of 4",
+        "scene_t2_c1_s6": "Table 2 + Chair 1 + Set of 6",
+        "scene_t2_c2_s4": "Table 2 + Chair 2 + Set of 4",
+        "scene_t2_c2_s6": "Table 2 + Chair 2 + Set of 6"
+      },
+      "layout": {
+        "column_gap": "Desktop column gap",
+        "padding_top": "Top padding",
+        "padding_bottom": "Bottom padding"
+      }
+    },
     "announcement-bar": {
       "name": "Announcement bar",
       "blocks": {
@@ -2660,6 +2722,9 @@
           "content": "Footer bottom"
         }
       }
+    },
+    "bottom-image": {
+      "name": "Bottom image"
     },
     "top-bar": {
       "name": "Top bar",
@@ -3695,6 +3760,59 @@
         }
       }
     },
+    "buy-bar": {
+      "name": "buy bar",
+      "settings": {
+        "style": {
+          "label": "Style",
+          "options__1": {
+            "label": "Standard"
+          },
+          "options__2": {
+            "label": "Minimalist"
+          }
+        },
+        "visibility": {
+          "label": "Visibility",
+          "options__1": {
+            "label": "Show on all devices"
+          },
+          "options__2": {
+            "label": "Show on desktop only"
+          },
+          "options__3": {
+            "label": "Show on mobile only"
+          },
+          "options__4": {
+            "label": "Hide"
+          }
+        },
+        "container": {
+          "label": "Container",
+          "options__1": {
+            "label": "Fixed"
+          },
+          "options__2": {
+            "label": "Full width"
+          }
+        },
+        "show_atc_button": {
+          "label": "Show add to cart button"
+        },
+        "show_dynamic_checkout_buttons": {
+          "label": "Show dynamic checkout buttons"
+        },
+        "show_quantity": {
+          "label": "Show quantity selector"
+        },
+        "buy_now_button_color": {
+          "label": "Buy now color"
+        },
+        "add_to_cart_button_color": {
+          "label": "Add to cart color"
+        }
+      }
+    },
     "main-register": {
       "name": "Registration"
     },
@@ -3839,6 +3957,9 @@
     "banner-with-hotspots": {
       "name": "Banner with hotspots"
     },
+    "hotspots-title": {
+      "name": "Hotspot banner title"
+    },
     "buttons-with-icon": {
       "name": "Button group"
     },
@@ -3907,7 +4028,10 @@
       "name": "Rich text"
     },
     "video": {
-      "name": "Video"
+      "name": "Video",
+      "width": {
+        "label": "Video width"
+      }
     },
     "video-hero": {
       "name": "Video hero"
@@ -4396,6 +4520,9 @@
         }
       },
       "blocks": {
+        "text_timer": {
+          "name": "Text countdown timer"
+        },
         "group_heading": {
           "name": "Group heading"
         }
@@ -4718,6 +4845,9 @@
         },
         "text_heading_spacing": {
           "label": "Text to heading spacing"
+        },
+        "enable_translucent_glass": {
+          "label": "Enable translucent glass effect"
         }
       }
     },
@@ -4750,7 +4880,7 @@
       "name": "Layered images with text"
     },
     "scrollspy-nav": {
-      "name": "Scrollspy nav",
+      "name": "Scrollspy nav no Anchor",
       "settings": {
         "tab_settings": {
           "content": "Tab settings"
@@ -4833,7 +4963,7 @@
         }
       },
       "presets": {
-        "name": "Scrollspy nav"
+        "name": "Scrollspy nav no Anchor"
       }
     }
   }

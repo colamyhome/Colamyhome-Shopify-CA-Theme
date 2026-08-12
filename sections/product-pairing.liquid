@@ -1,0 +1,436 @@
+{{ 'section-product-pairing.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-pairing.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign table_product_1 = section.settings.table_product_1
+  assign table_product_2 = section.settings.table_product_2
+  assign chair_product_1 = section.settings.chair_product_1
+  assign chair_product_2 = section.settings.chair_product_2
+  assign combination_product_t1_c1 = section.settings.combination_product_t1_c1
+  assign combination_product_t1_c2 = section.settings.combination_product_t1_c2
+  assign combination_product_t2_c1 = section.settings.combination_product_t2_c1
+  assign combination_product_t2_c2 = section.settings.combination_product_t2_c2
+
+  assign initial_chair_display_image = chair_product_1.featured_image
+  assign initial_chair_display_variant = section.settings.chair_product_1_variant | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&'
+  assign initial_chair_display_match_count = 0
+  assign initial_chair_variant_image = blank
+  for candidate_variant in chair_product_1.variants
+    assign candidate_matches = false
+    assign candidate_title = candidate_variant.title | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&'
+    if candidate_title == initial_chair_display_variant
+      assign candidate_matches = true
+    else
+      for candidate_option in candidate_variant.options
+        assign candidate_option_value = candidate_option | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&'
+        if candidate_option_value == initial_chair_display_variant
+          assign candidate_matches = true
+        endif
+      endfor
+    endif
+    if candidate_matches
+      assign initial_chair_display_match_count = initial_chair_display_match_count | plus: 1
+      assign initial_chair_variant_image = candidate_variant.featured_image
+    endif
+  endfor
+  if initial_chair_display_match_count == 1 and initial_chair_variant_image != blank
+    assign initial_chair_display_image = initial_chair_variant_image
+  endif
+
+  assign initial_set_4_variant = blank
+  assign initial_set_6_variant = blank
+  assign initial_set_4_match_count = 0
+  assign initial_set_6_match_count = 0
+  for candidate_variant in combination_product_t1_c1.variants
+    assign candidate_set_size = 0
+    for candidate_option in candidate_variant.options
+      assign candidate_option_value = candidate_option | strip | downcase
+      if candidate_option_value == '4 chairs' or candidate_option_value == 'set of 4'
+        assign candidate_set_size = 4
+      elsif candidate_option_value == '6 chairs' or candidate_option_value == 'set of 6'
+        assign candidate_set_size = 6
+      endif
+    endfor
+    if candidate_set_size == 4
+      assign initial_set_4_match_count = initial_set_4_match_count | plus: 1
+      assign initial_set_4_variant = candidate_variant
+    elsif candidate_set_size == 6
+      assign initial_set_6_match_count = initial_set_6_match_count | plus: 1
+      assign initial_set_6_variant = candidate_variant
+    endif
+  endfor
+  unless initial_set_4_match_count == 1
+    assign initial_set_4_variant = blank
+  endunless
+  unless initial_set_6_match_count == 1
+    assign initial_set_6_variant = blank
+  endunless
+
+  assign initial_set_4_available = false
+  assign initial_set_6_available = false
+  if initial_set_4_variant.available
+    if initial_set_4_variant.inventory_management == blank or initial_set_4_variant.inventory_policy == 'continue' or initial_set_4_variant.inventory_quantity >= 1
+      assign initial_set_4_available = true
+    endif
+  endif
+  if initial_set_6_variant.available
+    if initial_set_6_variant.inventory_management == blank or initial_set_6_variant.inventory_policy == 'continue' or initial_set_6_variant.inventory_quantity >= 1
+      assign initial_set_6_available = true
+    endif
+  endif
+
+  assign initial_set_index = 0
+  assign initial_chair_count = 4
+  assign initial_combination_variant = initial_set_4_variant
+  assign initial_selection_available = initial_set_4_available
+  if initial_set_4_available == false and initial_set_6_available
+    assign initial_set_index = 1
+    assign initial_chair_count = 6
+    assign initial_combination_variant = initial_set_6_variant
+    assign initial_selection_available = true
+  endif
+  assign initial_original_price = blank
+  assign initial_compare_at_price = blank
+  assign initial_details_url = blank
+  if initial_combination_variant != blank
+    assign initial_original_price = initial_combination_variant.price
+    if initial_combination_variant.compare_at_price > initial_combination_variant.price
+      assign initial_compare_at_price = initial_combination_variant.compare_at_price
+    endif
+    assign initial_details_url = combination_product_t1_c1.url | append: '?variant=' | append: initial_combination_variant.id
+  endif
+
+  assign discount_code = section.settings.discount_code | strip
+  assign pairing_valid = true
+  if discount_code == blank
+    assign pairing_valid = false
+  endif
+  assign scene_setting_ids = 'scene_t1_c1_s4,scene_t1_c1_s6,scene_t1_c2_s4,scene_t1_c2_s6,scene_t2_c1_s4,scene_t2_c1_s6,scene_t2_c2_s4,scene_t2_c2_s6' | split: ','
+  for scene_setting_id in scene_setting_ids
+    if section.settings[scene_setting_id] == blank
+      assign pairing_valid = false
+    endif
+  endfor
+  assign scene_aspect_ratio = section.settings.scene_t1_c1_s4.aspect_ratio | default: 1.5
+  assign heading = section.settings.heading
+  if heading == blank
+    assign heading = 'sections.product_pairing.heading' | t
+  endif
+  assign subtitle = section.settings.subtitle
+  assign set_of_4_text = 'sections.product_pairing.set_of_4' | t
+  assign set_of_6_text = 'sections.product_pairing.set_of_6' | t
+  assign scene_alt_t1_c1_s4 = 'sections.product_pairing.scene_alt' | t: table: table_product_1.title, chair: chair_product_1.title, set: set_of_4_text
+  assign scene_alt_t1_c1_s6 = 'sections.product_pairing.scene_alt' | t: table: table_product_1.title, chair: chair_product_1.title, set: set_of_6_text
+  assign scene_alt_t1_c2_s4 = 'sections.product_pairing.scene_alt' | t: table: table_product_1.title, chair: chair_product_2.title, set: set_of_4_text
+  assign scene_alt_t1_c2_s6 = 'sections.product_pairing.scene_alt' | t: table: table_product_1.title, chair: chair_product_2.title, set: set_of_6_text
+  assign scene_alt_t2_c1_s4 = 'sections.product_pairing.scene_alt' | t: table: table_product_2.title, chair: chair_product_1.title, set: set_of_4_text
+  assign scene_alt_t2_c1_s6 = 'sections.product_pairing.scene_alt' | t: table: table_product_2.title, chair: chair_product_1.title, set: set_of_6_text
+  assign scene_alt_t2_c2_s4 = 'sections.product_pairing.scene_alt' | t: table: table_product_2.title, chair: chair_product_2.title, set: set_of_4_text
+  assign scene_alt_t2_c2_s6 = 'sections.product_pairing.scene_alt' | t: table: table_product_2.title, chair: chair_product_2.title, set: set_of_6_text
+-%}
+
+{% style %}
+  .section-{{ section.id }} {
+  
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --pairing-gap: {{ section.settings.column_gap }}px;
+  }
+
+  {% if template.suffix == 'summer-save' %}
+    @media (min-width: 768px) {
+      #shopify-section-{{ section.id }} .product-pairing__heading {
+        font-size: 36px;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<product-pairing
+  class="section section-{{ section.id }} section--padding product-pairing"
+  data-pairing-valid="{{ pairing_valid }}"
+  data-currency="{{ cart.currency.iso_code | default: localization.country.currency.iso_code }}"
+  data-cart-error="{{ 'sections.product_pairing.cart_error' | t | escape }}"
+  data-discount-configuration-error="{{ 'sections.product_pairing.discount_configuration_error' | t | escape }}"
+  data-discount-error="{{ 'sections.product_pairing.discount_error' | t | escape }}"
+  data-chair-quantity-template="{{ 'sections.product_pairing.chair_quantity' | t: count: '__COUNT__' | escape }}"
+  data-slide-position="{{ 'sections.product_pairing.slide_position' | t: position: '__POSITION__', total: '__TOTAL__' | escape }}"
+>
+  <script type="application/json" data-pairing-products>
+    {
+      "tables": [{% render 'product-pairing-product-json', product: table_product_1 %}, {% render 'product-pairing-product-json', product: table_product_2 %}],
+      "chairs": [{% render 'product-pairing-product-json', product: chair_product_1 %}, {% render 'product-pairing-product-json', product: chair_product_2 %}],
+      "combinations": {
+        "t1_c1": {% render 'product-pairing-product-json', product: combination_product_t1_c1 %},
+        "t1_c2": {% render 'product-pairing-product-json', product: combination_product_t1_c2 %},
+        "t2_c1": {% render 'product-pairing-product-json', product: combination_product_t2_c1 %},
+        "t2_c2": {% render 'product-pairing-product-json', product: combination_product_t2_c2 %}
+      },
+      "variantValues": {
+        "tables": [{{ section.settings.table_product_1_variant | json }}, {{ section.settings.table_product_2_variant | json }}],
+        "chairs": [{{ section.settings.chair_product_1_variant | json }}, {{ section.settings.chair_product_2_variant | json }}]
+      },
+      "discount": {
+        "code": {{ section.settings.discount_code | strip | json }},
+        "percentage": {{ section.settings.discount_percentage | json }}
+      },
+      "scenes": {
+        "t1_c1_s4": {% if section.settings.scene_t1_c1_s4 != blank %}{{ section.settings.scene_t1_c1_s4 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t1_c1_s6": {% if section.settings.scene_t1_c1_s6 != blank %}{{ section.settings.scene_t1_c1_s6 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t1_c2_s4": {% if section.settings.scene_t1_c2_s4 != blank %}{{ section.settings.scene_t1_c2_s4 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t1_c2_s6": {% if section.settings.scene_t1_c2_s6 != blank %}{{ section.settings.scene_t1_c2_s6 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t2_c1_s4": {% if section.settings.scene_t2_c1_s4 != blank %}{{ section.settings.scene_t2_c1_s4 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t2_c1_s6": {% if section.settings.scene_t2_c1_s6 != blank %}{{ section.settings.scene_t2_c1_s6 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t2_c2_s4": {% if section.settings.scene_t2_c2_s4 != blank %}{{ section.settings.scene_t2_c2_s4 | image_url: width: 1800 | json }}{% else %}null{% endif %},
+        "t2_c2_s6": {% if section.settings.scene_t2_c2_s6 != blank %}{{ section.settings.scene_t2_c2_s6 | image_url: width: 1800 | json }}{% else %}null{% endif %}
+      }
+    }
+  </script>
+
+  <header class="product-pairing__header page-width page-width--{{ section.settings.container }}">
+    <h2 class="product-pairing__heading">{{ heading }}</h2>
+    {%- if subtitle != blank -%}
+      <p class="product-pairing__subtitle">{{ subtitle }}</p>
+    {%- endif -%}
+  </header>
+
+  {%- if request.design_mode -%}
+    <p class="product-pairing__configuration page-width" data-pairing-configuration hidden>{{ 'sections.product_pairing.invalid_configuration' | t }}</p>
+  {%- endif -%}
+
+  <div class="product-pairing__inner page-width page-width--{{ section.settings.container }}">
+    <div class="product-pairing__scene" aria-live="off" style="--pairing-scene-ratio: {{ scene_aspect_ratio }};">
+      <div class="product-pairing__scene-layer{% if initial_set_index == 0 %} is-active{% endif %}" data-scene-key="t1_c1_s4" aria-hidden="{% if initial_set_index == 0 %}false{% else %}true{% endif %}">{% if section.settings.scene_t1_c1_s4 != blank %}{{ section.settings.scene_t1_c1_s4 | image_url: width: 1800 | image_tag: loading: 'eager', sizes: '(min-width: 768px) 60vw, 100vw', widths: '480, 750, 1100, 1500, 1800', alt: scene_alt_t1_c1_s4 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer{% if initial_set_index == 1 %} is-active{% endif %}" data-scene-key="t1_c1_s6" aria-hidden="{% if initial_set_index == 1 %}false{% else %}true{% endif %}">{% if section.settings.scene_t1_c1_s6 != blank %}{{ section.settings.scene_t1_c1_s6 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t1_c1_s6 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t1_c2_s4" aria-hidden="true">{% if section.settings.scene_t1_c2_s4 != blank %}{{ section.settings.scene_t1_c2_s4 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t1_c2_s4 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t1_c2_s6" aria-hidden="true">{% if section.settings.scene_t1_c2_s6 != blank %}{{ section.settings.scene_t1_c2_s6 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t1_c2_s6 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t2_c1_s4" aria-hidden="true">{% if section.settings.scene_t2_c1_s4 != blank %}{{ section.settings.scene_t2_c1_s4 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t2_c1_s4 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t2_c1_s6" aria-hidden="true">{% if section.settings.scene_t2_c1_s6 != blank %}{{ section.settings.scene_t2_c1_s6 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t2_c1_s6 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t2_c2_s4" aria-hidden="true">{% if section.settings.scene_t2_c2_s4 != blank %}{{ section.settings.scene_t2_c2_s4 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t2_c2_s4 }}{% endif %}</div>
+      <div class="product-pairing__scene-layer" data-scene-key="t2_c2_s6" aria-hidden="true">{% if section.settings.scene_t2_c2_s6 != blank %}{{ section.settings.scene_t2_c2_s6 | image_url: width: 1800 | image_tag: loading: 'lazy', alt: scene_alt_t2_c2_s6 }}{% endif %}</div>
+    </div>
+
+    <aside class="product-pairing__panel">
+      <h3 class="product-pairing__panel-heading">{{ 'sections.product_pairing.whats_included' | t }}</h3>
+      <div class="product-pairing__selectors">
+        <div class="product-pairing__slider" data-product-slider="table" role="group" aria-label="{{ 'sections.product_pairing.table_carousel' | t | escape }}">
+          <div class="product-pairing__viewport">
+            <div class="product-pairing__track" data-product-track>
+              {%- for index in (1..2) -%}
+                {%- assign key = 'table_product_' | append: index -%}
+                {%- assign item = section.settings[key] -%}
+                {%- assign alias_key = key | append: '_alias' -%}
+                {%- assign item_alias = section.settings[alias_key] | strip -%}
+                {%- assign item_variant_key = key | append: '_variant' -%}
+                {%- assign item_variant_value = section.settings[item_variant_key] | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                {%- assign item_image = item.featured_image -%}
+                {%- assign item_variant_image = blank -%}
+                {%- assign item_variant_match_count = 0 -%}
+                {%- for candidate_variant in item.variants -%}
+                  {%- assign candidate_matches = false -%}
+                  {%- assign candidate_title = candidate_variant.title | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                  {%- if candidate_title == item_variant_value -%}
+                    {%- assign candidate_matches = true -%}
+                  {%- else -%}
+                    {%- for candidate_option in candidate_variant.options -%}
+                      {%- assign candidate_option_value = candidate_option | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                      {%- if candidate_option_value == item_variant_value -%}{%- assign candidate_matches = true -%}{%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  {%- if candidate_matches -%}
+                    {%- assign item_variant_match_count = item_variant_match_count | plus: 1 -%}
+                    {%- assign item_variant_image = candidate_variant.featured_image -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if item_variant_match_count == 1 and item_variant_image != blank -%}
+                  {%- assign item_image = item_variant_image -%}
+                {%- endif -%}
+                {%- if item_alias == blank -%}
+                  {%- assign item_alias = item.title -%}
+                {%- endif -%}
+                <article class="product-pairing__slide{% if index == 1 %} is-active{% endif %}" data-product-slide aria-hidden="{% if index == 1 %}false{% else %}true{% endif %}" data-index="{{ index | minus: 1 }}">
+                  <div class="product-pairing__product-image">{% if item_image != blank %}{{ item_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: item.title }}{% else %}{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}{% endif %}</div>
+                  <div class="product-pairing__product-copy"><strong>{{ item_alias }}</strong><span>{{ 'sections.product_pairing.table_quantity' | t }}</span></div>
+                </article>
+              {%- endfor -%}
+            </div>
+          </div>
+          <button type="button" class="product-pairing__arrow product-pairing__arrow--previous" data-pairing-arrow data-product-type="table" data-direction="-1" aria-label="{{ 'sections.product_pairing.previous_product' | t | escape }}">
+            {% render 'icon-caret-left', size: 'small' %}
+          </button>
+          <button type="button" class="product-pairing__arrow product-pairing__arrow--next" data-pairing-arrow data-product-type="table" data-direction="1" aria-label="{{ 'sections.product_pairing.next_product' | t | escape }}">
+            {% render 'icon-caret-right', size: 'small' %}
+          </button>
+          <div class="product-pairing__dots" role="group">
+            {%- for index in (0..1) -%}<button type="button" class="product-pairing__dot{% if index == 0 %} is-active{% endif %}" data-pairing-dot data-product-type="table" data-index="{{ index }}" aria-pressed="{% if index == 0 %}true{% else %}false{% endif %}" aria-label="{{ index | plus: 1 }} / 2"><span></span></button>{%- endfor -%}
+          </div>
+        </div>
+
+        <span class="product-pairing__plus" aria-hidden="true">+</span>
+
+        <div class="product-pairing__slider" data-product-slider="chair" role="group" aria-label="{{ 'sections.product_pairing.chair_carousel' | t | escape }}">
+          <div class="product-pairing__viewport">
+            <div class="product-pairing__track" data-product-track>
+              {%- for index in (1..2) -%}
+                {%- assign key = 'chair_product_' | append: index -%}
+                {%- assign item = section.settings[key] -%}
+                {%- assign alias_key = key | append: '_alias' -%}
+                {%- assign item_alias = section.settings[alias_key] | strip -%}
+                {%- assign item_variant_key = key | append: '_variant' -%}
+                {%- assign item_variant_value = section.settings[item_variant_key] | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                {%- assign item_image = item.featured_image -%}
+                {%- assign item_variant_image = blank -%}
+                {%- assign item_variant_match_count = 0 -%}
+                {%- for candidate_variant in item.variants -%}
+                  {%- assign candidate_matches = false -%}
+                  {%- assign candidate_title = candidate_variant.title | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                  {%- if candidate_title == item_variant_value -%}
+                    {%- assign candidate_matches = true -%}
+                  {%- else -%}
+                    {%- for candidate_option in candidate_variant.options -%}
+                      {%- assign candidate_option_value = candidate_option | strip | downcase | replace: ' & ', '&' | replace: '& ', '&' | replace: ' &', '&' -%}
+                      {%- if candidate_option_value == item_variant_value -%}{%- assign candidate_matches = true -%}{%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  {%- if candidate_matches -%}
+                    {%- assign item_variant_match_count = item_variant_match_count | plus: 1 -%}
+                    {%- assign item_variant_image = candidate_variant.featured_image -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if item_variant_match_count == 1 and item_variant_image != blank -%}
+                  {%- assign item_image = item_variant_image -%}
+                {%- endif -%}
+                {%- if item_alias == blank -%}
+                  {%- assign item_alias = item.title -%}
+                {%- endif -%}
+                <article class="product-pairing__slide{% if index == 1 %} is-active{% endif %}" data-product-slide aria-hidden="{% if index == 1 %}false{% else %}true{% endif %}" data-index="{{ index | minus: 1 }}">
+                  <div class="product-pairing__product-image">{% if item_image != blank %}{{ item_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: item.title }}{% else %}{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}{% endif %}</div>
+                  <div class="product-pairing__product-copy"><strong>{{ item_alias }}</strong><span data-chair-quantity>{{ 'sections.product_pairing.chair_quantity' | t: count: initial_chair_count }}</span></div>
+                </article>
+              {%- endfor -%}
+            </div>
+          </div>
+          <button type="button" class="product-pairing__arrow product-pairing__arrow--previous" data-pairing-arrow data-product-type="chair" data-direction="-1" aria-label="{{ 'sections.product_pairing.previous_product' | t | escape }}">
+            {% render 'icon-caret-left', size: 'small' %}
+          </button>
+          <button type="button" class="product-pairing__arrow product-pairing__arrow--next" data-pairing-arrow data-product-type="chair" data-direction="1" aria-label="{{ 'sections.product_pairing.next_product' | t | escape }}">
+            {% render 'icon-caret-right', size: 'small' %}
+          </button>
+          <div class="product-pairing__dots" role="group">
+            {%- for index in (0..1) -%}<button type="button" class="product-pairing__dot{% if index == 0 %} is-active{% endif %}" data-pairing-dot data-product-type="chair" data-index="{{ index }}" aria-pressed="{% if index == 0 %}true{% else %}false{% endif %}" aria-label="{{ index | plus: 1 }} / 2"><span></span></button>{%- endfor -%}
+          </div>
+        </div>
+      </div>
+
+      <div class="product-pairing__chairs-row">
+        <strong>{{ 'sections.product_pairing.chairs_included' | t }}</strong>
+        <div class="product-pairing__chair-thumbnails">
+          {%- for index in (1..6) -%}<span data-chair-thumbnail{% if index > initial_chair_count %} hidden{% endif %}>{% if initial_chair_display_image != blank %}{{ initial_chair_display_image | image_url: width: 140 | image_tag: loading: 'lazy', alt: '', data-chair-thumbnail-image: '' }}{% endif %}</span>{%- endfor -%}
+        </div>
+      </div>
+
+      <div class="product-pairing__set-area">
+        <div class="product-pairing__set-copy">
+          <strong>{{ 'sections.product_pairing.choose_set_size' | t }}</strong>
+          <span>{{ 'sections.product_pairing.set_size_subtitle' | t }}</span>
+        </div>
+        <span class="product-pairing__set-divider" aria-hidden="true"></span>
+        <div class="product-pairing__set-buttons">
+          <button type="button" class="product-pairing__set-button{% if initial_set_index == 0 %} is-active{% endif %}" data-set-index="0" aria-pressed="{% if initial_set_index == 0 %}true{% else %}false{% endif %}"{% unless initial_set_4_available %} disabled{% endunless %}><span>{{ set_of_4_text }}</span></button>
+          <button type="button" class="product-pairing__set-button{% if initial_set_index == 1 %} is-active{% endif %}" data-set-index="1" aria-pressed="{% if initial_set_index == 1 %}true{% else %}false{% endif %}"{% unless initial_set_6_available %} disabled{% endunless %}><span>{{ set_of_6_text }}</span></button>
+        </div>
+      </div>
+
+      <div class="product-pairing__price-row">
+        <div class="product-pairing__price-values">
+          <strong class="product-pairing__price" data-pairing-price>{% if initial_original_price != blank %}{{ initial_original_price | money }}{% endif %}</strong>
+          <s class="product-pairing__compare-price" data-pairing-compare-price{% if initial_compare_at_price == blank %} hidden{% endif %}>{% if initial_compare_at_price != blank %}{{ initial_compare_at_price | money }}{% endif %}</s>
+        </div>
+        <label class="product-pairing__coupon">
+          <input type="checkbox" data-pairing-coupon>
+          <span class="product-pairing__coupon-box" aria-hidden="true"></span>
+          <span class="product-pairing__coupon-text">{{ section.settings.coupon_label }}</span>
+        </label>
+      </div>
+
+      <div class="product-pairing__error alert alert--error" data-pairing-error hidden></div>
+      <div class="product-pairing__actions">
+        <a class="btn product-pairing__details-link"{% if initial_details_url != blank %} href="{{ initial_details_url }}"{% else %} aria-disabled="true" tabindex="-1"{% endif %} data-pairing-details><span class="btn__text">{{ 'sections.product_pairing.view_details' | t }}</span></a>
+        <button type="button" class="btn product-pairing__add-button" data-pairing-add{% unless pairing_valid and initial_selection_available %} disabled aria-disabled="true"{% endunless %}><span class="btn__text">{{ 'sections.product_pairing.add_set_to_cart' | t }}</span>{% render 'loading-spinner' %}</button>
+      </div>
+      <div class="product-pairing__benefits">
+        <span class="product-pairing__benefit">
+          {% render 'icon-truck', size: 'medium' %}
+          <span>{{ 'sections.product_pairing.free_shipping' | t }}</span>
+        </span>
+        <span class="product-pairing__benefits-divider" aria-hidden="true"></span>
+        <span class="product-pairing__benefit">
+          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none">
+            <path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13H4V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15.5 14.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 1.3v1.7l1.1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>{{ 'sections.product_pairing.returns_30_days' | t }}</span>
+        </span>
+      </div>
+      <span class="visually-hidden" data-pairing-status aria-live="polite"></span>
+    </aside>
+  </div>
+</product-pairing>
+
+{% schema %}
+{
+  "name": "t:sections.product_pairing.name",
+  "tag": "section",
+  "class": "product-pairing-section",
+  "settings": [
+    { "type": "header", "content": "t:sections.product_pairing.headers.content" },
+    { "type": "text", "id": "heading", "label": "t:sections.product_pairing.content.heading" },
+    { "type": "textarea", "id": "subtitle", "label": "t:sections.product_pairing.content.subtitle" },
+    { "type": "header", "content": "t:sections.product_pairing.headers.bundle" },
+    { "type": "product", "id": "table_product_1", "label": "t:sections.product_pairing.bundle.table_product_1" },
+    { "type": "text", "id": "table_product_1_alias", "label": "t:sections.product_pairing.bundle.table_product_1_alias" },
+    { "type": "text", "id": "table_product_1_variant", "label": "t:sections.product_pairing.bundle.table_product_1_variant", "info": "t:sections.product_pairing.bundle.table_product_1_variant_info", "default": "Walnut" },
+    { "type": "product", "id": "table_product_2", "label": "t:sections.product_pairing.bundle.table_product_2" },
+    { "type": "text", "id": "table_product_2_alias", "label": "t:sections.product_pairing.bundle.table_product_2_alias" },
+    { "type": "text", "id": "table_product_2_variant", "label": "t:sections.product_pairing.bundle.table_product_2_variant", "info": "t:sections.product_pairing.bundle.table_product_2_variant_info", "default": "Walnut" },
+    { "type": "product", "id": "chair_product_1", "label": "t:sections.product_pairing.bundle.chair_product_1" },
+    { "type": "text", "id": "chair_product_1_alias", "label": "t:sections.product_pairing.bundle.chair_product_1_alias" },
+    { "type": "text", "id": "chair_product_1_variant", "label": "t:sections.product_pairing.bundle.chair_product_1_variant", "info": "t:sections.product_pairing.bundle.chair_product_1_variant_info", "default": "Beige&Walnut" },
+    { "type": "product", "id": "chair_product_2", "label": "t:sections.product_pairing.bundle.chair_product_2" },
+    { "type": "text", "id": "chair_product_2_alias", "label": "t:sections.product_pairing.bundle.chair_product_2_alias" },
+    { "type": "text", "id": "chair_product_2_variant", "label": "t:sections.product_pairing.bundle.chair_product_2_variant", "info": "t:sections.product_pairing.bundle.chair_product_2_variant_info", "default": "Beige" },
+    { "type": "product", "id": "combination_product_t1_c1", "label": "t:sections.product_pairing.bundle.combination_product_t1_c1" },
+    { "type": "product", "id": "combination_product_t1_c2", "label": "t:sections.product_pairing.bundle.combination_product_t1_c2" },
+    { "type": "product", "id": "combination_product_t2_c1", "label": "t:sections.product_pairing.bundle.combination_product_t2_c1" },
+    { "type": "product", "id": "combination_product_t2_c2", "label": "t:sections.product_pairing.bundle.combination_product_t2_c2" },
+    { "type": "header", "content": "t:sections.product_pairing.headers.discount" },
+    { "type": "text", "id": "discount_code", "label": "t:sections.product_pairing.discount.code", "info": "t:sections.product_pairing.discount.code_info", "default": "DINING20" },
+    { "type": "range", "id": "discount_percentage", "min": 1, "max": 100, "step": 1, "unit": "%", "label": "t:sections.product_pairing.discount.percentage", "info": "t:sections.product_pairing.discount.percentage_info", "default": 20 },
+    { "type": "text", "id": "coupon_label", "label": "t:sections.product_pairing.discount.coupon_label", "info": "t:sections.product_pairing.discount.coupon_label_info", "default": "Apply 20% off coupon" },
+    { "type": "header", "content": "t:sections.product_pairing.headers.scenes" },
+    { "type": "image_picker", "id": "scene_t1_c1_s4", "label": "t:sections.product_pairing.scenes.scene_t1_c1_s4" },
+    { "type": "image_picker", "id": "scene_t1_c1_s6", "label": "t:sections.product_pairing.scenes.scene_t1_c1_s6" },
+    { "type": "image_picker", "id": "scene_t1_c2_s4", "label": "t:sections.product_pairing.scenes.scene_t1_c2_s4" },
+    { "type": "image_picker", "id": "scene_t1_c2_s6", "label": "t:sections.product_pairing.scenes.scene_t1_c2_s6" },
+    { "type": "image_picker", "id": "scene_t2_c1_s4", "label": "t:sections.product_pairing.scenes.scene_t2_c1_s4" },
+    { "type": "image_picker", "id": "scene_t2_c1_s6", "label": "t:sections.product_pairing.scenes.scene_t2_c1_s6" },
+    { "type": "image_picker", "id": "scene_t2_c2_s4", "label": "t:sections.product_pairing.scenes.scene_t2_c2_s4" },
+    { "type": "image_picker", "id": "scene_t2_c2_s6", "label": "t:sections.product_pairing.scenes.scene_t2_c2_s6" },
+    { "type": "header", "content": "t:sections.product_pairing.headers.layout" },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        { "value": "full", "label": "t:general.container.options__full.label" },
+        { "value": "fixed", "label": "t:general.container.options__fixed.label" }
+      ],
+      "default": "full",
+      "label": "t:general.container.label"
+    },
+    { "type": "range", "id": "column_gap", "label": "t:sections.product_pairing.layout.column_gap", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "padding_top", "label": "t:sections.product_pairing.layout.padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "t:sections.product_pairing.layout.padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "presets": [{ "name": "t:sections.product_pairing.name" }]
+}
+{% endschema %}

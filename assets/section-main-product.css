@@ -152,7 +152,7 @@ product-info.use-color-scheme-in-container > .product {
 }
 
 .product__block {
-  --product-blocks-gap: 2.4rem;
+  --product-blocks-gap: 1.0rem;
   margin: var(--product-blocks-gap) 0;
 }
 .section-main-product .product__block--review-badge {
@@ -186,7 +186,7 @@ product-info.use-color-scheme-in-container > .product {
   margin: 0;
 }
 .section-main-product .product__block--title .product__title {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 500;
   color: #1c1c1c;
 }

@@ -36,6 +36,16 @@
 {{ 'section-collapsible-tabs.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collapsible-tabs.js' | asset_url }}" defer="defer"></script>
 
+{%- if section.id contains 'collapsible_tabs_wxB4C6' -%}
+  <style>
+    .section-{{ section.id }} .section__heading {
+      font-size: 36px !important;
+      font-weight: 500 !important;
+      color: #1c1c1c !important;
+    }
+  </style>
+{%- endif -%}
+
 {% render 'divider',
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width

@@ -26,11 +26,13 @@
         assign sale_badge = ''
         assign amount = 0
         case settings.pcard_sale_badge_type
-          when 'show_percentage'
-            if compare_at_price > price
-              assign amount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
-            endif
-            assign sale_badge = amount | times: -1 | append: '%'
+
+            when 'show_percentage'
+  if compare_at_price > price
+    assign amount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price | round
+  endif
+  assign sale_badge = 'SAVE ' | append: amount | append: '%'
+
           when 'show_amount'
             if compare_at_price > price
               assign amount = compare_at_price | minus: price | money

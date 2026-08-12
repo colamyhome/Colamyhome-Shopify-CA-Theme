@@ -1,4 +1,8 @@
-<script src="{{ 'images-text.js' | asset_url }}" defer="defer"></script>
+{% if template.suffix == 'summer-save' %}
+  <script src="{{ 'summer-save-images-text.js' | asset_url }}" defer="defer"></script>
+{% else %}
+  <script src="{{ 'images-text.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 {% liquid
   assign columns_desktop = section.settings.columns_desktop
   assign columns_tablet = 4
@@ -9,7 +13,19 @@
   if columns_desktop < 4
     assign columns_laptop = columns_desktop
   endif
-  assign columns_mobile = section.settings.columns_mobile | plus: 0
+  assign columns_mobile = section.settings.columns_mobile | replace: '-', '.' | plus: 0
+  assign slider_columns_desktop = columns_desktop
+  assign slider_columns_tablet = columns_tablet
+  assign slider_columns_laptop = columns_laptop
+  if columns_desktop == 2
+    assign slider_columns_desktop = 2.5
+  endif
+  if columns_tablet == 2
+    assign slider_columns_tablet = 2.5
+  endif
+  if columns_laptop == 2
+    assign slider_columns_laptop = 2.5
+  endif
 
   assign enable_slider = section.settings.enable_slider
 
@@ -20,6 +36,11 @@
 
   if section.blocks.size <= columns_desktop
     assign enable_slider = false
+  endif
+
+  assign autoplay = 0
+  if section.settings.autoplay and enable_slider
+    assign autoplay = section.settings.autoplay_delay | times: 1000
   endif
 
   assign navigation_position = section.settings.navigation_position
@@ -53,6 +74,55 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
     --f-row-gap-lg: 4vw;
   }
 
+  .section-{{ section.id }}.image-cards .card-media--medium {
+    --padding-y: 2rem;
+    --padding-x: 2rem;
+  }
+
+  .section-{{ section.id }}.image-cards .card-media__heading {
+    text-shadow: none;
+  }
+
+  .section-{{ section.id }}.image-cards.image-cards--translucent-glass .card-media__media-wrapper::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  .section-{{ section.id }}.image-cards.image-cards--translucent-glass .card-media__badge {
+    z-index: 2;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-{{ section.id }}.image-cards .card-media__heading {
+      font-size: 20px;
+    }
+  }
+
+  {% if template.suffix == 'summer-save' %}
+    .section-{{ section.id }}.image-cards .card-media__heading {
+      text-shadow: none;
+      font-weight: 400;
+    }
+
+    .section-{{ section.id }}.image-cards .card-media:has(img):not(.card-media--boxed):not(.card-media--content-below) {
+      background-color: transparent;
+    }
+
+    .section-{{ section.id }}.image-cards .card-media .hover-scale-up {
+      transform: scaleX(var(--scale-x)) scaleY(var(--scale-y)) rotate(0);
+    }
+
+  {% endif %}
+
   .section-{{ section.id }}.image-cards .section__header .section__heading {
     font-size: 36px;
     font-weight: 500;
@@ -75,6 +145,47 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
     .section-{{ section.id }}.image-cards {
       zoom: 0.9;
     }
+
+    {% if section.id contains 'images_text_gdtW78' %}
+      .section-{{ section.id }}.image-cards {
+        --section-padding-top-mobile: 0px;
+      }
+    {% endif %}
+
+    .section-{{ section.id }}.image-cards :is(images-text, summer-save-images-text).swipe-mobile--2-5-cols {
+      --column-width-mobile: 33.6vw;
+    }
+
+    .section-{{ section.id }}.image-cards .card-media__heading {
+      {% if template.suffix == 'summer-save' %}
+        font-size: 12px;
+        font-weight: 500;
+      {% endif %}
+      color: #fff !important;
+    }
+
+    {% if section.id contains 'images_text_gdtW78' %}
+      .section-{{ section.id }}.image-cards .card-media__heading {
+        font-size: 18px;
+      }
+
+      .section-{{ section.id }}.image-cards.image-cards--translucent-glass .card-media__content.content-overlay {
+        padding-block: 0;
+        justify-content: flex-end;
+      }
+
+      .section-{{ section.id }}.image-cards.image-cards--translucent-glass .card-media__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+      }
+    {% endif %}
+
+    .section-{{ section.id }}.image-cards .section__header .section__description {
+      margin-top: 0 !important;
+    }
   }
 {% endstyle %}
 
@@ -83,24 +194,43 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
   divider_width: section.settings.divider_width
 %}
 
-<div class="section section-{{ section.id }} section--padding image-cards page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}">
+<div class="section section-{{ section.id }} section--padding image-cards{% if section.settings.enable_translucent_glass %} image-cards--translucent-glass{% endif %} page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}">
   {%- render 'section-heading', section_settings: section.settings, description_size: section.settings.description_size -%}
   <div class="section__content relative{% if navigation_position == 'middle' %} swiper-show-nav-on-hover{% endif %}">
-    <image-cards
-      class="block relative{% if enable_slider %} swiper swiper-equal-height{% if section.settings.content_overflow %} overflow-visible{% endif %}{% endif %}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}"
-      id="image-cards-{{ section.id }}"
-      data-section-id="{{ section.id }}"
-      {% if enable_slider %}
-        data-enable-slider="true"
-        data-items="{{ columns_desktop }}"
-        data-tablet-items="{{ columns_tablet }}"
-        data-laptop-items="{{ columns_laptop }}"
-        data-pagination-type="{{ pagination_type }}"
-      {% endif %}
-    >
-      <div class="image-cards__inner f-grid f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}{% if enable_slider %} swiper-wrapper{% endif %}{% if enable_swipe_mobile %} swipe-mobile__inner{% endif %}"
-       style="margin:0 2vw;"
+    {% if template.suffix == 'summer-save' %}
+      <summer-save-images-text
+        class="block relative{% if enable_slider %} swiper swiper-equal-height{% if section.settings.content_overflow %} overflow-visible{% endif %}{% endif %}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}"
+        id="image-cards-{{ section.id }}"
+        data-section-id="{{ section.id }}"
+        {% if autoplay > 0 %}
+          data-autoplay="{{ autoplay }}"
+        {% endif %}
+        {% if enable_slider %}
+          data-enable-slider="true"
+          data-items="{{ slider_columns_desktop }}"
+          data-tablet-items="{{ slider_columns_tablet }}"
+          data-laptop-items="{{ slider_columns_laptop }}"
+          data-pagination-type="{{ pagination_type }}"
+        {% endif %}
       >
+    {% else %}
+      <images-text
+        class="block relative{% if enable_slider %} swiper swiper-equal-height{% if section.settings.content_overflow %} overflow-visible{% endif %}{% endif %}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}"
+        id="image-cards-{{ section.id }}"
+        data-section-id="{{ section.id }}"
+        {% if autoplay > 0 %}
+          data-autoplay="{{ autoplay }}"
+        {% endif %}
+        {% if enable_slider %}
+          data-enable-slider="true"
+          data-items="{{ slider_columns_desktop }}"
+          data-tablet-items="{{ slider_columns_tablet }}"
+          data-laptop-items="{{ slider_columns_laptop }}"
+          data-pagination-type="{{ pagination_type }}"
+        {% endif %}
+      >
+    {% endif %}
+      <div class="image-cards__inner f-grid f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}{% if enable_slider %} swiper-wrapper{% endif %}{% if enable_swipe_mobile %} swipe-mobile__inner{% endif %}">
         {%- for block in section.blocks -%}
           <div
             class="f-column swiper-slide"
@@ -159,7 +289,11 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
           </div>
         {%- endfor -%}
       </div>
-    </image-cards>
+    {% if template.suffix == 'summer-save' %}
+      </summer-save-images-text>
+    {% else %}
+      </images-text>
+    {% endif %}
     {%- if enable_slider -%}
       <div class="swiper-controls{% if navigation_position == 'bottom' %} swiper-controls--grouped{% elsif navigation_position == 'middle' %} swiper-controls--nav-floating{% endif %} swiper-controls--pagination-{{ pagination_type }} hidden md:flex">
         <button
@@ -406,6 +540,12 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
       "default": 12
     },
     {
+      "type": "checkbox",
+      "id": "enable_translucent_glass",
+      "label": "t:sections.images-text.settings.enable_translucent_glass.label",
+      "default": false
+    },
+    {
       "type": "range",
       "id": "columns_desktop",
       "label": "t:general.grid.columns_desktop.label",
@@ -502,6 +642,24 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
     },
     {
       "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:general.carousel.autoplay.label",
+      "default": false,
+      "visible_if": "{{ section.settings.enable_slider == true }}"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "t:general.carousel.autoplay_delay.label",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "visible_if": "{{ section.settings.enable_slider == true and section.settings.autoplay == true }}"
+    },
+    {
+      "type": "checkbox",
       "id": "content_overflow",
       "label": "t:general.carousel.content_overflow.label",
       "default": true,
@@ -539,6 +697,10 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
         {
           "value": "2",
           "label": "t:general.mobile.columns_mobile.options__2.label"
+        },
+        {
+          "value": "2-5",
+          "label": "2.5"
         }
       ],
       "default": "1",
@@ -1298,7 +1460,7 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
   ],
   "presets": [
     {
-      "name": "t:sections.image-cards.name",
+      "name": "t:sections.images-text.name",
       "blocks": [
         {
           "type": "image_card"

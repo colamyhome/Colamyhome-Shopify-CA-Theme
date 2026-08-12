@@ -1,0 +1,210 @@
+.section-scrollspy-nav {
+  position: relative;
+}
+
+.section-scrollspy-nav .scrollspy-nav__layout {
+  gap: 3.2rem;
+}
+
+.scrollspy-nav__blocks {
+  min-width: 0;
+}
+
+.scrollspy-nav__block + .scrollspy-nav__block {
+  margin-top: 4rem;
+  border-top: 1px solid #757575;
+  padding-top: 30px;
+}
+
+.scrollspy-nav__block-title {
+  margin: 0;
+  margin-bottom: 3.6rem;
+  color: #0e0e0e;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.section-scrollspy-nav .scrollspy-nav__block .wc_review_head {
+  display: none !important;
+}
+
+.scrollspy-nav__nav {
+  position: relative;
+  z-index: 20;
+  margin-bottom: var(--header-padding-bottom-mobile, 2.4rem);
+  padding-block: 0.8rem;
+  background: #f4f4f4;
+  isolation: isolate;
+}
+
+.scrollspy-nav__nav::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #f4f4f4;
+  z-index: -1;
+}
+
+.scrollspy-nav__nav-scroll {
+  position: relative;
+  z-index: 1;
+}
+
+.scrollspy-nav__progress {
+  position: relative;
+  z-index: 1;
+}
+
+.scrollspy-nav__nav-list {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.scrollspy-nav__nav-link {
+  text-decoration: none;
+}
+
+.scrollspy-nav__nav-link.btn {
+  flex: 1 1 0;
+  justify-content: var(--scrollspy-nav-title-justify);
+  min-width: 0;
+  min-height: 4.8rem;
+  padding-inline: 0;
+  border: none;
+  cursor: default;
+  text-align: var(--scrollspy-nav-title-align);
+}
+
+.section-scrollspy-nav .scrollspy-nav__nav-link.btn:hover .btn__text {
+  color: #757575;
+}
+
+.section-scrollspy-nav .scrollspy-nav__nav-link.btn:hover::before {
+  width: 0;
+}
+
+.scrollspy-nav__nav-link .btn__text {
+  display: block;
+  width: 100%;
+  color: #757575;
+  font-size: var(--scrollspy-nav-title-font-size, 14px);
+  white-space: nowrap;
+  text-align: var(--scrollspy-nav-title-align);
+  transition: none;
+}
+
+.scrollspy-nav__nav-link .btn__text {
+  text-align: center;
+}
+
+.scrollspy-nav__nav-link:first-child .btn__text {
+  text-align: left;
+}
+
+.scrollspy-nav__nav-link:last-child .btn__text {
+  text-align: right;
+}
+
+.section-scrollspy-nav .page__content,
+.section-scrollspy-nav .page__content * {
+  color: #757575;
+  font-size: 14px !important;
+  /* font-weight: 300; */
+  line-height: 1.525;
+}
+
+@media (max-width: 767.98px) {
+  .scrollspy-nav__block + .scrollspy-nav__block {
+    margin-top: 3.2rem;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .scrollspy-nav__block--quiet_luxury_card .scrollspy-nav__block-title {
+    display: none;
+  }
+
+  .scrollspy-nav__nav-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .scrollspy-nav__nav-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollspy-nav__nav-list {
+    width: max-content;
+    min-width: 100%;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .scrollspy-nav__nav-link.btn {
+    flex: 0 0 auto;
+    min-width: max-content;
+    min-height: 3.8rem;
+    padding-inline: 0;
+  }
+
+  .scrollspy-nav__nav-link .btn__text {
+    width: auto;
+    font-size: var(--scrollspy-nav-title-font-size-mobile, var(--scrollspy-nav-title-font-size, 14px));
+    white-space: nowrap;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav {
+    width: calc(100% + var(--page-padding, 0rem) * 2);
+    margin-inline: calc(var(--page-padding, 0rem) * -1);
+    margin-bottom: 1.2rem;
+    padding-block: 0;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-scroll {
+    overflow: hidden;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__progress {
+    display: none;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-list {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-link.btn {
+    position: relative;
+    flex: 1 0 33.333%;
+    min-width: 0;
+    min-height: 2rem;
+    padding: 0.1rem 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-link .btn__text {
+    width: 100%;
+    max-width: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-link:first-child .btn__text,
+  body.product-template .section-scrollspy-nav .scrollspy-nav__nav-link:last-child .btn__text {
+    text-align: center;
+  }
+}

@@ -11,6 +11,10 @@
 
   assign type = type | default: 'evergreen'
   assign duration = duration | default: 'every_month'
+  if show_days == nil
+    assign show_days = true
+  endif
+  assign split_digits = split_digits | default: false
 -%}
 <countdown-timer
   id="countdown-timer-{{ id }}"
@@ -18,25 +22,39 @@
   data-type="{{ type }}"
   data-duration="{{ duration }}"
   data-due-date="{{ time }}"
+  data-split-digits="{{ split_digits }}"
+  {% if text_color != blank %}
+    style="--countdown-timer-text-color: {{ text_color }};"
+  {% endif %}
 >
   <div class="countdown-timer__inner inline-flex items-center justify-center">
-    <div class="countdown-timer__block relative inline-flex flex-col items-center justify-center">
-      <div
-        class="relative text-center w-full countdown-timer__number countdown-timer__day {{ number_size }} {{ block_class }}"
-        data-timer-day
-      >
-        00
+    {%- unless show_days == false -%}
+      <div class="countdown-timer__block countdown-timer__block--day relative inline-flex flex-col items-center justify-center">
+        <div
+          class="relative text-center w-full countdown-timer__number countdown-timer__day {{ number_size }} {{ block_class }}"
+          data-timer-day
+        >
+          {%- if split_digits -%}
+            <span class="countdown-timer__digit">0</span><span class="countdown-timer__digit">0</span>
+          {%- else -%}
+            00
+          {%- endif -%}
+        </div>
+        {%- if display_text -%}
+          <span class="text-subtext">{{ 'sections.countdown-timer.days' | t }}</span>
+        {%- endif -%}
       </div>
-      {%- if display_text -%}
-        <span class="text-subtext">{{ 'sections.countdown-timer.days' | t }}</span>
-      {%- endif -%}
-    </div>
+    {%- endunless -%}
     <div class="countdown-timer__block relative inline-flex flex-col items-center justify-center">
       <div
         class="relative text-center w-full countdown-timer__number countdown-timer__hour {{ number_size }} {{ block_class }}"
         data-timer-hour
       >
-        00
+        {%- if split_digits -%}
+          <span class="countdown-timer__digit">0</span><span class="countdown-timer__digit">0</span>
+        {%- else -%}
+          00
+        {%- endif -%}
       </div>
       {%- if display_text -%}
         <span class="text-subtext">{{ 'sections.countdown-timer.hours' | t }}</span>
@@ -47,7 +65,11 @@
         class="relative text-center w-full countdown-timer__number countdown-timer__minute {{ number_size }} {{ block_class }}"
         data-timer-minute
       >
-        00
+        {%- if split_digits -%}
+          <span class="countdown-timer__digit">0</span><span class="countdown-timer__digit">0</span>
+        {%- else -%}
+          00
+        {%- endif -%}
       </div>
       {%- if display_text -%}
         <span class="text-subtext">{{ 'sections.countdown-timer.minutes' | t }}</span>
@@ -58,7 +80,11 @@
         class="relative text-center w-full countdown-timer__number countdown-timer__sec {{ number_size }} {{ block_class }}"
         data-timer-second
       >
-        00
+        {%- if split_digits -%}
+          <span class="countdown-timer__digit">0</span><span class="countdown-timer__digit">0</span>
+        {%- else -%}
+          00
+        {%- endif -%}
       </div>
       {%- if display_text -%}
         <span class="text-subtext">{{ 'sections.countdown-timer.seconds' | t }}</span>

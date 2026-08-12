@@ -1,0 +1,467 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "scrolling_banner_LAefNj": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "slide_QdMYyN": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "subheading": "",
+            "title": "<strong>Modern furniture, with less to sort through.</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product_color_scheme": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_QdMYyN"
+      ],
+      "name": "t:sections.scrolling-banner.name",
+      "settings": {
+        "container": "full",
+        "slide_height": "adapt",
+        "content_position_mobile": "middle-center",
+        "text_alignment_mobile": "center",
+        "enable_zoom": false,
+        "enable_parallax": false
+      }
+    },
+    "rich_text_DTCmCt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8DqAYj": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>We do the sorting. So you can do the living.</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_ex9yPk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At COLAMY, we believe a better home starts with better choices, not more of them.That’s why we don’t build around endless options or overwhelming catalogs.We focus on a tighter collection of modern furniture — selected for comfort, function, and easy living — so customers can spend less time comparing, and more time enjoying the home they’re creating.</p>",
+            "text_size": "text-lg",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8DqAYj",
+        "text_ex9yPk"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_4yrgHh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CigTrW": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Designed for Real Life</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Designed for how you actually live. We don’t design for showrooms. We design for pieces that feel effortless in the home—silhouettes that feel easy to style, details that work across spaces, and pieces that stay useful long after the room is finished. Good furniture shouldn’t ask too much from the room around it.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_fDFpY7": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Built to Feel Reliable</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>A piece should feel good the day it arrives—and keep feeling solid over time.That’s why we pay attention to the parts you don’t always see: balanced construction, tested performance, and dependable support designed for daily living.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_3hiKib": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Comfort in Every Layer</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>grain of the wood to the density of the foam, every layer is chosen for one purpose: to feel as good years from now as it does today.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_CigTrW",
+        "column_fDFpY7",
+        "column_3hiKib"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "rich_text_PBpFtA": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CXVzR8": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>The Origin</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "subheading_MQ9bnK": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": ""
+          }
+        },
+        "text_ndCVB6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>COLAMY started with ergonomic seating, built around a simple belief: every home deserves a comfortable place to work, focus, and recharge.</p>",
+            "text_size": "text-lg",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "heading_fpzrXE": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>The Evolution</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_ETF6Eb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>As our first customers grew, so did their needs. The same people who loved our office chairs started asking: ‘Can you make my dining chair this comfortable?’ We listened, and expanded our seating expertise to every corner of the home.</p>",
+            "text_size": "text-lg",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "heading_HmQUte": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>The Vision </strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_Rt3igP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Today, COLAMY stands for a<em>curated</em>approach to modern living. We’re still the seating experts, but now we’re your partners in creating a home that’s comfortable, functional, and uniquely yours — without the overwhelm.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CXVzR8",
+        "subheading_MQ9bnK",
+        "text_ndCVB6",
+        "heading_fpzrXE",
+        "text_ETF6Eb",
+        "heading_HmQUte",
+        "text_Rt3igP"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_dyVtkw": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AiKXiY": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Easy to Own</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Buying furniture online should feel easy — and owning it should feel even better. From clear delivery updates to responsive support and straightforward policies, we work to make every step feel simple, transparent, and reassuring—before, during, and after your order arrives.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_9dUaBy": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Built for trust</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>Available in 30+ Countries14 Warehouses Supporting Fulfillment500,000+ Homes Reached Each Year</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_7dj4BN": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>Start with what made us known</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_AiKXiY",
+        "column_9dUaBy",
+        "column_7dj4BN"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "grid_banner_PEqxqM": {
+      "type": "grid-banner",
+      "blocks": {
+        "banner_card_tkawnb": {
+          "type": "banner-card",
+          "settings": {
+            "color_scheme": "",
+            "image_overlay_opacity": 0,
+            "column_span": 4,
+            "row_span": 2,
+            "content_spacing": "medium",
+            "content_gap": "standard",
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_position_mobile": "middle-center",
+            "content_alignment_mobile": "center",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Start with what made us known",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "text": "<p>New to COLAMY? Explore the collections that define how we think about comfort, style, and everyday living.</p>",
+            "text_size": "text-lg",
+            "button_label": "to buy COLAMY",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "button_size": "btn--medium",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_card_tkawnb"
+      ],
+      "name": "t:sections.grid-banner.presets__2.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "columns": 4,
+        "banner_height": "small",
+        "gap": "none",
+        "enable_swiper_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "scrolling_banner_LAefNj",
+    "rich_text_DTCmCt",
+    "multicolumn_4yrgHh",
+    "rich_text_PBpFtA",
+    "multicolumn_dyVtkw",
+    "grid_banner_PEqxqM"
+  ]
+}

@@ -1,0 +1,979 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_wpqrKC": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_RUBx8J": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/20260810-180152.png",
+            "background_mobile": "shopify://shop_images/20260810-180147.png",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "subheading": "BACK TO SCHOOL UPGRADE",
+            "title": "Better Support for Your Comeback",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "<p>Up to 20% Off</p>",
+            "description_size": "text-base",
+            "button_label": "SHOP THE SALE",
+            "button_link": "#back-to-school-products",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_RUBx8J"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "slide_height": "adapt",
+        "show_controls": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "multicolumn_icon_PihgwA": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_fLT8hR": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/bundle-28.svg",
+            "max_width": 50,
+            "max_width_mb": 50,
+            "title": "<strong>Free Shipping</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_tcxiUk": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/bundle-29.svg",
+            "max_width": 44,
+            "max_width_mb": 44,
+            "title": "<strong>Easy Assemble</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_4eGQ6E": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/bundle-30.svg",
+            "max_width": 34,
+            "max_width_mb": 34,
+            "title": "<strong>3-Year Warranty</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_jVfaUa": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/bundle-31.svg",
+            "max_width": 40,
+            "max_width_mb": 40,
+            "title": "<strong>30-Day Returns</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_hrEEAE": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/bundle-32.svg",
+            "max_width": 42,
+            "max_width_mb": 42,
+            "title": "<strong>Premium Quality</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_fLT8hR",
+        "column_tcxiUk",
+        "column_4eGQ6E",
+        "column_jVfaUa",
+        "column_hrEEAE"
+      ],
+      "name": "t:sections.multicolumn-with-icon.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#1c1c1c",
+        "columns_desktop": 5,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "full",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "multicolumn_product_mifGjU": {
+      "type": "multicolumn-product",
+      "blocks": {
+        "column_product_dXgfLy": {
+          "type": "column",
+          "settings": {
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "image_text": "BEST FOR LONG STUDY SESSIONS",
+            "text": "<p>WITH CODE: BTS12</p>",
+            "text_size": "text-base",
+            "feature_text_1": "High-Back Support",
+            "feature_text_2": "Adjustable Lumbar",
+            "feature_text_3": "4D Armrests",
+            "button_label": "SHOP ATLAS",
+            "button_link": "shopify://products/colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_product_GhzeUr": {
+          "type": "column",
+          "settings": {
+            "product": "colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "image_text": "BEST EVERYDAY VALUE",
+            "text": "<p>WITH CODE: BTS12</p>",
+            "text_size": "text-base",
+            "feature_text_1": "High-Back Comfort",
+            "feature_text_2": "Adjustable Headrest",
+            "feature_text_3": "Lightweight Base",
+            "button_label": "SHOP ATLAS-O1",
+            "button_link": "shopify://products/colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_product_wBa6YL": {
+          "type": "column",
+          "settings": {
+            "product": "colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "image_text": "BEST FOR SMALLER SPACES",
+            "text": "<p>WITH CODE: AETHER20</p>",
+            "text_size": "text-base",
+            "feature_text_1": "Compact Mid-Back Design",
+            "feature_text_2": "Suspension Seat",
+            "feature_text_3": "Easy-Reach Controls",
+            "button_label": "SHOP AETHER",
+            "button_link": "shopify://products/colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_product_VNYAbM": {
+          "type": "column",
+          "settings": {
+            "product": "lumidesk-all-in-1-electric-height-adjustable-desk",
+            "image_text": "COMPLETE YOUR SETUP",
+            "text": "<p>SELECTED CONFIGURATIONS</p>",
+            "text_size": "text-base",
+            "feature_text_1": "Electric Height Adjustment",
+            "feature_text_2": "Sit-Stand Flexibility",
+            "feature_text_3": "Spacious Desktop",
+            "button_label": "SHOP LUMIDESK",
+            "button_link": "shopify://products/lumidesk-all-in-1-electric-height-adjustable-desk",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_product_dXgfLy",
+        "column_product_GhzeUr",
+        "column_product_wBa6YL",
+        "column_product_VNYAbM"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Shop the Back to School Upgrade",
+        "heading_size": "h1",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_image": true,
+        "columns_desktop": 4,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "custom_liquid_back_to_school_product_mobile_layout": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "<style>\n  @media screen and (max-width: 767.98px) {\n    #back-to-school-products .multicolumn-product-card__title,\n    #back-to-school-products .multicolumn-product-card__price {\n      grid-column: 1 / -1;\n    }\n\n    #back-to-school-products .multicolumn-product-card__rating,\n    #back-to-school-products .multicolumn-product-card__text {\n      grid-column: 1 / -1;\n      margin-top: 0.8rem;\n    }\n\n    #back-to-school-products .multicolumn-product-card__rating .wc_product_review_badge .rivyoReviewWidget {\n      display: flex !important;\n      flex-direction: row !important;\n      flex-wrap: wrap !important;\n      align-items: center !important;\n      justify-content: flex-start !important;\n    }\n\n    #back-to-school-products .multicolumn-product-card__rating .wc_product_review_badge .rivyoReviewIcon {\n      display: flex !important;\n      flex-wrap: nowrap !important;\n      align-items: center !important;\n    }\n\n    #back-to-school-products .multicolumn-product-card__rating .wc_product_review_badge .rivyoReviewWidget > * {\n      flex: 0 0 auto !important;\n    }\n\n    #back-to-school-products .multicolumn-product-card__rating .wc_product_review_badge .rivyoReviewAverage {\n      white-space: nowrap;\n    }\n\n    #back-to-school-products .multicolumn-product-card__text {\n      width: 100%;\n      max-width: none;\n      justify-self: stretch;\n      font-size: 11px;\n      text-align: center;\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "tabs_content_horizontal_Jk69Tt": {
+      "type": "tabs-content-horizontal",
+      "blocks": {
+        "image_with_text_9Kixri": {
+          "type": "image_with_text",
+          "settings": {
+            "navigation_title": "For the Dorm",
+            "navigation_icon": "shopify://shop_images/SVG_2.svg",
+            "image": "shopify://shop_images/Dorm_20a8e5b6-e227-4a48-92f7-afc879dfd0d1.png",
+            "heading": "Smart Support forSmaller Spaces",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "subheading": "FOR THE DORM",
+            "description": "<p>Compact ergonomic support for dorm rooms,apartments and smaller study spaces.</p>",
+            "description_size": "text-base",
+            "product": "colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "product_text_1": "RECOMMENDED FOR YOU",
+            "product_text_2": "AETHER",
+            "button_label": "SHOP AETHER",
+            "button_link": "shopify://products/colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "icon_1": "check",
+            "heading_1": "Mid-back profile",
+            "tooltip_text_1": "",
+            "icon_2": "check",
+            "heading_2": "Adjustable lumbar support",
+            "tooltip_text_2": "",
+            "icon_3": "check",
+            "heading_3": "Lowest activity price",
+            "tooltip_text_3": ""
+          }
+        },
+        "image_with_text_tzrWJV": {
+          "type": "image_with_text",
+          "settings": {
+            "navigation_title": "For the Home Office",
+            "navigation_icon": "shopify://shop_images/SVG_1.svg",
+            "image": "shopify://shop_images/Home_Office_b9b73b00-1da3-461b-a8da-d065890f828e.png",
+            "heading": "Flexible Comfort for Work and Study",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "subheading": "",
+            "description": "<p>A flexible setup for classes, video calls and everyday remote work.</p>",
+            "description_size": "text-base",
+            "product": "colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "product_text_1": "RECOMMENDED FOR YOU",
+            "product_text_2": "ATLAS-01 + LumiDesk",
+            "button_label": "Shop ATLAS-01",
+            "button_link": "shopify://products/colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "icon_1": "check",
+            "heading_1": "High-back support",
+            "tooltip_text_1": "",
+            "icon_2": "check",
+            "heading_2": "Adjustable sitting position",
+            "tooltip_text_2": "",
+            "icon_3": "check",
+            "heading_3": "Sit-stand desk flexibility",
+            "tooltip_text_3": ""
+          }
+        },
+        "image_with_text_CbEhtb": {
+          "type": "image_with_text",
+          "settings": {
+            "navigation_title": "For Long Study Sessions",
+            "navigation_icon": "shopify://shop_images/SVG.svg",
+            "image": "shopify://shop_images/Long_Study_Sessions_97214089-c240-4464-8698-dc188efeeb45.png",
+            "heading": "Advanced Support for Longer Hours",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "subheading": "",
+            "description": "<p>More adjustable support for assignments, projects and longer hours at your desk.</p>",
+            "description_size": "text-base",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "product_text_1": "RECOMMENDED FOR YOU",
+            "product_text_2": "ATLAS",
+            "button_label": "Shop ATLAS",
+            "button_link": "shopify://products/colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "icon_1": "check",
+            "heading_1": "Adjustable lumbar",
+            "tooltip_text_1": "",
+            "icon_2": "check",
+            "heading_2": "Seat-depth adjustment",
+            "tooltip_text_2": "",
+            "icon_3": "check",
+            "heading_3": "Multi-position recline",
+            "tooltip_text_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_9Kixri",
+        "image_with_text_tzrWJV",
+        "image_with_text_CbEhtb"
+      ],
+      "name": "Tabs content Horizontal",
+      "settings": {
+        "container": "full",
+        "color_scheme": "scheme-10",
+        "navigation_alignment": "start",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "comparison_table_MWC6Vy": {
+      "type": "comparison-table-fullw",
+      "blocks": {
+        "heading_GXXrpg": {
+          "type": "heading",
+          "settings": {
+            "icon-1": "none",
+            "title-1": "Best For",
+            "icon-2": "none",
+            "title-2": "Back Style",
+            "icon-3": "none",
+            "title-3": "Weight Capacity",
+            "icon-4": "none",
+            "title-4": "Headrest",
+            "icon-5": "none",
+            "title-5": "Lumbar Support",
+            "icon-6": "none",
+            "title-6": "Recline",
+            "icon-7": "none",
+            "title-7": "Armrests",
+            "icon-8": "none",
+            "title-8": "Seat",
+            "icon-9": "none",
+            "title-9": "Base",
+            "icon-10": "none",
+            "title-10": ""
+          }
+        },
+        "content_fiyNfE": {
+          "type": "content",
+          "settings": {
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "mobile_tab_label": "ATLAS",
+            "button_label": "SHOP ATLAS",
+            "text-1": "<p>Long study sessions</p>",
+            "text-2": "<p>High back + headrest</p>",
+            "text-3": "<p>300 Ibs</p>",
+            "text-4": "<p>Yes</p>",
+            "text-5": "<p>Adjustable</p>",
+            "text-6": "<p>4 locking positions</p>",
+            "text-7": "<p>4D</p>",
+            "text-8": "<p>Adjustable depth</p>",
+            "text-9": "<p>Aluminum alloy</p>",
+            "text-10": ""
+          }
+        },
+        "content_XRewfT": {
+          "type": "content",
+          "settings": {
+            "product": "colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "mobile_tab_label": "ATLAS-01",
+            "button_label": "SHOP ATLAS-01",
+            "text-1": "<p>Everyday home office</p>",
+            "text-2": "<p>High back + headrest</p>",
+            "text-3": "<p>300 lbs</p>",
+            "text-4": "<p>Yes</p>",
+            "text-5": "<p>Adjustable</p>",
+            "text-6": "<p>4 locking positions</p>",
+            "text-7": "<p>4D</p>",
+            "text-8": "<p>Adjustable depth</p>",
+            "text-9": "<p>Reinforced nylon</p>",
+            "text-10": ""
+          }
+        },
+        "content_j6GUxa": {
+          "type": "content",
+          "settings": {
+            "product": "colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "mobile_tab_label": "AETHER",
+            "button_label": "SHOP AETHER",
+            "text-1": "<p>Dorms & smaller spaces</p>",
+            "text-2": "<p>Compact mid-back</p>",
+            "text-3": "<p>300 lbs</p>",
+            "text-4": "<p>No</p>",
+            "text-5": "<p>Adjustable</p>",
+            "text-6": "<p>4 locking positions</p>",
+            "text-7": "<p>4D synchronized</p>",
+            "text-8": "<p>Suspension seat</p>",
+            "text-9": "<p>Reinforced nylon</p>",
+            "text-10": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_GXXrpg",
+        "content_fiyNfE",
+        "content_XRewfT",
+        "content_j6GUxa"
+      ],
+      "name": "Comparison table fullW",
+      "settings": {
+        "container": "full",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "COMPARE THE COLLECTION",
+        "heading": "Which Chair Fits You Best?",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "icon_size": 28,
+        "text_line_limit": "2-lines",
+        "show_view_more_button": false,
+        "show_section_divider": false,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "testimonials_masonry_ce63Q8": {
+      "type": "testimonials-masonry",
+      "blocks": {
+        "testimonial_abYfkd": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/81z79y3mTTL.jpg",
+            "text": "<h5>Comfortable</h5><p>“This office chair is very comfortable and easy to assemble. The back support is great for long hours of work, and the chair feels sturdy and high quality. I also like the modern design and adjustable features. Overall, it was a great purchase and I would recommend it.”</p>",
+            "author": "Yuny",
+            "bio": "",
+            "product": "colamy-aether-ergonomic-middle-back-mesh-office-chair"
+          }
+        },
+        "testimonial_KkLcpE": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/61wE3ZZ8gfL.jpg",
+            "text": "<h5>It’s very comfortable!!!</h5><p>I love it, I have been using it from week and yes it gives me so much comfort then my previous chair. First of all it looks good not like bulky chair. It took my 20 minutes to install, it was really easy, all was already installed you just need to put them all together. The quality is nice, I like the cushion it’s very comfortable. It has good features. I like the arms you actually can move as per your choise. It has good reclining. It gives my back good support which I really needed. Overall love it and recommended. Thanks</p>",
+            "avatar": "shopify://shop_images/XK.png",
+            "author": "Schadenfreudist",
+            "bio": "",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
+          }
+        },
+        "testimonial_LNDFkk": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/71C3pdQPj1L.jpg",
+            "text": "<h5>Excellent upgrade</h5><p>Did my research as I always do and pulled trigger on Colamy Atlas. Not sure what paying $500-1000 for a chair would get me, but this chair has all the same features and a very nice build quality for under $300.Seat cushion has right amount of firmness and contour of back higher end chairs. Lumbar works but is nothing substantial as this is a personal preference. The mechanisms and arm adjustments are solid.Worth a consideration if you are in market for a great chair but don't want to drop $500 to $1000 as I think this can compete as long as you take out branding and prestige. You can pay $2000 for a chair that is uncomfortable for your needs.</p>",
+            "avatar": "shopify://shop_images/ACF05.png",
+            "author": "Schadenfreudist",
+            "bio": "",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
+          }
+        },
+        "testimonial_kHN6B9": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/71nUyvoXroL.jpg",
+            "text": "<h5>Outstanding office chair at a great price point</h5><p>The parts and materials of the chair feel strong and durable, and I don't think that there will be any issues of premature wear or breaking. I feel confident in the longetivty of this chair so far. Upon sitting on the chair for the first time, I knew there and then that I made the right decision in purchasing this office chair. It's super comfortable and the ergonomic design was good to my liking. The adjustments you can do on the chair was also well though of and such a breeze. For example, I adjusted the tension of how easy it would be to lean back and rock back and forth.</p>",
+            "author": "Hally G",
+            "bio": "",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
+          }
+        },
+        "testimonial_ix6XTx": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<h5>Excellent Chair – Super Comfortable and Sturdy</h5><p>I’m very happy with this computer chair! The assembly was quick and easy, and all the parts were well packed. The chair feels very sturdy and well made.The seat cushion is thick and comfortable, even after sitting for long hours. The back support is great and really helps with posture. The height adjustment works smoothly, and the wheels roll quietly without scratching the floor.Overall, this chair offers amazing comfort and quality for the price. Perfect for working, studying, or gaming. I would definitely recommend it to anyone looking for a reliable and comfortable office chair!</p>",
+            "author": "Zagi",
+            "bio": "",
+            "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_abYfkd",
+        "testimonial_KkLcpE",
+        "testimonial_LNDFkk",
+        "testimonial_kHN6B9",
+        "testimonial_ix6XTx"
+      ],
+      "name": "t:sections.testimonials_masonry.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Loved in Real Work and Study Spaces",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "max_height": 0,
+        "card_color_scheme": "",
+        "card_image_ratio": "3/4",
+        "show_image": true,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 30,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "scrolling_gallery_video_back_to_school": {
+      "type": "scrolling-gallery-video",
+      "blocks": {
+        "video_48njMq": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014e_7ad214f2-d60a-4911-8597-36f04c07442g_e16739dc-fedf-4b9f-870b-94f6c0cf6a92.mp4",
+            "video_ratio": "4/5",
+            "heading": "ATLAS",
+            "creator_name": "@jorameraj",
+            "show_button": true,
+            "button_label": "Shop ATLAS",
+            "video_link": "shopify://products/colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014f_5b2a0c07-0969-4084-a539-2e6832474f0g_2887e114-1945-4e0a-8011-533045d49a81.mp4",
+            "video_ratio": "4/5",
+            "heading": "ATLAS",
+            "creator_name": "@itsfationa",
+            "show_button": true,
+            "button_label": "Shop ATLAS",
+            "video_link": "shopify://products/colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014e_ab9b5d9a-68a9-4a90-88ca-948f0d71485g_c9e12e8e-f13e-48e9-9b02-1cf43b7c523e.mp4",
+            "video_ratio": "4/5",
+            "heading": "AETHER",
+            "creator_name": "@melisadevo",
+            "show_button": true,
+            "button_label": "Shop AETHER",
+            "video_link": "shopify://products/colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014e_20790548-8a00-4b63-8c4b-82b05c4c3fdg_86835aac-d97b-434a-8efd-adae35c554aa.mp4",
+            "video_ratio": "4/5",
+            "heading": "AETHER",
+            "creator_name": "@america.timee",
+            "show_button": true,
+            "button_label": "Shop AETHER",
+            "video_link": "shopify://products/colamy-aether-ergonomic-middle-back-mesh-office-chair",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "video_4": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014e_26aa29ec-041e-495b-b292-b2c19db9f0fg_d9fec549-073c-4635-ac96-989487bdec01.mp4",
+            "video_ratio": "4/5",
+            "heading": "ATLAS-01",
+            "creator_name": "@mylittlehomebylida",
+            "show_button": true,
+            "button_label": "Shop ATLAS-01",
+            "video_link": "shopify://products/colamy-atlas-01-executive-mesh-ergonomic-office-chair-bifma-certified",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "video_VmLtCD": {
+          "type": "video",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "video": "shopify://files/videos/file_v3_0014e_6bd20a2e-21c8-4d15-a9f9-7001cf41a1bg_7f0cf8f6-ed3a-4733-b0e9-1eda0f9009df.mp4",
+            "video_ratio": "4/5",
+            "heading": "LUMIDESK",
+            "creator_name": "@kilic_usastyle",
+            "show_button": true,
+            "button_label": "Shop LUMIDESK",
+            "video_link": "shopify://products/lumidesk-all-in-1-electric-height-adjustable-desk",
+            "button_style": "btn--primary",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "video_48njMq",
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4",
+        "video_VmLtCD"
+      ],
+      "name": "Scrolling gallery video",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "From Our Creators",
+        "description": "",
+        "text_size": "text-base",
+        "show_button_on_top": false,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "direction": "left",
+        "speed": 0.4,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "collapsible_tabs_wxB4C6": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_BaQzwN": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Which products are included in the Back to School Sale?",
+            "content": "<p>The sale includes selected COLAMY ergonomic chairs and study essentials, including ATLAS, ATLAS-01, AETHER and selected LumiDesk configurations. Offer details are shown on each product card.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_Q7PkTC": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "How do I apply the discount?",
+            "content": "<p>Use code BTS12 for eligible ATLAS and ATLAS-01 purchases. AETHER uses code AETHER20. Enter the applicable code at checkout to receive the promotional price.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_7jDAGN": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Which chair is best for longer study sessions?",
+            "content": "<p>ATLAS is designed for users who want more adjustable support, including a high back, headrest, adjustable lumbar support, 4D armrests, seat-depth adjustment and multi-position recline.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_pEmHGh": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "How long will delivery take?",
+            "content": "<p>In-stock orders are typically processed within 2–3 business days and may arrive in approximately 5–7 days, depending on your location and product availability.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_ChiAqY": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "What happens if the chair is not right for me?",
+            "content": "<p>Eligible COLAMY products can be returned or exchanged within 30 days of delivery, subject to the return policy and item condition requirements.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_BaQzwN",
+        "collapsible_item_Q7PkTC",
+        "collapsible_item_7jDAGN",
+        "collapsible_item_pEmHGh",
+        "collapsible_item_ChiAqY"
+      ],
+      "name": "t:sections.collapsible-tabs.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Frequently Asked Questions",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "slideshow_Ei6BDX": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_zKrXQ4": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/20260810-180139.png",
+            "background_mobile": "shopify://shop_images/20260810-180133.png",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "subheading": "",
+            "title": "Ready for a Better Study Setup?",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "<p>Save up to 20%</p>",
+            "description_size": "text-base",
+            "button_label": "Shop the B2S Sale",
+            "button_link": "#back-to-school-products",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_zKrXQ4"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "slide_height": "large",
+        "show_controls": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "tabs_content_horizontal": {
+      "type": "tabs-content-horizontal",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "navigation_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_wpqrKC",
+    "multicolumn_icon_PihgwA",
+    "multicolumn_product_mifGjU",
+    "custom_liquid_back_to_school_product_mobile_layout",
+    "tabs_content_horizontal_Jk69Tt",
+    "comparison_table_MWC6Vy",
+    "testimonials_masonry_ce63Q8",
+    "scrolling_gallery_video_back_to_school",
+    "collapsible_tabs_wxB4C6",
+    "slideshow_Ei6BDX",
+    "tabs_content_horizontal"
+  ]
+}

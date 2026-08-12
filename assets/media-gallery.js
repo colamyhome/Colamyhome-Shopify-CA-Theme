@@ -331,24 +331,18 @@ if (!customElements.get('media-gallery')) {
         };
 
         this.thumbsOptions = {
-          slidesPerView: 4,
-          breakpoints: {
-            461: {
-              slidesPerView: 5,
-              direction: 'horizontal',
-            },
-          },
-          spaceBetween: mediaItemGapMobile,
-          loop: false,
-          freeMode: true,
-          watchSlidesProgress: true,
-          threshold: 2,
-          breakpoints: {
-            768: {
-              spaceBetween: mediaItemGap,
-            },
-          },
-        };
+  slidesPerView: 5,
+  spaceBetween: mediaItemGapMobile,
+  loop: false,
+  freeMode: true,
+  watchSlidesProgress: true,
+  threshold: 2,
+  breakpoints: {
+    768: {
+      spaceBetween: mediaItemGap,
+    },
+  },
+};
 
         switch (this.mediaLayout) {
           case 'vertical-carousel':

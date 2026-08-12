@@ -1,0 +1,285 @@
+{{ 'component-multicolumn-product-card.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
+  assign enable_swipe_mobile = false
+  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile
+    assign enable_swipe_mobile = true
+  endif
+  assign columns_desktop = section.settings.columns_desktop
+  assign columns_tablet = columns_desktop
+  if columns_desktop > 3
+    assign columns_tablet = columns_desktop | divided_by: 2.0 | ceil
+  endif
+
+  assign is_back_to_school_products = false
+  if template.suffix == 'back-to-school' and section.id contains 'multicolumn_product_mifGjU'
+    assign is_back_to_school_products = true
+  endif
+-%}
+
+{% style %}
+  .section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --f-columns-mobile: {{ columns_mobile }};
+    --f-columns-md: {{ columns_tablet }};
+    --f-columns-lg: {{ columns_desktop }};
+  }
+
+  body.back-to-school .section-{{ section.id }} .multicolumn-product-card__text,
+  body.back-to-school .section-{{ section.id }} .multicolumn-product-card__text :is(p, button, span) {
+    text-align: left !important;
+  }
+
+  body.back-to-school .section-{{ section.id }} .multicolumn-product-card__text {
+    display: flex;
+    align-items: center;
+    min-height: calc(2.8em + 6px);
+    box-sizing: border-box;
+  }
+
+  {% if is_back_to_school_products %}
+    #back-to-school-products {
+      scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+    }
+
+    #back-to-school-products .multicolumn-product-card__text--copy button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      text-align: inherit;
+    }
+
+    #back-to-school-products .multicolumn-product-card__text--copy button:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    @media screen and (max-width: 767.98px) {
+      #back-to-school-products .multicolumn-product-card__meta-row--price {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 0.8rem;
+      }
+
+      #back-to-school-products .multicolumn-product-card__price,
+      #back-to-school-products .multicolumn-product-card__text {
+        grid-column: 1 / -1;
+      }
+
+      #back-to-school-products .multicolumn-product-card__text {
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+        text-align: left;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<div
+  class="section section-{{ section.id }} section--padding multicolumn-product color-{{ section.settings.color_scheme }}"
+  {% if is_back_to_school_products %}
+    id="back-to-school-products"
+  {% endif %}
+>
+  <div class="section__container page-width page-width--{{ section.settings.container }}">
+    {% render 'section-heading', section_settings: section.settings, button_label: section.settings.button_label, button_link: section.settings.button_link, button_style: section.settings.button_style, button_icon: section.settings.button_icon, button_visible: true %}
+    <div class="section__content block f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}">
+      <div class="multicolumn-product__items f-grid{% if enable_swipe_mobile %} swipe-mobile__inner{% endif %}">
+        {% for block in section.blocks %}
+          <div class="f-column relative multicolumn-product-card text-{{ section.settings.content_alignment }} color-scheme-inherit" {{ block.shopify_attributes }}>
+            {% if section.settings.show_image %}
+              {% liquid
+                assign product = block.settings.product
+                assign product_image = product.featured_media.preview_image | default: product.featured_image
+                assign alt = product_image.alt | default: product.title | escape
+              %}
+              <div class="multicolumn-product-card__image hover-wrapper blocks-radius">
+                <motion-element class="block w-full h-full" data-motion="zoom-out-sm">
+                  <picture class="card-media__media media-wrapper{% if product_image == blank %} bg-none{% endif %}" style="--aspect-ratio: {{ product_image.aspect_ratio | default: 1 }};">
+                    {% if product_image != blank %}
+                      {{ product_image | image_url: width: 1100 | image_tag: loading: 'lazy', class: 'motion-reduce hover-scale-up absolute inset-0 w-full h-full', widths: '165, 360, 535, 750, 940, 1100', is: 'image-lazy', alt: alt }}
+                    {% else %}
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  </picture>
+                </motion-element>
+                {% if block.settings.image_text != blank %}
+                  <div class="multicolumn-product-card__image-text">{{ block.settings.image_text }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="multicolumn-product-card__info rich-text rich-text--tight">
+              {% if product != blank %}
+                <div class="multicolumn-product-card__meta-row">
+                  <h3 class="multicolumn-product-card__title"><a class="reversed-link" href="{{ product.url }}">{{ product.title }}</a></h3>
+                  <div class="multicolumn-product-card__rating">
+                    <div
+                      class="wc_product_review_badge"
+                      data-handle="{{ product.handle }}"
+                      data-product_id="{{ product.id }}"
+                      data-frontend_js_version="2"
+                    ></div>
+                  </div>
+                </div>
+                <div class="multicolumn-product-card__meta-row multicolumn-product-card__meta-row--price">
+                  <div class="multicolumn-product-card__price">{% render 'price', product: product, alignment: 'left' %}</div>
+                  {% if block.settings.text != blank %}
+                    {% liquid
+                      assign custom_text = block.settings.text | strip_html | strip
+                      assign coupon_code = ''
+                      if is_back_to_school_products and custom_text contains 'WITH CODE:'
+                        assign coupon_code = custom_text | split: 'WITH CODE:' | last | strip | split: ' ' | first
+                      endif
+                    %}
+                    {% if coupon_code != blank %}
+                      <div
+                        class="multicolumn-product-card__text multicolumn-product-card__text--copy {{ block.settings.text_size }}"
+                      >
+                        <button
+                          type="button"
+                          aria-label="Copy discount code {{ coupon_code | escape }}"
+                          data-back-to-school-discount-code="{{ coupon_code | escape }}"
+                          data-copied-text="{{ 'general.share.copied' | t | escape }}"
+                        >
+                          <span data-copy-feedback-target aria-live="polite">{{ custom_text | escape }}</span>
+                        </button>
+                      </div>
+                    {% else %}
+                      <div class="multicolumn-product-card__text rte {{ block.settings.text_size }}">{{ block.settings.text }}</div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                {% if block.settings.feature_text_1 != blank or block.settings.feature_text_2 != blank or block.settings.feature_text_3 != blank or block.settings.button_label != blank %}
+                  <div class="multicolumn-product-card__divider no-empty" aria-hidden="true"></div>
+                {% endif %}
+                {% if block.settings.feature_text_1 != blank or block.settings.feature_text_2 != blank or block.settings.feature_text_3 != blank %}
+                  <ul class="multicolumn-product-card__features" role="list">
+                    {% if block.settings.feature_text_1 != blank %}<li>{{ block.settings.feature_text_1 }}</li>{% endif %}
+                    {% if block.settings.feature_text_2 != blank %}<li>{{ block.settings.feature_text_2 }}</li>{% endif %}
+                    {% if block.settings.feature_text_3 != blank %}<li>{{ block.settings.feature_text_3 }}</li>{% endif %}
+                  </ul>
+                {% endif %}
+              {% endif %}
+              {% if block.settings.button_label != blank %}<div class="multicolumn-product-card__button">{% render 'button', button_style: block.settings.button_style, button_link: block.settings.button_link, button_label: block.settings.button_label, button_icon: block.settings.button_icon %}</div>{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'multicolumn-product-rivyo.js' | asset_url }}" defer="defer"></script>
+
+{% if is_back_to_school_products %}
+  <script>
+    if (!window.backToSchoolDiscountCodeCopyInitialized) {
+      window.backToSchoolDiscountCodeCopyInitialized = true;
+
+      const copyWithFallback = (value) => {
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.setAttribute('readonly', '');
+        textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand('copy');
+        textarea.remove();
+        return copied;
+      };
+
+      const copyDiscountCode = (value) => {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(value).then(() => true).catch(() => copyWithFallback(value));
+        }
+
+        return Promise.resolve(copyWithFallback(value));
+      };
+
+      document.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-back-to-school-discount-code]');
+        if (!button) return;
+
+        event.preventDefault();
+        const code = button.dataset.backToSchoolDiscountCode;
+        if (!code) return;
+
+        copyDiscountCode(code).then((copied) => {
+          if (!copied) return;
+
+          const feedbackTarget = button.querySelector('[data-copy-feedback-target]');
+          if (!feedbackTarget) return;
+
+          if (!feedbackTarget.dataset.copyOriginalText) {
+            feedbackTarget.dataset.copyOriginalText = feedbackTarget.textContent;
+          }
+          feedbackTarget.textContent = button.dataset.copiedText || 'Copied';
+
+          window.setTimeout(() => {
+            feedbackTarget.textContent = feedbackTarget.dataset.copyOriginalText;
+          }, 1500);
+        });
+      });
+    }
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Multicolumn product",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": { "groups": ["footer", "header", "custom.overlay"] },
+  "settings": [
+    { "type": "select", "id": "container", "label": "Container", "default": "fixed", "options": [{"value":"full","label":"Full width"},{"value":"fixed","label":"Fixed width"}] },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "select", "id": "section_header_alignment", "label": "Desktop alignment", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+    { "type": "select", "id": "section_header_alignment_mobile", "label": "Mobile alignment", "default": "inherit", "options": [{"value":"inherit","label":"Inherit"},{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+    { "type": "inline_richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Multicolumn product" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "default": "h1", "options": [{"value":"h3","label":"Small"},{"value":"h2","label":"Medium"},{"value":"h1","label":"Large"},{"value":"hd1","label":"Extra large"}] },
+    { "type": "select", "id": "highlight_style", "label": "Highlight style", "default": "none", "options": [{"value":"none","label":"None"},{"value":"hand_drawn_circle","label":"Circle"},{"value":"thick_underline","label":"Underline"},{"value":"wave_underline","label":"Wave"}] },
+    { "type": "select", "id": "highlight_font_style", "label": "Highlight font style", "default": "italic", "options": [{"value":"italic","label":"Italic"},{"value":"normal","label":"Normal"}] },
+    { "type": "color", "id": "highlight_style_color", "label": "Highlight color" },
+    { "type": "color", "id": "highlight_text_color", "label": "Highlighted text color" },
+    { "type": "richtext", "id": "description", "label": "Description" },
+    { "type": "select", "id": "text_size", "label": "Text size", "default": "text-base", "options": [{"value":"text-sm","label":"Small"},{"value":"text-base","label":"Medium"},{"value":"text-lg","label":"Large"}] },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "select", "id": "button_style", "label": "Button style", "default": "btn--underline", "options": [{"value":"btn--primary","label":"Primary"},{"value":"btn--secondary","label":"Secondary"},{"value":"btn--underline","label":"Underline"},{"value":"btn--plain","label":"Plain"}] },
+    { "type": "select", "id": "button_icon", "label": "Button icon", "default": "none", "options": [{"value":"none","label":"None"},{"value":"caret-right","label":"Caret right"},{"value":"arrow-right","label":"Arrow right"}] },
+    { "type": "select", "id": "content_alignment", "label": "Content alignment", "default": "left", "options": [{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}] },
+    { "type": "checkbox", "id": "show_image", "label": "Show image", "default": true },
+    { "type": "range", "id": "columns_desktop", "label": "Desktop columns", "min": 2, "max": 6, "step": 1, "default": 4 },
+    { "type": "select", "id": "column_gap", "label": "Column gap", "default": "large", "options": [{"value":"none","label":"None"},{"value":"extra-small","label":"Extra small"},{"value":"small","label":"Small"},{"value":"medium","label":"Medium"},{"value":"large","label":"Large"},{"value":"extra-large","label":"Extra large"}] },
+    { "type": "select", "id": "row_gap", "label": "Row gap", "default": "inherit", "options": [{"value":"inherit","label":"Inherit"},{"value":"none","label":"None"},{"value":"extra-small","label":"Extra small"},{"value":"small","label":"Small"},{"value":"medium","label":"Medium"},{"value":"large","label":"Large"},{"value":"extra-large","label":"Extra large"}] },
+    { "type": "select", "id": "columns_mobile", "label": "Mobile columns", "default": "1", "options": [{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"}] },
+    { "type": "checkbox", "id": "swipe_on_mobile", "label": "Enable mobile swipe", "default": true },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 50 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 50 }
+  ],
+  "blocks": [
+    { "type": "column", "name": "Column", "settings": [
+      { "type": "product", "id": "product", "label": "Product" },
+      { "type": "text", "id": "image_text", "label": "Image text" },
+      { "type": "richtext", "id": "text", "label": "Custom text" },
+      { "type": "select", "id": "text_size", "label": "Text size", "default": "text-base", "options": [{"value":"text-sm","label":"Small"},{"value":"text-base","label":"Medium"},{"value":"text-lg","label":"Large"}] },
+      { "type": "text", "id": "feature_text_1", "label": "Feature text 1" },
+      { "type": "text", "id": "feature_text_2", "label": "Feature text 2" },
+      { "type": "text", "id": "feature_text_3", "label": "Feature text 3" },
+      { "type": "text", "id": "button_label", "label": "Button label" },
+      { "type": "url", "id": "button_link", "label": "Button link" },
+      { "type": "select", "id": "button_style", "label": "Button style", "default": "btn--underline", "options": [{"value":"btn--primary","label":"Primary"},{"value":"btn--secondary","label":"Secondary"},{"value":"btn--underline","label":"Underline"},{"value":"btn--plain","label":"Plain"}] },
+      { "type": "select", "id": "button_icon", "label": "Button icon", "default": "none", "options": [{"value":"none","label":"None"},{"value":"caret-right","label":"Caret right"},{"value":"arrow-right","label":"Arrow right"}] }
+    ] }
+  ],
+  "presets": [{ "name": "Multicolumn product", "blocks": [{"type":"column"},{"type":"column"},{"type":"column"},{"type":"column"}] }]
+}
+{% endschema %}

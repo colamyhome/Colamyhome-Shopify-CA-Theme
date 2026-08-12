@@ -1,0 +1,114 @@
+{%- liquid
+  assign heading_size = block.settings.heading_size | default: 'h4'
+  assign heading_text = block.settings.heading | default: block.settings.page.title
+  assign policy_icon_asset = ''
+  assign is_description_tab = false
+  assign is_dimensions_tab = false
+  assign is_key_details_tab = false
+  assign is_returns_tab = false
+  assign is_warranty_tab = false
+  assign left_table_info = blank
+  assign right_table_info = blank
+  assign dimension_table_sources = blank
+
+  if heading_text == 'Key Details'
+    assign is_key_details_tab = true
+  endif
+
+  if heading_text == 'Description'
+    assign is_description_tab = true
+  endif
+
+  if heading_text == '30-Day Hassle-Free Returns'
+    assign is_returns_tab = true
+  endif
+
+  if heading_text == '3-Year Warranty'
+    assign is_warranty_tab = true
+  endif
+
+  if heading_text == 'Dimensions'
+    assign is_dimensions_tab = true
+
+    assign left_table_info = product.metafields.foxtheme.dimension_left_table_info.value
+    if left_table_info == blank
+      assign left_table_info = product.metafields.custom.dimension_left_table_info.value
+    endif
+
+    assign right_table_info = product.metafields.foxtheme.dimension_right_table_info.value
+    if right_table_info == blank
+      assign right_table_info = product.metafields.custom.dimension_right_table_info.value
+    endif
+
+    if left_table_info != blank and right_table_info != blank
+      assign dimension_table_sources = left_table_info | concat: right_table_info
+    elsif left_table_info != blank
+      assign dimension_table_sources = left_table_info
+    elsif right_table_info != blank
+      assign dimension_table_sources = right_table_info
+    endif
+  endif
+
+  case heading_text
+    when '3-Year Warranty'
+      assign policy_icon_asset = '3-year warranty.svg'
+    when '30-Day Hassle-Free Returns'
+      assign policy_icon_asset = '30-day hassle-free returns.svg'
+    when 'Fast & Free Local Shipping'
+      assign policy_icon_asset = 'shipping.svg'
+  endcase
+-%}
+<details
+  id="Details-{{ block.id }}-{{ section_id }}"
+  class="accordion-details{% if policy_icon_asset != blank %} product-policy-accordion{% endif %}{% if is_description_tab %} product-collapsible-tab--description{% endif %}{% if is_returns_tab %} product-collapsible-tab--returns{% endif %}{% if is_warranty_tab %} product-collapsible-tab--warranty{% endif %}{% if is_key_details_tab %} product-collapsible-tab--key-details{% endif %}"
+  is="accordion-details"
+  {% if block.settings.default_open %}
+    open
+    aria-expanded="true"
+  {% else %}
+    aria-expanded="false"
+  {% endif %}
+>
+  <summary class="accordion-details__summary{% if policy_icon_asset != blank %} product-policy-accordion__summary{% endif %} flex items-center{% unless policy_icon_asset != blank %} justify-between{% endunless %}">
+    <div class="{% if policy_icon_asset != blank %}product-policy-accordion__heading {% endif %}flex items-center gap-2">
+      {%- if policy_icon_asset != blank -%}
+        <span
+          class="product-policy-accordion__icon"
+          aria-hidden="true"
+          style="--product-policy-icon: url({{ policy_icon_asset | asset_url }}); width: 32px; height: 32px; flex-basis: 32px;"
+        ></span>
+      {%- else -%}
+        {% render 'icons', icon: block.settings.icon %}
+      {%- endif -%}
+      {%- if policy_icon_asset != blank -%}
+        <span class="product-policy-accordion__title-row">
+          <h2 class="{{ heading_size }} product-collapsible-tab__title product-policy-accordion__title inline-richtext">
+            {{ heading_text | escape }}
+          </h2>
+          {%- render 'icon-caret-right', size: 'small', thickness: 'light', classes: 'product-policy-accordion__arrow' -%}
+        </span>
+      {%- else -%}
+        <h2 class="{{ heading_size }} product-collapsible-tab__title inline-richtext">
+          {{ heading_text | escape }}
+        </h2>
+      {%- endif -%}
+    </div>
+    {%- if policy_icon_asset == blank -%}
+      {%- render 'icon-plus-toggle' -%}
+    {%- endif -%}
+  </summary>
+  <div class="accordion-details__content product-collapsible-tab__content rte text-subtext">
+    {%- if content_type == 'json_accordion' -%}
+      {%- render 'product-accordion-row-json-test-new-product', block: block -%}
+    {%- elsif is_dimensions_tab and dimension_table_sources != blank -%}
+      <div class="product-dimension-info-table" role="table" aria-label="Dimensions">
+        {%- for table_info in dimension_table_sources -%}
+          {%- render 'product-dimension-info-row', row: table_info -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      {{ block.settings.content }}
+      {{ block.settings.page.content }}
+    {%- endif -%}
+  </div>
+</details>

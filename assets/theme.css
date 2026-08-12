@@ -964,6 +964,14 @@ h6,
     font-weight: 500 ;
   }
 }
+@media (max-width: 767px) {
+  .summer-save #MainContent h2.section__heading,
+  .summer-save #MainContent .product-pairing__heading {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -1px;
+  }
+}
 .index-template #MainContent .slideshow-with-product__top-heading > h2 {
   font-size: 36px ;
   font-weight: 500 !important;
@@ -1421,7 +1429,7 @@ video-element[suspended] ~ * {
 }
 .media--adapt {
   height: 0;
-  padding-block-start: calc(100% / (0 + var(--media-ratio, 1.7777777778)));
+  padding-block-start: calc(100% / (0 + var(--media-ratio,1.7777777778)));
 }
 .media--height > :is(img, svg, video-element) {
   top: 0;
@@ -2315,7 +2323,6 @@ button svg,
   max-width: 100%;
 }
 .btn:not(.btn--plain, .btn--underline, .btn--link, .btn--inherit) .btn__text {
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -5460,7 +5467,7 @@ show-more .read-more__content {
   background-position-x: var(--transform-origin-end);
   background-position-y: bottom;
   transition: background-size var(--animation-default), color var(--animation-default);
-  font-size: 14px;
+  font-size: 12px;
 }
 .reversed-link:has(.reversed-link__text) .reversed-link__text {
   background: linear-gradient(to var(--transform-origin-end), currentColor, currentColor) 0 var(--reversed-link-gap)/0 var(--reversed-link-gap) no-repeat;
@@ -8093,12 +8100,20 @@ details[open] > .mega-menu {
   white-space: nowrap;
 }
 .breadcrumbs--sep {
-  display: block;
-  width: 0.1rem;
-  height: 1.4rem;
-  margin: 0 1.2rem;
-  background: rgba(var(--color-foreground), 0.1);
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 0 0.6rem;
+  background: none;
+  color: rgba(var(--color-foreground), 0.4);
 }
+
+.breadcrumbs--sep::after {
+  content: '/';
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 .breadcrumbs--last {
   overflow: hidden;
   text-overflow: ellipsis;

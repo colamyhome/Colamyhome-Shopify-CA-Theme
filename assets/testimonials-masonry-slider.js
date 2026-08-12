@@ -29,6 +29,15 @@ if (!customElements.get('testimonials-masonry-slider')) {
 
         this.sliderInstance = false;
 
+        this.alignProducts = this.closest('.testimonials-masonry--align-products');
+        if (this.alignProducts) {
+          this.alignProductRows = this.alignProductRows.bind(this);
+          this.resizeObserver = new ResizeObserver(this.alignProductRows);
+          this.querySelectorAll('.testimonial__wrapper').forEach((wrapper) => this.resizeObserver.observe(wrapper));
+          window.addEventListener('resize', this.alignProductRows);
+          this.alignProductRows();
+        }
+
         if (!this.enableSlider) return;
 
         const mql = window.matchMedia(FoxTheme.config.mediaQueryMobile);
@@ -36,7 +45,34 @@ if (!customElements.get('testimonials-masonry-slider')) {
         this.init();
       }
 
+      disconnectedCallback() {
+        if (!this.alignProducts) return;
+        this.resizeObserver.disconnect();
+        window.removeEventListener('resize', this.alignProductRows);
+        cancelAnimationFrame(this.alignProductsFrame);
+      }
+
+      alignProductRows() {
+        const wrappers = Array.from(this.querySelectorAll('.testimonial__wrapper'));
+        if (!wrappers.length || this.isAligningProducts || this.alignProductsFrame) return;
+
+        this.alignProductsFrame = requestAnimationFrame(() => {
+          this.alignProductsFrame = null;
+          this.isAligningProducts = true;
+
+          wrappers.forEach((wrapper) => wrapper.style.removeProperty('min-height'));
+          const tallestContent = Math.max(...wrappers.map((wrapper) => wrapper.getBoundingClientRect().height));
+          wrappers.forEach((wrapper) => wrapper.style.setProperty('min-height', `${tallestContent}px`));
+
+          if (this.sliderInstance) this.sliderInstance.slider.update();
+          requestAnimationFrame(() => {
+            this.isAligningProducts = false;
+          });
+        });
+      }
+
       init() {
+        if (this.alignProducts) this.alignProductRows();
         if (FoxTheme.config.mqlMobile) {
           this.destroySlider();
         } else {

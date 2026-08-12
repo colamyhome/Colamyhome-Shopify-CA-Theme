@@ -1,0 +1,47 @@
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "@id": {{ shop.url | append: '#organization' | json }},
+    "name": "COLAMY",
+    "alternateName": "COLAMYHome",
+    "legalName": "Aurora Maison INC",
+    "url": {{ shop.url | json }},
+    "description": "COLAMY offers a curated collection of modern furniture designed for comfort, function, and easy everyday living, including dining chairs, office chairs, bar stools, tables, recliners, storage furniture, and more.",
+    "foundingDate": "2019",
+    "email": "hello@colamyhome.com",
+    "telephone": "+1-888-886-1743",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": {{ shop.url | append: '#logo' | json }},
+      "url": "https://colamyhome.com/cdn/shop/files/LOGO-_-03.png?v=1775552672&width=512",
+      "contentUrl": "https://colamyhome.com/cdn/shop/files/LOGO-_-03.png?v=1775552672&width=512",
+      "caption": "COLAMY"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6275 Joyce Dr",
+      "addressLocality": "Arvada",
+      "addressRegion": "CO",
+      "postalCode": "80403",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "telephone": "+1-888-886-1743",
+      "email": "hello@colamyhome.com",
+      "availableLanguage": [
+        "English"
+      ]
+    },
+    "sameAs": [
+      "https://www.facebook.com/Colamy",
+      "https://www.instagram.com/colamyhomeofficial/",
+      "https://www.tiktok.com/@colamyhome",
+      "https://www.youtube.com/@colamyhome"
+    ]
+  }
+  </script>
+{%- endif -%}

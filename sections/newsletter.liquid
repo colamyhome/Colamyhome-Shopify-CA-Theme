@@ -58,13 +58,23 @@
         {%- for block in section.blocks -%}
           {%- liquid
             assign image = block.settings.image
+            assign image_mobile = block.settings.image_mobile
+            if image == blank
+              assign image = image_mobile
+            endif
+            if image_mobile == blank
+              assign image_mobile = image
+            endif
             assign image_alt = image.alt | default: shop.name | escape
             assign image_ratio = block.settings.image_ratio | default: 'adapt'
+            assign image_mobile_ratio = image_mobile.aspect_ratio | default: image_ratio
             if image_ratio == 'adapt'
               if image != blank
                 assign image_ratio = image.aspect_ratio
+                assign image_mobile_ratio = image_mobile.aspect_ratio | default: image_ratio
               else
                 assign image_ratio = '1'
+                assign image_mobile_ratio = '1'
               endif
             endif
           -%}
@@ -72,9 +82,17 @@
             <motion-element class="block h-full" data-motion="zoom-out-sm">
               <picture
                 class="newsletter__media media-wrapper h-full{% if image == blank %} bg-none{% endif %}"
-                style="--aspect-ratio: {{ image_ratio }};"
+                style="--aspect-ratio: {{ image_ratio }};--aspect-ratio-mobile: {{ image_mobile_ratio }};"
               >
                 {%- if image != blank -%}
+                  {%- if image_mobile != blank -%}
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="{{ image_mobile | image_url: width: '400x' }} 400w, {{ image_mobile | image_url: width: '600x' }} 600w, {{ image_mobile | image_url: width: '800x' }} 800w, {{ image_mobile | image_url: width: '1000x' }} 1000w"
+                      width="{{ image_mobile.width }}"
+                      height="{{ image_mobile.height }}"
+                    >
+                  {%- endif -%}
                   {{-
                     image
                     | image_url: width: 1100
@@ -621,6 +639,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:general.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "t:general.image_mobile.label"
         },
         {
           "type": "select",

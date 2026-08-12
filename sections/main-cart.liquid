@@ -8,6 +8,21 @@
 {{ 'component-custom-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
+{%- liquid
+  assign delivery_confirmation_product_handles = 'halo-modern-wood-dining-table-walnut,colamy-halo-72-dining-table-with-noya-mid-century-dining-chairs-set-for-4-6,halo-72-modern-wood-dining-table-set-for-4-6,colamy-halo-72-dining-table-with-evane-prime-dining-chairs-set-for-4-6' | split: ','
+  assign atlas_delivery_confirmation_required = false
+  assign atlas_delivery_confirmed = false
+  if cart.attributes.atlas_delivery_access_confirmed == 'true'
+    assign atlas_delivery_confirmed = true
+  endif
+  for cart_item in cart.items
+    if delivery_confirmation_product_handles contains cart_item.product.handle
+      assign atlas_delivery_confirmation_required = true
+      break
+    endif
+  endfor
+-%}
+
 {%- if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link' -%}
   <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
@@ -648,6 +663,19 @@
                           </span>
                         </td>
                       </tr>
+                      {%- if delivery_confirmation_product_handles contains item.product.handle -%}
+                        <tr
+                          class="atlas-delivery-confirmation-cart-row"
+                          data-atlas-delivery-confirmation-cart-row
+                          data-cart-item-index="{{ item.index | plus: 1 }}"
+                        >
+                          <td colspan="3">
+                            <div class="atlas-delivery-confirmation-row" data-atlas-delivery-confirmation-row>
+                              {% render 'atlas-delivery-confirmation', cart: cart, section_id: section.id, item_key: item.key %}
+                            </div>
+                          </td>
+                        </tr>
+                      {%- endif -%}
                     {%- endcapture -%}
 
                   {%- liquid
@@ -805,12 +833,28 @@
                       </noscript>
                     {% endcomment %}
 
-                    <button class="btn btn--primary w-full" type="submit" form="cart" name="checkout">
+                    <button
+                      class="btn btn--primary w-full"
+                      type="submit"
+                      form="cart"
+                      name="checkout"
+                      data-atlas-checkout-button
+                      {% if atlas_delivery_confirmation_required and atlas_delivery_confirmed == false %}
+                        disabled
+                        aria-disabled="true"
+                      {% endif %}
+                    >
                       <span class="btn__text">{{ 'sections.cart.checkout' | t }}</span>
                     </button>
 
                     {% if additional_checkout_buttons %}
-                      <div class="additional-checkout-buttons no-js-hidden">
+                      <div
+                        class="additional-checkout-buttons no-js-hidden"
+                        data-atlas-accelerated-checkout
+                        {% if atlas_delivery_confirmation_required and atlas_delivery_confirmed == false %}
+                          hidden
+                        {% endif %}
+                      >
                         {{ content_for_additional_checkout_buttons }}
                       </div>
                     {% endif %}

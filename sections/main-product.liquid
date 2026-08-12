@@ -96,7 +96,7 @@
             variant_images: variant_images,
             enable_image_zoom: enable_image_zoom,
             show_media_load_more_button: section.settings.show_media_load_more_button,
-            media_aspect_ratio: '4/3'
+            media_aspect_ratio: '1'
           %}
           {% render 'product-information-below-media' %}
         </div>
@@ -135,6 +135,9 @@
 {%- if block_atc_bar != blank -%}
   {%- render 'sticky-atc-bar', block: block_atc_bar, product_form_id: product_form_id -%}
 {%- endif -%}
+{% render 'breadcrumb-schema' %}
+{% render 'rivyo-review-schema' %}
+{% render 'product-faq-schema' %}
 {% schema %}
 {
   "name": "t:sections.main-product.name",

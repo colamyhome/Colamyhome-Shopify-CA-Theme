@@ -1,0 +1,521 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "scrolling_banner_cAW3EH": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "slide_TjMmiT": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/summer_sale.png",
+            "background_mobile": "shopify://shop_images/summer_sale_2.png",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "product_color_scheme": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TjMmiT"
+      ],
+      "name": "t:sections.scrolling-banner.name",
+      "settings": {
+        "container": "full",
+        "slide_height": "adapt",
+        "content_position_mobile": "top-center",
+        "text_alignment_mobile": "center",
+        "enable_zoom": true,
+        "enable_parallax": true
+      }
+    },
+    "custom_liquid_HgDW7R": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "<section class=\"colamy-countdown\" data-cycle-hours=\"24\">\n  <div class=\"countdown-inner\">\n    <div class=\"countdown-text\">\n      <p class=\"countdown-eyebrow\">Limited-Time Summer Sale</p>\n      <h2>Summer Deals End Soon</h2>\n      <p class=\"countdown-subtitle\">\n        Refresh your dining room and workspace with extra savings before this offer resets.\n      </p>\n    </div>\n\n    <div class=\"countdown-timer\">\n      <div class=\"time-box\">\n        <span class=\"cd-days\">00</span>\n        <small>Days</small>\n      </div>\n      <div class=\"time-box\">\n        <span class=\"cd-hours\">00</span>\n        <small>Hours</small>\n      </div>\n      <div class=\"time-box\">\n        <span class=\"cd-minutes\">00</span>\n        <small>Min</small>\n      </div>\n      <div class=\"time-box\">\n        <span class=\"cd-seconds\">00</span>\n        <small>Sec</small>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n  .colamy-countdown {\n    width: 100%;\n    padding: 28px 20px;\n    border: 1px solid rgba(200, 161, 101, 0.35);\n  }\n\n  .countdown-inner {\n    max-width: 1200px;\n    margin: 0 auto;\n    display: grid;\n    grid-template-columns: 1.5fr auto;\n    align-items: center;\n    gap: 28px;\n  }\n\n  .countdown-eyebrow {\n    margin: 0 0 6px;\n    font-size: 13px;\n    letter-spacing: 0.08em;\n    text-transform: uppercase;\n    color: #98361a;\n    font-weight: 600;\n  }\n\n  .countdown-text h2 {\n    margin: 0;\n    font-size: 30px;\n    line-height: 1.2;\n    color: #2b2118;\n  }\n\n  .countdown-subtitle {\n    margin: 8px 0 0;\n    font-size: 15px;\n    line-height: 1.5;\n    color: #6f6258;\n    max-width: 560px;\n  }\n\n  .countdown-timer {\n    display: flex;\n    gap: 10px;\n  }\n\n  .time-box {\n    min-width: 72px;\n    padding: 12px 10px;\n    background: #ffffff;\n    border: 1px solid rgba(43, 33, 24, 0.1);\n    text-align: center;\n  }\n\n  .time-box span {\n    display: block;\n    font-size: 26px;\n    line-height: 1;\n    font-weight: 700;\n    color: #98361a;\n  }\n\n  .time-box small {\n    display: block;\n    margin-top: 6px;\n    font-size: 12px;\n    color: #6f6258;\n    text-transform: uppercase;\n    letter-spacing: 0.04em;\n  }\n\n  @media (max-width: 768px) {\n    .colamy-countdown {\n      padding: 24px 16px;\n    }\n\n    .countdown-inner {\n      grid-template-columns: 1fr;\n      gap: 18px;\n      text-align: center;\n    }\n\n    .countdown-text h2 {\n      font-size: 24px;\n    }\n\n    .countdown-subtitle {\n      margin-left: auto;\n      margin-right: auto;\n      font-size: 14px;\n    }\n\n    .countdown-timer {\n      justify-content: center;\n      gap: 8px;\n    }\n\n    .time-box {\n      min-width: 64px;\n      padding: 10px 6px;\n    }\n\n    .time-box span {\n      font-size: 22px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener(\"DOMContentLoaded\", function () {\n    const countdown = document.querySelector(\".colamy-countdown\");\n    if (!countdown) return;\n\n    const cycleHours = Number(countdown.dataset.cycleHours) || 24;\n    const cycleMs = cycleHours * 60 * 60 * 1000;\n\n    const daysEl = countdown.querySelector(\".cd-days\");\n    const hoursEl = countdown.querySelector(\".cd-hours\");\n    const minutesEl = countdown.querySelector(\".cd-minutes\");\n    const secondsEl = countdown.querySelector(\".cd-seconds\");\n\n    function pad(num) {\n      return String(num).padStart(2, \"0\");\n    }\n\n    function updateCountdown() {\n      const now = Date.now();\n      const startPoint = new Date(\"2026-07-01T00:00:00-07:00\").getTime();\n      const elapsed = now - startPoint;\n      const remaining = cycleMs - (elapsed % cycleMs);\n\n      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));\n      const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);\n      const minutes = Math.floor((remaining / (1000 * 60)) % 60);\n      const seconds = Math.floor((remaining / 1000) % 60);\n\n      daysEl.textContent = pad(days);\n      hoursEl.textContent = pad(hours);\n      minutesEl.textContent = pad(minutes);\n      secondsEl.textContent = pad(seconds);\n    }\n\n    updateCountdown();\n    setInterval(updateCountdown, 1000);\n  });\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "17848808439709ac96": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_aa78e6c_kip6zX": {
+          "type": "ai_gen_block_aa78e6c",
+          "settings": {
+            "heading": "The Hottest Picks: Up to 20% OFF",
+            "heading_alignment": "center",
+            "heading_size": 26,
+            "heading_color": "#000000",
+            "sticky_top_offset": 0,
+            "switch_scroll_gap": 120,
+            "tabs_background_color": "#c49b6c",
+            "tab_font_size": 14,
+            "tab_border_radius": 0,
+            "tab_active_bg_color": "#b93e1f",
+            "tab_active_text_color": "#ffffff",
+            "tab_active_border_color": "#b93e1f",
+            "tab_inactive_bg_color": "#c49b6c",
+            "tab_inactive_text_color": "#ffffff",
+            "tab_inactive_border_color": "#c49b6c",
+            "products_per_row_desktop": 4,
+            "products_per_row_mobile": 2,
+            "products_limit": 8,
+            "grid_gap": 20,
+            "product_image_border_radius": 0,
+            "product_title_size": 14,
+            "product_title_color": "#000000",
+            "price_font_size": 16,
+            "sale_price_color": "#c4301c",
+            "original_price_color": "#999999",
+            "badge_font_size": 12,
+            "badge_border_radius": 4,
+            "badge_bg_color": "#c4301c",
+            "badge_text_color": "#ffffff",
+            "coupon_font_size": 12,
+            "coupon_border_radius": 4,
+            "coupon_bg_color": "#d4a574",
+            "coupon_text_color": "#FFFFFF",
+            "tab_1_label": "Dining Chairs",
+            "tab_1_collection": "dining-chairs",
+            "tab_1_badge": "Sales",
+            "tab_1_coupon": "UP TO 15% OFF",
+            "tab_2_label": "Dining Room Set",
+            "tab_2_collection": "dining-room-sets",
+            "tab_2_badge": "New In",
+            "tab_2_coupon": "Extra 20% OFF",
+            "tab_3_label": "Dining Tables",
+            "tab_3_collection": "dining-tables",
+            "tab_3_badge": "Sales",
+            "tab_3_coupon": "UP TO 15% OFF",
+            "tab_4_label": "Bar & Counter Stools",
+            "tab_4_collection": "bar-stools",
+            "tab_4_badge": "Sales",
+            "tab_4_coupon": "UP TO 15% OFF",
+            "tab_5_label": "Office Chairs",
+            "tab_5_collection": "office-chairs",
+            "tab_5_badge": "Sales",
+            "tab_5_coupon": "UP TO 15% OFF",
+            "tab_6_label": "",
+            "tab_6_collection": "",
+            "tab_6_badge": "",
+            "tab_6_coupon": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_aa78e6c_kip6zX"
+      ],
+      "settings": {}
+    },
+    "1784865272e94c8e61": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_40fe67a_gi9Rah": {
+          "type": "ai_gen_block_40fe67a",
+          "settings": {
+            "heading": "The Hottest Picks: Up to 20% OFF",
+            "heading_size": 26,
+            "heading_color": "#000000",
+            "tab_1_label": "Dining Chairs",
+            "tab_1_collection": "dining-chairs",
+            "tab_2_label": "Dining Room Set",
+            "tab_2_collection": "dining-room-sets",
+            "tab_3_label": "Dining Tables",
+            "tab_3_collection": "dining-tables",
+            "tab_4_label": "Bar & Counter Stools",
+            "tab_4_collection": "bar-stools",
+            "tab_5_label": "Office chairs",
+            "tab_5_collection": "home-office",
+            "tab_6_label": "",
+            "tab_6_collection": "",
+            "active_tab_color": "#c49b6c",
+            "active_tab_text_color": "#ffffff",
+            "inactive_tab_color": "#4a342a",
+            "sticky_bg_color": "#ffffff",
+            "tab_border_radius": 4,
+            "products_per_tab": 8,
+            "product_image_radius": 0,
+            "product_title_color": "#000000",
+            "badge_text": "Summer Sales",
+            "badge_bg_color": "#c44422",
+            "badge_text_color": "#ffffff",
+            "badge_border_radius": 4,
+            "coupon_text": "",
+            "tab_1_coupon_text": "UP TO 15% OFF",
+            "tab_2_coupon_text": "EXTRA 20% OFF",
+            "tab_3_coupon_text": "UP TO 15% OFF",
+            "tab_4_coupon_text": "UP TO 15% OFF",
+            "tab_5_coupon_text": "UP TO 15% OFF",
+            "tab_6_coupon_text": "",
+            "coupon_bg_color": "#f2e3cc",
+            "coupon_text_color": "#3c2a20",
+            "coupon_border_radius": 4,
+            "sale_price_color": "#b93e1f",
+            "original_price_color": "#9b918a"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_40fe67a_gi9Rah"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "1782900206dd3d8b79": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b50b7cb_zGQHLP": {
+          "type": "ai_gen_block_b50b7cb",
+          "settings": {
+            "max_width": 1400,
+            "section_padding": 40,
+            "mobile_section_padding": 20,
+            "grid_gap": 20,
+            "mobile_grid_gap": 15,
+            "background_color": "#ffffff",
+            "card_background": "#ffffff",
+            "title_color": "#000000",
+            "title_hover_color": "#666666",
+            "price_color": "#000000",
+            "compare_price_color": "#999999",
+            "vendor_color": "#666666",
+            "badge_background": "#c4301c",
+            "badge_text_color": "#ffffff",
+            "card_border_radius": 0,
+            "card_padding": 15,
+            "mobile_card_padding": 10,
+            "title_font_size": 12,
+            "mobile_title_font_size": 12,
+            "title_font_weight": "400",
+            "price_font_size": 16,
+            "mobile_price_font_size": 14,
+            "price_font_weight": "500",
+            "vendor_font_size": 12,
+            "show_vendor": true,
+            "product_1": "halo-collection-prime-upholstered-dining-chair",
+            "product_2": "colamy-noya-mid-century-modern-upholstered-dining-chair",
+            "product_3": "halo-collection-mid-centur-modern-upholstered-dining-chairs",
+            "product_4": "colamy-arla-upholstered-wooden-scandi-minimalist-counter-height-bar-stool",
+            "product_5": "halo-collection-modern-upholstered-dining-chair",
+            "product_6": "colamy-alva-minimalist-bentwood-dining-chair",
+            "product_7": "colamy-pura-solid-wood-dining-chair-with-oeko-tex®-fabric",
+            "product_8": "colamy-luma-modern-fabric-comfort-metal-dining-chair"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b50b7cb_zGQHLP"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "blocks_8P9AfT": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ef79826_K97gXx": {
+          "type": "ai_gen_block_ef79826",
+          "settings": {
+            "heading": "Dining Room Set",
+            "heading_alignment": "left",
+            "collection": "dining-room-sets",
+            "products": [
+              "colamy-halo-63-modern-farmhouse-dining-table",
+              "halo-modern-wood-dining-table-walnut",
+              "colamy-halo-63-dining-table-with-noya-dining-chairs-set",
+              "colamy-halo-63-dining-table-with-halo-prime-dining-chairs-set-for-4-6",
+              "colamy-halo-63-dining-table-with-halo-dining-chairs-set-for-4-6",
+              "colamy-halo-72-dining-table-with-noya-mid-century-dining-chairs-set-for-4-6",
+              "colamy-halo-72-dining-table-with-evane-prime-dining-chairs-set-for-4-6",
+              "halo-72-modern-wood-dining-table-set-for-4-6"
+            ],
+            "products_limit": 8,
+            "title_font_size": 14,
+            "title_font_weight": "400",
+            "coupon_text": "EXTRA 20% OFF",
+            "coupon_bg_color": "#f4e5d1",
+            "coupon_text_color": "#b84f2c",
+            "sale_badge_type": "text",
+            "sale_badge_text": "NEW IN",
+            "sale_badge_bg_color": "#b84f2c",
+            "sale_badge_text_color": "#ffffff",
+            "custom_badge_text": "",
+            "custom_badge_bg_color": "#b84f2c",
+            "custom_badge_text_color": "#ffffff",
+            "desktop_width_percent": 100,
+            "horizontal_padding": 20,
+            "grid_gap": 20,
+            "desktop_bottom_margin": 60,
+            "view_more_text": "View more",
+            "mobile_bottom_margin": 40
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ef79826_K97gXx"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {}
+    },
+    "178289167687a43b47": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1782892012b78d9470": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6e5dc20_zbqMLB": {
+          "type": "ai_gen_block_6e5dc20",
+          "settings": {
+            "desktop_width_percent": 100,
+            "gap": 60,
+            "image_position": "left",
+            "image": "shopify://shop_images/DCW91-LS-03.jpg",
+            "image_border_radius": 0,
+            "product": "halo-collection-prime-upholstered-dining-chair",
+            "product_alignment": "left",
+            "show_vendor": true,
+            "show_price": true,
+            "show_description": false,
+            "show_button": true,
+            "button_text": "Shop Now",
+            "product_bg_color": "#f5f5f5",
+            "product_text_color": "#000000",
+            "product_sale_color": "#c4301c",
+            "product_padding": 5,
+            "product_border_radius": 8,
+            "product_image_border_radius": 4,
+            "vendor_size": 10,
+            "vendor_weight": "300",
+            "product_title_size": 14,
+            "title_weight": "400",
+            "product_price_size": 22,
+            "price_weight": "300",
+            "description_size": 13,
+            "description_weight": "300",
+            "button_bg_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_hover_bg_color": "#333333",
+            "button_hover_text_color": "#ffffff",
+            "button_text_size": 13,
+            "button_weight": "300",
+            "button_text_transform": "capitalize",
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 32,
+            "button_border_radius": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6e5dc20_zbqMLB"
+      ],
+      "settings": {}
+    },
+    "blocks_tEimyd": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1782896413f438e044": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_A4fcUa": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Real Homes, Real Living",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "47408",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_A4fcUa"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "178289745571eeff7f": {
+      "type": "apps",
+      "custom_css": [
+        ".rivyo-widget,.rivyo-widget *,.rv-widget,.rv-widget *,#rivyo-review-widget,#rivyo-review-widget *,[class*=\"rivyo\"],[class*=\"Rivyo\"] {font-family: Poppins, var(--font-body-family), sans-serif !important;}"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "collapsible_tabs_mCgGcz": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_TR4LUw": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Q1: Are COLAMY dining chairs included in the Summer Sale?",
+            "content": "<p>A: Yes. Selected COLAMY dining chairs are included in the Summer Sale. You can explore all available styles in our <a>dining chair collection</a> and find pieces that fit your dining room, kitchen, or breakfast nook.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_8tLaQy": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Q2: Are COLAMY dining chairs comfortable for everyday use?",
+            "content": "<p>A: Yes. COLAMY dining chairs are designed for daily meals, family dinners, and casual gatherings. Many styles feature upholstered seats, supportive backrests, and sturdy frames for lasting comfort.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_XpTjLR": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Q3: What dining room styles do COLAMY dining chairs work with?",
+            "content": "<p>A: COLAMY dining chairs are easy to pair with modern, farmhouse, mid-century, minimalist, and transitional dining spaces. For more options, browse our full <a>dining chairs</a> selection.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_LhCkHi": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Q4: Can I use a discount code on dining chairs?",
+            "content": "<p>A: Yes. During the Summer Sale, you can use CLM08 for 8% off with no minimum, CLM12 for 12% off over $200, or CLM15 for 15% off over $400 when shopping eligible dining chairs.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_QFT63x": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Q5: Why buy dining chairs from COLAMY?",
+            "content": "<p>A: COLAMY dining chairs combine comfort, style, and practical durability for real homes. Whether you are refreshing your dining room for summer or upgrading your everyday seating, our chairs are made to look beautiful and feel comfortable.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_TR4LUw",
+        "collapsible_item_8tLaQy",
+        "collapsible_item_XpTjLR",
+        "collapsible_item_LhCkHi",
+        "collapsible_item_QFT63x"
+      ],
+      "name": "t:sections.collapsible-tabs.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "standing-column",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Colamy Furniture Summer Sale FAQs",
+        "highlight_style": "none",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-inherit",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h5",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "scrolling_banner_cAW3EH",
+    "custom_liquid_HgDW7R",
+    "17848808439709ac96",
+    "1784865272e94c8e61",
+    "1782900206dd3d8b79",
+    "blocks_8P9AfT",
+    "178289167687a43b47",
+    "1782892012b78d9470",
+    "blocks_tEimyd",
+    "1782896413f438e044",
+    "178289745571eeff7f",
+    "collapsible_tabs_mCgGcz"
+  ]
+}

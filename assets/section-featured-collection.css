@@ -17,9 +17,23 @@
   column-gap: 3.2rem;
   row-gap: 1.2rem;
 }
+.featured-collection .product-card__title .reversed-link {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  min-height: calc(var(--font-pcard-title-size, 1.6rem) * var(--font-pcard-title-line-height));
+}
 @media (max-width: 767.98px) {
   .featured-collection .tabs-nav__inner {
     column-gap: 2.4rem;
+  }
+  .featured-collection .product-card__title .reversed-link {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    min-height: calc(var(--font-pcard-title-size, 1.6rem) * var(--font-pcard-title-line-height) * 2);
   }
 }
 .featured-collection .card-media,

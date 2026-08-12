@@ -58,6 +58,90 @@
     --f-columns-xl: {{ f_columns_xl }};
     --icon-color: {{ section.settings.icon_color }};
   }
+
+  {% if template.suffix == 'summer-save' %}
+    .section-{{ section.id }} h2.section__heading {
+      font-size: 36px;
+      font-weight: 500;
+    }
+
+    @media screen and (min-width: 768px) {
+      .section-{{ section.id }} .multicolumn-card__title,
+      .section-{{ section.id }} .multicolumn-card__title strong {
+        font-weight: 500;
+      }
+    }
+  {% endif %}
+
+  {% if template.suffix == 'summer-save' and section.id contains 'multicolumn_icon_aUqgpz' %}
+    @media screen and (max-width: 767.98px) {
+      .section-{{ section.id }} {
+        --page-padding: 8px;
+      }
+
+      .section-{{ section.id }} .multicolumn__items {
+        --f-column-gap-mobile: 2px;
+      }
+
+      .section-{{ section.id }} .multicolumn-card__image {
+        margin-bottom: 0;
+      }
+
+      .section-{{ section.id }} .multicolumn-card__title,
+      .section-{{ section.id }} .multicolumn-card__title strong {
+        line-height: 1.2;
+      }
+    }
+
+    @media screen and (max-width: 419.98px) {
+      .section-{{ section.id }} .multicolumn-card__title,
+      .section-{{ section.id }} .multicolumn-card__title strong {
+        white-space: nowrap;
+      }
+    }
+  {% endif %}
+
+  {% if template.suffix == 'summer-save' and section.id contains 'multicolumn_icon_kWEXi9' %}
+    .section-{{ section.id }} .multicolumn-card__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 156px;
+      height: 70px;
+      background-color: #f6f6f6;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .section-{{ section.id }} .multicolumn-card__image > motion-element {
+      width: var(--img-max);
+      height: var(--img-max);
+    }
+
+    @media screen and (max-width: 767.98px) {
+      .section-{{ section.id }} .section__content {
+        background-color: #f6f6f6;
+        padding: 16px;
+      }
+
+      .section-{{ section.id }} .multicolumn-card {
+        background-color: transparent;
+      }
+
+      .section-{{ section.id }} .multicolumn-card__image {
+        background-color: #ffffff;
+      }
+
+      .section-{{ section.id }} .multicolumn-card__image > motion-element {
+        width: var(--img-max-mb);
+        height: var(--img-max-mb);
+      }
+
+      .section-{{ section.id }} .multicolumn-card__divider {
+        display: none;
+      }
+    }
+  {% endif %}
 {% endstyle %}
 
 <div class="section section-{{ section.id }} section--padding multicolumn-icon section-header-{{ header_layout }} color-{{ section.settings.color_scheme }}{% if columns_desktop > 3  %} section-auto-layout{% endif %}">

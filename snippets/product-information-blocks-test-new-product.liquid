@@ -1,0 +1,2144 @@
+{%- liquid
+  assign default_form_id = 'product-form-' | append: section.id
+  assign product_form_id = product_form_id | default: default_form_id
+  assign product_media_count = product.media.size
+-%}
+<div
+  id="ProductInfo-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-url="{{ product.url }}"
+  class="product__info-container{% if enable_sticky_info %} sticky-element{% endif %}"
+>
+  <div class="product__blocks accordion-parent">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign is_show_below_media = block.settings.show_below_product_media | default: false
+        assign block_classes = 'product__block product__block--' | append: block.type
+        if block.id contains 'wc_product_review_badge'
+          assign block_classes = block_classes | append: ' product__block--review-badge'
+        endif
+        if is_show_below_media and product_media_count > 0
+          assign block_classes = block_classes | append: ' block md:hidden'
+        endif
+      -%}
+      {%- capture additional_attributes -%}
+        data-block-id="{{ block.id }}"
+        {% if is_show_below_media %}
+          data-show-below-media="true"
+        {% endif %}
+      {%- endcapture -%}
+      {%- case block.type -%}
+        {%- when '@app' -%}
+          <div class="{{ block_classes }}">
+            {% render block %}
+          </div>
+        {%- when 'divider' -%}
+          <div 
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            <div class="product__divider border-top no-empty"></div>
+          </div>
+        {%- when 'promotion_alert' -%}
+          {%- capture rgb -%}
+            {{ block.settings.text_color.red }},{{ block.settings.text_color.green }},{{ block.settings.text_color.blue }}
+          {%- endcapture -%}
+          <div
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+            style="color: {{ block.settings.text_color }};--color-foreground:{{ rgb }};--color-link:{{ rgb }};--color-button-text:{{ rgb }}"
+          >
+            {%- if block.settings.heading != blank or block.settings.description != blank -%}
+              <product-promotion-alert class="product__promotion-alert relative flex items-center gap-3 blocks-radius">
+                {%- if block.settings.icon != 'none' -%}
+                  <div class="product__promotion-alert-icon flex shrink-0">
+                    {%- render 'icons', icon: block.settings.icon, size: 'extra-large' -%}
+                  </div>
+                {%- endif -%}
+                <div class="product__promotion-alert-info flex flex-grow flex-col gap-1">
+                  {%- if block.settings.heading != blank -%}
+                    <div class="product__promotion-alert-heading font-body-bolder">{{ block.settings.heading }}</div>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <div class="product__promotion-alert-heading rte text-sm-extra">
+                      {{ block.settings.description }}
+                    </div>
+                  {%- endif -%}
+                </div>
+                <button
+                  class="btn--small btn--icon btn--icon-circle no-js-hidden"
+                  aria-label="{{ 'accessibility.close' | t }}"
+                >
+                  {%- render 'icon-close', size: 'small' -%}
+                </button>
+              </product-promotion-alert>
+            {%- endif -%}
+          </div>
+        {%- when 'discount_code' -%}
+          {%- liquid
+            assign discount_code = product.metafields.custom.discount_code.value | default: product.metafields.custom.discount_code | strip
+            assign discount_description = block.settings.description_text | strip
+
+            assign discount_description_color = block.settings.description_color | default: block.settings.text_color
+            assign discount_left_background_color = block.settings.left_background_color | default: '#C9A260'
+            assign discount_right_background_color = block.settings.right_background_color | default: '#FFFFFF'
+            assign discount_right_text_color = block.settings.text_color | default: '#C9A260'
+            assign discount_description_font_size = block.settings.description_font_size | default: 24
+            assign discount_code_font_size = block.settings.code_font_size | default: 24
+          -%}
+          {%- if discount_code != blank -%}
+            <div
+              class="{{ block_classes }} product__discount-code blocks-radius relative overflow-hidden"
+              style="--discount-code-height: {{ block.settings.component_height }}px;--discount-code-left-bg: {{ discount_left_background_color }};--discount-code-left-text: {{ discount_description_color }};--discount-code-right-bg: {{ discount_right_background_color }};--discount-code-right-text: {{ discount_right_text_color }};--discount-code-description-size: {{ discount_description_font_size }}px;--discount-code-text-size: {{ discount_code_font_size }}px;"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+            >
+              <div class="product__discount-code-inner relative z-1">
+                <div class="product__discount-code-left">
+                  <div class="product__discount-code-info flex flex-col gap-1">
+                    {%- if discount_description != blank -%}
+                      <span class="product__discount-code-description">{{ discount_description | escape }}</span>
+                    {%- endif -%}
+                  </div>
+                </div>
+                <div class="product__discount-code-right">
+                  <div class="product__discount-code-heading">
+                    <span>CODE:</span>
+                    <span class="product__discount-code-value">{{ discount_code }}</span>
+                  </div>
+                  <div
+                    class="product__discount-code-copy"
+                    is="copy-to-clipboard"
+                    data-copy-value="{{ discount_code | escape }}"
+                    data-copied-text="{{ 'general.share.copied' | t }}"
+                    data-copied-duration="2000"
+                  >
+                    <button type="button" class="product__discount-code-copy-btn">
+                      <span data-copy-feedback-target>{{ 'general.share.copy' | t }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- when 'coupon_code' -%}
+          {%- liquid
+            assign coupon_offer_text = block.settings.offer_text | default: 'Get 8% off' | strip
+            assign coupon_limit_text = block.settings.limit_text | default: 'no limited' | strip
+            assign coupon_code_label = block.settings.code_label | default: 'Code:' | strip
+            assign coupon_code = block.settings.coupon_code | default: 'CLM08' | strip
+            assign coupon_copy_text = block.settings.copy_text | default: 'Copy' | strip
+            assign coupon_copied_text = block.settings.copied_text | default: 'Copied' | strip
+            assign coupon_background_color = block.settings.background_color | default: '#FBF8F3'
+            assign coupon_accent_color = block.settings.accent_color | default: '#C8AE79'
+            assign coupon_button_background_color = block.settings.button_background_color | default: '#C8A567'
+            assign coupon_button_text_color = block.settings.button_text_color | default: '#FFFFFF'
+            assign coupon_copied_text_color = block.settings.copied_text_color | default: '#1B9B5F'
+          -%}
+          {%- if coupon_code != blank -%}
+            <div
+              class="{{ block_classes }} product__coupon-code-list"
+              style="--coupon-background: {{ coupon_background_color }};--coupon-accent: {{ coupon_accent_color }};--coupon-button-background: {{ coupon_button_background_color }};--coupon-button-text: {{ coupon_button_text_color }};--coupon-copied-text: {{ coupon_copied_text_color }};"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+            >
+              <div class="product__coupon-code-card">
+                <div class="product__coupon-code-part product__coupon-code-part--offer">
+                  {%- if coupon_offer_text != blank -%}
+                    <div class="product__coupon-code-offer">{{ coupon_offer_text | escape }}</div>
+                  {%- endif -%}
+                  {%- if coupon_limit_text != blank -%}
+                    <div class="product__coupon-code-limit">{{ coupon_limit_text | escape }}</div>
+                  {%- endif -%}
+                </div>
+                <div class="product__coupon-code-part product__coupon-code-part--code">
+                  {%- if coupon_code_label != blank -%}
+                    <span class="product__coupon-code-label">{{ coupon_code_label | escape }}</span>
+                  {%- endif -%}
+                  <span class="product__coupon-code-value">{{ coupon_code | escape }}</span>
+                </div>
+                <div class="product__coupon-code-part product__coupon-code-part--copy">
+                  <div
+                    class="product__coupon-code-copy"
+                    is="copy-to-clipboard"
+                    data-copy-value="{{ coupon_code | escape }}"
+                    data-copied-text="{{ coupon_copied_text | escape }}"
+                    data-copied-duration="1000"
+                  >
+                    <button type="button" class="product__coupon-code-copy-btn">
+                      <span class="product__coupon-code-copy-text" data-copy-feedback-target>{{ coupon_copy_text | escape }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- when 'apply_coupon_checkout' -%}
+          {%- liquid
+            assign apply_coupon_code = block.settings.coupon_code | default: 'LUXE' | strip
+            assign apply_coupon_percent = block.settings.discount_percent | default: 10
+            assign apply_coupon_text = block.settings.apply_text | default: 'Apply 10% off coupon' | strip
+            assign applied_coupon_text = block.settings.applied_text | default: 'Coupon applied! Final Price:' | strip
+            assign removed_coupon_text = block.settings.removed_text | default: 'Coupon removed' | strip
+            assign apply_coupon_error_text = block.settings.error_text | default: 'Unable to apply coupon. Try again.' | strip
+          -%}
+          {%- if apply_coupon_code != blank and apply_coupon_percent > 0 -%}
+            <div
+              class="{{ block_classes }} product__apply-coupon"
+              data-apply-coupon-checkout
+              data-section-id="{{ section.id }}"
+              data-product-id="{{ product.id }}"
+              data-template-suffix="{{ template.suffix | default: 'default' | escape }}"
+              data-coupon-code="{{ apply_coupon_code | escape }}"
+              data-discount-percent="{{ apply_coupon_percent }}"
+              data-minimum-variant-price="{{ block.settings.minimum_variant_price | default: 0 | times: 100 }}"
+              data-apply-text="{{ apply_coupon_text | escape }}"
+              data-applied-text="{{ applied_coupon_text | escape }}"
+              data-removed-text="{{ removed_coupon_text | escape }}"
+              data-error-text="{{ apply_coupon_error_text | escape }}"
+              data-currency-code="{{ cart.currency.iso_code | default: shop.currency | escape }}"
+              style="--apply-coupon-background: {{ block.settings.background_color }}; --apply-coupon-text: {{ block.settings.text_color }}; --apply-coupon-checkbox: {{ block.settings.checkbox_color }}; --apply-coupon-active: {{ block.settings.applied_color }};"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+            >
+              <button
+                type="button"
+                class="product__apply-coupon-button"
+                data-coupon-apply-button
+                aria-pressed="false"
+              >
+                <span class="product__apply-coupon-checkbox" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" focusable="false">
+                    <path d="M4 10.2 8.1 14 16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="product__apply-coupon-content">
+                  <span class="product__apply-coupon-label" data-coupon-label>{{ apply_coupon_text | escape }}</span>
+                </span>
+              </button>
+
+              <span class="product__apply-coupon-status" data-coupon-status role="status" aria-live="polite"></span>
+
+              <script type="application/json" data-coupon-variant-prices>
+                [
+                  {%- for variant in product.variants -%}
+                    {"id":{{ variant.id | json }},"price":{{ variant.price | json }}}{%- unless forloop.last -%},{%- endunless -%}
+                  {%- endfor -%}
+                ]
+              </script>
+            </div>
+
+            <style>
+              .product__apply-coupon {
+                width: 100%;
+                position: relative;
+              }
+
+              .product__apply-coupon-button {
+                appearance: none;
+                width: 100%;
+                min-height: 30px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 0px 10px;
+                border: 0;
+                border-radius: 0;
+                background: var(--apply-coupon-background, #fbf7ef);
+                color: var(--apply-coupon-text, #2d2d2d);
+                font: inherit;
+                text-align: left;
+                cursor: pointer;
+                transition: opacity 0.2s ease, background-color 0.2s ease;
+              }
+
+              .product__apply-coupon-button:hover {
+                opacity: 0.88;
+              }
+
+              .product__apply-coupon-button:focus-visible {
+                outline: 2px solid currentColor;
+                outline-offset: 2px;
+              }
+
+              .product__apply-coupon-checkbox {
+                width: 20px;
+                height: 20px;
+                flex: 0 0 0px;
+                display: grid;
+                place-items: center;
+                border: 2px solid var(--apply-coupon-checkbox, #222222);
+                border-radius: 0;
+                color: #ffffff;
+                transition: background-color 0.2s ease, border-color 0.2s ease;
+              }
+
+              .product__apply-coupon-checkbox svg {
+                width: 14px;
+                height: 14px;
+                opacity: 0;
+                transform: scale(0.7);
+                transition: opacity 0.18s ease, transform 0.18s ease;
+              }
+
+              .product__apply-coupon-label {
+                font-size: clamp(12px, 2vw, 14px);
+                font-weight: 400;
+                line-height: 1.25;
+                letter-spacing: -0.01em;
+              }
+
+              .product__apply-coupon-content {
+                min-width: 0;
+                display: flex;
+                align-items: center;
+                flex: 1 1 auto;
+              }
+
+              .product__apply-coupon-status {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+              }
+
+              .product__apply-coupon.is-applied .product__apply-coupon-button {
+                background: var(--apply-coupon-background, #fbf7ef);
+              }
+
+              .product__apply-coupon.is-applied .product__apply-coupon-checkbox {
+                border-color: var(--apply-coupon-active, #222222);
+                background: var(--apply-coupon-active, #222222);
+              }
+
+              .product__apply-coupon.is-applied .product__apply-coupon-checkbox svg {
+                opacity: 1;
+                transform: scale(1);
+              }
+
+              .product__apply-coupon.is-loading .product__apply-coupon-button {
+                opacity: 0.62;
+                cursor: wait;
+              }
+
+              @media (max-width: 749px) {
+                .product__apply-coupon-button {
+                  min-height: 10px;
+                  gap: 12px;
+                  padding: 0px 10px;
+                }
+
+                .product__apply-coupon-checkbox {
+                  width: 20px;
+                  height: 20px;
+                  flex-basis: 20px;
+                }
+
+                .product__apply-coupon-checkbox svg {
+                  width: 12px;
+                  height: 12px;
+                }
+
+                .product__apply-coupon-label {
+                  font-size: 12px;
+                }
+
+              }
+            </style>
+          {%- endif -%}
+        {%- when 'summer_saving' -%}
+          {%- liquid
+            assign summer_saving_heading = block.settings.heading | default: 'SUMMER SAVINGS' | strip
+            assign summer_saving_eyebrow = block.settings.eyebrow | default: 'LIMITED-TIME CODES' | strip
+            assign first_coupon_code = block.settings.first_coupon_code | default: 'CLM08' | strip
+            assign second_coupon_code = block.settings.second_coupon_code | default: 'CLM12' | strip
+            assign third_coupon_code = block.settings.third_coupon_code | default: 'CLM15' | strip
+            assign summer_saving_copy_text = block.settings.copy_text | default: 'COPY' | strip
+            assign summer_saving_copied_text = block.settings.copied_text | default: 'Copied' | strip
+          -%}
+          <div
+            class="{{ block_classes }} product__summer-saving"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            <div class="product__summer-saving-header">
+              {%- if summer_saving_heading != blank -%}
+                <div class="product__summer-saving-title">
+                  <span class="product__summer-saving-title-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M20 7h-2.1c.1-.3.1-.6.1-.9C18 4.4 16.6 3 14.9 3c-1.2 0-2.2.6-2.9 1.6C11.3 3.6 10.3 3 9.1 3 7.4 3 6 4.4 6 6.1c0 .3 0 .6.1.9H4c-.6 0-1 .4-1 1v4h2v8c0 .6.4 1 1 1h12c.6 0 1-.4 1-1v-8h2V8c0-.6-.4-1-1-1ZM9.1 5c.8 0 1.5.7 1.8 2H8.1c-.1-.3-.1-.6-.1-.9C8 5.5 8.5 5 9.1 5Zm5.8 0c.6 0 1.1.5 1.1 1.1 0 .3 0 .6-.1.9h-2.8c.3-1.3 1-2 1.8-2ZM5 9h6v2H5V9Zm2 4h4v6H7v-6Zm10 6h-4v-6h4v6Zm2-8h-6V9h6v2Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <span>{{ summer_saving_heading | escape }}</span>
+                </div>
+              {%- endif -%}
+              {%- if summer_saving_eyebrow != blank -%}
+                <div class="product__summer-saving-eyebrow">{{ summer_saving_eyebrow | escape }}</div>
+              {%- endif -%}
+            </div>
+            <div class="product__summer-saving-tiers">
+              <div class="product__summer-saving-tier">
+                <div class="product__summer-saving-offer">8% OFF</div>
+                <div class="product__summer-saving-limit">No Minimum</div>
+                {%- if first_coupon_code != blank -%}
+                  <div
+                    class="product__summer-saving-copy"
+                    data-copy-value="{{ first_coupon_code | escape }}"
+                    data-copied-text="{{ summer_saving_copied_text | escape }}"
+                    data-copied-duration="1000"
+                  >
+                    <button type="button" class="product__summer-saving-copy-button">
+                      <span class="product__summer-saving-code">{{ first_coupon_code | escape }}</span>
+                      <span class="product__summer-saving-copy-text" data-copy-feedback-target>{{ summer_saving_copy_text | escape }}</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="product__summer-saving-tier">
+                <div class="product__summer-saving-offer">12% OFF</div>
+                <div class="product__summer-saving-limit">$200-$400</div>
+                {%- if second_coupon_code != blank -%}
+                  <div
+                    class="product__summer-saving-copy"
+                    data-copy-value="{{ second_coupon_code | escape }}"
+                    data-copied-text="{{ summer_saving_copied_text | escape }}"
+                    data-copied-duration="1000"
+                  >
+                    <button type="button" class="product__summer-saving-copy-button">
+                      <span class="product__summer-saving-code">{{ second_coupon_code | escape }}</span>
+                      <span class="product__summer-saving-copy-text" data-copy-feedback-target>{{ summer_saving_copy_text | escape }}</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="product__summer-saving-tier">
+                <div class="product__summer-saving-offer">15% OFF</div>
+                <div class="product__summer-saving-limit">over $400</div>
+                {%- if third_coupon_code != blank -%}
+                  <div
+                    class="product__summer-saving-copy"
+                    data-copy-value="{{ third_coupon_code | escape }}"
+                    data-copied-text="{{ summer_saving_copied_text | escape }}"
+                    data-copied-duration="1000"
+                  >
+                    <button type="button" class="product__summer-saving-copy-button">
+                      <span class="product__summer-saving-code">{{ third_coupon_code | escape }}</span>
+                      <span class="product__summer-saving-copy-text" data-copy-feedback-target>{{ summer_saving_copy_text | escape }}</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- when 'discount_code_memorial' -%}
+          {%- assign memorial_discount_code = block.settings.discount_code | strip -%}
+          {%- if memorial_discount_code != blank -%}
+            <div
+              class="{{ block_classes }}"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+              style="padding-top:{{ block.settings.padding_top }}px; padding-bottom:{{ block.settings.padding_bottom }}px;"
+            >
+              {%- if memorial_discount_code == 'CLM08' or memorial_discount_code == 'CLM12' or memorial_discount_code == 'CLM15' -%}
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="background:#f9f3ea; border:1.5px dashed #d4b896; border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-size:15px; color:#666; font-weight:500;">Under $200</div>
+                      <div style="font-size:26px; font-weight:500; color:#1a1a1a; line-height:1.1;">8% OFF</div>
+                      <div style="margin-top:6px;"><span style="border:1.5px solid #c8a97a; border-radius:20px; padding:3px 12px; font-size:13px; color:#5a3e1b; font-weight:500;">CODE: CLM08</span></div>
+                    </div>
+                    <button id="btn-clm08" onclick="copyAndApply('CLM08', 'btn-clm08')" style="background:#c0392b; color:white; border:none; border-radius:25px; padding:10px 22px; font-weight:500; font-size:14px; cursor:pointer; min-width:80px;">COPY</button>
+                  </div>
+                  <div style="background:#f9f3ea; border:1.5px dashed #d4b896; border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-size:15px; color:#666; font-weight:500;">Over $200</div>
+                      <div style="font-size:26px; font-weight:500; color:#1a1a1a; line-height:1.1;">12% OFF</div>
+                      <div style="margin-top:6px;"><span style="border:1.5px solid #c8a97a; border-radius:20px; padding:3px 12px; font-size:13px; color:#5a3e1b; font-weight:500;">CODE: CLM12</span></div>
+                    </div>
+                    <button id="btn-clm12" onclick="copyAndApply('CLM12', 'btn-clm12')" style="background:#c0392b; color:white; border:none; border-radius:25px; padding:10px 22px; font-weight:500; font-size:14px; cursor:pointer; min-width:80px;">COPY</button>
+                  </div>
+                  <div style="background:#f9f3ea; border:1.5px dashed #d4b896; border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <div style="font-size:15px; color:#666; font-weight:500;">Over $400</div>
+                      <div style="font-size:26px; font-weight:500; color:#1a1a1a; line-height:1.1;">15% OFF</div>
+                      <div style="margin-top:6px;"><span style="border:1.5px solid #c8a97a; border-radius:20px; padding:3px 12px; font-size:13px; color:#5a3e1b; font-weight:500;">CODE: CLM15</span></div>
+                    </div>
+                    <button id="btn-clm15" onclick="copyAndApply('CLM15', 'btn-clm15')" style="background:#c0392b; color:white; border:none; border-radius:25px; padding:10px 22px; font-weight:500; font-size:14px; cursor:pointer; min-width:80px;">COPY</button>
+                  </div>
+                </div>
+              {%- else -%}
+                <div style="background:#f9f3ea; border:1.5px dashed #d4b896; border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
+                  <div>
+                    <div style="font-size:15px; color:#666; font-weight:500;">Limited Offer</div>
+                    <div style="font-size:26px; font-weight:500; color:#1a1a1a; line-height:1.1;">20% OFF</div>
+                    <div style="margin-top:6px;"><span style="border:1.5px solid #c8a97a; border-radius:20px; padding:3px 12px; font-size:13px; color:#5a3e1b; font-weight:500;">CODE: {{ memorial_discount_code }}</span></div>
+                  </div>
+                  <button id="btn-{{ memorial_discount_code | downcase }}" onclick="copyAndApply('{{ memorial_discount_code }}', 'btn-{{ memorial_discount_code | downcase }}')" style="background:#c0392b; color:white; border:none; border-radius:25px; padding:10px 22px; font-weight:500; font-size:14px; cursor:pointer; min-width:80px;">COPY</button>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <script>
+            if (!window.copyAndApplyDefined) {
+              window.copyAndApplyDefined = true;
+              window.copyAndApply = function(code, btnId) {
+                navigator.clipboard.writeText(code).catch(function() {
+                  var t = document.createElement('textarea');
+                  t.value = code;
+                  document.body.appendChild(t);
+                  t.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(t);
+                });
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = '/discount/' + code;
+                document.body.appendChild(iframe);
+                setTimeout(function() { document.body.removeChild(iframe); }, 3000);
+                var btn = document.getElementById(btnId);
+                btn.innerText = '✓ Copied!';
+                btn.style.background = '#27ae60';
+                setTimeout(function() {
+                  btn.innerText = 'COPY';
+                  btn.style.background = '#c0392b';
+                }, 2000);
+              }
+            }
+            </script>
+          {%- endif -%}
+        {%- when 'payment_info' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'product-payment-info', block: block -%}
+          </div>
+        {%- when 'text' -%}
+          <div class="{{ block_classes }} rte" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            <p class="product__text inline-richtext m-0{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}">
+              {{- block.settings.text -}}
+            </p>
+          </div>
+        {%- when 'rich-text' -%}
+          <div class="{{ block_classes }} rte text-subtext" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {{- block.settings.text -}}
+          </div>
+        {%- when 'rich-text-meta' -%}
+          {%- liquid
+            assign presale_information = product.metafields.custom.presale_information
+          -%}
+          {%- if presale_information != blank -%}
+            <div class="{{ block_classes }} product__rich-text-meta rte" {{ additional_attributes }} {{ block.shopify_attributes }}>
+              {{- presale_information | metafield_tag -}}
+            </div>
+          {%- endif -%}
+        {%- when 'title' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- liquid
+              assign title_font_weight_style = ''
+              if block.settings.title_font_weight != blank and block.settings.title_font_weight != 'inherit'
+                assign title_font_weight_style = ' style="font-weight: ' | append: block.settings.title_font_weight | append: ';"'
+              endif
+            -%}
+            {%- if context == 'main-product' -%}
+              <h1 class="product__title {{ block.settings.heading_size }}"{{ title_font_weight_style }}>{{ product.title | escape }}</h1>
+            {%- else -%}
+              <a href="{{ product.url }}" class="product__title block reversed-link {{ block.settings.heading_size }}"{{ title_font_weight_style }}>
+                <span class="reversed-link__text">{{ product.title | escape }}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- when 'price' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            <div id="price-{{ section.id }}" role="status">
+              {%- render 'price',
+                product: product,
+                use_variant: true,
+                price_class: 'f-price--large'
+              -%}
+            </div>
+            {%- if product.quantity_price_breaks_configured? -%}
+              <div class="volume-pricing-note text-subtext" id="VolumeNote-{{ section.id }}">
+                <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+              </div>
+            {%- endif -%}
+            <div class="product__tax text-sm text-subtext rte">
+              {%- if cart.taxes_included -%}
+                {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {% comment %} {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%} {% endcomment %}
+            </div>
+            {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+            {%- form 'product', product, id: product_form_installment_id, class: 'installment' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
+            {%- endform -%}
+          </div>
+        {%- when 'inventory' -%}
+          <div
+            class="{{ block_classes }}{% if block.settings.text_style == 'uppercase' %} text-upper{% elsif block.settings.text_style == 'subtitle' %} text-upper text-subtext{% endif %}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+            id="Inventory-{{ section.id }}"
+            role="status"
+          >
+            {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+              {%- liquid
+                assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity
+
+                if inventory_quantity > 0
+                  if inventory_quantity <= block.settings.inventory_threshold
+                    assign inventory_status = 'low-stock'
+                    if block.settings.show_inventory_quantity
+                      if inventory_quantity == 1
+                        assign inventory_message = 'products.product.inventory_low_stock_one_item_html' | t: quantity: inventory_quantity
+                      else
+                        assign inventory_message = 'products.product.inventory_low_stock_many_items_html' | t: quantity: inventory_quantity
+                      endif
+                    else
+                      assign inventory_message = 'products.product.inventory_low_stock' | t
+                    endif
+                  else
+                    assign inventory_status = 'in-stock'
+                    if block.settings.show_inventory_quantity
+                      assign inventory_message = 'products.product.inventory_in_stock_show_count_html' | t: quantity: inventory_quantity
+                    else
+                      assign inventory_message = 'products.product.inventory_in_stock' | t
+                    endif
+                  endif
+                else
+                  if product.selected_or_first_available_variant.inventory_policy == 'continue'
+                    assign inventory_status = 'in-stock'
+                    assign inventory_message = 'products.product.inventory_out_of_stock_continue_selling' | t
+                  else
+                    assign inventory_status = 'out-of-stock'
+                    assign inventory_message = 'products.product.inventory_out_of_stock' | t
+                  endif
+                endif
+              %}
+              <p class="product__inventory product__inventory--{{ inventory_status }} font-body-bolder">
+                <span class="product__inventory-icon"></span>
+                <span class="product__inventory-text">{{- inventory_message -}}</span>
+              </p>
+              {%- if inventory_status == 'low-stock' and inventory_quantity < block.settings.inventory_threshold -%}
+                <progress-bar
+                  class="product__inventory-stock-bar progress-bar"
+                  data-value="{{ inventory_quantity }}"
+                  data-max="{{ block.settings.inventory_threshold }}"
+                ></progress-bar>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- when 'description' -%}
+          {%- if product.description != blank -%}
+            <div class="{{ block_classes }} rte text-subtext" {{ additional_attributes }} {{ block.shopify_attributes }}>
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+        {%- when 'meta' -%}
+          {%- if block.settings.show_vendor
+            or block.settings.show_product_type
+            or block.settings.show_sku
+            or block.settings.show_barcode
+          -%}
+            <div
+              class="{{ block_classes }} flex flex-wrap gap-x-3 gap-y-2 text-subtext"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+              style="--color-link: {{ block.settings.link_color.red }},{{ block.settings.link_color.green }},{{ block.settings.link_color.blue }};"
+            >
+              {%- if block.settings.show_vendor -%}
+                <p
+                  class="product__meta product__vendor"
+                  id="Vendor-{{ section.id }}"
+                  role="status"
+                >
+                  <span>{{ 'products.product.vendor' | t }}:</span>
+                  <a
+                    href="{{ product.vendor | url_for_vendor }}"
+                    class="btn--link font-body-bolder text-body"
+                  >
+                    {{- product.vendor -}}
+                  </a>
+                </p>
+              {%- endif -%}
+              {%- if block.settings.show_product_type and product.type != blank -%}
+                <p
+                  class="product__meta product__type"
+                  id="Type-{{ section.id }}"
+                  role="status"
+                >
+                  <span>{{ 'products.product.type' | t }}:</span>
+                  <a
+                    href="{{ product.type | url_for_type }}"
+                    class="btn--link font-body-bolder text-body"
+                  >
+                    {{- product.type -}}
+                  </a>
+                </p>
+              {%- endif -%}
+              {%- if block.settings.show_sku -%}
+                <p
+                  class="product__meta product__sku{% if product.selected_or_first_available_variant.sku.size == 0 %} hidden{% endif %}"
+                  id="Sku-{{ section.id }}"
+                  role="status"
+                >
+                  {%- if product.selected_or_first_available_variant.sku != blank -%}
+                    <span>{{ 'products.product.sku' | t }}:</span>
+                    <span>{{- product.selected_or_first_available_variant.sku -}}</span>
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+              {%- if block.settings.show_barcode -%}
+                <p
+                  class="product__meta product__barcode{% if product.selected_or_first_available_variant.barcode.size == 0 %} hidden{% endif %}"
+                  id="Barcode-{{ section.id }}"
+                  role="status"
+                >
+                  {%- if product.selected_or_first_available_variant.barcode != blank -%}
+                    <span>{{ 'products.product.barcode' | t }}:</span>
+                    <span>{{- product.selected_or_first_available_variant.barcode -}}</span>
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- when 'custom_liquid' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {{ block.settings.custom_liquid }}
+          </div>
+        {%- when 'collapsible_tab' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'product-collapsible-tab-test-new-product', block: block, section_id: section.id -%}
+          </div>
+        {%- when 'accordion_row' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'product-collapsible-tab-test-new-product',
+              block: block,
+              section_id: section.id,
+              content_type: 'json_accordion'
+            -%}
+          </div>
+        {%- when 'popup' -%}
+          {%- liquid
+            assign modal_id = 'PopupModal-' | append: block.id
+            assign button_label = block.settings.button_label | default: block.settings.page.title | escape
+          -%}
+          {% capture button_attributes %}
+            aria-controls="{{ modal_id }}"
+            aria-haspopup="dialog"
+          {% endcapture %}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {% render 'button',
+              button_style: block.settings.button_style,
+              button_tag: 'button',
+              button_label: button_label,
+              button_icon: block.settings.button_icon,
+              additional_attributes: button_attributes
+            %}
+            <basic-modal id="{{ modal_id }}" class="drawer modal product__popup-modal" style="--modal-width: 77rem;">
+              <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
+              <div class="drawer__inner color-{{ settings.overlay_color_scheme }}">
+                <button
+                  class="drawer__close-btn"
+                  aria-controls="{{ modal_id }}"
+                  aria-label="{{ 'accessibility.close' | t }}"
+                >
+                  {% render 'icon-close' %}
+                </button>
+                <div class="drawer__body v-scrollable h-full">
+                  <h1 class="h2 product__popup-page-title">{{ block.settings.page.title | escape }}</h1>
+                  {{ block.settings.page.content }}
+                </div>
+              </div>
+            </basic-modal>
+          </div>
+        {%- when 'addons' -%}
+          {%- if block.settings.show_share or block.settings.show_ask_question -%}
+            <div class="{{ block_classes }} flex items-center" {{ additional_attributes }} {{ block.shopify_attributes }}>
+              {%- if block.settings.show_share -%}
+                <script src="{{ 'product-share.js' | asset_url }}" defer="defer"></script>
+                {%- liquid
+                  assign share_modal_id = 'PopupModal-Sharing-' | append: section.id
+                  assign share_url = product.selected_or_first_available_variant.url | default: product.url | prepend: request.origin
+                -%}
+                <button
+                  class="btn btn--plain"
+                  aria-controls="{{ share_modal_id }}"
+                  aria-haspopup="dialog"
+                >
+                  {% render 'icon-share-fat' %}
+                  <span class="font-body text-normal tracking-normal">
+                    {{- 'products.product.share_label' | t -}}
+                  </span>
+                </button>
+                <basic-modal id="{{ share_modal_id }}" class="drawer modal">
+                  <div class="fixed-overlay" aria-controls="{{ share_modal_id }}"></div>
+                  <div class="drawer__inner color-{{ settings.overlay_color_scheme }}">
+                    <button
+                      class="drawer__close-btn"
+                      aria-controls="{{ share_modal_id }}"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                    <div class="drawer__body v-scrollable h-full">
+                      <div class="product__sharing">
+                        <h3 class="product__sharing--title h5">{{ 'products.product.share' | t }}</h3>
+                        <product-share class="product__sharing--inputs" id="ProductShare-{{ section.id }}">
+                          <label for="ProductShare-{{ section.id }}" class="visually-hidden">
+                            {{- 'products.product.share_label' | t -}}
+                          </label>
+                          <input
+                            id="ProductShare-{{ section.id }}"
+                            type="text"
+                            class="form-control"
+                            value="{{ share_url }}"
+                            readonly
+                          >
+                          <button class="btn btn-copy" data-copied-text="{{ 'general.share.copied' | t }}">
+                            {{ 'general.share.copy' | t }}
+                          </button>
+                        </product-share>
+                        {% render 'social-sharing',
+                          url: product.url,
+                          share_image: product.featured_media.preview_image
+                        %}
+                      </div>
+                    </div>
+                  </div>
+                </basic-modal>
+              {%- endif -%}
+              {%- if block.settings.show_ask_question -%}
+                {%- assign ask_question_modal_id = 'PopupModal-AskQuestionForm-' | append: section.id -%}
+                <button
+                  class="btn btn--plain"
+                  aria-controls="{{ ask_question_modal_id }}"
+                  aria-haspopup="dialog"
+                >
+                  {% render 'icon-share-fat' %}
+                  <span class="font-body text-normal tracking-normal">
+                    {{- 'products.product.question_form.label' | t -}}
+                  </span>
+                </button>
+                <basic-modal id="{{ ask_question_modal_id }}" class="drawer modal">
+                  <div class="fixed-overlay" aria-controls="{{ ask_question_modal_id }}"></div>
+                  <div class="drawer__inner color-{{ settings.overlay_color_scheme }}">
+                    <button
+                      class="drawer__close-btn"
+                      aria-controls="{{ ask_question_modal_id }}"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                    <div class="drawer__body v-scrollable h-full">
+                      {% render 'ask-question-form' %}
+                    </div>
+                  </div>
+                </basic-modal>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- when 'social_sharing' -%}
+          <div class="{{ block_classes }} flex items-center gap-4" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            <span class="font-button">{{ 'general.share.title' | t }}</span>
+            {% render 'social-sharing', url: product.url, share_image: product.featured_media.preview_image %}
+          </div>
+        {%- when 'variant_picker' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {% render 'product-variant-picker',
+              product: product,
+              block: block,
+              product_form_id: product_form_id,
+              update_url: update_browser_history
+            %}
+          </div>
+        {%- when 'buy_buttons' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'buy-buttons',
+              block: block,
+              product: product,
+              product_form_id: product_form_id,
+              section_id: section.id,
+              product_id: product.id
+            -%}
+          </div>
+        {%- when 'pickup_availability' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'product-pickup-availability', product: product -%}
+          </div>
+        {%- when 'badges' -%}
+          <div
+            class="{{ block_classes }} product__badges flex flex-wrap items-center"
+            id="Badges-{{ section.id }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'product-badges', block: block, product: product, section_id: section.id -%}
+          </div>
+        {%- when 'delivery_time' -%}
+          {%- liquid
+            assign desktop_font_size = block.settings.desktop_font_size | default: 14
+            assign desktop_font_weight = block.settings.desktop_font_weight | default: 400
+            assign mobile_font_size = block.settings.mobile_font_size | default: desktop_font_size
+            assign mobile_font_weight = block.settings.mobile_font_weight | default: desktop_font_weight
+            assign delivery_time_icon_asset = 'shipping.svg'
+          -%}
+          <div
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+            style="--delivery-time-font-size: {{ desktop_font_size }}px; --delivery-time-font-weight: {{ desktop_font_weight }}; --delivery-time-mobile-font-size: {{ mobile_font_size }}px; --delivery-time-mobile-font-weight: {{ mobile_font_weight }};"
+          >
+            <div class="product__delivery-time">
+              <span
+                class="product__delivery-time-icon"
+                aria-hidden="true"
+                style="--delivery-time-icon: url({{ delivery_time_icon_asset | asset_url }});"
+              ></span>
+              <span class="product__delivery-time-copy">
+                {%- if block.settings.text != blank -%}
+                  <span class="product__delivery-time-label">{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+                <span class="product__delivery-time-date" data-delivery-time-range></span>
+              </span>
+            </div>
+            <script>
+              (() => {
+                const getOrdinalSuffix = (day) => {
+                  if (day > 3 && day < 21) return 'th';
+                  switch (day % 10) {
+                    case 1:
+                      return 'st';
+                    case 2:
+                      return 'nd';
+                    case 3:
+                      return 'rd';
+                    default:
+                      return 'th';
+                  }
+                };
+
+                const formatDeliveryDate = (date, includeMonth = true) => {
+                  const month = date.toLocaleString('en-US', { month: 'short' });
+                  const day = date.getDate();
+                  return `${includeMonth ? `${month} ` : ''}${day}${getOrdinalSuffix(day)}`;
+                };
+
+                const updateDeliveryTimes = () => {
+                  const today = new Date();
+                  const startDate = new Date(today);
+                  const endDate = new Date(today);
+                  startDate.setDate(today.getDate() + 2);
+                  endDate.setDate(today.getDate() + 8);
+
+                  const sameMonth = startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear();
+                  const dateRange = `${formatDeliveryDate(startDate)} - ${formatDeliveryDate(endDate, !sameMonth)}`;
+
+                  document.querySelectorAll('[data-delivery-time-range]').forEach((element) => {
+                    element.textContent = dateRange;
+                  });
+                };
+
+                updateDeliveryTimes();
+              })();
+            </script>
+          </div>
+        {%- when 'delivery_time_by_bulky' -%}
+          {%- liquid
+            assign desktop_font_size = block.settings.desktop_font_size | default: 14
+            assign desktop_font_weight = block.settings.desktop_font_weight | default: 400
+            assign mobile_font_size = block.settings.mobile_font_size | default: desktop_font_size
+            assign mobile_font_weight = block.settings.mobile_font_weight | default: desktop_font_weight
+            assign delivery_time_icon_asset = 'shipping.svg'
+          -%}
+          <div
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+            style="--delivery-time-font-size: {{ desktop_font_size }}px; --delivery-time-font-weight: {{ desktop_font_weight }}; --delivery-time-mobile-font-size: {{ mobile_font_size }}px; --delivery-time-mobile-font-weight: {{ mobile_font_weight }};"
+          >
+            <div class="product__delivery-time">
+              <span
+                class="product__delivery-time-icon"
+                aria-hidden="true"
+                style="--delivery-time-icon: url({{ delivery_time_icon_asset | asset_url }});"
+              ></span>
+              {%- if block.settings.text != blank -%}
+                <span class="product__delivery-time-copy">
+                  <span class="product__delivery-time-label">{{ block.settings.text | escape }}</span>
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- when 'shipping' -%}
+          {%- if block.settings.deliver_days != blank -%}
+            <div 
+              class="{{ block_classes }}"
+              {{ additional_attributes }}
+              {{ block.shopify_attributes }}
+            >
+              <ul class="icon-with-text icon-with-text--vertical list-unstyled">
+                <li class="icon-with-text__item">
+                  {%- render 'icon-truck' -%}
+                  {%- liquid
+                    assign date_format = block.settings.date_format | default: '%b %d'
+                    assign range = 2 | times: 24 | times: 60 | times: 60
+                    assign deliver_in = block.settings.deliver_days | times: 24 | times: 60 | times: 60
+                    assign now = 'now' | date: '%s'
+                    assign from = now | plus: deliver_in | minus: range | date: date_format
+                    assign to = now | plus: deliver_in | plus: range | date: date_format
+                  -%}
+                  <div>
+                    {{- block.settings.deliver_text | strip_html }}
+                    <span>{{ from }} - {{ to }}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          {%- endif -%}
+        {%- when 'complementary' -%}
+          <div
+            class="{{ block_classes }} product__block--{{ block.type }}-{% if block.settings.make_collapsible_row %}collapsible{% else %}inline{% endif %}{% if block.settings.block_heading != blank %} has-heading{% endif %}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'product-complementary', block: block, product_id: product.id, section_id: section.id -%}
+          </div>
+        {%- when 'icon-with-text' -%}
+          <div
+            class="{{ block_classes }} product__block--{{ block.type }}-{{ block.settings.layout }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            {% render 'icon-with-text',
+              layout: block.settings.layout,
+              title_size: block.settings.title_size,
+              title_font: block.settings.title_font,
+              heading_1: block.settings.heading_1,
+              tooltip_1: block.settings.tooltip_text_1,
+              image_1: block.settings.image_1,
+              icon_1: block.settings.icon_1,
+              heading_2: block.settings.heading_2,
+              tooltip_2: block.settings.tooltip_text_2,
+              image_2: block.settings.image_2,
+              icon_2: block.settings.icon_2,
+              heading_3: block.settings.heading_3,
+              tooltip_3: block.settings.tooltip_text_3,
+              image_3: block.settings.image_3,
+              icon_3: block.settings.icon_3
+            %}
+          </div>
+        {%- when 'grid-icon-box' -%}
+          <div
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            {% render 'product-grid-icon-box', block: block %}
+          </div>
+        {%- when 'timer' -%}
+          {%- capture rgb -%}
+            {{ block.settings.text_color.red }},{{ block.settings.text_color.green }},{{ block.settings.text_color.blue }}
+          {%- endcapture -%}
+          <div
+            class="{{ block_classes }} countdown__wrapper blocks-radius flex flex-wrap items-center justify-between gap-2 md:gap-4"
+            style="color: {{ block.settings.text_color }};--color-foreground: {{ rgb }};"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            <div class="inline-flex items-center gap-2">
+              {%- render 'icon-clock' -%}
+              {%- if block.settings.text != blank -%}
+                <span class="font-body-bolder md:text-base text-sm-extra">{{ block.settings.text }}</span>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.type == 'evergreen' or block.settings.time != blank -%}
+              {%- render 'countdown-timer-test-new-product',
+                id: block.id,
+                type: block.settings.type,
+                duration: block.settings.duration,
+                time: block.settings.time,
+                number_size: 'h4',
+                custom_class: 'flex items-center justify-center',
+                block_class: 'font-body-bolder'
+              -%}
+            {%- endif -%}
+          </div>
+        {%- when 'newsletter' -%}
+          <div 
+            class="{{ block_classes }} flex flex-col gap-5"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+            <div class="grid gap-4 text-center">
+              {% render 'newsletter-form',
+                custom_id: block.id,
+                hide_label: true,
+                button_style: block.settings.button_style,
+                button_icon: block.settings.button_icon
+              %}
+              {%- if block.settings.newsletter_term != blank -%}
+                <div class="rich-text__text rte {{ block.settings.newsletter_term_size }}">
+                  {{ block.settings.newsletter_term }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+  {%- if context == 'quick-view' or context == 'featured-product' -%}
+    <div class="product__view-details text-left z-1">
+      <a
+        {% if product == blank %}
+          role="link" aria-disabled="true" disabled
+        {% else %}
+          href="{{ product.url }}"
+        {% endif %}
+        class="btn btn--plain btn--with-icon"
+      >
+        <span class="btn__text">{{- 'products.product.view_full_details' | t -}}</span>
+        <span class="btn__icon inline-flex">
+          {%- render 'icon-caret-right', size: '2xs' -%}
+        </span>
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+<script>
+  if (!window.colamyDiscountCodeInitialized) {
+    window.colamyDiscountCodeInitialized = true;
+
+    (function () {
+      var LEGACY_STORAGE_KEY = 'colamy_selected_discount';
+      var CHECKOUT_STORAGE_PREFIX = 'colamy_apply_coupon_checkout_v2:';
+      var ACTIVE_CHECKOUT_STORAGE_KEY = 'colamy_apply_coupon_checkout_active_v2';
+      var feedbackTimers = new WeakMap();
+
+      var shopRoot =
+        window.Shopify &&
+        window.Shopify.routes &&
+        window.Shopify.routes.root
+          ? window.Shopify.routes.root
+          : '/';
+
+      /*
+       * 保存用户最后点击的折扣码。
+       * CLM08、CLM12、CLM15 只保留最后选择的一个。
+       */
+      function saveDiscountCode(code) {
+        try {
+          localStorage.setItem(LEGACY_STORAGE_KEY, code);
+        } catch (error) {
+          console.warn('Unable to save discount code:', error);
+        }
+      }
+
+      function getSavedDiscountCode() {
+        try {
+          return localStorage.getItem(LEGACY_STORAGE_KEY) || '';
+        } catch (error) {
+          return '';
+        }
+      }
+
+      function getCheckoutDiscountStorageKey(coupon) {
+        var scope = [
+          coupon.dataset.templateSuffix || 'default',
+          coupon.dataset.productId || 'product',
+          coupon.dataset.sectionId || 'section',
+          coupon.dataset.blockId || coupon.dataset.couponCode || 'coupon'
+        ].join(':');
+
+        return CHECKOUT_STORAGE_PREFIX + encodeURIComponent(scope);
+      }
+
+      function saveCheckoutDiscountCode(coupon, code) {
+        try {
+          localStorage.setItem(getCheckoutDiscountStorageKey(coupon), code);
+          localStorage.setItem(ACTIVE_CHECKOUT_STORAGE_KEY, code);
+        } catch (error) {
+          console.warn('Unable to save checkout discount code:', error);
+        }
+      }
+
+      function getSavedCheckoutDiscountCode(coupon) {
+        try {
+          if (coupon) {
+            return localStorage.getItem(getCheckoutDiscountStorageKey(coupon)) || '';
+          }
+
+          return localStorage.getItem(ACTIVE_CHECKOUT_STORAGE_KEY) || '';
+        } catch (error) {
+          return '';
+        }
+      }
+
+      function removeSavedCheckoutDiscountCode(coupon) {
+        try {
+          if (coupon) {
+            var removedCode = getSavedCheckoutDiscountCode(coupon);
+            localStorage.removeItem(getCheckoutDiscountStorageKey(coupon));
+
+            if (
+              removedCode &&
+              getSavedCheckoutDiscountCode().toLowerCase() === removedCode.toLowerCase()
+            ) {
+              localStorage.removeItem(ACTIVE_CHECKOUT_STORAGE_KEY);
+            }
+          } else {
+            localStorage.removeItem(ACTIVE_CHECKOUT_STORAGE_KEY);
+          }
+        } catch (error) {
+          console.warn('Unable to remove checkout discount code:', error);
+        }
+      }
+
+      function getActiveDiscountCode() {
+        var pageCoupon = document.querySelector(
+          '[data-apply-coupon-checkout].is-applied:not([hidden])'
+        );
+
+        if (pageCoupon) {
+          return pageCoupon.dataset.couponCode || '';
+        }
+
+        return getSavedCheckoutDiscountCode() || getSavedDiscountCode();
+      }
+
+      function activateLegacyDiscountCode(code) {
+        saveDiscountCode(code);
+        removeSavedCheckoutDiscountCode();
+
+        document
+          .querySelectorAll('[data-apply-coupon-checkout]')
+          .forEach(function (coupon) {
+            removeSavedCheckoutDiscountCode(coupon);
+            setApplyCouponState(coupon, false);
+          });
+      }
+
+      /*
+       * 通过 Shopify Cart AJAX API
+       * 把折扣码写入当前购物车。
+       */
+      function applyDiscountToCart(code) {
+        var updateRequest = fetch(shopRoot + 'cart/update.js', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            discount: code
+          })
+        }).then(function (response) {
+          if (!response.ok) {
+            throw new Error(
+              'Unable to apply discount. Status: ' + response.status
+            );
+          }
+
+          return response.json();
+        });
+
+        if (code) {
+          updateRequest = updateRequest.catch(function () {
+            var cartJsonUrl = shopRoot + 'cart.js';
+            var discountUrl =
+              shopRoot +
+              'discount/' +
+              encodeURIComponent(code) +
+              '?redirect=' +
+              encodeURIComponent(cartJsonUrl);
+
+            return fetch(discountUrl, {
+              credentials: 'same-origin',
+              redirect: 'follow'
+            }).then(function (response) {
+              if (!response.ok) {
+                throw new Error(
+                  'Unable to apply discount fallback. Status: ' +
+                    response.status
+                );
+              }
+
+              return fetch(cartJsonUrl, {
+                credentials: 'same-origin',
+                headers: { Accept: 'application/json' }
+              }).then(function (cartResponse) {
+                if (!cartResponse.ok) {
+                  throw new Error(
+                    'Unable to reload cart. Status: ' +
+                      cartResponse.status
+                  );
+                }
+
+                return cartResponse.json();
+              });
+            });
+          });
+        }
+
+        return updateRequest.then(function (cartState) {
+          var eventDetail = {
+            cart: cartState,
+            source: 'discount-code'
+          };
+
+          document.dispatchEvent(
+            new CustomEvent('cart:updated', {
+              bubbles: true,
+              detail: eventDetail
+            })
+          );
+
+          document.dispatchEvent(
+            new CustomEvent('cart:refresh', {
+              bubbles: true,
+              detail: eventDetail
+            })
+          );
+
+          return cartState;
+        });
+      }
+
+      function copyWithFallback(value) {
+        return new Promise(function (resolve, reject) {
+          var textarea = document.createElement('textarea');
+
+          textarea.value = value;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.top = '-9999px';
+          textarea.style.left = '-9999px';
+          textarea.style.opacity = '0';
+          textarea.style.pointerEvents = 'none';
+
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+
+          try {
+            var copied = document.execCommand('copy');
+            textarea.remove();
+
+            if (copied) {
+              resolve();
+            } else {
+              reject(new Error('Copy command failed.'));
+            }
+          } catch (error) {
+            textarea.remove();
+            reject(error);
+          }
+        });
+      }
+
+      function copyCoupon(value) {
+        if (
+          navigator.clipboard &&
+          window.isSecureContext &&
+          typeof navigator.clipboard.writeText === 'function'
+        ) {
+          return navigator.clipboard.writeText(value).catch(function () {
+            return copyWithFallback(value);
+          });
+        }
+
+        return copyWithFallback(value);
+      }
+
+      var applyCouponObservers = new WeakMap();
+
+      function getApplyCouponVariantPrices(coupon) {
+        if (coupon._variantPrices) {
+          return coupon._variantPrices;
+        }
+
+        var dataElement = coupon.querySelector(
+          '[data-coupon-variant-prices]'
+        );
+
+        var variantPrices = {};
+
+        if (dataElement) {
+          try {
+            JSON.parse(dataElement.textContent || '[]').forEach(
+              function (variant) {
+                variantPrices[String(variant.id)] = Number(variant.price);
+              }
+            );
+          } catch (error) {
+            console.warn('Unable to read coupon variant prices:', error);
+          }
+        }
+
+        coupon._variantPrices = variantPrices;
+        return variantPrices;
+      }
+
+      function getApplyCouponSectionRoot(coupon) {
+        var sectionId = coupon.dataset.sectionId || '';
+
+        return (
+          document.getElementById('MainProduct-' + sectionId) ||
+          coupon.closest('product-info') ||
+          coupon.closest('.product__info-container') ||
+          document
+        );
+      }
+
+      function getApplyCouponVariantId(coupon) {
+        var sectionId = coupon.dataset.sectionId || '';
+        var productForm = document.getElementById(
+          'product-form-' + sectionId
+        );
+        var variantInput = productForm
+          ? productForm.querySelector('input[name="id"]')
+          : null;
+
+        if (!variantInput) {
+          var sectionRoot = getApplyCouponSectionRoot(coupon);
+          variantInput = sectionRoot.querySelector(
+            'form[action*="/cart/add"] input[name="id"]'
+          );
+        }
+
+        if (variantInput && variantInput.value) {
+          return String(variantInput.value);
+        }
+
+        var urlVariant = new URL(window.location.href).searchParams.get(
+          'variant'
+        );
+
+        if (urlVariant) {
+          return String(urlVariant);
+        }
+
+        var variantPrices = getApplyCouponVariantPrices(coupon);
+        return Object.keys(variantPrices)[0] || '';
+      }
+
+      function formatApplyCouponMoney(cents, currencyCode) {
+        var locale =
+          document.documentElement.lang || navigator.language || 'en-US';
+        var currency = currencyCode || 'USD';
+
+        try {
+          return new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency: currency
+          }).format(cents / 100);
+        } catch (error) {
+          return '$' + (cents / 100).toFixed(2);
+        }
+      }
+
+      function getApplyCouponOffer(coupon) {
+        var variantId = getApplyCouponVariantId(coupon);
+        var variantPrices = getApplyCouponVariantPrices(coupon);
+        var originalPrice = Number(variantPrices[variantId]);
+        var minimumPrice = Number(
+          coupon.dataset.minimumVariantPrice || 0
+        );
+        var discountPercent = Number(
+          coupon.dataset.discountPercent || 0
+        );
+
+        if (
+          !Number.isFinite(originalPrice) ||
+          !discountPercent ||
+          originalPrice < minimumPrice
+        ) {
+          return null;
+        }
+
+        return {
+          coupon: coupon,
+          finalPrice: Math.round(
+            originalPrice * (100 - discountPercent) / 100
+          ),
+          discountPercent: discountPercent
+        };
+      }
+
+      function updateBestApplyCoupon(coupon) {
+        var sectionRoot = getApplyCouponSectionRoot(coupon);
+        var coupons = Array.from(
+          sectionRoot.querySelectorAll(
+            '[data-apply-coupon-checkout]'
+          )
+        );
+        var bestOffer = null;
+
+        coupons.forEach(function (couponElement) {
+          var offer = getApplyCouponOffer(couponElement);
+
+          if (!offer) return;
+
+          if (
+            !bestOffer ||
+            offer.finalPrice < bestOffer.finalPrice ||
+            offer.finalPrice === bestOffer.finalPrice &&
+              offer.discountPercent > bestOffer.discountPercent
+          ) {
+            bestOffer = offer;
+          }
+        });
+
+        var activeCoupon = coupons.find(function (couponElement) {
+          return couponElement.classList.contains('is-applied');
+        });
+        var activeOffer = activeCoupon
+          ? getApplyCouponOffer(activeCoupon)
+          : null;
+
+        if (activeCoupon && !activeOffer) {
+          removeSavedCheckoutDiscountCode(activeCoupon);
+          setApplyCouponState(activeCoupon, false);
+          applyDiscountToCart(getSavedDiscountCode()).catch(
+            function (error) {
+              console.warn(
+                'Unable to remove ineligible coupon:',
+                error
+              );
+            }
+          );
+
+          activeCoupon = null;
+        }
+
+        var visibleCoupon = activeOffer
+          ? activeOffer.coupon
+          : bestOffer && bestOffer.coupon;
+
+        coupons.forEach(function (couponElement) {
+          couponElement.hidden = couponElement !== visibleCoupon;
+        });
+
+        if (activeOffer) {
+          renderApplyCouponPrice(activeOffer.coupon);
+        }
+      }
+
+      function renderApplyCouponPrice(coupon) {
+        if (!coupon.classList.contains('is-applied')) return;
+
+        var variantId = getApplyCouponVariantId(coupon);
+        var variantPrices = getApplyCouponVariantPrices(coupon);
+        var originalPrice = Number(variantPrices[variantId]);
+        var discountPercent = Number(
+          coupon.dataset.discountPercent || 0
+        );
+
+        if (!originalPrice || !discountPercent) return;
+
+        var discountedPrice = Math.round(
+          originalPrice * (100 - discountPercent) / 100
+        );
+        var formattedPrice = formatApplyCouponMoney(
+          discountedPrice,
+          coupon.dataset.currencyCode
+        );
+        var label = coupon.querySelector('[data-coupon-label]');
+        var status = coupon.querySelector('[data-coupon-status]');
+        var appliedText = coupon.dataset.appliedText || 'Coupon applied! Final Price:';
+        var finalMessage = appliedText + ' ' + formattedPrice;
+
+        if (label) {
+          label.textContent = finalMessage;
+        }
+
+        if (status) {
+          status.textContent = finalMessage;
+        }
+      }
+
+      function setApplyCouponState(coupon, isApplied) {
+        var button = coupon.querySelector('[data-coupon-apply-button]');
+        var label = coupon.querySelector('[data-coupon-label]');
+        var status = coupon.querySelector('[data-coupon-status]');
+
+        coupon.classList.toggle('is-applied', isApplied);
+
+        if (button) {
+          button.setAttribute(
+            'aria-pressed',
+            isApplied ? 'true' : 'false'
+          );
+        }
+
+        if (label) {
+          label.textContent = isApplied
+            ? coupon.dataset.appliedText
+            : coupon.dataset.applyText;
+        }
+
+        if (status) {
+          status.textContent = isApplied
+            ? coupon.dataset.appliedText
+            : '';
+        }
+
+        if (isApplied) {
+          requestAnimationFrame(function () {
+            renderApplyCouponPrice(coupon);
+          });
+        }
+      }
+
+      function scheduleApplyCouponPrice(coupon) {
+        window.clearTimeout(coupon._couponPriceTimer);
+        coupon._couponPriceTimer = window.setTimeout(function () {
+          renderApplyCouponPrice(coupon);
+        }, 80);
+      }
+
+      function initializeApplyCoupons() {
+        document
+          .querySelectorAll('[data-apply-coupon-checkout]')
+          .forEach(function (coupon) {
+            if (coupon.dataset.couponInitialized === 'true') return;
+
+            coupon.dataset.couponInitialized = 'true';
+            getApplyCouponVariantPrices(coupon);
+
+            var savedCode = getSavedCheckoutDiscountCode(coupon);
+            var couponCode = coupon.dataset.couponCode || '';
+
+            if (
+              savedCode &&
+              couponCode &&
+              savedCode.toLowerCase() === couponCode.toLowerCase()
+            ) {
+              saveCheckoutDiscountCode(coupon, savedCode);
+              setApplyCouponState(coupon, true);
+            }
+
+            var sectionRoot = getApplyCouponSectionRoot(coupon);
+            var priceContainer = document.getElementById(
+              'price-' + (coupon.dataset.sectionId || '')
+            );
+
+            sectionRoot.addEventListener(
+              'change',
+              function () {
+                updateBestApplyCoupon(coupon);
+
+                if (coupon.classList.contains('is-applied')) {
+                  scheduleApplyCouponPrice(coupon);
+                }
+              },
+              true
+            );
+
+            if (priceContainer && !applyCouponObservers.has(coupon)) {
+              var observer = new MutationObserver(function () {
+                updateBestApplyCoupon(coupon);
+
+                if (coupon.classList.contains('is-applied')) {
+                  scheduleApplyCouponPrice(coupon);
+                }
+              });
+
+              observer.observe(priceContainer, {
+                childList: true,
+                subtree: true
+              });
+
+              applyCouponObservers.set(coupon, observer);
+            }
+          });
+
+        document
+          .querySelectorAll('[data-apply-coupon-checkout]')
+          .forEach(updateBestApplyCoupon);
+      }
+
+      function handleApplyCoupon(event) {
+        var button = event.target.closest(
+          '[data-coupon-apply-button]'
+        );
+
+        if (!button) return;
+
+        var coupon = button.closest('[data-apply-coupon-checkout]');
+        if (!coupon) return;
+
+        var code = (coupon.dataset.couponCode || '').trim();
+        if (!code) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        if (button.dataset.discountProcessing === 'true') return;
+
+        var label = coupon.querySelector('[data-coupon-label]');
+        var status = coupon.querySelector('[data-coupon-status]');
+        button.dataset.discountProcessing = 'true';
+        button.disabled = true;
+        coupon.classList.add('is-loading');
+
+        var isApplied = coupon.classList.contains('is-applied');
+        var nextCode = isApplied ? getSavedDiscountCode() : code;
+
+        applyDiscountToCart(nextCode)
+          .then(function () {
+            if (isApplied) {
+              removeSavedCheckoutDiscountCode(coupon);
+            } else {
+              saveCheckoutDiscountCode(coupon, code);
+            }
+
+            getApplyCouponSectionRoot(coupon)
+              .querySelectorAll('[data-apply-coupon-checkout]')
+              .forEach(function (couponElement) {
+                var elementCode =
+                  couponElement.dataset.couponCode || '';
+                var shouldApply =
+                  !isApplied &&
+                  elementCode.toLowerCase() === code.toLowerCase();
+
+                if (!shouldApply && couponElement !== coupon) {
+                  removeSavedCheckoutDiscountCode(couponElement);
+                }
+
+                setApplyCouponState(
+                  couponElement,
+                  shouldApply
+                );
+              });
+
+            updateBestApplyCoupon(coupon);
+
+            if (isApplied && status) {
+              status.textContent =
+                coupon.dataset.removedText || 'Coupon removed';
+            }
+          })
+          .catch(function (error) {
+            console.warn('Unable to apply coupon:', error);
+
+            if (label) {
+              label.textContent =
+                coupon.dataset.errorText ||
+                'Unable to apply coupon. Try again.';
+
+              window.setTimeout(function () {
+                label.textContent = isApplied
+                  ? coupon.dataset.appliedText
+                  : coupon.dataset.applyText;
+              }, 2200);
+            }
+
+            if (status) {
+              status.textContent =
+                coupon.dataset.errorText ||
+                'Unable to apply coupon. Try again.';
+            }
+          })
+          .finally(function () {
+            button.disabled = false;
+            button.dataset.discountProcessing = 'false';
+            coupon.classList.remove('is-loading');
+          });
+      }
+
+      document.addEventListener('click', handleApplyCoupon, true);
+
+      [
+        'variant:change',
+        'product:variant-change',
+        'product:variant-changed'
+      ].forEach(function (eventName) {
+        document.addEventListener(eventName, function () {
+          document
+            .querySelectorAll('[data-apply-coupon-checkout]')
+            .forEach(updateBestApplyCoupon);
+
+          document
+            .querySelectorAll('[data-apply-coupon-checkout].is-applied')
+            .forEach(scheduleApplyCouponPrice);
+        });
+      });
+
+      /*
+       * 更新 Summer Saving、Coupon Code、
+       * Discount Code 按钮的复制提示。
+       */
+      function showCopiedMessage(container) {
+        if (!container) return;
+
+        var feedbackTarget = container.querySelector(
+          '[data-copy-feedback-target]'
+        );
+
+        if (!feedbackTarget) return;
+
+        var originalText =
+          feedbackTarget.dataset.copyOriginalText ||
+          feedbackTarget.textContent;
+
+        var copiedText =
+          container.dataset.copiedText ||
+          'Copied';
+
+        var duration =
+          Number(container.dataset.copiedDuration) ||
+          1500;
+
+        feedbackTarget.dataset.copyOriginalText = originalText;
+        feedbackTarget.textContent = copiedText;
+        container.classList.add('tooltip--is-visible');
+
+        clearTimeout(feedbackTimers.get(container));
+
+        feedbackTimers.set(
+          container,
+          setTimeout(function () {
+            feedbackTarget.textContent =
+              feedbackTarget.dataset.copyOriginalText;
+
+            container.classList.remove('tooltip--is-visible');
+          }, duration)
+        );
+      }
+
+      /*
+       * Summer Saving 模块的布局高度同步。
+       * 保留你原代码中的这部分功能。
+       */
+      function syncSummerSavingLimitHeights() {
+        document
+          .querySelectorAll('.product__summer-saving')
+          .forEach(function (summerSaving) {
+            var firstLimit = summerSaving.querySelector(
+              '.product__summer-saving-tier:first-child ' +
+              '.product__summer-saving-limit'
+            );
+
+            if (!firstLimit) return;
+
+            summerSaving.classList.remove(
+              'product__summer-saving--limit-wrap'
+            );
+
+            var styles = window.getComputedStyle(firstLimit);
+
+            var lineHeight =
+              parseFloat(styles.lineHeight) ||
+              parseFloat(styles.fontSize) * 1.15;
+
+            var isWrapped =
+              firstLimit.scrollHeight >
+              Math.ceil(lineHeight) + 1;
+
+            summerSaving.classList.toggle(
+              'product__summer-saving--limit-wrap',
+              isWrapped
+            );
+          });
+      }
+
+      /*
+       * 点击 Copy 后：
+       * 1. 复制代码
+       * 2. 保存代码
+       * 3. 写入 Shopify Cart
+       */
+      function handleDiscountCopy(event) {
+        var button = event.target.closest(
+          '.product__summer-saving-copy-button,' +
+          '.product__coupon-code-copy-btn,' +
+          '.product__discount-code-copy-btn'
+        );
+
+        if (!button) return;
+
+        var container = button.closest(
+          '.product__summer-saving-copy,' +
+          '.product__coupon-code-copy,' +
+          '.product__discount-code-copy'
+        );
+
+        if (!container) return;
+
+        var code = (
+          container.dataset.copyValue || ''
+        ).trim();
+
+        if (!code) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        if (button.dataset.discountProcessing === 'true') {
+          return;
+        }
+
+        button.dataset.discountProcessing = 'true';
+        button.disabled = true;
+
+        activateLegacyDiscountCode(code);
+
+        /*
+         * 复制和应用折扣同时执行。
+         * 即使折扣未达到金额门槛，代码仍会保存到购物车。
+         */
+        Promise.all([
+          copyCoupon(code),
+          applyDiscountToCart(code)
+        ])
+          .then(function () {
+            showCopiedMessage(container);
+          })
+          .catch(function (error) {
+            console.warn('Unable to copy discount code:', error);
+          })
+          .finally(function () {
+            button.disabled = false;
+            button.dataset.discountProcessing = 'false';
+          });
+      }
+
+      document.addEventListener(
+        'click',
+        handleDiscountCopy,
+        true
+      );
+
+      /*
+       * 兼容你原来的 discount_code_memorial 模块。
+       *
+       * 原按钮仍然使用：
+       * onclick="copyAndApply('CLM08', 'btn-clm08')"
+       */
+      window.copyAndApply = function (code, btnId) {
+        var button = document.getElementById(btnId);
+
+        if (!code) return;
+
+        activateLegacyDiscountCode(code);
+
+        if (button) {
+          button.disabled = true;
+        }
+
+        Promise.all([
+          copyCoupon(code),
+          applyDiscountToCart(code)
+        ])
+          .then(function () {
+            if (!button) return;
+
+            var originalText =
+              button.dataset.originalText ||
+              button.textContent;
+
+            var originalBackground =
+              button.dataset.originalBackground ||
+              button.style.background;
+
+            button.dataset.originalText = originalText;
+            button.dataset.originalBackground =
+              originalBackground;
+
+            button.textContent = '✓ Copied!';
+            button.style.background = '#27ae60';
+
+            setTimeout(function () {
+              button.textContent =
+                button.dataset.originalText;
+
+              button.style.background =
+                button.dataset.originalBackground;
+
+              button.disabled = false;
+            }, 2000);
+          })
+          .catch(function (error) {
+            console.warn('Unable to copy discount:', error);
+
+            if (button) {
+              button.disabled = false;
+            }
+          });
+      };
+
+      /*
+       * 点击普通 Checkout 按钮前，
+       * 再次把保存的折扣码写入购物车。
+       */
+      document.addEventListener(
+        'click',
+        function (event) {
+          var checkoutButton = event.target.closest(
+            'button[name="checkout"],' +
+            'input[name="checkout"],' +
+            'a[href*="/checkout"],' +
+            '[data-checkout-button],' +
+            '.shopify-payment-button__button,' +
+            '.cart__checkout,' +
+            '.drawer__checkout'
+          );
+
+          if (!checkoutButton) return;
+
+          var savedCode = getActiveDiscountCode();
+
+          if (!savedCode) return;
+
+          if (
+            checkoutButton.dataset.discountCheckoutProcessing ===
+            'true'
+          ) {
+            return;
+          }
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          checkoutButton.dataset.discountCheckoutProcessing =
+            'true';
+
+          if ('disabled' in checkoutButton) {
+            checkoutButton.disabled = true;
+          }
+
+          var discountCheckoutUrl = shopRoot + 'checkout';
+
+          window.location.assign(
+            shopRoot +
+              'discount/' +
+              encodeURIComponent(savedCode) +
+              '?redirect=' +
+              encodeURIComponent(discountCheckoutUrl)
+          );
+
+          return;
+
+          applyDiscountToCart(savedCode)
+            .then(function () {
+              /*
+               * 应用成功后进入正常 Shopify Checkout。
+               */
+              window.location.href =
+                shopRoot + 'checkout';
+            })
+            .catch(function (error) {
+              console.warn(
+                'AJAX discount application failed. Using discount URL fallback.',
+                error
+              );
+
+              /*
+               * AJAX 失败时使用 Shopify 折扣链接兜底。
+               */
+              var checkoutUrl =
+                shopRoot + 'checkout';
+
+              window.location.href =
+                shopRoot +
+                'discount/' +
+                encodeURIComponent(savedCode) +
+                '?redirect=' +
+                encodeURIComponent(checkoutUrl);
+            });
+        },
+        true
+      );
+
+      /*
+       * 用户刷新页面或进入其他产品页时，
+       * 恢复之前选择的折扣码。
+       */
+      function restoreSavedDiscount() {
+        var savedCode = getActiveDiscountCode();
+
+        if (!savedCode) return;
+
+        applyDiscountToCart(savedCode).catch(function (error) {
+          console.warn(
+            'Saved discount could not be restored:',
+            error
+          );
+        });
+      }
+
+      var restoreDiscountTimer;
+
+      function scheduleSavedDiscountRestore() {
+        window.clearTimeout(restoreDiscountTimer);
+        restoreDiscountTimer = window.setTimeout(
+          restoreSavedDiscount,
+          650
+        );
+      }
+
+      document.addEventListener(
+        'submit',
+        function (event) {
+          var form = event.target;
+
+          if (
+            form &&
+            form.matches &&
+            form.matches('form[action*="/cart/add"]')
+          ) {
+            scheduleSavedDiscountRestore();
+          }
+        },
+        true
+      );
+
+      [
+        'product:added',
+        'cart:item-added',
+        'ajaxProduct:added'
+      ].forEach(function (eventName) {
+        document.addEventListener(
+          eventName,
+          scheduleSavedDiscountRestore
+        );
+      });
+
+      initializeApplyCoupons();
+      syncSummerSavingLimitHeights();
+      restoreSavedDiscount();
+
+      window.addEventListener(
+        'resize',
+        syncSummerSavingLimitHeights
+      );
+
+      window.addEventListener(
+        'orientationchange',
+        syncSummerSavingLimitHeights
+      );
+
+      document.addEventListener(
+        'shopify:section:load',
+        function () {
+          initializeApplyCoupons();
+          syncSummerSavingLimitHeights();
+          restoreSavedDiscount();
+        }
+      );
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(
+          syncSummerSavingLimitHeights
+        );
+      }
+    })();
+  }
+</script>

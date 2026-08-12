@@ -102,6 +102,10 @@
     .back-to-top {
       inset-inline-end: 3rem;
     }
+
+    body.product-template .back-to-top {
+      bottom: calc(var(--mobile-sticky-bar-height, 0px) + var(--sticky-atc-bar-height, 0px) + 15rem);
+    }
   }
 </style>
 
