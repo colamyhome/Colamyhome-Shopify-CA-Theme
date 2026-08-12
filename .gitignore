@@ -24,3 +24,5 @@ node_modules/
 docs/ 
 tests/
 .superpowers/
+
+.shopify.theme.toml
