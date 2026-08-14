@@ -169,7 +169,7 @@
             "block_width": 15,
             "heading": "COMPANY",
             "heading_size": "h6",
-            "menu": "general-info",
+            "menu": "company",
             "open_default": false,
             "show_divider": false
           }
@@ -180,7 +180,7 @@
             "block_width": 15,
             "heading": "POLICIES",
             "heading_size": "h6",
-            "menu": "footer",
+            "menu": "policies",
             "open_default": false,
             "show_divider": false
           }
@@ -191,7 +191,7 @@
             "block_width": 15,
             "heading": "RESOURCES",
             "heading_size": "h6",
-            "menu": "general-info-2",
+            "menu": "resources",
             "open_default": false,
             "show_divider": false
           }
@@ -203,11 +203,8 @@
             "block_width": 10,
             "heading": "links",
             "heading_size": "h6",
-            "image_1": "shopify://shop_images/amazon.png",
             "link_1": "https://www.amazon.com/",
-            "image_2": "shopify://shop_images/walmart.png",
             "link_2": "https://www.walmart.com/",
-            "image_3": "shopify://shop_images/wayfair.png",
             "link_3": "https://www.wayfair.com/",
             "open_default": false,
             "show_divider": false
@@ -304,7 +301,6 @@
       "type": "bottom-image",
       "name": "t:sections.bottom-image.name",
       "settings": {
-        "image": "shopify://shop_images/logo-04.png",
         "container": "fixed",
         "color_scheme": "scheme-0ca322c9-5180-40a8-b409-ff4692a0e605",
         "padding_top": 0,
