@@ -16,8 +16,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "video": null,
-            "mobile_video": null,
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_description": "",
             "image_overlay_opacity": 0,
@@ -544,29 +542,6 @@
     },
     "apps_VQCXan": {
       "type": "apps",
-      "blocks": {
-        "instafeed_app_block_6bi6Qi": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "At Home With #COLAMYHalo",
-            "title_color": "#1c1c1c",
-            "title_size_v2": 36,
-            "alignment": "center",
-            "instafeed_margin_top": 30,
-            "instafeed_margin_bottom": 30,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "center",
-            "link_color": "#1c1c1c",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": "<style>\n  /* 1. 自定义主标题字重 */\n  #insta-feed h2 {\n    font-size: 36px;\n    font-weight: 500 !important;\n    color: #1c1c1c;\n    letter-spacing:-1px;\n  }\n\n  @media (max-width: 767.98px) {\n    #insta-feed h2 {\n      font-size: 20px !important;\n    font-weight: 400 !important;\n    }\n  }\n\n  /* 2. 副标题样式 */\n  .instafeed-subtitle {\n    display: block;\n    font-size: 14px;\n    font-weight: 400;\n    color: #1c1c1c;\n    margin-top: -20px;\n    margin-bottom: 25px;\n    text-align: center;\n  }\n\n  /* 3. 手机端：红人视频横向滑动并放大 */\n  @media (max-width: 767.98px) {\n    #insta-feed .instafeed-new-layout-container {\n      width: 100% !important;\n      overflow: hidden !important;\n    }\n\n    #insta-feed .instafeed-new-layout-wrapper {\n      display: flex !important;\n      grid-template-columns: none !important;\n      gap: 12px !important;\n\n      overflow-x: auto !important;\n      overflow-y: hidden !important;\n      scroll-snap-type: x mandatory;\n      -webkit-overflow-scrolling: touch;\n      overscroll-behavior-x: contain;\n\n      padding: 0 16px 8px !important;\n      scrollbar-width: none;\n    }\n\n    #insta-feed .instafeed-new-layout-item {\n      flex: 0 0 76vw !important;\n      width: 76vw !important;\n      height: calc(76vw * 1.333) !important;\n      max-width: 320px !important;\n      max-height: 426px !important;\n      scroll-snap-align: start;\n    }\n\n    #insta-feed .instafeed-new-layout-item img {\n      width: 100% !important;\n      height: 100% !important;\n      object-fit: cover !important;\n    }\n\n    #insta-feed .instafeed-new-layout-wrapper::-webkit-scrollbar {\n      display: none;\n    }\n\n  }\n</style>\n\n<script>\n(function() {\n  var subtitleText = '';\n\n  function addSubtitleIfNeeded() {\n    var title = document.querySelector('#insta-feed h2') \n      || document.querySelector('#insta-feed .section-title')\n      || document.querySelector('#insta-feed h1');\n\n    if (!title) return;\n\n    if (document.querySelector('.instafeed-subtitle')) return;\n\n    var subtitle = document.createElement('p');\n    subtitle.className = 'instafeed-subtitle';\n    subtitle.innerHTML = subtitleText;\n    title.insertAdjacentElement('afterend', subtitle);\n  }\n\n  function enableMobileSwipe() {\n    var container = document.querySelector('#insta-feed .instafeed-new-layout-container');\n    var wrapper = document.querySelector('#insta-feed .instafeed-new-layout-wrapper');\n\n    if (!container || !wrapper) return;\n\n    container.setAttribute('data-instafeed-prevent-touch-scroll', 'false');\n\n  }\n\n  function startObserver() {\n    var container = document.querySelector('#insta-feed');\n\n    if (!container) {\n      setTimeout(startObserver, 500);\n      return;\n    }\n\n    addSubtitleIfNeeded();\n    enableMobileSwipe();\n\n    var observer = new MutationObserver(function() {\n      addSubtitleIfNeeded();\n      enableMobileSwipe();\n    });\n\n    observer.observe(container, { childList: true, subtree: true });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', startObserver);\n  } else {\n    startObserver();\n  }\n})();\n</script>"
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_6bi6Qi"
-      ],
       "custom_css": [
         "@media (max-width: 767.98px) {#insta-feed .h3 {font-size: 20px; font-weight: 400; color: #1c1c1c; }}",
         "#insta-feed {background-color: #f6f6f6 !important;}",

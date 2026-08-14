@@ -676,7 +676,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS",
             "creator_name": "@jorameraj",
@@ -692,7 +691,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS",
             "creator_name": "@itsfationa",
@@ -708,7 +706,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "AETHER",
             "creator_name": "@melisadevo",
@@ -724,7 +721,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "AETHER",
             "creator_name": "@america.timee",
@@ -740,7 +736,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS-01",
             "creator_name": "@mylittlehomebylida",
@@ -756,7 +751,6 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": null,
             "video_ratio": "4/5",
             "heading": "LUMIDESK",
             "creator_name": "@kilic_usastyle",

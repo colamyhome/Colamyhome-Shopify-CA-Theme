@@ -92,7 +92,7 @@
             "coupon_code": "CLM15",
             "discount_percent": 15,
             "minimum_variant_price": 400,
-            "apply_text": "Apply 15% off coupon",
+            "apply_text": "Apply 10% off coupon",
             "applied_text": "Coupon applied! Final Price:",
             "removed_text": "Coupon removed",
             "error_text": "Unable to apply coupon. Try again.",
@@ -180,8 +180,6 @@
           "type": "discount_code_memorial",
           "disabled": true,
           "settings": {
-            "background_image": "shopify://shop_images/memorial_day-21.png",
-            "mobile_background_image": "shopify://shop_images/memorial_day-mb-17.png",
             "discount_code": "CLM08",
             "button_top": 0,
             "button_right": 0,
@@ -195,8 +193,6 @@
           "type": "discount_code_memorial",
           "disabled": true,
           "settings": {
-            "background_image": "shopify://shop_images/memorial_day-22.png",
-            "mobile_background_image": "shopify://shop_images/memorial_day-20-20.png",
             "discount_code": "CLM12",
             "button_top": 0,
             "button_right": 0,
@@ -210,8 +206,6 @@
           "type": "discount_code_memorial",
           "disabled": true,
           "settings": {
-            "background_image": "shopify://shop_images/memorial_day-23.png",
-            "mobile_background_image": "shopify://shop_images/memorial_day-mb-19.png",
             "discount_code": "CLM15",
             "button_top": 0,
             "button_right": 0,
@@ -232,7 +226,6 @@
         "delivery_time": {
           "type": "delivery_time",
           "settings": {
-            "icon": "shopify://shop_images/shipping.svg",
             "text": "Free Shipping · Arrives",
             "desktop_font_size": 16,
             "desktop_font_weight": "300",
@@ -446,10 +439,6 @@
             "show_below_product_media": false
           }
         },
-        "frequently_bought_app_block_346d7f": {
-          "type": "shopify://apps/frequently-bought/blocks/app-block/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
-          "settings": {}
-        },
         "complementary": {
           "type": "complementary",
           "disabled": true,
@@ -505,7 +494,6 @@
         "sticky_atc_bar_7HgNgP",
         "buy_bar_93Xnwz",
         "payment_info_CMzCrq",
-        "frequently_bought_app_block_346d7f",
         "complementary"
       ],
       "custom_css": [],
@@ -652,12 +640,9 @@
             "speed": 0.4,
             "pause_on_hover": true,
             "column_gap": "medium",
-            "gallery_video_1": null,
-            "gallery_image_avatar_1": "shopify://shop_images/6.webp",
             "gallery_image_link_1": "",
             "gallery_social_media_1": "instagram",
             "gallery_heading_1": "Francis",
-            "gallery_video_2": null,
             "gallery_image_avatar_2": "shopify://shop_images/5.webp",
             "gallery_image_link_2": "",
             "gallery_social_media_2": "instagram",
@@ -745,7 +730,6 @@
           "type": "testimonial",
           "settings": {
             "icon": "5-stars",
-            "image": "shopify://shop_images/0413-05.jpg",
             "heading": "Testimonials",
             "text": "<p>“I am extremely happy about both design and comfort. I am a furniture designer myself, and your product makes me happy.”</p>",
             "author": "Stephanie L.",
@@ -842,8 +826,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -855,8 +837,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -868,8 +848,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -881,8 +859,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -894,8 +870,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
-            "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -907,9 +881,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
-            "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": null,
-            "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",
             "heading": "Lawrence"
@@ -1083,8 +1054,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -1095,8 +1064,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -1107,8 +1074,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -1119,8 +1084,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -1131,8 +1094,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "scheme-1",
-            "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -1143,9 +1104,6 @@
           "type": "gallery",
           "settings": {
             "color_scheme": "scheme-1",
-            "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": null,
-            "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",
             "heading": "Lawrence"

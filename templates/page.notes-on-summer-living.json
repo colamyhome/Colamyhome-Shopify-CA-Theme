@@ -80,7 +80,6 @@
       "name": "t:sections.video-hero.name",
       "settings": {
         "container": "fixed",
-        "video": null,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "video_height": "adapt",

@@ -325,10 +325,6 @@
             "show_below_product_media": false
           }
         },
-        "frequently_bought_app_block_346d7f": {
-          "type": "shopify://apps/frequently-bought/blocks/app-block/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
-          "settings": {}
-        },
         "complementary": {
           "type": "complementary",
           "disabled": true,
@@ -375,7 +371,6 @@
         "social_sharing",
         "sticky_atc_bar_7HgNgP",
         "payment_info_CMzCrq",
-        "frequently_bought_app_block_346d7f",
         "complementary"
       ],
       "custom_css": [
@@ -501,24 +496,19 @@
             "pause_on_hover": true,
             "column_gap": "medium",
             "gallery_image_1": "shopify://shop_images/ScreenShot_2026-05-18_142222_906.png",
-            "gallery_video_1": null,
             "gallery_image_link_1": "",
             "gallery_social_media_1": "instagram",
             "gallery_heading_1": "Francis",
-            "gallery_video_2": null,
             "gallery_image_link_2": "",
             "gallery_social_media_2": "instagram",
             "gallery_heading_2": "Lawrence",
-            "gallery_video_3": null,
             "gallery_image_link_3": "",
             "gallery_social_media_3": "instagram",
             "gallery_heading_3": "Lawrence",
             "gallery_image_4": "shopify://shop_images/ScreenShot_2026-05-18_142515_412.png",
-            "gallery_video_4": null,
             "gallery_image_link_4": "",
             "gallery_social_media_4": "instagram",
             "gallery_heading_4": "Gallery item",
-            "gallery_video_5": null,
             "gallery_image_link_5": "",
             "gallery_social_media_5": "instagram",
             "gallery_heading_5": "Gallery item",
@@ -695,7 +685,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -708,7 +697,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -721,7 +709,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -734,7 +721,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -747,7 +733,6 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -760,7 +745,6 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -936,7 +920,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/IMG_2666.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/1.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -948,7 +931,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-IMG_2537_4.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/2.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -960,7 +942,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/B6269-Des_chaises_de_bar_elegantes_confortables_et_intemporelles.Le_detail_qui_fait_toute_la_differen_2.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/3.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -972,7 +953,6 @@
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/D6270-thumbnail_image0_1.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/4.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -984,7 +964,6 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/D6270-SnapInsta.to_582073293_18546900928015637_68621254599221068_n_3.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/5.webp",
             "image_link": "",
             "social_media": "instagram",
@@ -996,7 +975,6 @@
           "settings": {
             "color_scheme": "scheme-1",
             "image": "shopify://shop_images/H26-572782395_1733277760565272_5842772349150581378_n.jpg",
-            "video": null,
             "image_avatar": "shopify://shop_images/6.webp",
             "image_link": "",
             "social_media": "instagram",
