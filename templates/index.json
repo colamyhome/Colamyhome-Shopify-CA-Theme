@@ -28,10 +28,10 @@
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h1",
-            "description": "<p>Now Up to <strong>20% OFF</strong></p>",
+            "description": "<p>Now Up to <strong>10% OFF</strong></p>",
             "description_size": "text-lg",
             "button_label": "Meet Halo",
-            "button_link": "https://colamyhome.com/pages/halo-dining-room",
+            "button_link": "shopify://collections/dining-chairs",
             "button_style": "btn--primary",
             "button_icon": "none",
             "enable_preload_image": false
@@ -67,8 +67,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/bundle-46.jpg",
-            "background_mobile": "shopify://shop_images/bundle-37_5d29996e-7d6e-477c-ac10-e16afac348ab.jpg",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "text_alignment": "left",
@@ -118,8 +116,6 @@
           "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/21x9_2.jpg",
-            "background_mobile": "shopify://shop_images/3x4_3.jpg",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "text_alignment": "left",
@@ -383,9 +379,9 @@
         },
         "image_card_pLE8xh": {
           "type": "image_card",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/Bedroom_144b8410-3891-466d-8511-3fe2fc268066.jpg",
             "image_ratio": "16/9",
             "image_ratio_mobile": "3/4",
             "image_overlay_opacity": 0,
@@ -475,7 +471,7 @@
             "background": "shopify://shop_images/6270.jpg",
             "background_mobile": "shopify://shop_images/2-18.jpg",
             "image_overlay_opacity": 10,
-            "product": "colamy-noya-mid-century-modern-upholstered-dining-chair",
+            "product": "colamy-noya-mid-century-modern-dining-chair",
             "subheading": "",
             "title": "Five-star Favorite",
             "highlight_style": "none",
@@ -495,10 +491,9 @@
         },
         "slide_XkAWaM": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-7",
-            "background": "shopify://shop_images/OCS21-2_2f401b44-af9c-4e05-a9ba-38843796d58a.jpg",
-            "background_mobile": "shopify://shop_images/OCS21-_01-11.png",
             "image_overlay_opacity": 10,
             "product": "colamy-verso-multi-scenario-swivel-chair-with-tufted-back",
             "subheading": "",
@@ -520,10 +515,9 @@
         },
         "slide_nA8tfT": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-7",
-            "background": "shopify://shop_images/a2b6162062d4b3066386906574762e9c.jpg",
-            "background_mobile": "shopify://shop_images/2-17.jpg",
             "image_overlay_opacity": 10,
             "product": "colamy-tv-stand-with-storage",
             "subheading": "",
@@ -565,8 +559,7 @@
         "hotspot_hWkMhU": {
           "type": "hotspot",
           "settings": {
-            "image": "shopify://shop_images/bundle-12.jpg",
-            "card_link": "shopify://products/halo-collection-prime-upholstered-dining-chair",
+            "card_link": "shopify://products/colamy-halo-prime-oeko-tex-certified-upholstered-dining-chair",
             "heading": "COLAMY HALO Prime OEKO-TEX® Certified Upholstered Dining Chair",
             "description": "",
             "top": 45,
@@ -577,8 +570,8 @@
         },
         "hotspot_YU6cGw": {
           "type": "hotspot",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/DTW01-dtc__1_6305b76c-d9dc-44c6-b4cf-db51352ec2f4.jpg",
             "card_link": "shopify://products/halo-modern-wood-dining-table-walnut",
             "heading": "COLAMY HALO 72\" Modern Wood Dining Table",
             "description": "",
@@ -671,6 +664,7 @@
         "button_qL8xDC",
         "timer_hCVaGR"
       ],
+      "disabled": true,
       "name": "Motion banner",
       "settings": {
         "container": "full",
@@ -678,8 +672,6 @@
         "layout": "horizontal",
         "content_alignment": "center",
         "content_alignment_mobile": "center",
-        "image": "shopify://shop_images/20260709-112903.jpg",
-        "image_mobile": "shopify://shop_images/20260709-112856.jpg",
         "padding_top": 10,
         "padding_bottom": 0
       }
@@ -690,7 +682,7 @@
         "collection_YAimFB": {
           "type": "collection",
           "settings": {
-            "collection": "clearance-flash-sale",
+            "collection": "allproducts",
             "title": "",
             "show_banner": false,
             "color_scheme": "scheme-7",
@@ -864,6 +856,7 @@
       "name": "Video hero icons",
       "settings": {
         "container": "full",
+        "video": "shopify://files/videos/BrandStoryshort.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "video_height": "extra-large",
@@ -919,7 +912,6 @@
             "icon": "none",
             "image": "shopify://shop_images/61wE3ZZ8gfL.jpg",
             "text": "<p><strong>Excellent upgrade</strong></p><p>Excellent value! The Atlas competes with $500-$1000 chairs for under $300. It features premium build quality, a firm yet comfortable seat, and solid adjustable mechanisms. If you prioritize functional performance over branding and prestige, this is a top-tier ergonomic choice.</p>",
-            "avatar": "shopify://shop_images/XK.png",
             "author": "Schadenfreudist",
             "bio": "",
             "product": "colamy-atlas-ergonomic-high-back-mesh-office-chair-bifma-certified"
@@ -931,7 +923,6 @@
             "icon": "none",
             "image": "shopify://shop_images/71C3pdQPj1L.jpg",
             "text": "<p><strong>Very sturdy and strong frame</strong></p><p>Great designs and easy to assemble, frame is study and well built. Very excited once we put them together! They were easy to assemble, very comfortable, and the seat size and height are perfect for my counter. They look amazing too.</p>",
-            "avatar": "shopify://shop_images/ACF05.png",
             "author": "Nicole",
             "bio": "",
             "product": "colamy-arla-upholstered-wooden-scandi-minimalist-counter-height-bar-stool"
