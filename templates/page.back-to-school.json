@@ -676,7 +676,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014e_7ad214f2-d60a-4911-8597-36f04c07442g_e16739dc-fedf-4b9f-870b-94f6c0cf6a92.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS",
             "creator_name": "@jorameraj",
@@ -692,7 +692,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014f_5b2a0c07-0969-4084-a539-2e6832474f0g_2887e114-1945-4e0a-8011-533045d49a81.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS",
             "creator_name": "@itsfationa",
@@ -708,7 +708,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014e_ab9b5d9a-68a9-4a90-88ca-948f0d71485g_c9e12e8e-f13e-48e9-9b02-1cf43b7c523e.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "AETHER",
             "creator_name": "@melisadevo",
@@ -724,7 +724,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014e_20790548-8a00-4b63-8c4b-82b05c4c3fdg_86835aac-d97b-434a-8efd-adae35c554aa.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "AETHER",
             "creator_name": "@america.timee",
@@ -740,7 +740,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014e_26aa29ec-041e-495b-b292-b2c19db9f0fg_d9fec549-073c-4635-ac96-989487bdec01.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "ATLAS-01",
             "creator_name": "@mylittlehomebylida",
@@ -756,7 +756,7 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/file_v3_0014e_6bd20a2e-21c8-4d15-a9f9-7001cf41a1bg_7f0cf8f6-ed3a-4733-b0e9-1eda0f9009df.mp4",
+            "video": null,
             "video_ratio": "4/5",
             "heading": "LUMIDESK",
             "creator_name": "@kilic_usastyle",

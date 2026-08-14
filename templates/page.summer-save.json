@@ -16,8 +16,8 @@
           "type": "video",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "video": "shopify://files/videos/餐厨16x9.mp4",
-            "mobile_video": "shopify://files/videos/餐厨9x16.mp4",
+            "video": null,
+            "mobile_video": null,
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_description": "",
             "image_overlay_opacity": 0,

@@ -42,8 +42,8 @@
           "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
-            "video": "shopify://files/videos/Brand02-4k.mp4",
-            "mobile_video": "shopify://files/videos/banner-3x4.mp4",
+            "video": null,
+            "mobile_video": null,
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_description": "",
             "image_overlay_opacity": 0,
@@ -866,7 +866,7 @@
       "name": "Video hero icons",
       "settings": {
         "container": "full",
-        "video": "shopify://files/videos/BrandStoryshort.mp4",
+        "video": null,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "video_height": "extra-large",

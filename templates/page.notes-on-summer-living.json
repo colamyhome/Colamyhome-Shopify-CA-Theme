@@ -80,7 +80,7 @@
       "name": "t:sections.video-hero.name",
       "settings": {
         "container": "fixed",
-        "video": "shopify://files/videos/Notes on Summer Living_16x9_0622.mp4",
+        "video": null,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "video_height": "adapt",
