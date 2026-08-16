@@ -36,7 +36,6 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-1",
-            "background": "shopify://shop_images/ComfyUI_00001_yjkjo_1773047735.png",
             "image_overlay_opacity": 5,
             "content_position": "middle-center",
             "text_alignment": "center",
@@ -106,7 +105,6 @@
       "name": "t:sections.image-with-text-overlay.name",
       "settings": {
         "container": "fixed",
-        "image": "shopify://shop_images/ComfyUI_00001_pgysu_1773048071.png",
         "desktop_height": "extra-medium",
         "overlay_opacity": 20,
         "enable_parallax": false,
@@ -158,7 +156,6 @@
         "color_scheme": "",
         "content_position": "middle-left",
         "content_alignment": "left",
-        "image_mobile": "shopify://shop_images/15_d617304e-9089-4ad5-8938-b489f9151c2e.jpg",
         "mobile_height": "adapt",
         "content_position_mobile": "middle-center-mobile",
         "content_alignment_mobile": "left",
@@ -185,6 +182,7 @@
           "type": "text",
           "settings": {
             "text": "<p>At COLAMY, we believe a better home starts with better choices, not more of them.That’s why we don’t build around endless options or overwhelming catalogs.We focus on a tighter collection of modern furniture — selected for comfort, function, and easy living — so customers can spend less time comparing, and more time enjoying the home they’re creating.</p>",
+            "content_width": 100,
             "text_size": "text-lg",
             "text_line_limit": "none",
             "button_style": "btn--underline",
@@ -228,6 +226,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Less to sort through” only works if every piece earns its place. Each COLAMY product is selected or developed around a fewclear standards:thoughtful design, lasting comfort, and confidence for everyday living.</p>",
+            "content_width": 100,
             "text_size": "text-lg",
             "text_line_limit": "none",
             "button_style": "btn--underline",
@@ -261,7 +260,6 @@
         "column_CigTrW": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Shop_by_room-01_d07e8ea0-5eb7-4b01-9d15-29f74dc0ca88.jpg",
             "title": "<strong>Designed for Real Life</strong>",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -279,7 +277,6 @@
         "column_fDFpY7": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Shop_by_room-02_6754765d-3353-443f-ad2b-edce729c0bb7.jpg",
             "title": "<strong>Built to Feel Reliable</strong>",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -297,7 +294,6 @@
         "column_3hiKib": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Shop_by_room-01_d07e8ea0-5eb7-4b01-9d15-29f74dc0ca88.jpg",
             "title": "<strong>Comfort in Every Layer</strong>",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -548,7 +544,6 @@
       "name": "t:sections.image-with-text-overlay-aboutus.name",
       "settings": {
         "container": "fixed",
-        "image": "shopify://shop_images/19_95c506c2-d80b-4c03-8726-fa294b696d8c.jpg",
         "desktop_height": "adapt",
         "overlay_opacity": 0,
         "enable_parallax": false,
@@ -569,7 +564,8 @@
       "name": "t:sections.video.name",
       "settings": {
         "container": "fixed",
-        "video": "",
+        "width": 100,
+        "video": "shopify://files/videos/BrandStory01-1080p.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_ratio": "16/9",
         "description": "",
