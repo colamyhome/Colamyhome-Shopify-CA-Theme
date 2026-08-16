@@ -105,7 +105,7 @@
             "description": "",
             "description_size": "text-inherit",
             "button_label": "",
-            "button_link": "shopify://pages/furniture-clearance-sale",
+            "button_link": "shopify://collections/all",
             "button_style": "btn--primary",
             "button_icon": "none",
             "enable_preload_image": false
