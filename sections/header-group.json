@@ -16,6 +16,7 @@
       "blocks": {
         "text_gWywMY": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<a href=\"https://colamyhome.com/pages/summer-sale\">SUMMER LIVING SALE UP TO 15% OFF</a>",
             "position": "center",
