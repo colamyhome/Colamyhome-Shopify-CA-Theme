@@ -30,119 +30,32 @@
         "padding_bottom": 50
       }
     },
-    "scrolling_banner_LAefNj": {
-      "type": "scrolling-banner",
-      "blocks": {
-        "slide_QdMYyN": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "",
-            "background": "shopify://shop_images/1959f66aa309136310ff978846659643.jpg",
-            "image_overlay_opacity": 0,
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "subheading": "",
-            "title": "",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd1",
-            "description": "",
-            "description_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "product_color_scheme": "",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_QdMYyN"
-      ],
-      "name": "t:sections.scrolling-banner.name",
-      "settings": {
-        "container": "full",
-        "slide_height": "adapt",
-        "content_position_mobile": "middle-center",
-        "text_alignment_mobile": "center",
-        "enable_zoom": false,
-        "enable_parallax": false
-      }
-    },
-    "rich_text_DTCmCt": {
+    "rich_text_daWFQd": {
       "type": "rich-text",
       "blocks": {
-        "heading_8DqAYj": {
+        "heading_AWkb9N": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>We do the sorting. So you can do the living.</strong>",
+            "heading": "Terms & Conditions",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
-            "heading_size": "h1"
+            "heading_size": "hd1"
           }
         },
-        "text_ex9yPk": {
+        "text_KN66dK": {
           "type": "text",
           "settings": {
-            "text": "<p>At COLAMY, we believe a better home starts with better choices, not more of them.That’s why we don’t build around endless options or overwhelming catalogs.We focus on a tighter collection of modern furniture — selected for comfort, function, and easy living — so customers can spend less time comparing, and more time enjoying the home they’re creating.</p>",
-            "content_width": 100,
-            "text_size": "text-lg",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "heading_8DqAYj",
-        "text_ex9yPk"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "rich_text_KiPiRe": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_GY84BY": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "<strong>What We Stand Behind</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h3"
-          }
-        },
-        "text_tGjFB7": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Less to sort through” only works if every piece earns its place. Each COLAMY product is selected or developed around a fewclear standards:thoughtful design, lasting comfort, and confidence for everyday living.</p>",
-            "content_width": 100,
+            "text": "<ul><li><h1>OVERVIEW</h1></li><li>This website is operated by COLAMY HOME Throughout the site, the terms “we”, “us” and “our” refer to COLAMY HOME. COLAMY HOME offers this website, including all information, tools and services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.</li></ul><p></p><ul><li>By visiting our site and/ or purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and/or available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and/ or contributors of content.</li></ul><p></p><ul><li>Please read these Terms of Service carefully before accessing or using our website. By accessing or using any part of the site, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any services. If these Terms of Service are considered an offer, acceptance is expressly limited to these Terms of Service.</li></ul><p></p><ul><li>Any new features or tools which are added to the current store shall also be subject to the Terms of Service. You can review the most current version of the Terms of Service at any time on this page. We reserve the right to update, change or replace any part of these Terms of Service by posting updates and/or changes to our website. It is your responsibility to check this page periodically for changes. Your continued use of or access to the website following the posting of any changes constitutes acceptance of those changes.</li></ul><p></p><ul><li>Our store is hosted on Shopify Inc. They provide us with the online e-commerce platform that allows us to sell our products and services to you.</li></ul><p></p><ul><li><h2><strong>SECTION 1 - ONLINE STORE TERMS</strong></h2></li><li>By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.</li><li>You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws).</li><li>You must not transmit any worms or viruses or any code of a destructive nature.</li><li>A breach or violation of any of the Terms will result in an immediate termination of your Services.</li></ul><p></p><ul><li><h1><strong>SECTION 2 - GENERAL CONDITIONS</strong></h1></li><li>We reserve the right to refuse service to anyone for any reason at any time.</li><li>You understand that your content (not including credit card information), may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. Credit card information is always encrypted during transfer over networks.</li><li>You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Service, use of the Service, or access to the Service or any contact on the website through which the service is provided, without express written permission by us.</li><li>The headings used in this agreement are included for convenience only and will not limit or otherwise affect these Terms.</li></ul><p></p><ul><li><h2><strong>SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION</strong></h2></li><li>We are not responsible if information made available on this site is not accurate, complete or current. The material on this site is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or more timely sources of information. Any reliance on the material on this site is at your own risk.</li><li>This site may contain certain historical information. Historical information, necessarily, is not current and is provided for your reference only. We reserve the right to modify the contents of this site at any time, but we have no obligation to update any information on our site. You agree that it is your responsibility to monitor changes to our site.</li></ul><p></p><ul><li><h2><strong>SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES</strong></h2></li><li>Prices for our products are subject to change without notice.</li><li>We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice at any time.</li><li>We shall not be liable to you or to any third-party for any modification, price change, suspension or discontinuance of the Service.</li></ul><p></p><ul><li><h1><strong>SECTION 5 - PRODUCTS OR SERVICES (if applicable)</strong></h1></li><li>Certain products or services may be available exclusively online through the website. These products or services may have limited quantities and are subject to return or exchange only according to our Return Policy.</li><li>appear at the store. We cannot guarantee that your computer monitor's display of any color will be accurate.</li><li>We reserve the right, but are not obligated, to limit the sales of our products or Services to any person, geographic region or jurisdiction. We may exercise this right on a case-by-case basis. We reserve the right to limit the quantities of any products or services that we offer. All descriptions of products or product pricing are subject to change at anytime without notice, at the sole discretion of us. We reserve the right to discontinue any product at any time. Any offer for any product or service made on this site is void where prohibited.</li><li>We do not warrant that the quality of any products, services, information, or other material purchased or obtained by you will meet your expectations, or that any errors in the Service will be corrected.</li></ul><p></p><ul><li><h2><strong>SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION</strong></h2></li><li>We reserve the right to refuse any order you place with us. We may, in our sole discretion, limit or cancel quantities purchased per person, per household or per order. These restrictions may include orders placed by or under the same customer account, the same credit card, and/or orders that use the same billing and/or shipping address. In the event that we make a change to or cancel an order, we may attempt to notify you by contacting the e‑mail and/or billing address/phone number provided at the time the order was made. We reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by dealers, resellers or distributors.</li><li>You agree to provide current, complete and accurate purchase and account information for all purchases made at our store. You agree to promptly update your account and other information, including your email address and credit card numbers and expiration dates, so that we can complete your transactions and contact you as needed.</li><li>For more detail, please review our Returns Policy.</li></ul><p></p><ul><li><h2><strong>SECTION 7 - OPTIONAL TOOLS</strong></h2></li><li>We may provide you with access to third-party tools over which we neither monitor nor have any control nor input.</li><li>You acknowledge and agree that we provide access to such tools ”as is” and “as available” without any warranties, representations or conditions of any kind and without any endorsement. We shall have no liability whatsoever arising from or relating to your use of optional third-party tools.</li><li>Any use by you of optional tools offered through the site is entirely at your own risk and discretion and you should ensure that you are familiar with and approve of the terms on which tools are provided by the relevant third-party provider(s).</li><li>We may also, in the future, offer new services and/or features through the website (including, the release of new tools and resources). Such new features and/or services shall also be subject to these Terms of Service.</li></ul><p></p><ul><li><h1><strong>SECTION 8 - THIRD-PARTY LINKS</strong></h1></li><li>Certain content, products and services available via our Service may include materials from third-parties. Third-party links on this site may direct you to third-party websites that are not affiliated with us. We are not responsible for examining or evaluating the content or accuracy and we do not warrant and will not have any liability or responsibility for any third-party materials or websites, or for any other materials, products, or services of third-parties.</li><li>We are not liable for any harm or damages related to the purchase or use of goods, services, resources, content, or any other transactions made in connection with any third-party websites. Please review carefully the third-party's policies and practices and make sure you understand them before you engage in any transaction. Complaints, claims, concerns, or questions regarding third-party products should be directed to the third-party.</li></ul><p></p><ul><li><h1><strong>SECTION 9 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS</strong></h1></li><li>If, at our request, you send certain specific submissions (for example contest entries) or without a request from us you send creative ideas, suggestions, proposals, plans, or other materials, whether online, by email, by postal mail, or otherwise (collectively, 'comments'), you agree that we may, at any time, without restriction, edit, copy, publish, distribute, translate and otherwise use in any medium any comments that you forward to us. We are and shall be under no obligation (1) to maintain any comments in confidence; (2) to pay compensation for any comments; or (3) to respond to any comments.</li><li>We may, but have no obligation to, monitor, edit or remove content that we determine in our sole discretion are unlawful, offensive, threatening, libelous, defamatory, pornographic, obscene or otherwise objectionable or violates any party’s intellectual property or these Terms of Service.</li><li>You agree that your comments will not violate any right of any third-party, including copyright, trademark, privacy, personality or other personal or proprietary right. You further agree that your comments will not contain libelous or otherwise unlawful, abusive or obscene material, or contain any computer virus or other malware that could in any way affect the operation of the Service or any related website. You may not use a false e‑mail address, pretend to be someone other than yourself, or otherwise mislead us or third-parties as to the origin of any comments. You are solely responsible for any comments you make and their accuracy. We take no responsibility and assume no liability for any comments posted by you or any third-party.</li></ul><p></p><ul><li><h1><strong>SECTION 10 - PERSONAL INFORMATION</strong></h1></li><li>Your submission of personal information through the store is governed by our Privacy Policy. To view our Privacy Policy.</li><li><h1><strong>SECTION 11 - ERRORS, INACCURACIES AND OMISSIONS</strong></h1></li><li>Occasionally there may be information on our site or in the Service that contains typographical errors, inaccuracies or omissions that may relate to product descriptions, pricing, promotions, offers, product shipping charges, transit times and availability. We reserve the right to correct any errors, inaccuracies or omissions, and to change or update information or cancel orders if any information in the Service or on any related website is inaccurate at any time without prior notice (including after you have submitted your order).</li><li>We undertake no obligation to update, amend or clarify information in the Service or on any related website, including without limitation, pricing information, except as required by law. No specified update or refresh date applied in the Service or on any related website, should be taken to indicate that all information in the Service or on any related website has been modified or updated.</li></ul><p></p><ul><li><h2><strong>SECTION 12 - PROHIBITED USES</strong></h2></li><li>In addition to other prohibitions as set forth in the Terms of Service, you are prohibited from using the site or its content: (a) for any unlawful purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any international, federal, provincial or state regulations, rules, laws, or local ordinances; (d) to infringe upon or violate our intellectual property rights or the intellectual property rights of others; (e) to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability; (f) to submit false or misleading information; (g) to upload or transmit viruses or any other type of malicious code that will or may be used in any way that will affect the functionality or operation of the Service or of any related website, other websites, or the Internet; (h) to collect or track the personal information of others; (i) to spam, phish, pharm, pretext, spider, crawl, or scrape; (j) for any obscene or immoral purpose; or (k) to interfere with or circumvent the security features of the Service or any related website, other websites, or the Internet. We reserve the right to terminate your use of the Service or any related website for violating any of the prohibited uses.</li></ul><p></p><ul><li><h1><strong>SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY</strong></h1></li><li>We do not guarantee, represent or warrant that your use of our service will be uninterrupted, timely, secure or error-free.</li><li>We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable. You agree that from time to time we may remove the service for indefinite periods of time or cancel the service at any time, without notice to you.</li><li>You expressly agree that your use of, or inability to use, the service is at your sole risk. The service and all products and services delivered to you through the service are (except as expressly stated by us) provided 'as is' and 'as available' for your use, without any representation, warranties or conditions of any kind, either express or implied, including all implied warranties or conditions of merchantability, merchantable quality, fitness for a particular purpose, durability, title, and non-infringement.</li><li>In no case shall colamy home, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, including, without limitation lost profits, lost revenue, lost savings, loss of data, replacement costs, or any similar damages, whether based in contract, tort (including negligence), strict liability or otherwise, arising from your use of any of the service or any products procured using the service, or for any other claim related in any way to your use of the service or any product, including, but not limited to, any errors or omissions in any content, or any loss or damage of any kind incurred as a result of the use of the service or any content (or product) posted, transmitted, or otherwise made available via the service, even if advised of their possibility. Because some states or jurisdictions do not allow the exclusion or the limitation of liability for consequential or incidental damages, in such states or jurisdictions, our liability shall be limited to the maximum extent permitted by law.</li></ul><p></p><ul><li><h1><strong>SECTION 14 - INDEMNIFICATION</strong></h1></li><li>You agree to indemnify, defend and hold harmless colamy home and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, harmless from any claim or demand, including reasonable attorneys’ fees, made by any third-party due to or arising out of your breach of these Terms of Service or the documents they incorporate by reference, or your violation of any law or the rights of a third-party.</li></ul><p></p><ul><li><h2><strong>SECTION 15 - SEVERABILITY</strong></h2></li><li>In the event that any provision of these Terms of Service is determined to be unlawful, void or unenforceable, such provision shall nonetheless be enforceable to the fullest extent permitted by applicable law, and the unenforceable portion shall be deemed to be severed from these Terms of Service, such determination shall not affect the validity and enforceability of any other remaining provisions.</li></ul><p></p><ul><li><h2><strong>SECTION 16 - TERMINATION</strong></h2></li><li>The obligations and liabilities of the parties incurred prior to the termination date shall survive the termination of this agreement for all purposes.</li><li>These Terms of Service are effective unless and until terminated by either you or us. You may terminate these Terms of Service at any time by notifying us that you no longer wish to use our Services, or when you cease using our site.</li><li>If in our sole judgment you fail, or we suspect that you have failed, to comply with any term or provision of these Terms of Service, we also may terminate this agreement at any time without notice and you will remain liable for all amounts due up to and including the date of termination; and/or accordingly may deny you access to our Services (or any part thereof).</li></ul><p></p><ul><li><h2><strong>SECTION 17 - ENTIRE AGREEMEN</strong></h2></li><li>TThe failure of us to exercise or enforce any right or provision of these Terms of Service shall not constitute a waiver of such right or provision.</li><li>These Terms of Service and any policies or operating rules posted by us on this site or in respect to The Service constitutes the entire agreement and understanding between you and us and govern your use of the Service, superseding any prior or contemporaneous agreements, communications and proposals, whether oral or written, between you and us (including, but not limited to, any prior versions of the Terms of Service).</li><li>Any ambiguities in the interpretation of these Terms of Service shall not be construed against the drafting party.</li></ul><p></p><ul><li><h2><strong>SECTION 18 - GOVERNING LAW</strong></h2></li><li>These Terms of Service and any separate agreements whereby we provide you Services shall be governed by and construed in accordance with the laws of the United States.</li></ul><p></p><ul><li><h2><strong>SECTION 19 - CHANGES TO TERMS OF SERVICE</strong></h2></li><li>You can review the most current version of the Terms of Service at any time at this page.</li><li>We reserve the right, at our sole discretion, to update, change or replace any part of these Terms of Service by posting updates and changes to our website. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website or the Service following the posting of any changes to these Terms of Service constitutes acceptance of those changes.</li></ul><p></p><ul><li><h2><strong>SECTION 20 - CONTACT INFORMATION</strong></h2></li><li>Questions about the Terms of Service should be sent to us at  </li><li><h1><a href=\"mailto:hello@colamyhome.com\" target=\"_blank\">hello@colamyhome.com</a>.<br/><br/></h1></li></ul>",
+            "content_width": 81,
             "text_size": "text-base",
             "text_line_limit": "none",
             "button_style": "btn--underline",
             "button_icon": "none"
           }
         },
-        "button_4F4XpX": {
+        "button_pUeN7T": {
           "type": "button",
           "disabled": true,
           "settings": {
@@ -154,381 +67,22 @@
         }
       },
       "block_order": [
-        "heading_GY84BY",
-        "text_tGjFB7",
-        "button_4F4XpX"
+        "heading_AWkb9N",
+        "text_KN66dK",
+        "button_pUeN7T"
       ],
+      "custom_css": [],
       "name": "t:sections.rich-text.name",
       "settings": {
         "container": "fixed",
         "color_scheme": "",
         "use_color_scheme_in_container": false,
         "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 8,
-        "padding_bottom": 8,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "multicolumn_4yrgHh": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_CigTrW": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/07_cb19b905-9be2-4c8d-9870-dc01a4278047.jpg",
-            "title": "<strong>Designed for Real Life</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Designed for how you actually live. We don’t design for showrooms. We design for pieces that feel effortless in the home—silhouettes that feel easy to style, details that work across spaces, and pieces that stay useful long after the room is finished. Good furniture shouldn’t ask too much from the room around it.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_fDFpY7": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/08_eeb1520c-efa7-444e-869e-dbc804c47e67.jpg",
-            "title": "<strong>Built to Feel Reliable</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>A piece should feel good the day it arrives—and keep feeling solid over time.That’s why we pay attention to the parts you don’t always see: balanced construction, tested performance, and dependable support designed for daily living.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_3hiKib": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/09_f387a768-814f-4067-b16b-2211b9135cc5.jpg",
-            "title": "<strong>Comfort in Every Layer</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>grain of the wood to the density of the foam, every layer is chosen for one purpose: to feel as good years from now as it does today.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "column_CigTrW",
-        "column_fDFpY7",
-        "column_3hiKib"
-      ],
-      "name": "t:sections.multicolumn.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
         "content_alignment": "left",
-        "show_col_count": false,
-        "show_image": true,
-        "columns_desktop": 3,
-        "column_gap": "2xs",
-        "row_gap": "inherit",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
-    "slideshow_GCw7eL": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_hNPHqe": {
-          "type": "slide",
-          "settings": {
-            "color_scheme": "",
-            "background": "shopify://shop_images/13_c580040f-d169-4cfd-9d7f-083bcfd91006.jpg",
-            "background_mobile": "shopify://shop_images/10_45ad0783-e6c3-492e-a64e-c2e80f21c6ab.jpg",
-            "image_overlay_opacity": 0,
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "subheading": "",
-            "title": "",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h3",
-            "description": "",
-            "description_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "enable_preload_image": false
-          }
-        },
-        "slide_LrwLeB": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "",
-            "image_overlay_opacity": 0,
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "subheading": "",
-            "title": "Image slide",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd1",
-            "description": "<p>Tell your brand's story through images</p>",
-            "description_size": "text-base",
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "enable_preload_image": false
-          }
-        }
-      },
-      "block_order": [
-        "slide_hNPHqe",
-        "slide_LrwLeB"
-      ],
-      "name": "t:sections.slideshow.name",
-      "settings": {
-        "container": "full",
-        "slide_height": "adapt",
-        "show_controls": true,
-        "autoplay": false,
-        "autoplay_delay": 3,
-        "show_text_below": false,
-        "text_alignment_mobile": "center",
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "rich_text_PBpFtA": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_CXVzR8": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "<strong>The Origin</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h1"
-          }
-        },
-        "subheading_MQ9bnK": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "subheading": ""
-          }
-        },
-        "text_ndCVB6": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>COLAMY started with ergonomic seating, built around a simple belief: every home deserves a comfortable place to work, focus, and recharge.</p>",
-            "content_width": 100,
-            "text_size": "text-lg",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "heading_fpzrXE": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>The Evolution</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_ETF6Eb": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>As our first customers grew, so did their needs. The same people who loved our office chairs started asking: ‘Can you make my dining chair this comfortable?’ We listened, and expanded our seating expertise to every corner of the home.</p>",
-            "content_width": 100,
-            "text_size": "text-lg",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "heading_HmQUte": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "<strong>The Vision </strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_Rt3igP": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Today, COLAMY stands for a<em>curated</em>approach to modern living. We’re still the seating experts, but now we’re your partners in creating a home that’s comfortable, functional, and uniquely yours — without the overwhelm.</p>",
-            "content_width": 100,
-            "text_size": "text-base",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "heading_CXVzR8",
-        "subheading_MQ9bnK",
-        "text_ndCVB6",
-        "heading_fpzrXE",
-        "text_ETF6Eb",
-        "heading_HmQUte",
-        "text_Rt3igP"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
         "padding_top": 50,
         "padding_bottom": 50,
         "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "image_with_text_qYM84L": {
-      "type": "image-with-text",
-      "blocks": {
-        "badge_wXqnAV": {
-          "type": "badge",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "",
-            "text": "image with text - spinning text -",
-            "position_mobile": "right"
-          }
-        },
-        "subheading_eJqX8W": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "subheading": "Add a tagline"
-          }
-        },
-        "heading_RRGa9H": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Easy to Own </strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2"
-          }
-        },
-        "text_y3FgbH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>We don’t believe good furniture ends at checkout.</p><p>Buying furniture online should feel easy — and owning it should feel even better. From clear delivery updates to responsive support and straightforward policies, we work to make every step feel simple, transparent, and reassuring—before, during, and after your order arrives.</p>",
-            "subtext_color": true
-          }
-        },
-        "button_NA8WGQ": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "badge_wXqnAV",
-        "subheading_eJqX8W",
-        "heading_RRGa9H",
-        "text_y3FgbH",
-        "button_NA8WGQ"
-      ],
-      "name": "t:sections.image-with-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "image": "shopify://shop_images/Built_for_trust_eaa9ab84-e9ca-4095-adf1-93e5b3f758bf.jpg",
-        "image_position": "left",
-        "image_width": 50,
-        "desktop_content_position": "center",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "inherit",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
-    "video_tbqaAW": {
-      "type": "video",
-      "name": "t:sections.video.name",
-      "settings": {
-        "container": "fixed",
-        "width": 100,
-        "video": "shopify://files/videos/BrandStory01-1080p.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_ratio": "adapt",
-        "description": "",
-        "enable_video_autoplay": false,
-        "enable_video_looping": false,
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "show_section_divider": false,
-        "divider_width": "fixed"
+        "divider_width": "full"
       }
     },
     "multicolumn_dyVtkw": {
@@ -700,14 +254,7 @@
   "order": [
     "main",
     "custom_liquid_cWNzPF",
-    "scrolling_banner_LAefNj",
-    "rich_text_DTCmCt",
-    "rich_text_KiPiRe",
-    "multicolumn_4yrgHh",
-    "slideshow_GCw7eL",
-    "rich_text_PBpFtA",
-    "image_with_text_qYM84L",
-    "video_tbqaAW",
+    "rich_text_daWFQd",
     "multicolumn_dyVtkw",
     "grid_banner_PEqxqM"
   ]
