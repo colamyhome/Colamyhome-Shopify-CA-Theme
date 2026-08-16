@@ -980,8 +980,8 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-1",
-        "menu": "",
-        "menu_mobile": "",
+        "menu": "main-menu",
+        "menu_mobile": "main-menu",
         "header_layout": "logo-center",
         "menu_trigger": "hover",
         "sticky_header": "always",
