@@ -77,14 +77,14 @@
             "coupon_code": "COLAMY10",
             "discount_percent": 10,
             "minimum_variant_price": 0,
-            "apply_text": "Apply 10% off coupon",
-            "applied_text": "Coupon applied! Final Price:",
+            "apply_text": "APPLY 10% OFF COUPON",
+            "applied_text": "COUPON APPLIED! FINAL PRICE:",
             "removed_text": "Coupon removed",
             "error_text": "Unable to apply coupon. Try again.",
-            "background_color": "#fbf7ef",
-            "text_color": "#2d2d2d",
+            "background_color": "#FFEFD7",
+            "text_color": "#A83636",
             "checkbox_color": "#222222",
-            "applied_color": "#222222"
+            "applied_color": "#A83636"
           }
         },
         "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF": {
