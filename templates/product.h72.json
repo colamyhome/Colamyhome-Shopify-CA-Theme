@@ -574,6 +574,7 @@
       "blocks": {
         "quiet_luxury_card_CpDBKr": {
           "type": "quiet_luxury_card",
+          "disabled": true,
           "settings": {
             "navigation_title": "Made to be Loved",
             "video_row_background_color": "#f4f4f4",
