@@ -75,7 +75,7 @@
           "type": "apply_coupon_checkout",
           "settings": {
             "coupon_code": "BTS15",
-            "discount_percent": 10,
+            "discount_percent": 15,
             "minimum_variant_price": 0,
             "apply_text": "Apply 15% off coupon",
             "applied_text": "Coupon applied! Final Price:",
