@@ -74,17 +74,17 @@
         "apply_coupon_checkout_Jxpdj8": {
           "type": "apply_coupon_checkout",
           "settings": {
-            "coupon_code": "COLAMY10",
+            "coupon_code": "BTS15",
             "discount_percent": 10,
             "minimum_variant_price": 0,
-            "apply_text": "Apply 10% off coupon",
+            "apply_text": "Apply 15% off coupon",
             "applied_text": "Coupon applied! Final Price:",
             "removed_text": "Coupon removed",
             "error_text": "Unable to apply coupon. Try again.",
             "background_color": "#fbf7ef",
-            "text_color": "#A83636",
+            "text_color": "#a83636",
             "checkbox_color": "#222222",
-            "applied_color": "#A83636"
+            "applied_color": "#a83636"
           }
         },
         "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF": {
