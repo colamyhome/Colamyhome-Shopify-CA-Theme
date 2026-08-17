@@ -50,6 +50,23 @@
             "show_barcode": false
           }
         },
+        "buy_box_tag_dz9bCJ": {
+          "type": "shopify://apps/buy-box/blocks/tag/17b7c6ef-0c82-4743-acf4-050c34e5b233",
+          "disabled": true,
+          "settings": {
+            "pm": "normal",
+            "ax": "d",
+            "ap": 50,
+            "txt": "You save %SA%",
+            "tc": "#ffffff",
+            "bg": "#1a1a1a",
+            "bc": "#1a1a1a",
+            "is": 13,
+            "br": 6,
+            "mt": 0,
+            "mb": -10
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -429,6 +446,7 @@
         "badges",
         "title",
         "meta",
+        "buy_box_tag_dz9bCJ",
         "price",
         "apply_coupon_checkout_Jxpdj8",
         "rivyo_reviews_loyalty_wc_product_review_badge_NXe8cF",
