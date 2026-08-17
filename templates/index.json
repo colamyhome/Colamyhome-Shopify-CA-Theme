@@ -88,6 +88,7 @@
         },
         "slide_pk7WUq": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
             "background": "shopify://shop_images/clearance_sale.png",
