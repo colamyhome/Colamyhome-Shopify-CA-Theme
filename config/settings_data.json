@@ -69,8 +69,8 @@
     "cart_empty_message": "<p>Not sure where to start? Try these collections:</p>",
     "collection_card_color_scheme": "scheme-1",
     "collection_image_ratio": "4/3",
-    "social_facebook_link": "https://www.facebook.com/Colamy",
-    "social_instagram_link": "https://www.instagram.com/colamyhomeofficial/",
+    "social_facebook_link": "https://www.facebook.com/profile.php?id=61579254115213#",
+    "social_instagram_link": "https://www.instagram.com/colamy_ca_home",
     "social_youtube_link": "https://www.youtube.com/@colamyhome",
     "social_tiktok_link": "https://www.tiktok.com/@colamyhome",
     "social_snapchat_link": "",
@@ -110,48 +110,8 @@
         "disabled": false,
         "settings": {}
       },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {}
-      },
-      "11724500921838622758": {
-        "type": "shopify://apps/frequently-bought/blocks/app-embed-block/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
-        "disabled": false,
-        "settings": {}
-      },
-      "2567389343055140935": {
-        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      },
-      "2200952712151285029": {
-        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      },
       "848591003871763955": {
         "type": "shopify://apps/shortly-affiliate-marketing/blocks/app-embed-block/4c3d9aaa-3566-4200-9c43-34b476f6332a",
-        "disabled": false,
-        "settings": {}
-      },
-      "3138269044488530766": {
-        "type": "shopify://apps/uppromote-affiliate/blocks/core-script/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
-        "disabled": false,
-        "settings": {}
-      },
-      "9005256451184024879": {
-        "type": "shopify://apps/uppromote-affiliate/blocks/customer-referral/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
-        "disabled": false,
-        "settings": {}
-      },
-      "1996061711396120121": {
-        "type": "shopify://apps/uppromote-affiliate/blocks/message-bar/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
         "disabled": false,
         "settings": {}
       },
